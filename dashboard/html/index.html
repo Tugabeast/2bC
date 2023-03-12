@@ -30,19 +30,19 @@
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>DashBoard</h3>
                 </a>
-                <a href="/html/forms.html">
+                <a href="../html/forms.html">
                     <span class="material-symbols-sharp">description</span>
                     <h3>Formulario</h3>
                 </a>
-                <a href="/html/crud.html">
+                <a href="../php/crud.php">
                     <span class="material-symbols-sharp">table_chart</span>
                     <h3>Tabela Crud</h3>
                 </a>
-                <a href="/html/mapa.html">
+                <a href="../html/mapa.html">
                     <span class="material-symbols-sharp">map</span>
                     <h3>Mapa</h3>
                 </a>
-                <a href="/html/graficos.html">
+                <a href="../html/graficos.html">
                     <span class="material-symbols-sharp">monitoring</span>
                     <h3>Graficos</h3>
                 </a>
@@ -188,9 +188,11 @@
                     <span class="material-symbols-sharp">menu</span>
                 </button >
                 <!--notificacoes-->
+                
                 <div class="alertas" onclick="alertasToggle();">
                         <span class="material-symbols-sharp">notifications</span>
                 </div>
+                <!--
                 <div class="alertas-context">
                     <ul>
                         <li><a href="#"><span class="material-symbols-sharp">sell</span>Nova venda realizada!</a></li>
@@ -198,6 +200,7 @@
                         <li><a href="#"><span class="material-symbols-sharp">payments</span>Pagamento por realizar!</a></li>
                     </ul>
                 </div>
+                -->
                 <!--profile dropdown -->
                 <div class="profile" onclick="menuToggle();">
                     <img class="profile-photo" src="../images/profile.png">
@@ -213,14 +216,14 @@
             </div>
             <!--top end-->
             <div class="recent-updates">
-                <h2>Updates Recentes</h2>
+                <h2>Notificações</h2>
                 <div class="updates">
                     <div class="update">
-                        <div class="profile-photo">
+                        <div class="profile-photo" >
                             <img src="../images/profile.png">
                         </div>
                         <div class="message">
-                            <p><b>Goncalo Alves</b> recebeu o seu pedido da bola de futebol</p>
+                            <p><b class="sucess">Notificação </b> recebeu o seu pedido da bola de futebol</p>
                             <small class="text-muted">3 minutos atras</small>
                         </div>
                     </div>
@@ -229,7 +232,7 @@
                             <img src="../images/profile3.png">
                         </div>
                         <div class="message">
-                            <p><b>Goncalo Alves</b> recebeu o seu pedido das joelheiras</p>
+                            <p><b class="warning">Alerta</b> recebeu o seu pedido das joelheiras</p>
                             <small class="text-muted">2 minutos atras</small>
                         </div>
                     </div>
@@ -238,7 +241,7 @@
                             <img src="../images/profile1.png">
                         </div>
                         <div class="message">
-                            <p><b>Goncalo Alves</b> recebeu o seu pedido da bola de voleibol</p>
+                            <p><b class="danger">Atenção</b> recebeu o seu pedido da bola de voleibol</p>
                             <small class="text-muted">1 hora atras</small>
                         </div>
                     </div>

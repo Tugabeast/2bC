@@ -500,6 +500,43 @@ main .recent-orders a {
     height: 50%;
 }
 
+/*Tabela crud css*/
+
+.containerphp{
+    
+    border-radius: var(--card-border-radius);
+    background: var(--color-white);
+    height: 50vh;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.containerphp .btn-add{
+    border: 1px solid black;
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: 10px;
+    margin-left: 20px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    margin: auto;
+    margin-top: 10%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
 
 /*   ============================ Right ============================ */
 

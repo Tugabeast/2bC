@@ -1,5 +1,5 @@
 mapa: pin point (check)
-componentes
-api graficos 
-log in para entrada dashboard
-notificacoes: right notificacoes/updates
+componentes (not check)
+api graficos (check)
+log in para entrada dashboard ()
+notificacoes: right notificacoes/updates (check)
