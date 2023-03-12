@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stiloes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="side-bar">
+        <header>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+            <img src="../images/profile3.png">
+            <h1>Logo Here</h1>
+        </header>
+
+        <div class="menu">
+            <div class="item"><a href="#"><i class="fas fa-desktop"></i>DashBoard</a></div>
+            <div class="item"><a class="sub-btn"><i class="fas fa-table"></i>Componentes
+                <i class="fas fa-angle-right dropdown"></i>
+            </a>
+                <div class="sub-menu">
+                    <a href="" class="sub-item"><i class="fas fa-table-columns"></i>Card</a>
+                    <a href="" class="sub-item"><i class="fa-sharp fa-solid fa-chart-simple"></i>Progress Bar</a>
+                    <a href="" class="sub-item"><i class="fas fa-calculator"></i>Contador</a>
+                    <a href="" class="sub-item"><i class="fas fa-spinner"></i>Spinners</a>
+                </div>
+            </div>
+            <div class="item"><a href="#"><i class="fas fa-th"></i>Forms</a></div>
+            <div class="item"><a href="#"><i class="fas fa-cog"></i>Settings</a></div>
+            <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About<a><div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.menu-btn').click(function(){
+                $('.side-bar').addClass('active');
+                $('.menu-btn').css("visibility","hidden");
+            });
+            $('.close-btn').click(function () {
+               $('.side-bar').removeClass('active');
+               $('.menu-btn').css("visibility","visible"); 
+            }); 
+            $('.sub-btn').click(function(){
+                $(this).next('.sub-menu').slideToggle();
+                $(this).find('.dropdown').toggleClass('rotate');
+            });
+        })
+    </script>
+</body>
+
+</html>

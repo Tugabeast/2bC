@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dygraphs": "^2.2.1",
+    "gulp": "^4.0.2"
+  }
+}
