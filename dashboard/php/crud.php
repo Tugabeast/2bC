@@ -45,7 +45,7 @@
                     <span class=" material-symbols-sharp ">monitoring</span>
                     <h3>Graficos</h3>
                 </a>
-                <a href="# ">
+                <a href="../html/componentes.html">
                     <span class="material-symbols-sharp ">widgets</span>
                     <h3>Componentes</h3>
                 </a>
@@ -56,8 +56,8 @@
             <h1 class="titulo">Tabela Crud</h1>
             <div class="containerphp">
                 <a href="../html/forms.html" class="btn-add">Adicionar Novo</a>
-                <table>
-                    <tr>
+                <table class="tabelacrud">
+                    <tr >
                         <th>Username</th>
                         <th>Password</th>
                         <th>Ações</th>
@@ -109,39 +109,39 @@
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
                         <li><a href="# "><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="# "><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="../php/login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>
             <!--top end-->
-            <div class="recent-updates ">
-                <h2>Updates Recentes</h2>
-                <div class="updates ">
-                    <div class="update ">
-                        <div class="profile-photo ">
-                            <img src="../images/profile.png ">
+            <div class="recent-updates">
+                <h2>Notificações</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo" >
+                            <img src="../images/profile.png">
                         </div>
-                        <div class="message ">
-                            <p><b>Goncalo Alves</b> recebeu o seu pedido da bola de futebol</p>
-                            <small class="text-muted ">3 minutos atras</small>
-                        </div>
-                    </div>
-                    <div class="update ">
-                        <div class="profile-photo ">
-                            <img src="../images/profile3.png ">
-                        </div>
-                        <div class="message ">
-                            <p><b>Goncalo Alves</b> recebeu o seu pedido das joelheiras</p>
-                            <small class="text-muted ">2 minutos atras</small>
+                        <div class="message">
+                            <p><b class="sucess">Notificação </b> recebeu o seu pedido da bola de futebol</p>
+                            <small class="text-muted">3 minutos atras</small>
                         </div>
                     </div>
-                    <div class="update ">
-                        <div class="profile-photo ">
-                            <img src="../images/profile1.png ">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="../images/profile3.png">
                         </div>
-                        <div class="message ">
-                            <p><b>Goncalo Alves</b> recebeu o seu pedido da bola de voleibol</p>
-                            <small class="text-muted ">1 hora atras</small>
+                        <div class="message">
+                            <p><b class="warning">Alerta</b> recebeu o seu pedido das joelheiras</p>
+                            <small class="text-muted">2 minutos atras</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="../images/profile1.png">
+                        </div>
+                        <div class="message">
+                            <p><b class="danger">Atenção</b> recebeu o seu pedido da bola de voleibol</p>
+                            <small class="text-muted">1 hora atras</small>
                         </div>
                     </div>
                 </div>

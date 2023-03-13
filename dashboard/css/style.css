@@ -519,24 +519,25 @@ main .recent-orders a {
     margin-left: 20px;
 }
 
-table {
+.containerphp .tabelacrud {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 60%;
     margin: auto;
     margin-top: 10%;
   }
-  
-  td, th {
+
+.containerphp .tabelacrud th, td{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+
   }
   
-  tr:nth-child(even) {
+.containerphp .tabelacrud tr:nth-child(even) {
     background-color: #dddddd;
   }
-
+  
 
 /*   ============================ Right ============================ */
 
