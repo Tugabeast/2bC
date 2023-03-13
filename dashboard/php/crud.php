@@ -16,7 +16,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <a href="/html/index.html">
+                    <a href="../html/index.html">
                         <img src="../images/logo.PNG">
                     </a>
                 </div>
