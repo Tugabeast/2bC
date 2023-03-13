@@ -1,5 +1,8 @@
 <?php
-    $conn = new mysqli('localhost','root','root','dashboard', 3305);
+    //fixo 
+    //$conn = new mysqli('localhost','root','root','dashboard', 3305);
+    //portatil
+    $conn = new mysqli('localhost','root','porto1893','dashboard', 3306);
     if (isset($_POST['username']) && isset($_POST['password']) ) {
         function validate($data){
             $data = trim($data);
@@ -11,11 +14,11 @@
         $password = validate($_POST['password']);
 
         if(empty($username)){
-            header("location: login.php?error= Username é necessario");
+            header("location: ../php/login.php?error= Username é necessario");
             exit();
         }
         else if(empty($password)){
-            header("location: login.php?error= Password é necessaria");
+            header("location: ../php/login.php?error= Password é necessaria");
             exit();
         }   
         else{
@@ -28,12 +31,12 @@
                     header("Location: ../html/index.html");
                 }
                 else{
-                    header("location: login.php?error= Username ou Password incorreto/a");
+                    header("location: ../php/login.php?error= Username ou Password incorreto/a");
                     exit();
                 }
             }
             else{
-                header("location: login.php?error= Username ou Password incorreto/a");
+                header("location: ../php/login.php?error= Username ou Password incorreto/a");
                 exit();
             }
         }

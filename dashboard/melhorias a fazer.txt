@@ -1,5 +1,5 @@
 mapa: pin point (check)
-componentes (not check)
+componentes (check)
 api graficos (check)
 log in para entrada dashboard (check)
 notificacoes: right notificacoes/updates (check)

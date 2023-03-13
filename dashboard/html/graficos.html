@@ -56,7 +56,15 @@
         <!-- fim da sidebar -->
         <main>
             <h1 class="titulo">Gráficos</h1>
-            <div id="graphdiv"></div>
+            <div id="graphdiv3"></div>
+            <script type="text/javascript">
+                Dygraph.onDOMready(function onDOMready() {
+                    g2 = new Dygraph(
+                        document.getElementById("graphdiv3"),
+                        "../js/temperatures.csv", // path to CSV file
+                    );
+                });
+            </script>
             <!--https://jsfiddle.net/tr2qcusa/-->
         </main>
         <!--Fim da main-->

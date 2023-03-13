@@ -496,14 +496,17 @@ main .recent-orders a {
     color: var(--color-background);
 }
 
-#graphdiv {
+#graphdiv3 {
+    width: 60%;
     height: 50%;
+    margin-top: 20px;
+    margin-left: -30px;
 }
+
 
 /*Tabela crud css*/
 
-.containerphp{
-    
+.containerphp {
     border-radius: var(--card-border-radius);
     background: var(--color-white);
     height: 50vh;
@@ -511,7 +514,7 @@ main .recent-orders a {
     padding-top: 20px;
 }
 
-.containerphp .btn-add{
+.containerphp .btn-add {
     border: 1px solid black;
     background: var(--color-dark);
     color: var(--color-white);
@@ -525,18 +528,18 @@ main .recent-orders a {
     width: 60%;
     margin: auto;
     margin-top: 10%;
-  }
+}
 
-.containerphp .tabelacrud th, td{
+.containerphp .tabelacrud th,
+td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+}
 
-  }
-  
 .containerphp .tabelacrud tr:nth-child(even) {
     background-color: #dddddd;
-  }
+}
 
 
 /*   ============================ Right ============================ */

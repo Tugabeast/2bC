@@ -64,7 +64,10 @@
                     </tr>
                     <?php   
                         //include "script.php";
-                        $conn = new mysqli('localhost','root','root','dashboard', 3305);
+                        // fixo
+                        // $conn = new mysqli('localhost','root','root','dashboard', 3305);
+                        //portatil
+                        $conn = new mysqli('localhost','root','porto1893','dashboard', 3306);
                         $sql = "SELECT * FROM `registration` ";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_assoc($result)){
