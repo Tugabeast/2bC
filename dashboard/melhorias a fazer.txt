@@ -6,8 +6,7 @@ notificacoes: right notificacoes/updates (check)
 
 Novas melhorias:
 acabar tabela crud()
-melhorar login()
-download api graphs()
-melhorar forms()
-criar registo conta()
-settings()
+melhorar login(check)
+download api graphs(check)
+melhorar forms(check)
+criar registo conta(check)

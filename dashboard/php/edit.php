@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard-Tabela Crud</title>
+    <title>DashBoard-Edit Tabela</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="../css/style.css">
 
@@ -53,9 +53,9 @@
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo">Tabela Crud</h1>
+            <h1 class="titulo">Editar Crud</h1>
             <div class="containerphp">
-                <a href="../html/forms.html" class="btn-add">Adicionar Novo</a>
+                <a href="../php/crud.php" class="btn-add">Cancelar</a>
                 <table class="tabelacrud">
                     <tr >
                         <th>Username</th>
@@ -76,7 +76,7 @@
                                     <td><?php echo $row['username']?></td>
                                     <td><?php echo $row['password']?></td>
                                     <td>
-                                        <a href="../php/edit.php"><span class="material-symbols-sharp">edit_square</span></a>
+                                        <a href="#"><span class="material-symbols-sharp">edit_square</span></a>
                                         <a href="#"><span class="material-symbols-sharp">delete</span></a>
                                     </td>
                                 </tr>
