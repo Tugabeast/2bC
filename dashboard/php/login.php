@@ -9,16 +9,21 @@
     </head>
     <body>
         <form action="../php/loginscript.php" method="post">
-            <h2>Login</h2>
+            <h2>LOGIN</h2>
             <?php if(isset($_GET['error'])) {?>
                 <p class="error"><?php echo $_GET['error']; ?> </p>
                 <?php } ?>
+
+                <?php if(isset($_GET['sucess'])) {?>
+                <p class="sucess"><?php echo $_GET['sucess']; ?> </p>
+            <?php } ?>
             <label>Username</label>
             <input type="text" name="username" placeholder="username">
             <br>
             <label>Password</label>
             <input type="password" name="password" placeholder="password">
             <br>
+            <a href="../php/register.php" class="text-muted">Criar conta</a>
             <button type="submit">Login</button>
         </form>
     </body>

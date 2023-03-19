@@ -12,6 +12,7 @@
         }
         $username = validate($_POST['username']);
         $password = validate($_POST['password']);
+        
 
         if(empty($username)){
             header("location: ../php/login.php?error= Username é necessario");
@@ -22,6 +23,8 @@
             exit();
         }   
         else{
+            $pass = md5($password);
+
             $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password' ";
             $result = mysqli_query($conn, $sql);
 

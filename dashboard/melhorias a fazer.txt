@@ -3,3 +3,11 @@ componentes (check)
 api graficos (check)
 log in para entrada dashboard (check)
 notificacoes: right notificacoes/updates (check)
+
+Novas melhorias:
+acabar tabela crud()
+melhorar login()
+download api graphs()
+melhorar forms()
+criar registo conta()
+settings()

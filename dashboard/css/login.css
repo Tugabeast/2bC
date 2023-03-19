@@ -20,7 +20,7 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
-body{
+body {
     background: var(--color-primary);
     display: flex;
     justify-content: center;
@@ -28,12 +28,12 @@ body{
     height: 90vh;
 }
 
-*{
+* {
     font-family: sans-serif;
     box-sizing: var(--card-border-radius);
 }
 
-form{
+form {
     width: 500px;
     border: 2px solid #ccc;
     padding: 30px;
@@ -41,12 +41,12 @@ form{
     border-radius: var(--card-border-radius);
 }
 
-h2{
-    text-align: center; 
+h2 {
+    text-align: center;
     margin-bottom: 40px;
 }
 
-input{
+input {
     display: block;
     border: 2px solid #ccc;
     width: 95%;
@@ -55,13 +55,16 @@ input{
     border-radius: var(--border-radius-1);
 }
 
-label{
-    color: #888;
-    font-size: 18px;
-    
+input::placeholder {
+    opacity: 50%;
 }
 
-button{
+label {
+    color: #888;
+    font-size: 18px;
+}
+
+button {
     float: right;
     background: var(--color-dark-variant);
     padding: 10px 15px;
@@ -70,14 +73,31 @@ button{
     border: none;
 }
 
-button:hover{
+button:hover {
     opacity: 0.7;
 }
 
-.error{
+.error {
     background: var(--color-danger);
     color: var(--color-info-light);
     padding: 10px;
     width: 95%;
     border-radius: var(--border-radius-1);
+}
+
+.sucess {
+    background: var(--color-sucess);
+    color: var(--color-info-light);
+    padding: 10px;
+    width: 95%;
+    border-radius: var(--border-radius-1);
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+form a {
+    text-decoration: none;
+    margin-top: 30px;
 }
