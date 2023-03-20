@@ -77,7 +77,7 @@
                                     <td><?php echo $row['password']?></td>
                                     <td>
                                         <a href="../php/edit.php"><span class="material-symbols-sharp">edit_square</span></a>
-                                        <a href="#"><span class="material-symbols-sharp">delete</span></a>
+                                        <a href="../php/delete.php?id=$user_data[id]"><span class="material-symbols-sharp">delete</span></a>
                                     </td>
                                 </tr>
                             <?php
@@ -111,7 +111,7 @@
                     <h3>Goncalo Alves<br><small class="text-muted ">Web Developer</small></h3>
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
-                        <li><a href="# "><span class="material-symbols-sharp ">settings</span>Settings</a></li>
+                        <li><a href="../php/settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
                         <li><a href="../php/login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>

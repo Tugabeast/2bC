@@ -4,7 +4,7 @@
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-$encrypted_pwd = md5($password);
+//$encrypted_pwd = md5($password);
 
 $conn = new mysqli('localhost','root','porto1893','dashboard',3306);
 if($conn->connect_error){

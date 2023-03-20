@@ -111,7 +111,7 @@
                     <h3>Goncalo Alves<br><small class="text-muted ">Web Developer</small></h3>
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
-                        <li><a href="# "><span class="material-symbols-sharp ">settings</span>Settings</a></li>
+                        <li><a href="../php/settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
                         <li><a href="../php/login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
