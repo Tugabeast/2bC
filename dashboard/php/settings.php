@@ -37,7 +37,7 @@
             <label >Email</label>
             <input type="email" placeholder="email" name="email">
             <br>
-            <a href="../html/index.html" class="text-muted">Cancelar</a>
+            <a href="forms.php" class="text-muted">Cancelar</a>
             <button type="submit">Guardar</button>
         </form>
     </body>

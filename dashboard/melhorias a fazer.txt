@@ -5,9 +5,5 @@ log in para entrada dashboard (check)
 notificacoes: right notificacoes/updates (check)
 
 Novas melhorias:
-acabar tabela crud()
-melhorar login(check)
-download api graphs(check)
-melhorar forms(check)
-criar registo conta(check)
-settings(+-check)
+footer datatable()
+session login()

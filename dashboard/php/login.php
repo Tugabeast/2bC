@@ -7,9 +7,11 @@
         <title>Dashboard-Login</title>
         <link rel="stylesheet" href="../css/login.css">
     </head>
-    <body>
-        <form action="../php/loginscript.php" method="post">
+    <body >
+        
+        <form action="loginscript.php" method="post">
             <h2>LOGIN</h2>
+            
             <?php if(isset($_GET['error'])) {?>
                 <p class="error"><?php echo $_GET['error']; ?> </p>
                 <?php } ?>
@@ -23,8 +25,9 @@
             <label>Password</label>
             <input type="password" name="password" placeholder="password">
             <br>
-            <a href="../php/register.php" class="text-muted">Criar conta</a>
+            <a href="register.php" class="text-muted">Criar conta</a>
             <button type="submit">Login</button>
         </form>
+ 
     </body>
 </html>

@@ -16,7 +16,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <a href="../html/index.html">
+                    <a href="index.php">
                         <img src="../images/logo.PNG">
                     </a>
                 </div>
@@ -25,27 +25,27 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="../html/index.html">
+                <a href="index.php">
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>DashBoard</h3>
                 </a>
-                <a href="../html/forms.html">
+                <a href="forms.php">
                     <span class="material-symbols-sharp">description</span>
                     <h3>Formulario</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="crud.php" class="active">
                     <span class="material-symbols-sharp">table_chart</span>
                     <h3>Tabela Crud</h3>
                 </a>
-                <a href="../html/mapa.html">
+                <a href="mapa.php">
                     <span class="material-symbols-sharp">map</span>
                     <h3>Mapa</h3>
                 </a>
-                <a href="../html/graficos.html">
+                <a href="graficos.php">
                     <span class=" material-symbols-sharp ">monitoring</span>
                     <h3>Graficos</h3>
                 </a>
-                <a href="../html/componentes.html">
+                <a href="componentes.php">
                     <span class="material-symbols-sharp ">widgets</span>
                     <h3>Componentes</h3>
                 </a>
@@ -55,7 +55,8 @@
         <main>
             <h1 class="titulo">Editar Crud</h1>
             <div class="containerphp">
-                <a href="../php/crud.php" class="btn-add">Cancelar</a>
+                <a href="crud.php" class="btn-add">Cancelar</a>
+                <a href="crud.php" class="btn-add">Guardar</a>
                 <table class="tabelacrud">
                     <tr >
                         <th>Username</th>
@@ -73,8 +74,8 @@
                         while($row = mysqli_fetch_assoc($result)){
                             ?>
                                 <tr>
-                                    <td><?php echo $row['username']?></td>
-                                    <td><?php echo $row['password']?></td>
+                                    <td><input type="text" value="<?php echo $row['username']?>"> </td>
+                                    <td><input type="text" value="<?php echo $row['password']?>"></td>
                                     <td>
                                         <a href="#"><span class="material-symbols-sharp">edit_square</span></a>
                                         <a href="#"><span class="material-symbols-sharp">delete</span></a>
@@ -111,8 +112,8 @@
                     <h3>Goncalo Alves<br><small class="text-muted ">Web Developer</small></h3>
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
-                        <li><a href="../php/settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="../php/login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
+                        <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>

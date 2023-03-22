@@ -21,7 +21,7 @@ else{
     
 }
 
-header("location: ../html/forms.html");
+header("location: forms.php");
 exit();
 
 //script fixo
@@ -43,7 +43,7 @@ else{
     
 }
 
-header('Location: ../html/forms.html');
+header('Location: forms.php');
 exit();
 */
 ?>

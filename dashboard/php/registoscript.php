@@ -18,42 +18,42 @@
         
 
         if(empty($username)){
-            header("location: ../php/register.php?error= Username é necessario&$user_data");
+            header("location: register.php?error= Username é necessario&$user_data");
             exit();
         }
         else if(empty($password)){
-            header("location: ../php/register.php?error= Password é necessaria&$user_data");
+            header("location: register.php?error= Password é necessaria&$user_data");
             exit();
         }   
         else if(empty($email)){
-            header("location: ../php/register.php?error= Email é necessario&$user_data");
+            header("location: register.php?error= Email é necessario&$user_data");
             exit();
         }  
         else{
-            //$pass = md5($password);
+            $pass = md5($password);
 
             $sql = "SELECT * FROM login WHERE username= '$username' ";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result)>0) {
-                header("Location: ../php/register.php?error=O username ja existe, tente outro&$user_data");
+                header("Location: register.php?error=O username ja existe, tente outro&$user_data");
                 exit();
             }
             else{
-                $sql2 = "INSERT INTO login(username, password, email) VALUES('$username', '$password', '$email')";
+                $sql2 = "INSERT INTO login(username, password, email) VALUES('$username', '$pass', '$email')";
                 $result2= mysqli_query($conn, $sql2);
                 if($result2){
-                    header("Location: ../php/login.php?sucess=A conta foi criada com sucesso");
+                    header("Location: login.php?sucess=A conta foi criada com sucesso");
                     exit();
                 }else{
-                    header("Location: ../php/register.php?error=Erro desconhecido&$user_data");
+                    header("Location: register.php?error=Erro desconhecido&$user_data");
                     exit();
                 }
             }
         }
     }
     else{
-        header("location: ../php/register.php");
+        header("location: register.php");
         exit();
     }
 

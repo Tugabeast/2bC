@@ -5,19 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard-Tabela Crud</title>
+    <title>DashBoard-Formulario</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="container" >
-        <aside >
+    <div class="container">
+        <aside>
             <div class="top">
                 <div class="logo">
                     <a href="index.php">
@@ -28,68 +24,69 @@
                     <span class="material-symbols-sharp">close</span>
                 </div>
             </div>
-            <div class="sidebar" >
+            <div class="sidebar">
                 <a href="index.php">
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>DashBoard</h3>
                 </a>
-                <a href="forms.php">
+                <a href="forms.php" class="active">
                     <span class="material-symbols-sharp">description</span>
                     <h3>Formulario</h3>
                 </a>
-                <a href="crud.php" class="active">
+                <a href="crud.php">
                     <span class="material-symbols-sharp">table_chart</span>
                     <h3>Tabela Crud</h3>
                 </a>
-                <a href="../html/mapa.html">
+                <a href="mapa.php">
                     <span class="material-symbols-sharp">map</span>
                     <h3>Mapa</h3>
                 </a>
                 <a href="graficos.php">
-                    <span class=" material-symbols-sharp ">monitoring</span>
+                    <span class="material-symbols-sharp">monitoring</span>
                     <h3>Graficos</h3>
                 </a>
                 <a href="componentes.php">
-                    <span class="material-symbols-sharp ">widgets</span>
+                    <span class="material-symbols-sharp">widgets</span>
                     <h3>Componentes</h3>
                 </a>
             </div>
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo">Tabela Crud</h1>
-            <div class="containerphp">
-                <a href="forms.php" class="btn-add">Adicionar Novo</a>
-                <table class="tabelacrud" id="tabelacrud">
-                    <tr >
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Ações</th>
-                    </tr>
-                    <?php   
-                        //include "script.php";
-                        // fixo
-                        //$conn = new mysqli('localhost','root','root','dashboard', 3305);
-                        //portatil
-                        //https://www.youtube.com/watch?v=2RGlzZyS1_0&ab_channel=Webslesson
-                        $conn = new mysqli('localhost','root','porto1893','dashboard', 3306);
-                        $sql = "SELECT * FROM `registration` ";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_assoc($result)){
-                            ?>
-                                <tr>
-                                    <td><?php echo $row['username']?></td>
-                                    <td><?php echo $row['password']?></td>
-                                    <td>
-                                        <a href="edit.php"><span class="material-symbols-sharp">edit_square</span></a>
-                                        <a href="delete.php?id=$user_data[id]"><span class="material-symbols-sharp">delete</span></a>
-                                    </td>
-                                </tr>
-                            <?php
-                        }   
-                    ?>
-                </table>
-            </div>
+            <h1 class="titulo">Formulario</h1>
+            <form action="script.php" class="forms" method="post">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Nome Completo</span>
+                        <input type="text" placeholder="Introduza o seu nome" required name="username">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" placeholder="Introduza o seu email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Nr Telemovel</span>
+                        <input type="text" placeholder="Introduza o seu numero de telemovel" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">País</span>
+                        <input type="text" placeholder="Introduza o seu país" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" id="password" placeholder=" Introduza a sua password " required="" name="password">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Confirm Password</span>
+                        <input type="password" placeholder="Confirme a sua password " required>
+                    </div>
+                </div>
+                <div class="butaoform">
+                    <button type="submit" id="butaoregisto">Registar</button>
+                </div>
+            </form>
+            <!--forms so regista username e password-->
+
         </main>
         <!--Fim da main-->
         <div class="right ">
@@ -116,7 +113,7 @@
                     <h3>Goncalo Alves<br><small class="text-muted ">Web Developer</small></h3>
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
-                        <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
+                        <li><a href="ettings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
                         <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
@@ -206,11 +203,8 @@
         </div>
     </div>
     <script src="../js/index.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#tabelacrud').DataTable();
-        });
-    </script>
+    
+
 </body>
 
 </html>

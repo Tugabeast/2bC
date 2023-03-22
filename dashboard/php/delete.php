@@ -14,6 +14,6 @@
             
         }
     }
-    header("Location: ../php/crud.php");
+    header("Location: crud.php");
     exit();
 ?>

@@ -39,9 +39,9 @@ html {
 body {
     width: 100vw;
     height: 100vh;
-    font-family: poppins, sans-serif;
+    font-family: 'poppins', sans-serif;
     font-size: 0.88rem;
-    background: var(--color-background);
+    /*background: var(--color-background);*/
     user-select: none;
     overflow-x: hidden;
     color: var(--color-dark);
@@ -49,7 +49,7 @@ body {
 
 .container {
     display: grid;
-    width: 96%;
+    width: 100%;
     margin: 0 auto;
     gap: 1.8rem;
     grid-template-columns: 14rem auto 23rem;
@@ -204,6 +204,7 @@ b {
 
 aside {
     height: 100vh;
+    background: #0a2558;
 }
 
 aside .top {
@@ -216,6 +217,8 @@ aside .top {
 aside .logo {
     display: flex;
     gap: 0.8rem;
+    position: relative;
+    margin: auto;
 }
 
 aside .logo img {
@@ -232,6 +235,7 @@ aside .close {
 
 aside .sidebar {
     /*background: white;*/
+    background: #0a2558;
     display: flex;
     flex-direction: column;
     height: 86vh;
@@ -245,7 +249,7 @@ aside h3 {
 
 aside .sidebar a {
     display: flex;
-    color: var(--color-info-dark);
+    color: white;
     margin-left: 2rem;
     gap: 1rem;
     align-items: center;
@@ -520,6 +524,7 @@ main .recent-orders a {
     color: var(--color-white);
     padding: 10px;
     margin-left: 20px;
+    border-radius: var(--border-radius-1);
 }
 
 .containerphp .tabelacrud {
@@ -542,10 +547,60 @@ td {
 }
 
 
+/*============================ contador ============================*/
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 5px;
+}
+
+.row {
+    margin: 0 -5px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive columns */
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Style the counter cards */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: var(--color-dark);
+    color: var(--color-info-dark);
+    border-radius: var(--border-radius-1);
+}
+
+.fa {
+    font-size: 50px;
+}
+
+
 /*   ============================ Right ============================ */
 
 .right {
     margin-top: 1.4rem;
+    margin-right: 1rem;
 }
 
 .right .top {
@@ -786,6 +841,7 @@ td {
         padding: 0 0.8rem;
         height: 4.6rem;
         background: var(--color-white);
+        /*background: #0a2558;*/
         width: 100%;
         margin: 0;
         z-index: 2;

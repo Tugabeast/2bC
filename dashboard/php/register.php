@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../css/login.css">
     </head>
     <body>
-        <form action="../php/registoscript.php" method="post">
+        <form action="registoscript.php" method="post">
             <h2>CRIAR CONTA</h2>
             <?php if(isset($_GET['error'])) {?>
                 <p class="error"><?php echo $_GET['error']; ?> </p>
@@ -45,7 +45,7 @@
             <label>Password</label>
             <input type="password" name="password" placeholder="password">
             <br>
-            <a href="../php/login.php" class="text-muted">Ja tem conta?</a>
+            <a href="login.php" class="text-muted">Ja tem conta?</a>
             <button type="submit">Sign Up</button>
         </form>
     </body>

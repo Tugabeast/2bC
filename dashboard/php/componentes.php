@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard-Graficos</title>
+    <title>DashBoard-Componentes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.css">
 
 </head>
 
@@ -18,7 +17,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <a href="../html/index.html">
+                    <a href="index.php">
                         <img src="../images/logo.PNG">
                     </a>
                 </div>
@@ -27,27 +26,27 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="../html/index.html">
+                <a href="index.php">
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>DashBoard</h3>
                 </a>
-                <a href="../html/forms.html">
+                <a href="forms.php">
                     <span class="material-symbols-sharp">description</span>
                     <h3>Formulario</h3>
                 </a>
-                <a href="../php/crud.php">
+                <a href="crud.php">
                     <span class="material-symbols-sharp">table_chart</span>
                     <h3>Tabela Crud</h3>
                 </a>
-                <a href="../html/mapa.html">
+                <a href="mapa.php">
                     <span class="material-symbols-sharp">map</span>
                     <h3>Mapa</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="graficos.php">
                     <span class=" material-symbols-sharp ">monitoring</span>
                     <h3>Graficos</h3>
                 </a>
-                <a href="../html/componentes.html">
+                <a href="componentes.php" class="active">
                     <span class="material-symbols-sharp ">widgets</span>
                     <h3>Componentes</h3>
                 </a>
@@ -56,16 +55,131 @@
         <!-- fim da sidebar -->
         <main>
             <h1 class="titulo">Gráficos</h1>
-            <div id="graphdiv3"></div>
-            <script type="text/javascript">
-                Dygraph.onDOMready(function onDOMready() {
-                    g2 = new Dygraph(
-                        document.getElementById("graphdiv3"),
-                        "../js/temperatures.csv", // path to CSV file
-                    );
-                });
-            </script>
-            <!--https://jsfiddle.net/tr2qcusa/-->
+            <h2>Mdelos cards</h2>
+            <div class="insights">
+                <div class="sales">
+                    <span class="material-symbols-sharp">analytics</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Vendas</h3>
+                            <h1>25024€</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='36' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Ultimas 24 horas</small>
+                </div>
+                <!--fim sales-->
+                <div class="expenses">
+                    <span class="material-symbols-sharp">bar_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Despesas</h3>
+                            <h1>14160€</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='36' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>62%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Ultimas 24 horas</small>
+                </div>
+                <!--fim expenses-->
+                <div class="income">
+                    <span class="material-symbols-sharp">stacked_line_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Ganhos</h3>
+                            <h1>10864€</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='36' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>44%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Ultimas 24 horas</small>
+                </div>
+                <!--fim incomes-->
+            </div>
+            <div class="colors">
+                <br>
+                <h2>Color pallete</h2>
+                <div class="w3-row" style="width: 50%;">
+                    <div class="w3-half w3-center" style="background: var(--color-sucess);">
+                        <p class="w3-xxlarge" style="color: black;"><b>Sucess</b></p>
+                        <br>
+                    </div>
+                    <div class="w3-half w3-center" style="background:var(--color-danger)">
+                        <p><span class="w3-xxlarge" style="color: black;"><b>Danger</b></span></p>
+                        <br>
+                    </div>
+                    <div class="w3-half w3-center" style="background:var(--color-primary)">
+                        <p class="w3-xxlarge" style="color: black;"><b>Primary</b></p>
+                        <br>
+                    </div>
+                    <div class="w3-half w3-center" style="background:var(--color-warning)">
+                        <p class="w3-xxlarge"><b>warning</b></p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <br>
+                <h2>Progress Bar</h2>
+                <label for="file">Downloading progress:</label>
+                <progress id="file" value="32" max="100"> 32% </progress>
+            </div>
+            <br>
+            <div class="contador">
+                <h2>Contadores</h2>
+                <div class="row">
+                    <div class="column">
+                        <div class="card">
+                            <p><i class="fa fa-user"></i></p>
+                            <h3>11+</h3>
+                            <p>Partners</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="card">
+                            <p><i class="fa fa-check"></i></p>
+                            <h3>55+</h3>
+                            <p>Projects</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="card">
+                            <p><i class="fa fa-smile-o"></i></p>
+                            <h3>100+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="card">
+                            <p><i class="fa fa-coffee"></i></p>
+                            <h3>100+</h3>
+                            <p>Meetings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <!--Fim da main-->
         <div class="right ">
@@ -92,8 +206,8 @@
                     <h3>Goncalo Alves<br><small class="text-muted ">Web Developer</small></h3>
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
-                        <li><a href="../php/settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="../php/login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
+                        <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -182,6 +296,7 @@
         </div>
     </div>
     <script src="../js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </body>
 
 </html>

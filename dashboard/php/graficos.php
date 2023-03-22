@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard-Formulario</title>
+    <title>DashBoard-Graficos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" crossorigin="" />
+
+
 </head>
 
 <body>
@@ -16,7 +20,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <a href="../html/index.html">
+                    <a href="graficos.php">
                         <img src="../images/logo.PNG">
                     </a>
                 </div>
@@ -25,68 +29,45 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="../html/index.html">
+                <a href="index.php">
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>DashBoard</h3>
                 </a>
-                <a href="../html/forms.html" class="active">
+                <a href="forms.php">
                     <span class="material-symbols-sharp">description</span>
                     <h3>Formulario</h3>
                 </a>
-                <a href="../php/crud.php">
+                <a href="crud.php">
                     <span class="material-symbols-sharp">table_chart</span>
                     <h3>Tabela Crud</h3>
                 </a>
-                <a href="../html/mapa.html">
+                <a href="mapa.php">
                     <span class="material-symbols-sharp">map</span>
                     <h3>Mapa</h3>
                 </a>
-                <a href="../html/graficos.html">
-                    <span class="material-symbols-sharp">monitoring</span>
+                <a href="graficos.php" class="active">
+                    <span class=" material-symbols-sharp ">monitoring</span>
                     <h3>Graficos</h3>
                 </a>
-                <a href="../html/componentes.html">
-                    <span class="material-symbols-sharp">widgets</span>
+                <a href="componentes.php">
+                    <span class="material-symbols-sharp ">widgets</span>
                     <h3>Componentes</h3>
                 </a>
             </div>
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo">Formulario</h1>
-            <form action="../php/script.php" class="forms" method="post">
-                <div class="user-details">
-                    <div class="input-box">
-                        <span class="details">Nome Completo</span>
-                        <input type="text" placeholder="Introduza o seu nome" required name="username">
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Email</span>
-                        <input type="email" placeholder="Introduza o seu email" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Nr Telemovel</span>
-                        <input type="text" placeholder="Introduza o seu numero de telemovel" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">País</span>
-                        <input type="text" placeholder="Introduza o seu país" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Password</span>
-                        <input type="password" id="password" placeholder=" Introduza a sua password " required="" name="password">
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Confirm Password</span>
-                        <input type="password" placeholder="Confirme a sua password " required>
-                    </div>
-                </div>
-                <div class="butaoform">
-                    <button type="submit" id="butaoregisto">Registar</button>
-                </div>
-            </form>
-            <!--forms so regista username e password-->
-
+            <h1 class="titulo">Gráficos</h1>
+            <div id="graphdiv3"></div>
+            <script type="text/javascript">
+                Dygraph.onDOMready(function onDOMready() {
+                    g2 = new Dygraph(
+                        document.getElementById("graphdiv3"),
+                        "../js/temperatures.csv", // path to CSV file
+                    );
+                });
+            </script>
+            <!--https://jsfiddle.net/tr2qcusa/-->
         </main>
         <!--Fim da main-->
         <div class="right ">
@@ -113,8 +94,8 @@
                     <h3>Goncalo Alves<br><small class="text-muted ">Web Developer</small></h3>
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
-                        <li><a href="../php/settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="../php/login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
+                        <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -203,8 +184,7 @@
         </div>
     </div>
     <script src="../js/index.js"></script>
-    
-
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
 </body>
 
 </html>
