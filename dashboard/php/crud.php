@@ -12,10 +12,12 @@
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap.css">
-
+    <?php include_once('db_connection.php');
+include('protect.php');?>
 </head>
 
 <body>
+
     <div class="container" >
         <aside >
             <div class="top">
@@ -41,7 +43,7 @@
                     <span class="material-symbols-sharp">table_chart</span>
                     <h3>Tabela Crud</h3>
                 </a>
-                <a href="../html/mapa.html">
+                <a href="mapa.php">
                     <span class="material-symbols-sharp">map</span>
                     <h3>Mapa</h3>
                 </a>
@@ -117,7 +119,7 @@
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
                         <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="logout.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>

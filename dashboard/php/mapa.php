@@ -14,6 +14,8 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
     <script src="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.css">
+    <?php include_once('db_connection.php');
+include('protect.php');?>
 </head>
 
 <body>
@@ -87,7 +89,7 @@
                     <ul>
                         <li><a href="#"><span class="material-symbols-sharp">person</span>Profile</a></li>
                         <li><a href="settings.php"><span class="material-symbols-sharp">settings</span>Settings</a></li>
-                        <li><a href="login.php"><span class="material-symbols-sharp">logout</span>Logout</a></li>
+                        <li><a href="logout.php"><span class="material-symbols-sharp">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>

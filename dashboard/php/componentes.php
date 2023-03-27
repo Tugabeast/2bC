@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
-
+    <?php include_once('db_connection.php'); include('protect.php');?>
 </head>
 
 <body>
@@ -207,7 +207,7 @@
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
                         <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="logout.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>

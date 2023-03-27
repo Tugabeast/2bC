@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" crossorigin="" />
 
-
+    <?php include_once('db_connection.php');
+include('protect.php');?>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <a href="graficos.php">
+                    <a href="index.php">
                         <img src="../images/logo.PNG">
                     </a>
                 </div>
@@ -95,7 +96,7 @@
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
                         <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="logout.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>

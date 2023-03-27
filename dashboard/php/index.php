@@ -10,24 +10,28 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-   
+    <?php include_once('db_connection.php');
+include('protect.php');?>
 </head>
 
 <body>
+    <nav style="background-color: #094b9b;text-align: left; padding: 10px;" >
+        <h1>ola <span>|</span> teste1 <span>|</span>teste2</h1>
+        
+    </nav>
     <div class="container">
+        
         <aside>
             <div class="top">
                 <div class="logo">
-                    <a href="#">
-                        <img src="../images/logo.PNG">
-                    </a>
+                    <h1 style="color:white">Projeto X</h1>
                 </div>
                 <div class="close" id="close-btn">
                     <span class="material-symbols-sharp">close</span>
                 </div>
             </div>
             <div class="sidebar">
-                <a href="index.php" class="active">
+                <a href="index.php" >
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>DashBoard</h3>
                 </a>
@@ -53,9 +57,8 @@
                 </a>
             </div>
         </aside>
-
         <!-- fim da sidebar -->
-        <main>
+        <main >
             <h1 class="titulo">DashBoard</h1>
             <div class="insights">
                 <div class="sales">
@@ -209,7 +212,7 @@
                     <ul>
                         <li><a href="# "><span class="material-symbols-sharp ">person</span>Profile</a></li>
                         <li><a href="settings.php"><span class="material-symbols-sharp ">settings</span>Settings</a></li>
-                        <li><a href="login.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
+                        <li><a href="logout.php"><span class="material-symbols-sharp ">logout</span>Logout</a></li>
                     </ul>
                 </div>
             </div>

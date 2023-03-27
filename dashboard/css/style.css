@@ -52,7 +52,7 @@ body {
     width: 100%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 23rem;
+    grid-template-columns: 14rem auto;
 }
 
 a {
@@ -204,7 +204,8 @@ b {
 
 aside {
     height: 100vh;
-    background: #0a2558;
+    /*background: #094b9b;*/
+    background: #007188;
 }
 
 aside .top {
@@ -235,7 +236,8 @@ aside .close {
 
 aside .sidebar {
     /*background: white;*/
-    background: #0a2558;
+    /*background: #094b9b;*/
+    background: #007188;
     display: flex;
     flex-direction: column;
     height: 86vh;
@@ -265,7 +267,7 @@ aside .sidebar a span {
 
 aside .sidebar a.active {
     background: var(--color-light);
-    color: var(--color-primary);
+    color: #ec4067;
     margin-left: 0;
 }
 
@@ -277,7 +279,7 @@ aside .sidebar a.active::before {
 }
 
 aside .sidebar a:hover {
-    color: var(--color-primary);
+    color: #ec4067;
 }
 
 aside .sidebar a:hover span {
@@ -289,6 +291,10 @@ aside .sidebar a:hover span {
 
 main {
     margin-top: 4.4rem;
+}
+
+main .top {
+    box-shadow: 0 1rem 1rem var(--color-light);
 }
 
 main .titulo {
@@ -607,6 +613,7 @@ td {
     display: flex;
     justify-content: end;
     gap: 2rem;
+    box-shadow: 0 1rem 1rem var(--color-light);
 }
 
 .right .top button {

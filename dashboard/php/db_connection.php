@@ -12,14 +12,5 @@
 if($connect->connect_error){
     die('Conexao falhou: ' .$connect->connect_error);
 }
-else{
-    
-    
-    //echo "connectado com sucesso";
-
-    //$connect->close();
-    
-}
-
 
 ?>
