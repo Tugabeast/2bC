@@ -52,7 +52,7 @@ body {
     width: 100%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto;
+    grid-template-columns: 14rem auto 26rem;
 }
 
 a {
@@ -613,7 +613,7 @@ td {
     display: flex;
     justify-content: end;
     gap: 2rem;
-    box-shadow: 0 1rem 1rem var(--color-light);
+    /*box-shadow: 0 1rem 1rem var(--color-light);*/
 }
 
 .right .top button {

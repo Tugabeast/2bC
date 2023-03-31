@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard-Login</title>
         <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <?php 
         include('db_connection.php');
 
@@ -71,7 +74,7 @@ function validate_login($email, $password) {
     <body >
         
         <form action="#" method="post">
-            <h2>LOGIN</h2>
+            <h2>MEETING POINT <i class="fa-solid fa-location-dot fa-bounce"></i> </h2>
             <?php /* if(isset($_GET['error'])) {?>
                 <p class="error"><?php echo $_GET['error']; ?> </p>
                 <?php } ?>
@@ -79,13 +82,14 @@ function validate_login($email, $password) {
                 <?php if(isset($_GET['sucess'])) {?>
                 <p class="sucess"><?php echo $_GET['sucess']; ?> </p>
             <?php } */ ?>
+            <i class="fa-sharp fa-solid fa-envelope"></i>
             <label>Email</label>
             <input type="email" name="email" placeholder="email">
             <br>
+            <i class="fa-sharp fa-solid fa-lock"></i>
             <label>Password</label>
             <input type="password" name="password" placeholder="password">
             <br>
-            <a href="register.php" class="text-muted">Criar conta</a>
             <button type="submit">Login</button>
         </form>
  

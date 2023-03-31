@@ -15,16 +15,11 @@ include('protect.php');?>
 </head>
 
 <body>
-    <nav style="background-color: #094b9b;text-align: left; padding: 10px;" >
-        <h1>ola <span>|</span> teste1 <span>|</span>teste2</h1>
-        
-    </nav>
     <div class="container">
-        
         <aside>
             <div class="top">
                 <div class="logo">
-                    <h1 style="color:white">Projeto X</h1>
+                    <h1 style="color:white">MEETING POINT</h1>
                 </div>
                 <div class="close" id="close-btn">
                     <span class="material-symbols-sharp">close</span>
@@ -173,23 +168,11 @@ include('protect.php');?>
                 </table>
                 <a href="#">Mostrar Todas</a>
             </div>
-            <!--Forms teste DB-->
-            <!--
-            <form action="../php/script.php" method="post" style="
-                    padding: 2rem; text-align: center; font-size: 15px;">
-                Username: <input type="text" id="username" name="username" style="width: 150px; height: 20px;
-                    border: 1px solid black;"><br> Password: <input type="password" name="password" id="password" style="width: 150px; height: 20px;
-                    border: 1px solid black;"><br>
-                <input type="submit" value="Sumbit" style="width: 150px; height: 20px;
-                    border: 1px solid black; margin-top: 20px;">
-            </form>
-            -->
-            <!-- End Forms teste DB-->
         </main>
         <!--Fim da main-->
         <div class="right">
         <div class="top ">
-                <button id="menu-btn ">
+                <button id="menu-btn">
                     <span class="material-symbols-sharp ">menu</span>
                 </button >
                 <!--notificacoes-->
@@ -300,6 +283,7 @@ include('protect.php');?>
             </div>
         </div>
     </div>
+
     <script src="../js/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>

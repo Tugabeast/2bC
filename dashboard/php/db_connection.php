@@ -2,11 +2,13 @@
 
     $dbHost = 'localhost';
     $dbUsername = 'root';
-    $dbPassword = 'porto1893';
+    //$dbPasswordportatil = 'porto1893';
+    $dbPasswordfixo = 'root';
     $dbName = 'dashboard';
-    $port = 3306;
+    //$portportatil = 3306;
+    $portfixo = 3305;
 
-    $connect = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName,$port);
+    $connect = new mysqli($dbHost,$dbUsername,$dbPasswordfixo,$dbName,$portfixo);
 
     
 if($connect->connect_error){

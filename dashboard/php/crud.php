@@ -74,9 +74,9 @@ include('protect.php');?>
                         //$conn = new mysqli('localhost','root','root','dashboard', 3305);
                         //portatil
                         //https://www.youtube.com/watch?v=2RGlzZyS1_0&ab_channel=Webslesson
-                        $conn = new mysqli('localhost','root','porto1893','dashboard', 3306);
+                        include('db_connection.php');
                         $sql = "SELECT * FROM `registration` ";
-                        $result = mysqli_query($conn, $sql);
+                        $result = mysqli_query($connect, $sql);
                         while($row = mysqli_fetch_assoc($result)){
                             ?>
                                 <tr>

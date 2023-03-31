@@ -4,12 +4,12 @@ const closeBtn = document.querySelector("#close-btn");
 
 
 //mostrar sidebard
-if (menuBtn) {
+
     menuBtn.addEventListener('click', () => {
         sideMenu.style.display = 'block';
     });
 
-}
+
 
 //fechar sidebard
 closeBtn.addEventListener('click', () => {
