@@ -18,8 +18,7 @@
     --border-radius-3: 1.2rem;
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    /*--box-shadow: 0 2rem 3rem var(--color-light);*/
-    --box-shadow: 0 2rem 3rem #d7e9ff;
+    --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
 * {
@@ -53,8 +52,11 @@ body {
     width: 100%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 26rem;
+    grid-template-columns: 7rem auto;
 }
+
+
+/*mudar o container para 14*/
 
 a {
     color: var(--color-dark);
@@ -207,6 +209,8 @@ aside {
     height: 100vh;
     background: #094b9b;
     /*background: #007188;*/
+    width: min-content;
+    padding: 2rem;
 }
 
 aside .top {
@@ -214,6 +218,11 @@ aside .top {
     align-items: center;
     justify-content: space-between;
     margin-top: 1.4rem;
+}
+
+aside .top .menu i {
+    margin-left: 28px;
+    cursor: pointer;
 }
 
 aside .logo {
@@ -244,6 +253,10 @@ aside .sidebar {
     height: 86vh;
     position: relative;
     top: 3rem;
+}
+
+aside .sidebar h3 {
+    display: none;
 }
 
 aside h3 {

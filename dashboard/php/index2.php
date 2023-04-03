@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cssdeteste.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <?php include_once('db_connection.php');
@@ -16,12 +16,16 @@ include('protect.php');?>
 
 <body>
     
-    <div class="container">
+    <div class="container" id="container">
         
-        <aside class="sidebar">
-            <div class="top">
+        <aside class="sidebar" id="mySidebar">
+            <div class="top" id="main" >
                 <div class="menu">
-                    <i class="material-symbols-sharp" style="color:white">menu</i>
+                <h2 style="color:white; display: none;" id="nomeProjeto">MEETING POINT</h2>
+                    <i class="material-symbols-sharp" style="color:white" onclick="openNav()" id="abrirside">menu</i>
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+                        <span class="material-symbols-sharp" id="closeside" style="display: none; color: white; justify-content: center;">close</span>
+                    </a>
                 </div>
              <!--   <div class="close" id="close-btn">
                     <span class="material-symbols-sharp">close</span>
@@ -29,29 +33,29 @@ include('protect.php');?>
                 
             </div>
             <div class="sidebar">
-                <a href="index.php" >
-                    <span class="material-symbols-sharp">grid_view</span>
-                    <h3>DashBoard</h3>
+                <a href="index.php" class="active">
+                    <span class="material-symbols-sharp" >grid_view</span>
+                    <h3 id="dashboard">DashBoard</h3>
                 </a>
                 <a href="forms.php">
                     <span class="material-symbols-sharp">description</span>
-                    <h3>Formulario</h3>
+                    <h3 id="formulario">Formulario</h3>
                 </a>
                 <a href="crud.php">
                     <span class="material-symbols-sharp">table_chart</span>
-                    <h3>Tabela Crud</h3>
+                    <h3 id="tabelacrud">Tabela Crud</h3>
                 </a>
                 <a href="mapa.php">
                     <span class="material-symbols-sharp">map</span>
-                    <h3>Mapa</h3>
+                    <h3 id="mapa">Mapa</h3>
                 </a>
                 <a href="graficos.php">
                     <span class="material-symbols-sharp">monitoring</span>
-                    <h3>Graficos</h3>
+                    <h3 id="graficos">Graficos</h3>
                 </a>
                 <a href="componentes.php">
                     <span class="material-symbols-sharp">widgets</span>
-                    <h3>Componentes</h3>
+                    <h3 id="componentes">Componentes</h3>
                 </a>
             </div>
         </aside>
@@ -171,77 +175,14 @@ include('protect.php');?>
                 </table>
                 <a href="#">Mostrar Todas</a>
             </div>
-            <!--Forms teste DB-->
-            <!--
-            <form action="../php/script.php" method="post" style="
-                    padding: 2rem; text-align: center; font-size: 15px;">
-                Username: <input type="text" id="username" name="username" style="width: 150px; height: 20px;
-                    border: 1px solid black;"><br> Password: <input type="password" name="password" id="password" style="width: 150px; height: 20px;
-                    border: 1px solid black;"><br>
-                <input type="submit" value="Sumbit" style="width: 150px; height: 20px;
-                    border: 1px solid black; margin-top: 20px;">
-            </form>
-            -->
-            <!-- End Forms teste DB-->
         </main>
         <!--Fim da main-->
         
     </div>
 
-    <script>
-	const menu = document.querySelector(".menu"); // get menu item for click event
 
-menu.addEventListener("click", function () {
-	expandSidebar();
-	showHover();
-	
-});
 
-/**
- * expand sidebar if it is short, otherwise collapse it
- */
-function expandSidebar() {
-	document.querySelector("body").classList.toggle("short");
-	let keepSidebar = document.querySelectorAll("body.short");
-	if (keepSidebar.length === 1) {
-		localStorage.setItem("keepSidebar", "true");
-	} else {
-		localStorage.removeItem("keepSidebar");
-	}
-}
-/**
- * show hover effect on sidebar
- */
-function showHover() {
-	const li = document.querySelectorAll(".short .sidebar li a");
-	if (li.length > 0) {
-		li.forEach(function (item) {
-			item.addEventListener("mouseover", function () {
-				const text = item.querySelector(".text");
-				text.classList.add("hover");
-			});
-			item.addEventListener("mouseout", function () {
-				const text = item.querySelector(".text");
-				text.classList.remove("hover");
-			});
-		});
-	}
-}/**
- * check local storage for keep sidebar
- */
-function showStoredSidebar() {
-	if (localStorage.getItem("keepSidebar") === "true") {
-		document.querySelector("body").classList.add("short");
-		showHover();
-		getSearch();
-	}
-}
-
-showStoredSidebar(); // show sidebar if stored in local storage
-
-	</script>
-
-    <script src="../js/index.js"></script>
+    <script src="../js/index2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>
 
