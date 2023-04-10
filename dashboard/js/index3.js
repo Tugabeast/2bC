@@ -31,9 +31,8 @@ function openNav() {
     document.getElementById("dashboard").style.display = "block";
     document.getElementById("formulario").style.display = "block";
     document.getElementById("tabelacrud").style.display = "block";
-    document.getElementById("mapa").style.display = "block";
-    document.getElementById("graficos").style.display = "block";
-    document.getElementById("componentes").style.display = "block";
+
+
     document.getElementById("closeside").style.display = "flex";
     document.getElementById("abrirside").style.display = "none";
     document.getElementById("container").style.gridTemplateColumns = "14rem auto";
@@ -51,9 +50,7 @@ function closeNav() {
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("formulario").style.display = "none";
     document.getElementById("tabelacrud").style.display = "none";
-    document.getElementById("mapa").style.display = "none";
-    document.getElementById("graficos").style.display = "none";
-    document.getElementById("componentes").style.display = "none";
+
     document.getElementById("abrirside").style.display = "block";
     document.getElementById("closeside").style.display = "none";
     document.getElementById("container").style.gridTemplateColumns = "7rem auto";

@@ -48,18 +48,6 @@ include('protect.php');?>
                     <span class="material-symbols-sharp">manage_accounts</span>
                     <h3 id="profile">ADMIN</h3>
                 </a>
-                <a href="mapa.php">
-                    <span class="material-symbols-sharp">map</span>
-                    <h3 id="mapa">Mapa</h3>
-                </a>
-                <a href="graficos.php">
-                    <span class="material-symbols-sharp">monitoring</span>
-                    <h3 id="graficos">Graficos</h3>
-                </a>
-                <a href="componentes.php">
-                    <span class="material-symbols-sharp">widgets</span>
-                    <h3 id="componentes">Componentes</h3>
-                </a>
                 <a href="logout.php" id="traco">
                     <span class="material-symbols-sharp">logout</span>
                     <h3 id="logout">Logout</h3>
@@ -189,7 +177,7 @@ include('protect.php');?>
 
 
 
-    <script src="../js/index2.js"></script>
+    <script src="../js/index3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>
 
