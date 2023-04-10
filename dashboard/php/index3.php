@@ -34,16 +34,19 @@ include('protect.php');?>
             </div>
             <div class="sidebar">
                 <a href="index.php" class="active">
-                    <span class="material-symbols-sharp" >grid_view</span>
-                    <h3 id="dashboard">DashBoard</h3>
+                <span class="material-symbols-sharp">distance</span>
+                    <h3 id="dashboard">MEETING POINT</h3>
                 </a>
                 <a href="forms.php">
-                    <span class="material-symbols-sharp">description</span>
-                    <h3 id="formulario">Formulario</h3>
+                    <span class="material-symbols-sharp">nest_cam_outdoor</span>
+                    <h3 id="formulario">GVIR</h3>
                 </a>
-                <a href="crud.php">
-                    <span class="material-symbols-sharp">table_chart</span>
-                    <h3 id="tabelacrud">Tabela Crud</h3>
+                <a href="crud.php"><span class="material-symbols-sharp">air</span>
+                    <h3 id="tabelacrud">WIND</h3>
+                </a>
+                <a href="settings.php">
+                    <span class="material-symbols-sharp">manage_accounts</span>
+                    <h3 id="profile">ADMIN</h3>
                 </a>
                 <a href="mapa.php">
                     <span class="material-symbols-sharp">map</span>
@@ -56,10 +59,6 @@ include('protect.php');?>
                 <a href="componentes.php">
                     <span class="material-symbols-sharp">widgets</span>
                     <h3 id="componentes">Componentes</h3>
-                </a>
-                <a href="settings.php">
-                    <span class="material-symbols-sharp">person</span>
-                    <h3 id="profile">Perfil</h3>
                 </a>
                 <a href="logout.php" id="traco">
                     <span class="material-symbols-sharp">logout</span>
