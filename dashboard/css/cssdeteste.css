@@ -301,9 +301,9 @@ aside .sidebar a:hover span {
     margin-left: 1rem;
 }
 
-aside .sidebar #traco{
+aside .sidebar #traco {
     border-top: 1px solid white;
-    margin-top: 25rem;
+    margin-top: 38rem;
 }
 
 
@@ -955,3 +955,6 @@ td {
 .alertas-context ul li:hover {
     background: var(--color-info-light);
 }
+
+
+/*==========================SCROLL BAR============================*/

@@ -33,24 +33,24 @@ include('protect.php');?>
                 
             </div>
             <div class="sidebar">
-                <a href="index.php" class="active">
+                <a href="index3.php" class="active">
                 <span class="material-symbols-sharp">distance</span>
-                    <h3 id="dashboard">MEETING POINT</h3>
+                    <h3 id="dashboard">MONITORIZACAO</h3>
                 </a>
-                <a href="forms.php">
+                <a href="graficos.php">
                     <span class="material-symbols-sharp">nest_cam_outdoor</span>
                     <h3 id="formulario">GVIR</h3>
                 </a>
-                <a href="crud.php"><span class="material-symbols-sharp">air</span>
+                <a href="mapa.php"><span class="material-symbols-sharp">air</span>
                     <h3 id="tabelacrud">WIND</h3>
                 </a>
                 <a href="settings.php">
                     <span class="material-symbols-sharp">manage_accounts</span>
-                    <h3 id="profile">ADMIN</h3>
+                    <h3 id="profile">ADMINISTRATOR</h3>
                 </a>
                 <a href="logout.php" id="traco">
                     <span class="material-symbols-sharp">logout</span>
-                    <h3 id="logout">Logout</h3>
+                    <h3 id="logout">LOGOUT</h3>
                 </a>
             </div>
         </aside>
@@ -117,6 +117,112 @@ include('protect.php');?>
                 <!--fim incomes-->
             </div>
             <!-- insights fim-->
+            <div class="recent-orders">
+                <h2>Pedidos Recentes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Produto</th>
+                            <th>Numero do Produto</th>
+                            <th>Pagamento</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>Bolas de futebol nikes</td>
+                                <td>4125€</td>
+                                <td>Feito</td>
+                                <td class="sucess">Em Movimento</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de andebol ardidas</td>
+                                <td>1234€</td>
+                                <td>Pendente</td>
+                                <td class="warning">Em Transacao</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de voleibol champinhon</td>
+                                <td>4321€</td>
+                                <td>Cancelado</td>
+                                <td class="danger">Esta Parado</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de basket guchie</td>
+                                <td>6789€</td>
+                                <td>Feito</td>
+                                <td class="sucess">Em Movimento</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de futsal clipers</td>
+                                <td>9876€</td>
+                                <td>Pendente</td>
+                                <td class="danger">Preso Alfandega</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+
+                        </tbody>
+                    </thead>
+                </table>
+                <a href="#">Mostrar Todas</a>
+            </div>
+            <div class="recent-orders">
+                <h2>Pedidos Recentes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Produto</th>
+                            <th>Numero do Produto</th>
+                            <th>Pagamento</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>Bolas de futebol nikes</td>
+                                <td>4125€</td>
+                                <td>Feito</td>
+                                <td class="sucess">Em Movimento</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de andebol ardidas</td>
+                                <td>1234€</td>
+                                <td>Pendente</td>
+                                <td class="warning">Em Transacao</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de voleibol champinhon</td>
+                                <td>4321€</td>
+                                <td>Cancelado</td>
+                                <td class="danger">Esta Parado</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de basket guchie</td>
+                                <td>6789€</td>
+                                <td>Feito</td>
+                                <td class="sucess">Em Movimento</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de futsal clipers</td>
+                                <td>9876€</td>
+                                <td>Pendente</td>
+                                <td class="danger">Preso Alfandega</td>
+                                <td class="primary">Detalhes</td>
+                            </tr>
+
+                        </tbody>
+                    </thead>
+                </table>
+                <a href="#">Mostrar Todas</a>
+            </div>
             <div class="recent-orders">
                 <h2>Pedidos Recentes</h2>
                 <table>

@@ -1,3 +1,1 @@
-login na sidebar ()
-logout na sidebar()
-box shadow nas cards() 
+NOME DO USER POR CIMA DO #TRACO
