@@ -251,7 +251,7 @@ aside .sidebar {
     /*background: #007188;*/
     display: flex;
     flex-direction: column;
-    height: 86vh;
+    height: 70vh;
     position: relative;
     top: 3rem;
 }
@@ -303,7 +303,7 @@ aside .sidebar a:hover span {
 
 aside .sidebar #traco {
     border-top: 1px solid white;
-    margin-top: 38rem;
+    margin-top: 26rem;
 }
 
 
