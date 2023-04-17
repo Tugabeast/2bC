@@ -62,6 +62,7 @@
                     <span class="material-symbols-sharp">logout</span>
                     <h3 id="logout">LOGOUT</h3>
                 </a>
+
             </div>
         </aside>
         <!-- fim da sidebar -->

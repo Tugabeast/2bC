@@ -23,9 +23,9 @@
 
 <body>
     <div class="container" id="container">
-    <aside class="sidebar" id="mySidebar">
+        <aside class="sidebar" id="mySidebar">
             <div class="top" id="main" >
-                <div class="menu">
+                <div class="menu" id="menu">
                 <h2 style="color:white; display: none;" id="nomeProjeto">MEETING POINT</h2>
                     <i class="material-symbols-sharp" style="color:white" onclick="openNav()" id="abrirside">menu</i>
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
@@ -95,6 +95,8 @@
                 </table>
             </div>
             <br>
+            
+            
             <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
             <button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>
             <div class="containerphp">
@@ -122,6 +124,7 @@
                 </table>
             </div>
             <br>
+            <a href="#menu" style="font-size: 25px; ">^</a>
         </main>
         <!--Fim da main-->
  

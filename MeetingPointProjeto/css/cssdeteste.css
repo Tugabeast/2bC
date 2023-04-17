@@ -207,7 +207,7 @@ b {
 /* ================================== Aside ================================== */
 
 aside {
-    height: 100vh;
+    height: 100vmax;
     background: #094b9b;
     /*background: #007188;*/
     width: min-content;
@@ -252,7 +252,8 @@ aside .sidebar {
     display: flex;
     flex-direction: column;
     height: 70vh;
-    position: relative;
+    /*position: relative;*/
+    position: sticky;
     top: 3rem;
 }
 

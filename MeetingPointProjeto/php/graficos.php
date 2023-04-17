@@ -29,11 +29,11 @@ include('protect.php');?>
                 </div>
             </div>
             <div class="sidebar">
-                <a href="index3.php" class="active">
+                <a href="index3.php">
                 <span class="material-symbols-sharp">distance</span>
                     <h3 id="dashboard">MONITORIZAÇÃO</h3>
                 </a>
-                <a href="graficos.php">
+                <a href="graficos.php" class="active">
                     <span class="material-symbols-sharp">nest_cam_outdoor</span>
                     <h3 id="formulario">GVIR</h3>
                 </a>
