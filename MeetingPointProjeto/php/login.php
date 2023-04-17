@@ -18,44 +18,46 @@ session_start();
 // verifica se foi feito um submit do tipo POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica se os campos estão preenchidos corretamente
-    $email = $_POST['email'];
+    $user = $_POST['user'];
     $password = $_POST['password'];
-    if (validate_login($email, $password, $connect)) {
-        try_login($email, $password, $connect);
+    if (validate_login($user, $password, $connect)) {
+        try_login($user, $password, $connect);
     }
 }
 
-function try_login($email, $password, $connect) {
+function try_login($user, $password, $connect) {
     //protege de sqli injection
-    $email = $connect->real_escape_string($email);
+    //$email = $connect->real_escape_string($email);
+    $user = $connect->real_escape_string($user);
 
     //vai á base de dados validar a correspondência de dados
-    $sql_code = "SELECT * FROM users WHERE Email = '$email' LIMIT 1";
+    //$sql_code = "SELECT * FROM users WHERE Email = '$email' LIMIT 1";
+    $sql_code = "SELECT * FROM mp_users WHERE user = '$user' LIMIT 1";
     $sql_result = $connect->query($sql_code) or die("Falha na execução do código SQL: " . $connect->error);
 
     $user = $sql_result->fetch_assoc();
      //se os dados forem encontrados na base de dados inicia a sessão e redireciona para a pagina principal
     if ($user) {   
-        if (password_verify($password, $user['Password_hash'])) {
-            $_SESSION['nome'] = $user['Name'];
-            $_SESSION['usertype'] = $user['UserType'];
-            if($user['UserType'] == 'Administrator') {
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['nome'] = $user['name'];
+            $_SESSION['role'] = $user['role'];
+            if($user['role'] == 'admin') {
                 header("Location: index3.php");
             } else {
                 header("Location: index3.php");
             }
         }
     } else {
-        echo "Falha ao logar! E-mail ou senha incorretos";
+        echo "Falha ao logar! Username ou senha incorretos";
     }
 }
 
-function validate_login($email, $password) {
-    if (isset($email) || isset($password)) {
+function validate_login($user, $password) {
+    if (isset($user) || isset($password)) {
         // valida o email
         
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Preencha o seu e-mail";
+        if (!filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS)) {
+            echo "Preencha o seu username";
 
             return false;
         }
@@ -71,6 +73,7 @@ function validate_login($email, $password) {
     return true;
 }    ?>
     </head>
+
     <body >
         
         <form action="#" method="post">
@@ -82,9 +85,9 @@ function validate_login($email, $password) {
                 <?php if(isset($_GET['sucess'])) {?>
                 <p class="sucess"><?php echo $_GET['sucess']; ?> </p>
             <?php } */ ?>
-            <i class="fa-sharp fa-solid fa-envelope"></i>
-            <label>Email</label>
-            <input type="email" name="email" placeholder="email">
+            <i class="fa-sharp fa-solid fa-user"></i>
+            <label>Username</label>
+            <input type="text" name="user" placeholder="username">
             <br>
             <i class="fa-sharp fa-solid fa-lock"></i>
             <label>Password</label>

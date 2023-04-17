@@ -1,0 +1,170 @@
+.custom-table {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.75);
+
+    .custom-table__table-head {
+        display: none;
+    }
+
+    .custom-table__table-body {
+        max-height: 500px;
+        overflow-y: scroll;
+
+        .custom-table__table-body-row {
+            margin-bottom: 0.1rem;
+            padding: 1.5rem 1rem;
+            background-color: #f8f8f8;
+
+            .custom-table__table-body-cell {
+                padding: 0.4rem 0;
+
+                &::before {
+                    display: block;
+                    content: attr(data-title);
+                    margin-bottom: 0.3rem;
+                    color: #808080;
+                    font-size: 0.7rem;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            .custom-table__table-body-cell--flex {
+                display: flex;
+                padding: 0.4rem 0;
+
+                &::before {
+                    display: block;
+                    content: attr(data-title);
+                    margin-bottom: 0.3rem;
+                    color: #808080;
+                    font-size: 0.7rem;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            &:last-child {
+                margin: 0;
+            }
+
+            .custom-table__table-body-button {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.2rem;
+                border: none;
+                background-color: #e2e2e2;
+                border-radius: 4px;
+                margin: 0 1rem;
+
+                &:first-child {
+                    margin: 0;
+                }
+
+                .custom-table__table-body-button-icon--green {
+                    font-size: 1.4rem;
+                    color: $green;
+                }
+
+                .custom-table__table-body-button-icon--red {
+                    font-size: 1.4rem;
+                    color: $red;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .custom-table {
+        .custom-table__table-head {
+            display: flex;
+            background-color: $primary;
+            padding: 1.5rem 1rem;
+            color: $white;
+            font-weight: bold;
+
+            .custom-table__table-head-cell {
+                //&:first-child {
+                //    width: 440px;
+                //    padding-left: 40px;
+                //}
+
+                &:nth-child(1) {
+                    width: 440px;
+                    padding-left: 40px;
+                }
+
+                &:nth-child(2) {
+                    width: 440px;
+                }
+
+                &:nth-child(3) {
+                    width: 440px;
+                }
+
+                &:nth-child(4) {
+                    width: 440px;
+                }
+
+                &:nth-child(5) {
+                    width: 440px;
+                }
+
+                &:last-child {
+                    width: 150px;
+                    padding-right: 40px;
+                }
+            }
+        }
+
+        .custom-table__table-body {
+            max-height: 300px;
+
+            .custom-table__table-body-row {
+                display: flex;
+
+                .custom-table__table-body-cell {
+                    display: flex;
+                    align-items: center;
+
+                    &::before {
+                        display: none;
+                    }
+
+                    &:nth-child(1) {
+                        width: 440px;
+                        padding-left: 40px;
+                    }
+
+                    &:nth-child(2) {
+                        width: 440px;
+                    }
+
+                    &:nth-child(3) {
+                        width: 440px;
+                    }
+
+                    &:nth-child(4) {
+                        width: 440px;
+                    }
+
+                    &:nth-child(5) {
+                        width: 440px;
+                    }
+
+                    &:nth-child(6) {
+                        width: 150px;
+                        padding-right: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

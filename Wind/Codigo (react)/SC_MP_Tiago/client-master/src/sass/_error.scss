@@ -1,0 +1,52 @@
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: 100vh;
+    background: linear-gradient(115deg, #020024, #094b9b 0, #00d4ff 64%);
+
+    .error-404 {
+        .error-404__code {
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+
+            .error-404__numbers {
+                font-size: 5rem;
+                font-weight: bold;
+            }
+
+            .error-404__logo {
+                margin: 0 2rem;
+                font-size: inherit;
+                width: calc(1em - 1rem);
+            }
+        }
+
+        .error-404__message {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .error-404__button {
+            cursor: pointer;
+            width: 100%;
+            margin-top: 3rem;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 200px;
+            color: $white;
+            background-color: $secondary;
+            font-weight: bold;
+            box-shadow: 3px 14px 28px -13px rgba(0, 0, 0, 0.22);
+
+            &-logo {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}

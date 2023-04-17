@@ -1,0 +1,174 @@
+.update-user {
+    padding: 1rem;
+
+    .update-user__title {
+        margin: 3rem 0 2rem;
+        text-align: center;
+        color: $primary;
+        font-size: 1.3rem;
+    }
+
+    .update-user__form-container {
+        display: flex;
+        margin: auto;
+
+        .update-user__form {
+            width: 100%;
+
+            .update-user__form-group {
+                display: flex;
+                flex-direction: column;
+                margin: 1rem 0;
+
+                .update-user__form-label {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .update-user__form-input {
+                    padding: 0.5rem 1rem;
+                    border-radius: 10px;
+                    border: 2px solid $gray;
+                    color: $black;
+                    background-color: $white;
+
+                    &:focus {
+                        outline-color: $primary;
+                    }
+                }
+
+                .update-user__form-input--disabled {
+                    padding: 0.5rem 1rem;
+                    border-radius: 10px;
+                    border: 2px solid $gray;
+                    color: $black;
+                    background-color: $light-gray;
+                }
+            }
+            .update-user__form-group--buttons {
+                display: flex;
+                justify-content: flex-end;
+                margin: 1rem 0;
+
+                .update-user__form-button {
+                    cursor: pointer;
+                    margin: 1rem 1rem 0;
+                    padding: 0.3rem 1.5rem;
+                    background-color: transparent;
+                    color: $primary;
+                    border: 2px solid $primary;
+                    border-radius: 10px;
+                    transition: 0.3s;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    &:hover {
+                        background-color: $primary;
+                        color: #f8f8f8;
+                    }
+
+                    &--secondary {
+                        cursor: pointer;
+                        margin-top: 1rem;
+                        padding: 0.3rem 1.5rem;
+                        background-color: transparent;
+                        color: $secondary;
+                        border: 2px solid $secondary;
+                        border-radius: 10px;
+                        transition: 0.3s;
+
+                        &:hover {
+                            background-color: $secondary;
+                            color: #f8f8f8;
+                        }
+                    }
+
+                    &--green {
+                        cursor: pointer;
+                        margin-top: 1rem;
+                        padding: 0.3rem 1.5rem;
+                        background-color: transparent;
+                        color: $green;
+                        border: 2px solid $green;
+                        border-radius: 10px;
+                        transition: 0.3s;
+
+                        &:hover {
+                            background-color: $green;
+                            color: #f8f8f8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .update-user__container-message--success,
+    .update-user__container-message--error {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+
+        .update-user__message {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+    }
+
+    .update-user__container-message--error {
+        .update-user__message {
+            background-color: $died_red;
+            border: 2px solid $red;
+        }
+    }
+
+    .update-user__container-message--success {
+        .update-user__message {
+            background-color: $died_green;
+            border: 2px solid $green;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .update-user {
+        .update-user__form-container {
+            max-width: 800px;
+
+            .update-user__form-group--buttons {
+                .update-user__form-button {
+                    //width: fit-content;
+
+                    //&--secondary {
+                    //    width: fit-content;
+                    //    margin-right: 1rem;
+                    //
+                    //    &:last-child {
+                    //        margin-right: 0;
+                    //    }
+                    //}
+                    //
+                    //&--green {
+                    //    width: fit-content;
+                    //    margin-right: 1rem;
+                    //
+                    //    &:last-child {
+                    //        margin-right: 0;
+                    //    }
+                    //}
+                }
+            }
+        }
+
+        .update-user__container-message--error,
+        .update-user__container-message--success {
+            .update-user__message {
+                max-width: 800px;
+            }
+        }
+    }
+}

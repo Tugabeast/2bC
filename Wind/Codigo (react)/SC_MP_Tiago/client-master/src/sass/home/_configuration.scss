@@ -1,0 +1,14 @@
+.configuration {
+    .configuration__title {
+        margin: 3rem 0 2rem;
+        text-align: center;
+        color: $primary;
+        font-size: 1.3rem;
+    }
+
+    .configuration__meeting-points {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

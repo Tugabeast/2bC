@@ -1,0 +1,100 @@
+<!– TESTES ROSE - Bruno Silva Jan/23 –>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Estilo para o container da bússola */
+      #compass {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        margin: 50px auto;
+      }
+      
+
+      
+      /* Estilo para o ponteiro da bússola */
+      #compass .pointer {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 25%;
+        transform: rotate(0deg); /* Rotaciona o ponteiro em 45 graus */
+      }
+      
+      /* Estilo para o pseudo-elemento ::before */
+      #compass .pointer::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+        border-left: 100px solid red;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+      }
+      
+      /* Estilo para a cauda da seta */
+      #compass .pointer::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 40px solid #ccc;
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+	  
+	  
+	  
+	  /* Estilo para os pontos cardeais */
+      #compass .cardinal {
+        position: absolute;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+      }
+	  
+	    /* Posicionamento dos pontos cardeais */
+		#compass .cardinal.north {
+        top: 50%;
+        left: 50%;
+        transform: rotate(0deg) translate(-50%, -700%);
+}
+#compass .cardinal.east {
+        top: 50%;
+        left: 50%;
+        transform: rotate(90deg) translate(-50%, -700%);
+}
+#compass .cardinal.south {
+        top: 50%;
+        left: 50%;
+        transform: rotate(180deg) translate(-50%, -700%);
+}
+#compass .cardinal.west {
+        top: 50%;
+        left: 50%;
+        transform: rotate(270deg) translate(-50%, -700%);
+}
+	  
+	  
+    </style>
+  </head>
+  <body>
+    <div id="compass">
+      <div class="pointer"></div>
+	  <div class="cardinal north">N</div>
+      <div class="cardinal east">E</div>
+      <div class="cardinal south">S</div>
+      <div class="cardinal west">W</div>
+    </div>
+  </body>
+</html>

@@ -8,10 +8,16 @@
     <title>DashBoard-Gestao Utilizadores</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="../css/cssdeteste.css">
-    <script src="bootstrap.bundle.min.js / bootstrap.bundle.js"></script>
     
-    <?php include_once('db_connection.php');
-include('protect.php');?>
+    
+    <?php 
+        include_once('db_connection.php');
+        include('protect.php');
+
+        if(isset($_GET['id'])){
+            echo $_GET['id'];
+        }
+    ?>
 
 </head>
 
@@ -55,33 +61,67 @@ include('protect.php');?>
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo">Gestao Utilizadores</h1>
-            
-            <form action="#" style="background: var(--color-background); border-radius: var(--border-radius-1); padding: var(--card-padding);">
-            <!--<h2>Gestão de Utilizadores</h2>-->
+            <h1 class="titulo" style="text-align: center;">Gestão Utilizadores</h1>
+            <button type="button" class="btn-add"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
+            <div class="containerphp">
+                <table class="tabelacrud" id="tabelacrud">
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Ações</th>
+                    </tr>
+                    <?php   
+                        include('db_connection.php');
+                        $sql = "SELECT * FROM `mp_users` ";
+                        $result = mysqli_query($connect, $sql);
+                        while($row = mysqli_fetch_assoc($result)){
+                            ?>
+                                <tr>
+                                    <td><?php echo $row['id']?></td>
+                                    <td><?php echo $row['user']?></td>
+                                    <td><?php echo $row['name']?></td>
+                                    <td><?php echo $row['role']?></td>
+                                    <td>
+                                            <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                            <a href='settings.php?id=".$result['id']."' ><span class="material-symbols-sharp" style="color: red;">delete</span></a> 
+                                            <!--https://www.youtube.com/watch?v=I2lB7fZE37g&ab_channel=E-CODEC-->  
+                                    </td>
+                                </tr>
+                            <?php
+                        }   
+                    ?>
+                </table>
+            </div>
             <br>
+            <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
+            <button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>
+            <div class="containerphp">
+                <table class="tabelacrud" id="tabelacrud">
+                    <tr>
+                        <th>Name</th>
+                        <th>Ações</th>
+                    </tr>
+                    <?php   
+                        include('db_connection.php');
+                        $sql = "SELECT * FROM `meeting_point` ";
+                        $result = mysqli_query($connect, $sql);
+                        while($row = mysqli_fetch_assoc($result)){
+                            ?>
+                                <tr>
+                                    <td><?php echo $row['name']?></td>
+                                    <td>
+                                        <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                        <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                    </td>
+                                </tr>
+                            <?php
+                        }   
+                    ?>
+                </table>
+            </div>
             <br>
-            <label class="form-label" for="email">Email<i class="required">: </i></label>
-            <input id="email" type="email" placeholder="Email" name="email" required >
-            <br>
-            <br>
-            <label class="form-label" for="password">Password<i class="required">: </i></label>
-            <input id="password" type="password" class="form-control" placeholder="A sua password" name="password" required>
-            <br>
-            <br>
-            <label class="form-label" for="password">Confirmar Password<i class="required">: </i></label>
-            <input id="check_password" type="password" class="form-control" placeholder="Confirme a sua password" name="check_password" required>
-            <br>
-            <br>
-            <label for="users">Escolher Tipo Usuario: </label>
-            <select name="users" id="users">            
-                <option value="user">User</option>
-                <option value="admin">Admin</option>                   
-            </select>
-            <br>
-            <br>
-            <input type="submit" class="btn btn-primary" value="Registar">
-            </form>
         </main>
         <!--Fim da main-->
  

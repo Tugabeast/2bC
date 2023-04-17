@@ -537,20 +537,38 @@ main .recent-orders a {
 /*Tabela crud css*/
 
 .containerphp {
+    display: flex;
     border-radius: var(--card-border-radius);
-    background: var(--color-white);
+    background: var(--color-background);
+    box-shadow: var(--box-shadow);
     height: 50vh;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 1rem;
 }
 
-.containerphp .btn-add {
+.containerphp:hover {
+    box-shadow: var(--color-background);
+}
+
+.btn-add {
     border: 1px solid black;
-    background: var(--color-dark);
+    background: var(--color-primary);
+    cursor: pointer;
     color: var(--color-white);
-    padding: 10px;
-    margin-left: 20px;
+    padding: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
     border-radius: var(--border-radius-1);
+    line-height: 200%;
+}
+
+.btn-add:hover {
+    background: var(--color-danger);
+}
+
+.btn-add span {
+    margin-right: 0.5rem;
 }
 
 .containerphp .tabelacrud {
@@ -558,7 +576,6 @@ main .recent-orders a {
     border-collapse: collapse;
     width: 60%;
     margin: auto;
-    margin-top: 10%;
 }
 
 .containerphp .tabelacrud th,

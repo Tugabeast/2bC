@@ -1,0 +1,81 @@
+$loader-size: 3rem;
+$item-size: 0.5rem;
+$loader-color: $primary;
+$loader-time: 3.2s;
+$loader-delay: 0s;
+$item-rotation: 0deg;
+
+.loader {
+    height: 100vh;
+
+    .loader__items {
+        position: absolute;
+        width: $loader-size;
+        height: $loader-size;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+
+        .loader__circle--center {
+            width: $loader-size;
+            height: $loader-size;
+            background: $primary;
+            border-radius: 50%;
+            animation: center $loader-time ease-in-out infinite;
+        }
+
+        .loader__circle {
+            position: absolute;
+            width: $item-size;
+            height: $item-size;
+            top: calc((#{$loader-size} - #{$item-size}) / 2);
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: $loader-color;
+            border-radius: 50%;
+        }
+    }
+
+    @for $i from 1 through 8 {
+        $loader-delay: $loader-delay + 0.2;
+        $item-rotation: $item-rotation + 45;
+
+        .loader__circle--#{$i} {
+            animation: animation-#{$i}
+                $loader-time
+                ease-in-out
+                infinite
+                $loader-delay;
+
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes animation-#{$i} {
+            0%,
+            60%,
+            100% {
+                transform: rotate($item-rotation) translateX($loader-size)
+                    scale(1);
+            }
+            10%,
+            50% {
+                transform: rotate($item-rotation) translateX(0) scale(1.5);
+            }
+        }
+    }
+
+    @keyframes center {
+        0%,
+        10%,
+        90%,
+        100% {
+            transform: scale(0.7);
+        }
+        45%,
+        55% {
+            transform: scale(1);
+        }
+    }
+}

@@ -1,0 +1,171 @@
+.workers-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    .workers-table__search {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.8rem;
+
+        .workers-table__search-input {
+            border: 2px solid $primary;
+            border-radius: 10px 0 0 10px;
+            padding: 0.3rem 0.5rem;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .workers-table__search-button {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 0.5rem 0 0.3rem;
+            background-color: $primary;
+            color: $white;
+            border: 2px solid $primary;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            .workers-table__search-icon {
+                color: $white;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .workers-table__table {
+        display: flex;
+        flex-direction: column;
+        width: inherit;
+        // padding: 0 1rem;
+        // border: 2px solid $primary;
+        border-radius: 10px;
+        overflow: hidden;
+        // background-color: #f1f1f1;
+        box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.75);
+
+        .workers-table__table-head {
+            display: none;
+            // display: flex;
+            // padding: 1rem;
+            // color: $white;
+            // background-color: $primary;
+        }
+
+        .workers-table__table-body {
+            max-height: 500px;
+            overflow-y: scroll;
+
+            .workers-table__table-body-row {
+                margin-bottom: 0.1rem;
+                padding: 1.5rem 1rem;
+                background-color: #f8f8f8;
+
+                .workers-table__table-body-cell {
+                    padding: 0.4rem 0;
+
+                    &::before {
+                        display: block;
+                        content: attr(data-title);
+                        margin-bottom: 0.3rem;
+                        color: #808080;
+                        font-size: 0.7rem;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+
+                    .workers-table__table-body-cell-button {
+                        cursor: pointer;
+                        display: flex;
+                        background-color: transparent;
+                        border: none;
+
+                        .workers-table__table-body-cell-button-icon {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .workers-table {
+        .workers-table__table {
+            .workers-table__table-head {
+                display: flex;
+                background-color: $primary;
+                padding: 1.5rem 1rem;
+                color: $white;
+                font-weight: bold;
+
+                .workers-table__table-head-cell {
+                    &:nth-child(1) {
+                        width: 460px;
+                        padding-left: 40px;
+                    }
+
+                    &:nth-child(2) {
+                        width: 400px;
+                    }
+
+                    &:nth-child(3) {
+                        width: 340px;
+                    }
+
+                    &:nth-child(4) {
+                        width: 350px;
+                    }
+                    &:nth-child(5) {
+                        width: 150px;
+                    }
+                }
+            }
+
+            .workers-table__table-body {
+                max-height: 300px;
+
+                .workers-table__table-body-row {
+                    display: flex;
+
+                    .workers-table__table-body-cell {
+                        &::before {
+                            display: none;
+                        }
+
+                        &:nth-child(1) {
+                            width: 460px;
+                            padding-left: 40px;
+                        }
+
+                        &:nth-child(2) {
+                            width: 400px;
+                        }
+
+                        &:nth-child(3) {
+                            width: 340px;
+                        }
+
+                        &:nth-child(4) {
+                            width: 350px;
+                        }
+
+                        &:nth-child(5) {
+                            width: 150px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

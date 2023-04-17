@@ -1,0 +1,150 @@
+.gvir {
+    padding: 1rem;
+
+    .gvir__title {
+        margin: 3rem 0 2rem;
+        text-align: center;
+        color: $primary;
+        font-size: 1.3rem;
+    }
+
+    .gvir__content {
+        display: flex;
+        //align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+
+        .gvir__table {
+            display: flex;
+            //flex: 1;
+            flex-direction: column;
+            //width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.75);
+
+            .gvir__table-container {
+                .gvir__table-head {
+                    display: none;
+                }
+
+                .gvir__table-body {
+                    max-height: 500px;
+                    overflow-y: scroll;
+
+                    .gvir__table-row {
+                        margin-bottom: 0.1rem;
+                        padding: 0.2rem 0;
+                        background-color: #f8f8f8;
+
+                        .gvir__table-body-cell {
+                            padding: 1.5rem 1rem;
+
+                            &::before {
+                                display: block;
+                                content: attr(data-title);
+                                margin-bottom: 0.3rem;
+                                color: #808080;
+                                font-size: 0.7rem;
+                                font-weight: bold;
+                                text-transform: uppercase;
+                            }
+
+                            .gvir__table-cell-button {
+                                cursor: pointer;
+                                display: flex;
+                                background-color: transparent;
+                                border: none;
+
+                                .gvir__table-cell-button-icon {
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        }
+
+                        &:last-child {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .gvir__graph {
+            width: 100%;
+
+            .gvir__graph-container {
+                height: 300px !important;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .gvir {
+        .gvir__content {
+            flex-direction: initial;
+            justify-content: space-around;
+
+            .gvir__table {
+                min-width: fit-content;
+
+                .gvir__table-container {
+                    .gvir__table-head {
+                        display: flex;
+                        background-color: $primary;
+                        padding: 1.5rem 0rem;
+                        color: $white;
+                        font-weight: bold;
+
+                        .gvir__table-head-cell {
+                            &:nth-child(1) {
+                                width: 200px;
+                                padding-left: 20px;
+                            }
+
+                            &:nth-child(2) {
+                                width: 200px;
+                                padding-right: 20px;
+                            }
+                        }
+                    }
+
+                    .gvir__table-body {
+                        max-height: initial;
+
+                        .gvir__table-row {
+                            display: flex;
+
+                            .gvir__table-body-cell {
+                                padding: 0.6rem 0;
+
+                                &::before {
+                                    display: none;
+                                }
+
+                                &:nth-child(1) {
+                                    width: 200px;
+                                    padding-left: 20px;
+                                }
+
+                                &:nth-child(2) {
+                                    width: 200px;
+                                    padding-right: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .gvir__graph {
+                display: flex;
+                align-items: center;
+
+                .gvir__graph-container {
+                }
+            }
+        }
+    }
+}

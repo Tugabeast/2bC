@@ -1,0 +1,239 @@
+// .header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     background-color: $primary;
+//     color: $white;
+//     padding: 0 1rem;
+
+//     .header__left-side {
+//         display: flex;
+//         align-items: center;
+
+//         .header__logo {
+//             display: flex;
+//             align-items: center;
+//             font-size: 1rem;
+
+//             .header__logo-img {
+//                 width: 2rem;
+//             }
+//         }
+
+//         .header__nav {
+//             .header__ul {
+//                 display: flex;
+//                 list-style: none;
+
+//                 .header__li {
+//                     .header__link {
+//                         .header__link-icon {
+//                             font-size: 1.5rem;
+//                             margin: 1rem;
+//                         }
+
+//                         .header__link-text {
+//                             display: none;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     .header__right-side {
+//         .header__logout {
+//             .header__logout-button {
+//                 border: none;
+//                 background-color: transparent;
+//                 color: $white;
+
+//                 .header__logout-button-text {
+//                     display: none;
+//                 }
+
+//                 .header__logout-button-icon {
+//                     font-size: 1.5rem;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $primary;
+    color: $white;
+    padding: 1rem;
+
+    .header__left-side {
+        width: 100%;
+
+        .header__top {
+            display: flex;
+            justify-content: space-between;
+
+            .header__logo-text {
+                display: flex;
+                align-items: center;
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+
+            .header__toggle-button {
+                display: flex;
+                align-items: center;
+                border: none;
+                background-color: transparent;
+                color: inherit;
+
+                .header__toggle-button-icon {
+                    font-size: 2rem;
+                }
+            }
+
+            .header__logo {
+                width: 2rem;
+                margin-right: 0.8rem;
+            }
+        }
+
+        .header__nav {
+            display: none;
+            transition: .2s;
+        }
+
+        .header__nav--show {
+            margin-top: 1rem;
+
+            .header__ul {
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+
+                .header__li {
+                    .header__link {
+                        display: flex;
+                        align-items: center;
+                        padding: 1rem 0;
+
+                        .header__link-icon {
+                            font-size: 1.5rem;
+                            margin: 0 1rem 0 0;
+                        }
+                    }
+                }
+            }
+
+            .header__logout-button {
+                display: flex;
+                align-items: center;
+                background-color: transparent;
+                color: inherit;
+                border: none;
+                padding: 1rem 0;
+
+                .header__logout-button-icon {
+                    font-size: 1.5rem;
+                    margin: 0 1rem 0 0;
+                }
+            }
+        }
+    }
+
+    .header__right-side {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $primary;
+        color: $white;
+        padding: 1rem;
+
+        .header__left-side {
+            display: flex;
+            align-items: center;
+
+            .header__top {
+                margin-right: 2rem;
+
+                .header__logo-text {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                }
+
+                .header__toggle-button {
+                    display: none;
+                }
+
+                .header__logo {
+                    width: 2rem;
+                    margin-right: 0.8rem;
+                }
+            }
+
+            .header__nav,
+            .header__nav--show {
+                display: flex;
+                align-items: center;
+
+                .header__ul {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    list-style: none;
+
+                    .header__li {
+                        display: flex;
+                        align-items: center;
+
+                        .header__link {
+                            display: flex;
+                            align-items: center;
+                            margin: 0 1rem;
+
+                            .header__link-icon {
+                                font-size: 1.5rem;
+                                margin-right: 0.4rem;
+                            }
+                        }
+                    }
+                }
+
+                .header__logout-button {
+                    display: none;
+                }
+            }
+        }
+
+        .header__right-side {
+            display: flex;
+
+            .header__logout {
+                .header__logout-button {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    background-color: transparent;
+                    color: inherit;
+                    border: none;
+
+                    .header__logout-button-icon {
+                        font-size: 1.5rem;
+                        margin-right: 0.4rem;
+                    }
+                }
+            }
+        }
+    }
+}

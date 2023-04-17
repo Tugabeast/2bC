@@ -18,10 +18,16 @@
 
 <body>
     <?php 
-        $sel = "SELECT * FROM users ";
-        $query = mysqli_query($connect,$sel);
-        $result = mysqli_fetch_assoc($query);
+/*
+    function loginuser(){
+        require_once 'db_connection.php';
 
+        $sel = "SELECT name FROM mp_users Where id = ". $_SESSION['id'];
+        $query = mysqli_query($connect,$sel);
+        $row = mysqli_fetch_assoc($query);
+        return $row;
+    }
+*/
     ?>
     
     <div class="container" id="container">
@@ -60,19 +66,13 @@
         </aside>
         <!-- fim da sidebar -->
         <main >
-            <h1 class="titulo">Monitorização</h1>
-            <!--
-            <script>
-                //alerta para reuniao
-                alert("falar cnu's");
-            </script>
--->
+            <h1 class="titulo">Monitorização</h1>  
+
+
         </main>
         <!--Fim da main-->
         
     </div>
-
-
 
     <script src="../js/index3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

@@ -1,0 +1,14 @@
+.details-meeting-points {
+    .details-meeting-points__title {
+        margin: 3rem 0 2rem;
+        text-align: center;
+        color: $primary;
+        font-size: 1.3rem;
+    }
+
+    .details-meeting-points__meeting-points {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

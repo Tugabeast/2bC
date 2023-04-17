@@ -1,0 +1,58 @@
+.workers-on-meeting-point {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+
+    &.workers-on-meeting-point--show {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .workers-on-meeting-point__container {
+        width: 100%;
+        max-width: 800px;
+        background-color: $white;
+        border-radius: 0.5rem;
+    }
+
+    .workers-on-meeting-point__header {
+        padding: 1rem;
+        color: $white;
+        border-top-right-radius: inherit;
+        border-top-left-radius: inherit;
+        background-color: $primary;
+    }
+    .workers-on-meeting-point__body {
+        padding: 1rem;
+    }
+    .workers-on-meeting-point__footer {
+        padding: 0 1rem 1rem 1rem;
+
+        .workers-on-meeting-point__close-button {
+            cursor: pointer;
+            width: 100%;
+            padding: 0.3rem 0;
+            background-color: transparent;
+            color: $primary;
+            border: 2px solid $primary;
+            border-radius: 10px;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: $primary;
+                color: #f8f8f8;
+            }
+        }
+    }
+}

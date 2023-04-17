@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    background-color: $primary;
+    color: $light-gray;
+    text-align: center;
+
+    .footer__link {
+        transition: 0.2s;
+        &:hover {
+            color: $white;
+        }
+    }
+}

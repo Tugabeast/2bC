@@ -1,0 +1,58 @@
+.meeting-point-info {
+    flex: 0 1 100%;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin: 1rem 0;
+    padding: 1rem;
+    text-align: center;
+
+    &:first-child,
+    &:last-child {
+        margin: 0;
+    }
+
+    .meeting-point-info__name,
+    .meeting-point-info__number,
+    .meeting-point-info__count {
+        margin-bottom: 1rem;
+    }
+
+    .meeting-point-info__count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .meeting-point-info__count-number {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .meeting-point-info__details-button {
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.3rem 0;
+        background-color: transparent;
+        color: $primary;
+        border: 2px solid $primary;
+        border-radius: 10px;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: $primary;
+            color: #f8f8f8;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .meeting-point-info {
+        flex: 0 1 16rem;
+        margin: 1rem;
+
+        &:first-child,
+        &:last-child {
+            margin: 1rem;
+        }
+    }
+}

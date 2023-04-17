@@ -1,0 +1,74 @@
+<!– TESTES WINDZONE - Bruno Silva Jan/23 –>
+
+<html>
+
+  <body>
+
+      
+    <div style="display: flex; align-items: center; justify-content: center; height: 100%">
+  <canvas id="rose" width="240" height="240"></canvas>
+
+
+    <form>
+      <label for="direction">Direcao [N,S,E,W]:</label>
+      <input type="text" id="direction" name="direction">
+      <br>
+      <label for="windSpeed">Velocidade [0-20]:</label>
+      <input type="text" id="windSpeed" name="windSpeed">
+      <br>
+      <button type="button" onclick="drawRose()">Zona</button>
+    </form>
+    
+    
+    <script>
+      function drawRose() {
+          
+        var canvas = document.getElementById("rose");
+        var canvas = document.getElementById("rose");
+        var ctx = canvas.getContext("2d");
+        var direction = document.getElementById("direction").value;
+        var windSpeed = document.getElementById("windSpeed").value;
+        var angle;
+        
+       if (direction === "N") {
+            angle = -90;
+        } else if (direction === "E") {
+            angle = 0;
+        } else if (direction === "S") {
+            angle = 90;
+        } else if (direction === "W") {
+            angle = 180;
+        }
+
+        angle = angle * (Math.PI/180);
+
+        // clear canvas
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = "black";
+
+        // draw circle
+        var speedFactor = windSpeed / 20;
+        var radius = 90 * speedFactor;
+        var startAngle = (angle - 30/180*Math.PI);
+        var endAngle = (angle + 30/180*Math.PI);
+        ctx.beginPath();
+        ctx.arc(100, 100, radius, startAngle, endAngle, false);
+        ctx.lineTo(100,100);
+        ctx.clip();
+        ctx.fillStyle ="black";
+        ctx.fill();
+        ctx.stroke();
+
+    // write wind speed
+    ctx.fillStyle = "black";
+    ctx.font = "14px Arial";
+    ctx.fillText(windSpeed + " km/h", 10, 20);
+  }
+</script>
+
+</div>
+
+</body>
+
+</html>

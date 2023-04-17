@@ -1,0 +1,135 @@
+.meeting-point {
+    flex: 0 1 100%;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin: 1rem 0;
+    padding: 1rem;
+
+    &:first-child,
+    &:last-child {
+        margin: 0;
+    }
+
+    .meeting-point__name,
+    .meeting-point__number,
+    .meeting-point__status {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .meeting-point__status {
+        color: $primary;
+    }
+
+    .meeting-point__form {
+        .meeting-point__form-group {
+            margin: 0.8rem 0;
+            position: relative;
+
+            &--margin {
+                margin-top: 1.5rem;
+                position: relative;
+
+                .meeting-point__status-update {
+                    height: 19px;
+                    font-size: 0.9rem;
+                    color: $dark-gray;
+                    text-align: center;
+                }
+            }
+
+            .meeting-point__form-group-label {
+                display: block;
+                position: relative;
+                padding-left: 2rem;
+                // margin-bottom: 12px;
+                cursor: pointer;
+                font-size: 1.1rem;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+
+                    &:checked ~ .meeting-point__from-custom-radio-check {
+                        background-color: $white;
+                        border: 2px solid $primary;
+                    }
+
+                    &:checked ~ .meeting-point__from-custom-radio-check::after {
+                        left: 0.2rem;
+                        top: 0.2rem;
+                        width: 0.7rem;
+                        height: 0.7rem;
+                    }
+                }
+
+                .meeting-point__from-custom-radio-check::after {
+                    left: 0.4rem;
+                    top: 0.4rem;
+                    width: 0;
+                    height: 0;
+                    border-radius: 50%;
+                    background: $primary;
+                }
+
+                .meeting-point__from-custom-radio-check {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 1.3rem;
+                    width: 1.3rem;
+                    background-color: #eee;
+                    border-radius: 50%;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        display: flex;
+                        transition: 0.2s;
+                    }
+                }
+
+                &:hover input ~ .meeting-point__from-custom-radio-check {
+                    background-color: $white;
+                    border: 2px solid $primary;
+                }
+            }
+        }
+
+        .meeting-point__form-submit-button {
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.3rem 0;
+            background-color: transparent;
+            color: $primary;
+            border: 2px solid $primary;
+            border-radius: 10px;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: $primary;
+                color: $dirty-white;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .meeting-point {
+        flex: 0 1 16rem;
+        margin: 1rem;
+
+        &:first-child,
+        &:last-child {
+            margin: 1rem;
+        }
+    }
+}

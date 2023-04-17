@@ -1,0 +1,179 @@
+.meeting-points-list {
+    .meeting-points-list__title {
+        margin: 5rem 0 1rem;
+        text-align: center;
+        color: $primary;
+        font-size: 1.5rem;
+    }
+
+    .meeting-points-list__actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.8rem;
+
+        .meeting-points-list__create-action {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            //margin-top: 1rem;
+            padding: 0.3rem 0.6rem;
+            background-color: $primary;
+            color: $white;
+            border: 2px solid $primary;
+            border-radius: 10px;
+            transition: 0.3s;
+            justify-content: space-around;
+
+            &:hover {
+                background-color: $light-primary;
+                border: 2px solid $light-primary;
+            }
+
+            .meeting-points-list__create-action-icon {
+                margin-right: 0.4rem;
+            }
+        }
+    }
+
+    .meeting-points-list__table-container {
+        .meeting-points-list__table {
+            display: flex;
+            flex-direction: column;
+            width: inherit;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px -20px rgba(0, 0, 0, 0.75);
+
+            .meeting-points-list__table-head {
+                display: none;
+            }
+
+            .meeting-points-list__table-body {
+                max-height: 500px;
+                overflow-y: scroll;
+
+                .meeting-points-list__table-body-row {
+                    margin-bottom: 0.1rem;
+                    padding: 1.5rem 1rem;
+                    background-color: #f8f8f8;
+
+                    .meeting-points-list__table-body-cell {
+                        padding: 0.4rem 0;
+
+                        &::before {
+                            display: block;
+                            content: attr(data-title);
+                            margin-bottom: 0.3rem;
+                            color: #808080;
+                            font-size: 0.7rem;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    .meeting-points-list__table-body-cell--flex {
+                        display: flex;
+                        padding: 0.4rem 0;
+
+                        &::before {
+                            display: block;
+                            content: attr(data-title);
+                            margin-bottom: 0.3rem;
+                            color: #808080;
+                            font-size: 0.7rem;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                    .meeting-points-list__table-body-button {
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0.2rem;
+                        border: none;
+                        background-color: #e2e2e2;
+                        border-radius: 4px;
+                        margin: 0 1rem;
+
+                        &:first-child {
+                            margin: 0;
+                        }
+
+                        .meeting-points-list__table-body-button-icon--green {
+                            font-size: 1.4rem;
+                            color: $green;
+                        }
+
+                        .meeting-points-list__table-body-button-icon--red {
+                            font-size: 1.4rem;
+                            color: $red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .meeting-points-list {
+        .meeting-points-list__table-container {
+            .meeting-points-list__table {
+                .meeting-points-list__table-head {
+                    display: flex;
+                    background-color: $primary;
+                    padding: 1.5rem 1rem;
+                    color: $white;
+                    font-weight: bold;
+
+                    .meeting-points-list__table-head-cell {
+                        padding: 0 0.2rem;
+                        &:nth-child(1) {
+                            width: 1520px;
+                            padding-left: 40px;
+                        }
+
+                        &:nth-child(2) {
+                            width: 150px;
+                            padding-right: 40px;
+                        }
+                    }
+                }
+
+                .meeting-points-list__table-body {
+                    max-height: 300px;
+
+                    .meeting-points-list__table-body-row {
+                        display: flex;
+
+                        .meeting-points-list__table-body-cell {
+                            display: flex;
+                            align-items: center;
+                            padding: 0 0.2rem;
+
+                            &::before {
+                                display: none;
+                            }
+
+                            &:nth-child(1) {
+                                width: 1520px;
+                                padding-left: 40px;
+                            }
+
+                            &:nth-child(2) {
+                                width: 150px;
+                                padding-right: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
