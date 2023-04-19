@@ -207,7 +207,8 @@ b {
 /* ================================== Aside ================================== */
 
 aside {
-    height: 100vmax;
+    /*height: 100vmax;*/
+    /*height: 1000rem;*/
     background: #094b9b;
     /*background: #007188;*/
     width: min-content;

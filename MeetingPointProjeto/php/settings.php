@@ -8,6 +8,7 @@
     <title>DashBoard-Gestao Utilizadores</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="../css/cssdeteste.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     
     
     <?php 
@@ -64,7 +65,7 @@
             <h1 class="titulo" style="text-align: center;">Gestão Utilizadores</h1>
             <button type="button" class="btn-add"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud">
+                <table class="tabelacrud" id="tabelacrud1">
                     <tr>
                         <th>ID</th>
                         <th>User</th>
@@ -85,7 +86,8 @@
                                     <td><?php echo $row['role']?></td>
                                     <td>
                                             <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                            <a href='settings.php?id=".$result['id']."' ><span class="material-symbols-sharp" style="color: red;">delete</span></a> 
+                                            <a href='#' ><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                            <!--<a href='settings.php?id=".$result['id']."' ><span class="material-symbols-sharp" style="color: red;">delete</span></a> -->
                                             <!--https://www.youtube.com/watch?v=I2lB7fZE37g&ab_channel=E-CODEC-->  
                                     </td>
                                 </tr>
@@ -95,12 +97,10 @@
                 </table>
             </div>
             <br>
-            
-            
             <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
-            <button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>
+            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud">
+                <table class="tabelacrud" id="tabelacrud2">
                     <tr>
                         <th>Name</th>
                         <th>Ações</th>
@@ -124,14 +124,95 @@
                 </table>
             </div>
             <br>
+            <h1 class="titulo" style="text-align: center;">Gestão de Alertas</h1>
+            <button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
+            <div class="containerphp">
+                <table class="tabelacrud" id="tabelacrud3">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Alertas</th>
+                            <th>Formato Relatorio</th>
+                            <th>Ações</th>
+                        </tr>                        
+                    </thead>
+                    <tbody>
+                        <?php   
+                            include('db_connection.php');
+                            $sql = "SELECT * FROM `mp_alert` ";
+                            $result = mysqli_query($connect, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $row['datatime']?></td>
+                                        <td><?php echo $row['name']?></td>
+                                        <td><?php echo $row['email']?></td>
+                                        <td><?php echo $row['alert']?></td>
+                                        <td><?php echo $row['report_format']?></td>
+                                        <td>
+                                            <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                            <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                        </td>
+                                    </tr>
+                                <?php
+                            }   
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
+            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
+            <div class="containerphp">
+                <table class="tabelacrud" id="tabelacrud4">
+                    <tr>
+                        <th>Data</th>
+                        <th>ID</th>
+                        <th>Operações</th>
+                        <th>Ordem dada</th>
+                    </tr>
+                    <?php   
+                        include('db_connection.php');
+                        $sql = "SELECT * FROM `mp_operation` ";
+                        $result = mysqli_query($connect, $sql);
+                        while($row = mysqli_fetch_assoc($result)){
+                            ?>
+                                <tr>
+                                    <td><?php echo $row['datatime']?></td>
+                                    <td><?php echo $row['id']?></td>
+                                    <td><?php echo $row['operation']?></td>
+                                    <td><?php echo $row['order_given']?></td>
+                                    <!--
+                                    <td>
+                                        <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                        <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                    </td>
+                                    -->
+                                </tr>
+                            <?php
+                        }   
+                    ?>
+                </table>
+            </div>
+            <br>
             <a href="#menu" style="font-size: 25px; ">^</a>
         </main>
         <!--Fim da main-->
  
     </div>
-    
+    <script>
+        $(document).ready(function () {
+            $('#tabelacrud3').DataTable({
+                responsive: true,
+            });
+        });
+    </script>
     <script src="../js/index3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
 </body>
 
