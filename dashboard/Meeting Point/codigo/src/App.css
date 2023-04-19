@@ -1,0 +1,78 @@
+
+
+ * {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: 'Lato', sans-serif;
+ }
+
+
+
+ .home {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+  
+
+ }
+
+ .home>*:first-child {
+  align-self: stretch;
+}
+
+.products{
+  color: hotpink;
+   display: flex;
+   height: 90vh;
+   align-items: flex-start;
+   justify-content: center;
+   font-size: 3rem;
+   background-position: center; /* Center the image */
+   background-repeat: no-repeat; /* Do not repeat the image */
+   background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.IndividualCard{
+  background-color: blue;
+}
+
+
+
+.App{
+  padding-left: 100px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.buttonHome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+
+
+
+.card1{
+  width: 7em;
+  height: 40rem;
+  border-color: white;
+}
+
+.circleCards{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 3rem;
+  flex-wrap: wrap;
+  
+    
+}
+

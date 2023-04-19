@@ -1,0 +1,40 @@
+h1 {
+  text-align: center;
+}
+
+.home-open {
+  padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content-table {
+  width: 30vw;
+}
+
+.box-config {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search {
+  background-color: white;
+}
+
+.progresBar {
+  width: 70%;
+  padding-top: 20px;
+
+
+}
+
+.box-config{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.cards{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}

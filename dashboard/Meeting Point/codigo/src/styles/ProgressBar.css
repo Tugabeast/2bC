@@ -1,0 +1,16 @@
+.progess-safe{
+    opacity: 1;
+    width: 50%;
+    background-color: green;
+}
+
+.text-progressbar{
+    text-align: center;
+    font-size: large;
+    padding-top: 10%;
+}
+
+.progressBar{
+  
+    padding-left: 50vh;
+}

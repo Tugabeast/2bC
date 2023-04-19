@@ -1,0 +1,91 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3b70b1;
+  height: 5vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  z-index: 1;
+  padding-left: 0px;
+}
+
+.menu-bars {
+  margin-left: 1.3rem;
+  font-size: 1.3rem;
+  background: none;
+  align-items: center;
+}
+
+.nav-menu {
+  background-color: #3b70b1;
+  width: 220px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 5vh;
+  left: -140px;
+  transition: 850ms;
+}
+
+.nav-text {
+  padding: 8px 0px 8px 0px;
+  list-style: none;
+  height: 60px;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: end;
+}
+
+.nav-text a:hover {
+  background-color: #429ac6;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.menu-text {
+  margin-right: 12px;
+  font-size: xx-small;
+  text-align: center;
+}
+
+.menu-icon {
+  display: flex;
+  font-size: 25px;
+  justify-content: end;
+  margin-right: 17px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+h1 {
+  align-items: center;
+  margin-left: 100px;
+}
+
+.page-content-sidebar-open {
+  padding-left: 140px;
+  transition: 350ms;
+}
+
+.page-content-sidebar-closed {
+  transition: 850ms;
+}
+
+#graph {
+  padding-left: 50px;
+}

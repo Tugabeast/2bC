@@ -1,0 +1,11 @@
+.reports-closed {
+  transition: 850ms;
+  padding-left: 100px;
+  padding-top: 150px;
+}
+
+.reports-open {
+  transition: 350ms;
+  padding-left: 300px;
+  padding-top: 150px;
+}
