@@ -97,37 +97,10 @@
                 </table>
             </div>
             <br>
-            <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
-            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
-            <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud2">
-                    <tr>
-                        <th>Name</th>
-                        <th>Ações</th>
-                    </tr>
-                    <?php   
-                        include('db_connection.php');
-                        $sql = "SELECT * FROM `meeting_point` ";
-                        $result = mysqli_query($connect, $sql);
-                        while($row = mysqli_fetch_assoc($result)){
-                            ?>
-                                <tr>
-                                    <td><?php echo $row['name']?></td>
-                                    <td>
-                                        <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                        <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
-                                    </td>
-                                </tr>
-                            <?php
-                        }   
-                    ?>
-                </table>
-            </div>
-            <br>
             <h1 class="titulo" style="text-align: center;">Gestão de Alertas</h1>
             <button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud3">
+                <table class="tabelacrud" id="tabelacrud2">
                     <thead>
                         <tr>
                             <th>Data</th>
@@ -162,7 +135,63 @@
                     </tbody>
                 </table>
             </div>
+            
+            
             <br>
+            <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
+            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
+            <div class="containerphp">
+                <table class="tabelacrud" id="tabelacrud3">
+                    <tr>
+                        <th>MP</th>
+                        <th>Name</th>
+                        <th>Ações</th>
+                    </tr>
+                    <?php   
+                        include('db_connection.php');
+                        $sql = "SELECT * FROM `meeting_point` ";
+                        $result = mysqli_query($connect, $sql);
+                        while($row = mysqli_fetch_assoc($result)){
+                            ?>
+                                <tr>
+                                    <td><?php echo $row['MP_ID']?></td>
+                                    <td><?php echo $row['name']?></td>                           
+                                    <td>
+                                        <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                        <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                    </td>
+                                </tr>
+                            <?php
+                        }   
+                    ?>
+                </table>
+            </div>
+            <br>
+            <!-- script paginicação-->
+            <?php 
+                // Define o número de resultados por página
+                $results_per_page = 7;
+
+                // Determina o número total de resultados
+                    $sql11 = "SELECT COUNT(*) AS num_results FROM mp_operation";
+                    $result11 = mysqli_query($connect, $sql11);
+                    $row = mysqli_fetch_assoc($result11);
+                    $total_results = $row['num_results'];
+
+                // Determina o número total de páginas
+                $total_pages = ceil($total_results / $results_per_page);
+
+                 // Determina a página atual
+                if (isset($_GET['page'])) {
+                    $current_page = $_GET['page'];
+                } else {
+                    $current_page = 1;
+                }
+
+                 // Determina o índice do primeiro resultado na página atual
+                $first_result_index = ($current_page - 1) * $results_per_page;
+            ?>
+            <!-- -->
             <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
@@ -175,33 +204,38 @@
                     </tr>
                     <?php   
                         include('db_connection.php');
-                        $sql = "SELECT * FROM `mp_operation` ";
+                        $sql = "SELECT * FROM `mp_operation` LIMIT $first_result_index, $results_per_page ";
                         $result = mysqli_query($connect, $sql);
-                        while($row = mysqli_fetch_assoc($result)){
-                            ?>
-                                <tr>
-                                    <td><?php echo $row['datatime']?></td>
-                                    <td><?php echo $row['id']?></td>
-                                    <td><?php echo $row['operation']?></td>
-                                    <td><?php echo $row['order_given']?></td>
-                                    <!--
-                                    <td>
-                                        <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                        <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
-                                    </td>
-                                    -->
-                                </tr>
-                            <?php
-                        }   
+                        if (mysqli_num_rows($result) > 0) {
+                            $count = $first_result_index + 1;
+                            while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $row['datatime']?></td>
+                                        <td><?php echo $row['id']?></td>
+                                        <td><?php echo $row['operation']?></td>
+                                        <td><?php echo $row['order_given']?></td>
+                                        <!--
+                                        <td>
+                                            <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                            <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                        </td>
+                                        -->
+                                    </tr>
+                                <?php
+                                $count++;
+                            }   
+                        }
                     ?>
                 </table>
             </div>
             <br>
-            <a href="#menu" style="font-size: 25px; ">^</a>
+            <a href="#menu" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
         <!--Fim da main-->
  
     </div>
+    <!--
     <script>
         $(document).ready(function () {
             $('#tabelacrud3').DataTable({
@@ -209,11 +243,13 @@
             });
         });
     </script>
+    -->
     <script src="../js/index3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
+    <!--
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    -->
 </body>
 
 </html>
