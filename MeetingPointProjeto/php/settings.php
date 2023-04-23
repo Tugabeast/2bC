@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +15,7 @@
     <?php 
         include_once('db_connection.php');
         include('protect.php');
+        include 'inserdata_settings.php';
 
         if(isset($_GET['id'])){
             echo $_GET['id'];
@@ -63,7 +65,48 @@
         <!-- fim da sidebar -->
         <main>
             <h1 class="titulo" style="text-align: center;">Gestão Utilizadores</h1>
-            <button type="button" class="btn-add"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
+            <button type="button" class="btn-add" id="myBtn"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar Utilizador</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        
+                        <label for="user">User:</label>
+                        <br>
+                        <input type="text" id="user" name="user" required style="border: 1px solid black;">
+                        <br>
+                        <label for="name">Name:</label>
+                        <br>
+                        <input type="text" id="name" name="name" required style="border: 1px solid black;">
+                        <br>
+                        <label for="password">Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" required style="border: 1px solid black;">
+                        <br>
+                        <label for="email">Email:</label>
+                        <br>
+                        <input type="text" id="email" name="email" required style="border: 1px solid black;">
+                        <br>
+                        <label for="password">Phone Number:</label>
+                        <br>
+                        <input type="number" name="phone_number" required style="border: 1px solid black;">
+                        <br>
+                        <label for="role">Role:</label>
+                        <br>
+                        <select name="role" id="role">
+                            <option value="admin" name="admin">Admin</option>
+                            <option value="user" name="user">User</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Adicionar</button>
+                    </form> 
+                </div>
+            </div>
+
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud1">
                     <tr>
@@ -85,8 +128,8 @@
                                     <td><?php echo $row['name']?></td>
                                     <td><?php echo $row['role']?></td>
                                     <td>
-                                            <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                            <a href='#' ><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                            <button type="button" class="btnedit-utilizador" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
+                                            <button type="button" class="btneliminar-utilizador" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                             <!--<a href='settings.php?id=".$result['id']."' ><span class="material-symbols-sharp" style="color: red;">delete</span></a> -->
                                             <!--https://www.youtube.com/watch?v=I2lB7fZE37g&ab_channel=E-CODEC-->  
                                     </td>
@@ -97,8 +140,72 @@
                 </table>
             </div>
             <br>
+
+            <!--------------------------------- BEGIN MODAL EDIT UTILIZADOR   -------------------------------->
+
+
+            <div id="editmodal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Utilizador</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        
+                        <label for="user">User:</label>
+                        <br>
+                        <input type="text" id="user" name="user" required style="border: 1px solid black;">
+                        <br>
+                        <label for="name">Name:</label>
+                        <br>
+                        <input type="text" id="name" name="name" required style="border: 1px solid black;">
+                        <br>
+                        <label for="email">Email:</label>
+                        <br>
+                        <input type="text" id="email" name="email" required style="border: 1px solid black;">
+                        <br>
+                        <label for="password">Phone Number:</label>
+                        <br>
+                        <input type="number" name="phone_number" required style="border: 1px solid black;">
+                        <br>
+                        <label for="role">Role:</label>
+                        <br>
+                        <select name="role" id="role">
+                            <option value="admin" name="admin">Admin</option>
+                            <option value="user" name="user">User</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Adicionar</button>
+                    </form> 
+                </div>
+            </div>
+
+             <!--------------------------------- END MODAL EDIT UTILIZADOR   -------------------------------->
+
+
+             <!--------------------------------- BEGIN MODAL ELIMINAR UTILIZADOR   -------------------------------->
+             <div id="eliminarmodal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Eliminar Utilizador</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        
+                        <label for="user">Tem a certeza que quer eliminar o utilizador?</label>
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Não</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
+                    </form> 
+                </div>
+            </div>
+            <!--------------------------------- END MODAL ELIMINAR UTILIZADOR   -------------------------------->
+
+
             <h1 class="titulo" style="text-align: center;">Gestão de Alertas</h1>
-            <button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
+            <button type="button" class="btn-add" ><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
+
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud2">
                     <thead>
@@ -246,10 +353,60 @@
     -->
     <script src="../js/index3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     -->
+    <script>
+        //script modal adicionar utilizador
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        //quando clica em cancelar, fecha o modal
+        var cancelar = document.getElementsByClassName("cancelar");
+        cancelar.onclick = function(){
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        $(document).ready(function() {
+            $('.btnedit-utilizador').on('click', function(){
+                $('#editmodal').modal('show');
+            });
+        });
+
+        $(document).ready(function() {
+            $('.btneliminar-utilizador').on('click', function(){
+                $('#eliminarmodal').modal('show');
+            });
+        });
+    </script>
+
 </body>
 
 </html>
