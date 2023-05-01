@@ -15,11 +15,13 @@
     <?php 
         include_once('db_connection.php');
         include('protect.php');
-        include 'inserdata_settings.php';
+        include ('inserdata_settings.php');
 
         if(isset($_GET['id'])){
             echo $_GET['id'];
         }
+
+
     ?>
 
 </head>
@@ -71,8 +73,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar Utilizador</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
-                        
+                    <form style="text-align: center;" method="post" action="inserdata_settings.php" >
                         <label for="user">User:</label>
                         <br>
                         <input type="text" id="user" name="user" required style="border: 1px solid black;">
@@ -96,8 +97,8 @@
                         <label for="role">Role:</label>
                         <br>
                         <select name="role" id="role">
-                            <option value="admin" name="admin">Admin</option>
-                            <option value="user" name="user">User</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
                         </select>
                         <br>
                         <br>
@@ -176,11 +177,11 @@
                         <br>
                         <br>
                         <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Adicionar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Editar</button>
                     </form> 
                 </div>
             </div>
-
+                
              <!--------------------------------- END MODAL EDIT UTILIZADOR   -------------------------------->
 
 
@@ -202,9 +203,228 @@
             </div>
             <!--------------------------------- END MODAL ELIMINAR UTILIZADOR   -------------------------------->
 
+            <!--------------------------------- BEGIN MODAL ADICIONAR ALERTA   -------------------------------->
+
+            <div id="AddAlertmodal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar Alerta</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        <label for="data">Data:</label>
+                        <br>
+                        <input type="date" name="data" id="data" required style="border: 1px solid black;">
+                        <br>
+                        <label for="user">Nome:</label>
+                        <br>
+                        <input type="text" id="user" name="user" required style="border: 1px solid black;">
+                        <br>
+                        <label for="name">Email:</label>
+                        <br>
+                        <input type="text" id="email" name="email" required style="border: 1px solid black;">
+                        <br>
+                        <label for="tipoAlert">Tipo Alerta:</label>
+                        <br>
+                        <select name="tipoAlerta" id="tipoAlerta">
+                            <option value="h1" name="h1">H1</option>
+                            <option value="h2" name="h2">H2</option>
+                            <option value="h3" name="h3">H3</option>
+                        </select>
+                        <br>
+                        <label for="tipoAlert">Formato Relatorio:</label>
+                        <br>
+                        <select name="formato" id="formato">
+                            <option value="pdf" name="pdf">PDF</option>
+                            <option value="csv" name="csv">CSV</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Adicionar</button>
+                    </form> 
+                </div>
+            </div>
+
+            <!--------------------------------- END MODAL ADICIONAR ALERTA   -------------------------------->
+
+            <!--------------------------------- BEGIN MODAL EDITAR ALERTA   -------------------------------->
+            <div id="EditAlertmodal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Alerta</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        
+                        <label for="user">Nome:</label>
+                        <br>
+                        <input type="text" id="user" name="user" required style="border: 1px solid black;">
+                        <br>
+                        <label for="name">Email:</label>
+                        <br>
+                        <input type="text" id="name" name="name" required style="border: 1px solid black;">
+                        <br>
+                        <label for="tipoAlert">Tipo Alerta:</label>
+                        <br>
+                        <select name="tipoAlerta" id="tipoAlerta">
+                            <option value="h1" name="h1">H1</option>
+                            <option value="h2" name="h2">H2</option>
+                            <option value="h3" name="h3">H3</option>
+                        </select>
+                        <br>
+                        <label for="tipoAlert">Formato Relatorio:</label>
+                        <br>
+                        <select name="formato" id="formato">
+                            <option value="pdf" name="pdf">PDF</option>
+                            <option value="csv" name="csv">CSV</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Editar</button>
+                    </form> 
+                </div>
+            </div>
+            <!--------------------------------- END MODAL EDITAR ALERTA   -------------------------------->
+
+            <!--------------------------------- BEGIN MODAL ELIMINAR ALERTA   -------------------------------->
+
+            <div id="eliminarAlert" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Eliminar Alerta</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        
+                        <label for="user">Tem a certeza que quer eliminar o alerta?</label>
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Não</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
+                    </form> 
+                </div>
+            </div>
+
+
+            <!--------------------------------- END MODAL EDITAR ALERTA   -------------------------------->
+
+            <!--------------------------------- BEGIN MODAL ADICINAR MP  C/ SCRIPT PHP PARA ADICIONAR MEETING POINTS -------------------------------->
+
+            <div id="AddMPmodal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar MP</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        <label for="MP_ID">MP:</label>
+                        <br>
+                        <input type="text" name="MP_ID" id="MP_ID" required style="border: 1px solid black;">
+                        <br>
+                        <label for="name">Name:</label>
+                        <br>
+                        <input type="text" name="name" id="name" required style="border: 1px solid black;">
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionarMP" class="adicionar">Adicionar</button>
+                    </form> 
+                </div>
+            </div>
+
+            <?php 
+                //include ('db_connection.php');
+
+                if(isset($_POST['adicionarMP'])){
+                    $MP_ID = $_POST['MP_ID'];
+                    $name = $_POST['name'];
+
+                    $sqlinsertMP = "INSERT INTO `meeting_point` (`MP_ID`, `name`) VALUES ('$MP_ID', '$name')";
+
+                    $data = mysqli_query($connect,$sqlinsertMP);
+
+                    if($data){
+                        $msg = "MP adicionado com sucesso";
+                        //header("location: settings.php");
+                    }
+                    else{
+                        $msg = "MP nao foi adicionado";
+                    }
+
+
+                }
+
+            ?>
+
+
+            <!--------------------------------- END MODAL ADICIONAR MP   -------------------------------->
+
+            <!--------------------------------- BEGIN MODAL EDITAR MP   -------------------------------->
+
+            <div id="EditMPmodal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Meeting Point</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+
+                        <input type="hidden" name="id" id="id">    
+                        <label for="user">Nome:</label>
+                        <br>
+                        <input type="text" id="name" name="name" required style="border: 1px solid black;">
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="EditarMP" class="EditarMP">Editar</button>
+                    </form> 
+                </div>
+            </div>
+
+            <?php 
+                if(isset($_POST['EditarMP'])){
+
+                    $id = $_POST ['id'];
+                    $name = $_POST['name'];
+            
+                    $sqlinsertMP = "UPDATE `meeting_point` SET name = '$name' WHERE id = '$id'";
+            
+                    $data = mysqli_query($connect,$sqlinsertMP);
+            
+                    if($data){
+                        $msg = "MP editado com sucesso";
+                        //header("location: settings.php");
+                    }
+                    else{
+                        $msg = "MP nao foi editado";
+                    }
+            
+            
+                }
+            
+            ?>
+
+            <!--------------------------------- END MODAL EDITAR MP   -------------------------------->
+
+            <!--------------------------------- BEGIN MODAL ELIMINAR MP   -------------------------------->
+
+            <div id="EliminarMPmodal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Eliminar Meeting Point</h2>
+                    <form style="text-align: center;" method="post" action="settings.php" >
+                        
+                        <label for="user">Tem a certeza que quer eliminar o Meeting Point?</label>
+                        <br>
+                        <br>
+                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Não</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
+                    </form> 
+                </div>
+            </div>
+
+            <!--------------------------------- END MODAL ELIMINAR MP   -------------------------------->
 
             <h1 class="titulo" style="text-align: center;">Gestão de Alertas</h1>
-            <button type="button" class="btn-add" ><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
+            <button type="button" class="btn-add-alert" id="AddAlertmodal"><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
 
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud2">
@@ -232,8 +452,8 @@
                                         <td><?php echo $row['alert']?></td>
                                         <td><?php echo $row['report_format']?></td>
                                         <td>
-                                            <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                            <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                            <button type="button" class="edit-alert" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
+                                            <button type="button" class="eliminar-alert" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                         </td>
                                     </tr>
                                 <?php
@@ -245,11 +465,15 @@
             
             
             <br>
+
             <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
+            <h3><?php $msg?></h3>
+            <button type="button" class="btn-add-mp" id="AddMPmodal"><span class="material-symbols-sharp">location_on</span>Adicionar MP</button>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud3">
                     <tr>
+                        <th>ID</th>
                         <th>MP</th>
                         <th>Name</th>
                         <th>Ações</th>
@@ -261,11 +485,12 @@
                         while($row = mysqli_fetch_assoc($result)){
                             ?>
                                 <tr>
+                                    <td><?php echo $row['id']?></td>
                                     <td><?php echo $row['MP_ID']?></td>
                                     <td><?php echo $row['name']?></td>                           
                                     <td>
-                                        <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                        <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                        <button type="button" class="edit-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
+                                        <button type="button" class="eliminar-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                     </td>
                                 </tr>
                             <?php
@@ -394,17 +619,75 @@
             }
         }
 
+        //funcao abrir modal para Editar Meeting Point
         $(document).ready(function() {
             $('.btnedit-utilizador').on('click', function(){
                 $('#editmodal').modal('show');
             });
         });
 
+        //funcao abrir modal para eliminar Utlizador
         $(document).ready(function() {
             $('.btneliminar-utilizador').on('click', function(){
                 $('#eliminarmodal').modal('show');
             });
         });
+
+        //funcao abrir modal para Adicionar Meeting Point
+        $(document).ready(function() {
+            $('.btn-add-alert').on('click', function(){
+                $('#AddAlertmodal').modal('show');
+            });
+        });
+
+        //funcao abrir modal para editar Meeting Point
+        $(document).ready(function() {
+            $('.edit-alert').on('click', function(){
+                $('#EditAlertmodal').modal('show');
+            });
+        });
+
+        //funcao abrir modal para eliminar Alerta
+        $(document).ready(function() {
+            $('.eliminar-alert').on('click', function(){
+                $('#eliminarAlert').modal('show');
+            });
+        });
+
+        //funcao abrir modal para adicionar meeting point
+        $(document).ready(function() {
+            $('.btn-add-mp').on('click', function(){
+                $('#AddMPmodal').modal('show');
+            });
+        });
+
+        //funcao abrir modal para editar Meeting Point
+        $(document).ready(function() {
+            $('.edit-MP').on('click', function(){
+                $('#EditMPmodal').modal('show');
+                /*
+                $tr = $(this).closest('tr');
+                var data = $tr.children("td").map(function(){ 
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#name').val(data[1]);
+
+                */
+            });
+        });
+
+        //funcao abrir modal para eliminar Meeting Point
+        $(document).ready(function() {
+            $('.eliminar-MP').on('click', function(){
+                $('#EliminarMPmodal').modal('show');
+            });
+        });
+        
+
+        
     </script>
 
 </body>

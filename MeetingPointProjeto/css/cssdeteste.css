@@ -566,6 +566,34 @@ main .recent-orders a {
     line-height: 200%;
 }
 
+.btn-add-alert{
+    border: 1px solid black;
+    background: var(--color-primary);
+    cursor: pointer;
+    color: var(--color-white);
+    padding: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    border-radius: var(--border-radius-1);
+    line-height: 200%;
+}
+
+.btn-add-mp{
+    border: 1px solid black;
+    background: var(--color-primary);
+    cursor: pointer;
+    color: var(--color-white);
+    padding: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    border-radius: var(--border-radius-1);
+    line-height: 200%;
+}
+
 .btn-add:hover {
     background: var(--color-danger);
 }
