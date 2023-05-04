@@ -366,7 +366,7 @@
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Meeting Point</h2>
                     <form style="text-align: center;" method="post" action="settings.php" >
 
-                        <input type="hidden" name="id" id="id">    
+                        <input type="hidden" name="id" id="id" value="<?php echo $row['id']; ?>">    
                         <label for="user">Nome:</label>
                         <br>
                         <input type="text" id="name" name="name" required style="border: 1px solid black;">
@@ -489,8 +489,9 @@
                                     <td><?php echo $row['MP_ID']?></td>
                                     <td><?php echo $row['name']?></td>                           
                                     <td>
-                                        <button type="button" class="edit-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
-                                        <button type="button" class="eliminar-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                        <!--<button type="button" class="edit-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>-->
+                                        <a class="edit-MP" style="background: #dddddd;" href="settings.php?id=<?php echo $row['id'] ?>"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a> 
+                                        <button type="button" class="eliminar-MP" style="background: #dddddd;" ><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                     </td>
                                 </tr>
                             <?php
@@ -663,19 +664,10 @@
 
         //funcao abrir modal para editar Meeting Point
         $(document).ready(function() {
-            $('.edit-MP').on('click', function(){
+            
+            $('.edit-MP').on('click', function(e){
+                e.defaultPrevented();
                 $('#EditMPmodal').modal('show');
-                /*
-                $tr = $(this).closest('tr');
-                var data = $tr.children("td").map(function(){ 
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#name').val(data[1]);
-
-                */
             });
         });
 
@@ -686,8 +678,7 @@
             });
         });
         
-
-        
+   
     </script>
 
 </body>

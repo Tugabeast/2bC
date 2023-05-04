@@ -455,7 +455,7 @@ main table tbody td {
 }
 
 main table tbody tr:last-child td {
-    border: none;
+    /*border: none;*/
 }
 
 main .recent-orders a {
