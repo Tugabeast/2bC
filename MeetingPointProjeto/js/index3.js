@@ -97,3 +97,26 @@ function closeNav() {
                 $('#editmodal').modal('show');
             });
         });
+
+
+
+        /*---------mapa---------*/
+        var map = L.map('map').setView([40.6389, -8.6553], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("Clicou em " + e.latlng.toString())
+                .openOn(map);
+        }
+        map.on('click', onMapClick);
+
+        var marker = L.marker([40.63425, -8.631547]).addTo(map);

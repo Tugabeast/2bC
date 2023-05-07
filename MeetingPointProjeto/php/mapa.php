@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="../css/cssdeteste.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
-    <script src="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" ></script>
+    
+ 
+    
+    
     <?php include_once('db_connection.php');
 include('protect.php');?>
 </head>
@@ -30,7 +32,7 @@ include('protect.php');?>
                     </a>
                 </div>
             </div>
-            <div class="sidebar">
+            <div class="sidebar" style="height: 88.7vh;">
                 <a href="index3.php">
                 <span class="material-symbols-sharp">distance</span>
                     <h3 id="dashboard">MONITORIZAÇÃO</h3>
@@ -56,13 +58,15 @@ include('protect.php');?>
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo">WIND</h1>
+            
             <div id="map"></div>
         </main>
         <!--Fim da main-->
     </div>
-    <script src="../js/index3.js"></script>
+
+    <script src="../js/mapa.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   
 
 </body>
 

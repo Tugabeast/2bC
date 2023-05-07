@@ -69,7 +69,16 @@
         </aside>
         <!-- fim da sidebar -->
         <main >
-            <h1 class="titulo">Monitorização</h1>  
+            <!--<h1 class="titulo">Monitorização</h1>-->
+            <!-- script php progress bar -->
+            <?php 
+            
+            
+            ?>
+
+
+
+
             <?php 
                 // Define o número de resultados por página
                 $results_per_page = 7;
@@ -136,38 +145,105 @@
             <br>
             <h1 class="titulo"  style="text-align: center;">Zonas de Meeting Points</h1>  
                 <div class="row">
-                <?php
-                            include('db_connection.php');
-                            $sqlzonas = "SELECT * FROM meeting_point ";
-                            $result = mysqli_query($connect,$sqlzonas);
-                            while($row = mysqli_fetch_assoc($result)){
-                                
-                                ?>
-                                <div class="card" style="width: 200px; margin: auto; display: grid;" >
-                                    <h3><?php echo $row['MP_ID']?></h3>
-                                    <h3><?php echo $row['name']?></h3>
-                                    <h3>0<span class="material-symbols-sharp">group</span></h3>
-                                    <button style="cursor: pointer;" class="abrirDetalhes" type="button">Details</button>
-                                </div>
-                                <?php
-                            }
-                        ?>
-
+                    <?php
+                        include('db_connection.php');
+                        $sqlzonas = "SELECT * FROM meeting_point ";
+                        $result = mysqli_query($connect,$sqlzonas);
+                        while($row = mysqli_fetch_assoc($result)){
+                            
+                            ?>
+                            <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                <h3><?php echo $row['MP_ID']?></h3>
+                                <h3><?php echo $row['name']?></h3>
+                                <h3>0<span class="material-symbols-sharp">group</span></h3>
+                                <button style="cursor: pointer;" class="abrirDetalhes" type="button">Details</button>
+                            </div>
+                            <br>
+                            <?php
+                        }
+                    ?>
                 </div>
-                   <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP   -------------------------------->
+
+            <br>
+            <h1 class="titulo"  style="text-align: center;">Configuração</h1>
+            <br>
+            <div class="row">
+                <br>
+                <div class="column">
+                    <?php
+                        include('db_connection.php');
+                        $sqlzonas = "SELECT * FROM meeting_point ";
+                        $sqloperation = "SELECT * FROM meeting_point INNER JOIN mp_operation ";
+                        //$sqloperation = "SELECT * FROM mp_operation ";
+                        $result = mysqli_query($connect,$sqlzonas);
+                        //$result2 = mysqli_query($connect,$sqloperation); 
+                        while($row = mysqli_fetch_assoc($result) ){                              
+                    ?>
+                        <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                            <h3><?php echo $row['MP_ID']?></h3>
+                            <h3><?php echo $row['name']?></h3>
+                            <!--<h4><?php echo $row['operation']?></h4>-->
+                            <button style="cursor: pointer;" class="abrirDetalhes" type="button">Details</button>
+                        </div>
+                    <?php
+                        }
+                    ?>
+                </div>
+                <br>
+                <div class="column">
+                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                        <h3>teste2</h3>
+                    </div>
+                </div>
+                <br>
+                <div class="column">
+                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                        <h3>teste3</h3>
+                    </div>
+                </div>
+                <br>
+                <div class="column">
+                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                        <h3>teste4</h3>
+                    </div>
+                </div>
+                <br>
+                <div class="column">
+                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                        <h3>teste5</h3>
+                    </div>
+                </div>
+                <br>
+                <div class="column">
+                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                        <h3>teste geral</h3>
+                    </div>
+                </div>
+
+                    
+            </div>
+            
+
+
+
+
+
+
+
+
+            <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP   -------------------------------->
 
             <div id="DetalhesMP" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Eliminar Meeting Point</h2>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
                     <form style="text-align: center;" method="post" action="settings.php" >
                         
-                        <label for="user">Tem a certeza que quer eliminar o Meeting Point?</label>
+                        <label>Sem trabalhadores neste meeting point<span class="material-symbols-sharp">engineering</span></label>
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Não</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar">Fechar</button>
                     </form> 
                 </div>
             </div>
@@ -178,21 +254,36 @@
         <!--Fim da main-->
         
     </div>
+
+    <script src="../js/index3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+
     <script>
 
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+
+        // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
         }
 
+        //quando clica em cancelar, fecha o modal
+        var cancelar = document.getElementsByClassName("cancelar");
+        cancelar.onclick = function(){
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
         }
-
-
-        
-        var span = document.getElementsByClassName("close")[0];
 
         $(document).ready(function() {
             $('.abrirDetalhes').on('click', function(){
@@ -200,11 +291,6 @@
             });
         });
     </script>
-
-    <script src="../js/index3.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
 </body>
 
 </html>

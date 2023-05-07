@@ -1,0 +1,25 @@
+INDEX3.PHP
+
+/*
+Melhorias:
+
+1. Butao fechar nao funciona
+2. Butao close nao funciona 
+3. Mostrar que nome do Meeting point o user clicou 
+4. Melhorar css dos cards
+5. Cards 0 pessoas dinamico (perguntar orientador)
+6. Modal mesma coisa do ponto 5. (perguntar orientador)
+
+A fazer:
+
+1. Configuração dos MP's
+2. Progress bar do inicio da pagina
+3. Paginação do registo operações
+
+Perguntas:
+Progress bar (qual bd?)
+Registo operações(qual bd é , existem 3 iguais)
+cards zonas meeting points (qual bd para saber, quantas pessoas tao nos mp's)
+
+
+*/
