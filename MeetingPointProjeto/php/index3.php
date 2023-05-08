@@ -81,7 +81,7 @@
 
             <?php 
                 // Define o número de resultados por página
-                $results_per_page = 7;
+                $results_per_page = 5;
 
                 // Determina o número total de resultados
                     $sql11 = "SELECT COUNT(*) AS num_results FROM mp_registered_cards";
@@ -148,6 +148,7 @@
                     <?php
                         include('db_connection.php');
                         $sqlzonas = "SELECT * FROM meeting_point ";
+                        
                         $result = mysqli_query($connect,$sqlzonas);
                         while($row = mysqli_fetch_assoc($result)){
                             
