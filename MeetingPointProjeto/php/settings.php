@@ -112,7 +112,7 @@
 
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud1">
-                    <tr>
+                    <tr style="color: white; background: #094b9b;">
                         <th>ID</th>
                         <th>User</th>
                         <th>Name</th>
@@ -431,7 +431,7 @@
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud2">
                     <thead>
-                        <tr>
+                        <tr style="color: white; background: #094b9b;">
                             <th>Data</th>
                             <th>Nome</th>
                             <th>Email</th>
@@ -474,7 +474,7 @@
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud3">
-                    <tr>
+                    <tr style="color: white; background: #094b9b;">
                         <th>ID</th>
                         <th>MP</th>
                         <th>Name</th>
@@ -531,7 +531,7 @@
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud4">
-                    <tr>
+                    <tr style="color: white; background: #094b9b;">
                         <th>Data</th>
                         <th>ID</th>
                         <th>Operações</th>

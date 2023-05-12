@@ -583,6 +583,10 @@ main .recent-orders a {
     line-height: 200%;
 }
 
+.btn-add-alert:hover{
+    background: var(--color-danger);
+}
+
 .btn-add-mp {
     border: 1px solid black;
     background: var(--color-primary);
@@ -595,6 +599,10 @@ main .recent-orders a {
     display: flex;
     border-radius: var(--border-radius-1);
     line-height: 200%;
+}
+
+.btn-add-mp:hover{
+    background: var(--color-danger);
 }
 
 .btn-add:hover {
@@ -670,6 +678,7 @@ td {
     background-color: var(--color-dark);
     color: var(--color-info-dark);
     border-radius: var(--border-radius-1);
+    
 }
 
 .fa {
@@ -854,6 +863,7 @@ td {
     main .recent-orders table {
         width: 83vw;
     }
+    
     main table thead tr th:last-child,
     main table thead tr th:first-child {
         display: none;
@@ -862,6 +872,7 @@ td {
     main table tbody tr td:first-child {
         display: none;
     }
+   
     #map {
         margin-left: 4rem;
     }
@@ -958,6 +969,9 @@ td {
     .right .top button span {
         font-size: 2rem;
     }
+
+
+
     #map {
         height: 25rem;
     }
