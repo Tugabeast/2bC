@@ -17,7 +17,7 @@
     <?php 
         include_once('db_connection.php');
         include('protect.php');
-        include ('inserdata_settings.php');
+        include ('insertcode.php');
 
         if(isset($_GET['id'])){
             echo $_GET['id'];
@@ -70,52 +70,14 @@
         <main>
             <h1 class="titulo" style="text-align: center;">Gestão Utilizadores</h1>
             <button type="button" class="btn-add" id="myBtn"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar Utilizador</h2>
-                    <form style="text-align: center;" method="post" action="inserdata_settings.php" >
-                        <label for="user">User:</label>
-                        <br>
-                        <input type="text" id="user" name="user" required style="border: 1px solid black;">
-                        <br>
-                        <label for="name">Name:</label>
-                        <br>
-                        <input type="text" id="name" name="name" required style="border: 1px solid black;">
-                        <br>
-                        <label for="password">Password:</label>
-                        <br>
-                        <input type="password" id="password" name="password" required style="border: 1px solid black;">
-                        <br>
-                        <label for="email">Email:</label>
-                        <br>
-                        <input type="text" id="email" name="email" required style="border: 1px solid black;">
-                        <br>
-                        <label for="password">Phone Number:</label>
-                        <br>
-                        <input type="number" name="phone_number" required style="border: 1px solid black;">
-                        <br>
-                        <label for="role">Role:</label>
-                        <br>
-                        <select name="role" id="role">
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
-                        <br>
-                        <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Adicionar</button>
-                    </form> 
-                </div>
-            </div>
-
             <div class="containerphp">
                 <table class="tabelacrud" id="tabelacrud1">
                     <tr style="color: white; background: #094b9b;">
                         <th>ID</th>
                         <th>User</th>
                         <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
                         <th>Role</th>
                         <th>Ações</th>
                     </tr>
@@ -129,6 +91,8 @@
                                     <td><?php echo $row['id']?></td>
                                     <td><?php echo $row['user']?></td>
                                     <td><?php echo $row['name']?></td>
+                                    <td><?php echo $row['email']?></td>
+                                    <td><?php echo $row['phone_number']?></td>
                                     <td><?php echo $row['role']?></td>
                                     <td>
                                             <button type="button" class="btnedit-utilizador" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
@@ -143,6 +107,48 @@
                 </table>
             </div>
             <br>
+            <!--------------------------------- BEGIN MODAL INTRODUZIR UTILIZADOR   -------------------------------->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar Utilizador</h2>
+                    <form style="text-align: center;" method="POST" action="insertcode.php" >
+                        <label>User:</label>
+                        <br>
+                        <input type="text" id="user" name="user" required style="border: 1px solid black;">
+                        <br>
+                        <label>Name:</label>
+                        <br>
+                        <input type="text" id="name" name="name" required style="border: 1px solid black;">
+                        <br>
+                        <label>Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" required style="border: 1px solid black;">
+                        <br>
+                        <label>Email:</label>
+                        <br>
+                        <input type="text" id="email" name="email" required style="border: 1px solid black;">
+                        <br>
+                        <label>Phone Number:</label>
+                        <br>
+                        <input type="number" name="phone_number" required style="border: 1px solid black;">
+                        <br>
+                        <label>Role:</label>
+                        <br>
+                        <select name="role" id="role">
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Adicionar</button>
+                    </form> 
+                </div>
+            </div>            
+
+            <!--------------------------------- END MODAL INTRODUZIR UTILIZADOR   -------------------------------->
 
             <!--------------------------------- BEGIN MODAL EDIT UTILIZADOR   -------------------------------->
 
@@ -152,8 +158,8 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Utilizador</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
-                        
+                    <form style="text-align: center;" method="POST" action="editarutilizador.php" >
+                        <input type="hidden" name="update_id" id="update_id">
                         <label for="user">User:</label>
                         <br>
                         <input type="text" id="user" name="user" required style="border: 1px solid black;">
@@ -166,9 +172,9 @@
                         <br>
                         <input type="text" id="email" name="email" required style="border: 1px solid black;">
                         <br>
-                        <label for="password">Phone Number:</label>
+                        <label>Phone Number:</label>
                         <br>
-                        <input type="number" name="phone_number" required style="border: 1px solid black;">
+                        <input type="number" name="phone_number" id="phone_number" required style="border: 1px solid black;">
                         <br>
                         <label for="role">Role:</label>
                         <br>
@@ -178,8 +184,8 @@
                         </select>
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Editar</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="editarUtilizador" class="adicionar">Editar</button>
                     </form> 
                 </div>
             </div>
@@ -188,21 +194,22 @@
 
 
              <!--------------------------------- BEGIN MODAL ELIMINAR UTILIZADOR   -------------------------------->
-             <div id="eliminarmodal" class="modal">
+            <div id="eliminarmodal" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Eliminar Utilizador</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
-                        
-                        <label for="user">Tem a certeza que quer eliminar o utilizador?</label>
+                    <form style="text-align: center;" method="POST" action="deleteuser.php" >
+                        <input type="hidden" name="delete_id" id="delete_id">
+                        <label>Tem a certeza que quer eliminar o utilizador?</label>
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Não</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Não</button>
+                        <button type="submit" style="cursor: pointer;" name="eliminarUtilizador" class="adicionar">Sim</button>
                     </form> 
                 </div>
             </div>
+            
             <!--------------------------------- END MODAL ELIMINAR UTILIZADOR   -------------------------------->
 
             <!--------------------------------- BEGIN MODAL ADICIONAR ALERTA   -------------------------------->
@@ -212,11 +219,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar Alerta</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
-                        <label for="data">Data:</label>
-                        <br>
-                        <input type="date" name="data" id="data" required style="border: 1px solid black;">
-                        <br>
+                    <form style="text-align: center;" method="POST" action="adicionaralerta.php" >
                         <label for="user">Nome:</label>
                         <br>
                         <input type="text" id="user" name="user" required style="border: 1px solid black;">
@@ -227,11 +230,14 @@
                         <br>
                         <label for="tipoAlert">Tipo Alerta:</label>
                         <br>
-                        <select name="tipoAlerta" id="tipoAlerta">
-                            <option value="h1" name="h1">H1</option>
-                            <option value="h2" name="h2">H2</option>
-                            <option value="h3" name="h3">H3</option>
-                        </select>
+                        <input type="checkbox" name="alertH1" id="alertH1" value="alertH1" style="border: 1px solid black; padding:6px;">
+                        <label for="alertH1">H1</label>
+                        <br>
+                        <input type="checkbox" name="alertH2" id="alertH2" value="alertH2" style="border: 1px solid black; padding:6px;">
+                        <label for="alertH1">H2</label>
+                        <br>
+                        <input type="checkbox" name="alertH3" id="alertH3" value="alertH3" style="border: 1px solid black; padding:6px;">
+                        <label for="alertH1">H3</label>
                         <br>
                         <label for="tipoAlert">Formato Relatorio:</label>
                         <br>
@@ -241,8 +247,8 @@
                         </select>
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Adicionar</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" style="cursor: pointer;" name="adicionarAlerta" class="adicionar">Adicionar</button>
                     </form> 
                 </div>
             </div>
@@ -281,7 +287,7 @@
                         </select>
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
                         <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Editar</button>
                     </form> 
                 </div>
@@ -300,7 +306,7 @@
                         <label for="user">Tem a certeza que quer eliminar o alerta?</label>
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Não</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Não</button>
                         <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
                     </form> 
                 </div>
@@ -326,7 +332,7 @@
                         <input type="text" name="name" id="name" required style="border: 1px solid black;">
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
                         <button type="submit" style="cursor: pointer;" name="adicionarMP" class="adicionar">Adicionar</button>
                     </form> 
                 </div>
@@ -374,7 +380,7 @@
                         <input type="text" id="name" name="name" required style="border: 1px solid black;">
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Cancelar</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
                         <button type="submit" style="cursor: pointer;" name="EditarMP" class="EditarMP">Editar</button>
                     </form> 
                 </div>
@@ -417,7 +423,7 @@
                         <label for="user">Tem a certeza que quer eliminar o Meeting Point?</label>
                         <br>
                         <br>
-                        <button type="submit" style="cursor: pointer;" name="cancelar" class="cancelar">Não</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Não</button>
                         <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
                     </form> 
                 </div>
@@ -503,66 +509,49 @@
             </div>
             <br>
             <!-- script paginicação-->
-            <?php 
-                // Define o número de resultados por página
-                $results_per_page = 7;
 
-                // Determina o número total de resultados
-                    $sql11 = "SELECT COUNT(*) AS num_results FROM mp_operation";
-                    $result11 = mysqli_query($connect, $sql11);
-                    $row = mysqli_fetch_assoc($result11);
-                    $total_results = $row['num_results'];
-
-                // Determina o número total de páginas
-                $total_pages = ceil($total_results / $results_per_page);
-
-                 // Determina a página atual
-                if (isset($_GET['page'])) {
-                    $current_page = $_GET['page'];
-                } else {
-                    $current_page = 1;
-                }
-
-                 // Determina o índice do primeiro resultado na página atual
-                $first_result_index = ($current_page - 1) * $results_per_page;
-            ?>
             <!-- -->
             <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud4">
-                    <tr style="color: white; background: #094b9b;">
-                        <th>Data</th>
-                        <th>ID</th>
-                        <th>Operações</th>
-                        <th>Ordem dada</th>
-                    </tr>
-                    <?php   
-                        include('db_connection.php');
-                        $sql = "SELECT * FROM `mp_operation` LIMIT $first_result_index, $results_per_page ";
-                        $result = mysqli_query($connect, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            $count = $first_result_index + 1;
-                            while($row = mysqli_fetch_assoc($result)){
-                                ?>
-                                    <tr>
-                                        <td><?php echo $row['datatime']?></td>
-                                        <td><?php echo $row['id']?></td>
-                                        <td><?php echo $row['operation']?></td>
-                                        <td><?php echo $row['order_given']?></td>
-                                        <!--
-                                        <td>
-                                            <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                            <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
-                                        </td>
-                                        -->
-                                    </tr>
-                                <?php
-                                $count++;
-                            }   
-                        }
-                    ?>
-                </table>
+                <div class="table-wraper">
+                    <table class="tabelacrud" id="tabelacrud4">
+                        <thead>
+                            <tr style="color: white; background: #094b9b;">
+                                <th>Data</th>
+                                <th>ID</th>
+                                <th>Operações</th>
+                                <th>Ordem dada</th>
+                            </tr>
+                        </thead>
+                        <?php   
+                            include('db_connection.php');
+                            /* TIRAR O LIMIT 7 */ 
+                            $sql = "SELECT * FROM `mp_operation` LIMIT 7";
+                            $result = mysqli_query($connect, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                
+                                while($row = mysqli_fetch_assoc($result)){
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $row['datatime']?></td>
+                                            <td><?php echo $row['id']?></td>
+                                            <td><?php echo $row['operation']?></td>
+                                            <td><?php echo $row['order_given']?></td>
+                                            <!--
+                                            <td>
+                                                <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                                <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                            </td>
+                                            -->
+                                        </tr>
+                                    <?php
+                                    
+                                }   
+                            }
+                        ?>
+                    </table>
+                </div>
             </div>
             <br>
             <a href="#menu" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
@@ -583,6 +572,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" ></script>
     <!--
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -626,6 +616,20 @@
         $(document).ready(function() {
             $('.btnedit-utilizador').on('click', function(){
                 $('#editmodal').modal('show');
+
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    console.log(data);
+
+                    $('#update_id').val(data[0]);
+                    $('#user').val(data[1]);
+                    $('#name').val(data[2]);
+                    $('#email').val(data[3]);
+                    $('#phone_number').val(data[4]);
+                    $('#role').val(data[5]);
             });
         });
 
@@ -633,6 +637,15 @@
         $(document).ready(function() {
             $('.btneliminar-utilizador').on('click', function(){
                 $('#eliminarmodal').modal('show');
+
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    console.log(data);
+
+                    $('#delete_id').val(data[0]);
             });
         });
 

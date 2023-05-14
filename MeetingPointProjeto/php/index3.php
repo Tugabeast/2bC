@@ -71,98 +71,102 @@
         <main >
             <!--<h1 class="titulo">Monitorização</h1>-->
             <!-- script php progress bar -->
-            <?php 
-            
-            
-            ?>
+            <div class="progressbar">
+                <?php 
+                    $sqlbar2 = "SELECT * FROM mp_registered_cards where mp != 0 " ;
+                    if($result2 = mysqli_query($connect,$sqlbar2)){
+                        $rowcount2 = mysqli_num_rows($result2);
+                        echo "nr de trabalhadores registado: " . $rowcount2;
+                        
+                    }
+                    echo "<br>";
+                    $sqlpbar = "SELECT * FROM mp_registered_cards where mp = 0";
+                    if($result = mysqli_query($connect,$sqlpbar)){
+                        $rowcount = mysqli_num_rows($result);
+                        echo "nr de trabalhadores nao registados: " . $rowcount;
+                        
+                    }
 
+                    $percentagem = ($rowcount2 /$rowcount)* 100 ;
+                    
+                ?>
+                <br>
+                <progress value="<?php echo $rowcount2 ?>" max="<?php echo $rowcount ?>"></progress>
+                <br>
+                <?php echo round($percentagem,2)  ."%"  ?>
+            </div>
+            <br>
 
-
-
-            <?php 
-                // Define o número de resultados por página
-                $results_per_page = 5;
-
-                // Determina o número total de resultados
-                    $sql11 = "SELECT COUNT(*) AS num_results FROM mp_registered_cards";
-                    $result11 = mysqli_query($connect, $sql11);
-                    $row = mysqli_fetch_assoc($result11);
-                    $total_results = $row['num_results'];
-
-                // Determina o número total de páginas
-                $total_pages = ceil($total_results / $results_per_page);
-
-                 // Determina a página atual
-                if (isset($_GET['page'])) {
-                    $current_page = $_GET['page'];
-                } else {
-                    $current_page = 1;
-                }
-
-                 // Determina o índice do primeiro resultado na página atual
-                $first_result_index = ($current_page - 1) * $results_per_page;
-            ?>
             <!-- -->
             <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud4">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Empresa</th>
-                        <th>Cargo</th>
-                        <th>Meeting Point</th>
-                        <th>More</th>
-                    </tr>
-                    <?php   
-                        include('db_connection.php');
-                        $sql = "SELECT * FROM `mp_registered_cards` LIMIT $first_result_index, $results_per_page ";
-                        $result = mysqli_query($connect, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            $count = $first_result_index + 1;
-                            while($row = mysqli_fetch_assoc($result)){
-                                ?>
-                                    <tr>
-                                        <td><?php echo $row['worker_name']?></td>
-                                        <td><?php echo $row['worker_company']?></td>
-                                        <td><?php echo $row['type']?></td>
-                                        <td><?php echo $row['mp']?></td>
-                                        <td><span style="cursor: pointer;" class="material-symbols-sharp">more_horiz</span></td>
-                                        <!--
-                                        <td>
-                                            <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                            <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
-                                        </td>
-                                        -->
-                                    </tr>
-                                <?php
-                                $count++;
-                            }   
-                        }
-                    ?>
-                </table>
+                <div class="table-wraper">
+                    <table class="tabelacrud" id="tabelacrud4">
+                        <thead>
+                            <tr style="color: white;background: #094b9b;">
+                                <th>Nome</th>
+                                <th>Empresa</th>
+                                <th>Cargo</th>
+                                <th>Meeting Point</th>
+                                <th>More</th>
+                            </tr>
+                        </thead>
+                        <?php   
+                            include('db_connection.php'); 
+                            $sql = "SELECT * FROM `mp_registered_cards`";
+                            $result = mysqli_query($connect, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                               
+                                while($row = mysqli_fetch_assoc($result)){
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $row['worker_name']?></td>
+                                            <td><?php echo $row['worker_company']?></td>
+                                            <td><?php echo $row['type']?></td>
+                                            <td><?php echo $row['mp']?></td>
+                                            <td><span style="cursor: pointer;" class="material-symbols-sharp">more_horiz</span></td>
+                                            <!--
+                                            <td>
+                                                <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                                <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                            </td>
+                                            -->
+                                        </tr>
+                                    <?php
+                                }   
+                            }
+                        ?>
+                    </table>
+                </div>
             </div>
             <br>
             <h1 class="titulo"  style="text-align: center;">Zonas de Meeting Points</h1>  
                 <div class="row">
-                    <?php
-                        include('db_connection.php');
-                        $sqlzonas = "SELECT * FROM meeting_point ";
-                        
-                        $result = mysqli_query($connect,$sqlzonas);
-                        while($row = mysqli_fetch_assoc($result)){
+                    <div class="column">
+                        <?php
+                            include('db_connection.php');
+                            $sqlzonas = "SELECT * FROM meeting_point ";
+                            $sqltrabalhadoresMP3 = "SELECT * FROM mp_registered_cards WHERE mp=3";
+                            $result = mysqli_query($connect,$sqlzonas);
+                            $result2= mysqli_query($connect,$sqltrabalhadoresMP3);
                             
-                            ?>
-                            <div class="card" style="width: 200px; margin: auto; display: grid;" >
-                                <h3><?php echo $row['MP_ID']?></h3>
-                                <h3><?php echo $row['name']?></h3>
-                                <h3>0<span class="material-symbols-sharp">group</span></h3>
-                                <button style="cursor: pointer;" class="abrirDetalhes" type="button">Details</button>
-                            </div>
-                            <br>
-                            <?php
-                        }
-                    ?>
+                            while($row = mysqli_fetch_assoc($result) AND $row2 = mysqli_fetch_assoc($result2)){
+                                $rowcountmp3 = mysqli_num_rows($result2);
+                                
+                                ?>
+                                <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                    <h3><?php echo $row['MP_ID']?></h3>
+                                    <h3><?php echo $row['name']?></h3>
+                                    <h3><?php echo $rowcountmp3?><span class="material-symbols-sharp">group</span></h3>
+                                    <button style="cursor: pointer;" class="abrirDetalhes" type="button">Details</button>
+                                </div>
+                                <br>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                    
                 </div>
 
             <br>
