@@ -26,7 +26,6 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    appearance: none;
     border: 0;
     text-decoration: none;
     list-style: none;
@@ -460,7 +459,6 @@ main table tbody tr:last-child td {
     /*border: none;*/
 }
 
-
 main .recent-orders a {
     text-align: center;
     display: block;
@@ -556,23 +554,17 @@ main .recent-orders a {
     box-shadow: var(--color-background);
 }
 
-
-
-.table-wraper{
+.table-wraper {
     overflow-y: scroll;
     margin: auto;
-    max-height: 28rem;
+    max-height: 20rem;
     max-width: min-content;
-    
-    
 }
 
-.table-wraper table thead tr{
+.table-wraper table thead tr {
     position: sticky;
     top: 0px;
 }
-
-
 
 .btn-add {
     border: 1px solid black;
@@ -602,7 +594,7 @@ main .recent-orders a {
     line-height: 200%;
 }
 
-.btn-add-alert:hover{
+.btn-add-alert:hover {
     background: var(--color-danger);
 }
 
@@ -620,7 +612,7 @@ main .recent-orders a {
     line-height: 200%;
 }
 
-.btn-add-mp:hover{
+.btn-add-mp:hover {
     background: var(--color-danger);
 }
 
@@ -697,7 +689,6 @@ td {
     background-color: var(--color-dark);
     color: var(--color-info-dark);
     border-radius: var(--border-radius-1);
-    
 }
 
 .fa {
@@ -882,16 +873,10 @@ td {
     main .recent-orders table {
         width: 83vw;
     }
-    
     main table thead tr th:last-child,
     main table thead tr th:first-child {
         display: none;
     }
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child {
-        display: none;
-    }
-   
     #map {
         margin-left: 4rem;
     }
@@ -988,9 +973,6 @@ td {
     .right .top button span {
         font-size: 2rem;
     }
-
-
-
     #map {
         height: 25rem;
     }
@@ -1141,24 +1123,24 @@ td {
     background: rgb(65, 90, 27);
 }
 
+
 /* --------------progressbar css------------------ */
-.progressbar{
+
+.progressbar {
     text-align: center;
 }
 
 progress {
     height: 2rem;
-    width:30rem;
+    width: 30rem;
 }
 
-progress[value]::-webkit-progress-bar{
+progress[value]::-webkit-progress-bar {
     background-color: #eee;
     border-radius: var(--border-radius-1);
 }
 
-progress[value]::-webkit-progress-value{
+progress[value]::-webkit-progress-value {
     background-color: #094b9b;
     border-radius: var(--border-radius-1);
 }
-
-

@@ -220,6 +220,7 @@
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar Alerta</h2>
                     <form style="text-align: center;" method="POST" action="adicionaralerta.php" >
+                    <!--
                         <label for="user">Nome:</label>
                         <br>
                         <input type="text" id="user" name="user" required style="border: 1px solid black;">
@@ -228,6 +229,7 @@
                         <br>
                         <input type="text" id="email" name="email" required style="border: 1px solid black;">
                         <br>
+                    -->    
                         <label for="tipoAlert">Tipo Alerta:</label>
                         <br>
                         <input type="checkbox" name="alertH1" id="alertH1" value="alertH1" style="border: 1px solid black; padding:6px;">
@@ -241,7 +243,7 @@
                         <br>
                         <label for="tipoAlert">Formato Relatorio:</label>
                         <br>
-                        <select name="formato" id="formato">
+                        <select name="report_format" id="report_format">
                             <option value="pdf" name="pdf">PDF</option>
                             <option value="csv" name="csv">CSV</option>
                         </select>
@@ -261,8 +263,9 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Alerta</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
-                        
+                    <form style="text-align: center;" method="POST" action="editarAlerta.php" >
+                        <input type="hidden" id="editalert_id" name="editalert_id">
+                        <!--
                         <label for="user">Nome:</label>
                         <br>
                         <input type="text" id="user" name="user" required style="border: 1px solid black;">
@@ -278,17 +281,18 @@
                             <option value="h2" name="h2">H2</option>
                             <option value="h3" name="h3">H3</option>
                         </select>
+                    -->
                         <br>
                         <label for="tipoAlert">Formato Relatorio:</label>
                         <br>
-                        <select name="formato" id="formato">
+                        <select name="report_format" id="report_format">
                             <option value="pdf" name="pdf">PDF</option>
                             <option value="csv" name="csv">CSV</option>
                         </select>
                         <br>
                         <br>
                         <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Editar</button>
+                        <button type="submit" style="cursor: pointer;" name="alertedit_id" class="adicionar">Editar</button>
                     </form> 
                 </div>
             </div>
@@ -301,13 +305,13 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Eliminar Alerta</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
-                        
+                    <form style="text-align: center;" method="POST" action="eliminarAlerta.php" >
+                        <input type="hidden" id="eliminarAlerta_id" name="eliminarAlerta_id">
                         <label for="user">Tem a certeza que quer eliminar o alerta?</label>
                         <br>
                         <br>
                         <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Não</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
+                        <button type="submit" style="cursor: pointer;" name="eliminarALerta" class="adicionar">Sim</button>
                     </form> 
                 </div>
             </div>
@@ -315,14 +319,14 @@
 
             <!--------------------------------- END MODAL EDITAR ALERTA   -------------------------------->
 
-            <!--------------------------------- BEGIN MODAL ADICINAR MP  C/ SCRIPT PHP PARA ADICIONAR MEETING POINTS -------------------------------->
+            <!--------------------------------- BEGIN MODAL ADICINAR MP  -------------------------------->
 
             <div id="AddMPmodal" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Adicionar MP</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
+                    <form style="text-align: center;" method="POST" action="adicionarMP.php" >
                         <label for="MP_ID">MP:</label>
                         <br>
                         <input type="text" name="MP_ID" id="MP_ID" required style="border: 1px solid black;">
@@ -338,30 +342,6 @@
                 </div>
             </div>
 
-            <?php 
-                //include ('db_connection.php');
-
-                if(isset($_POST['adicionarMP'])){
-                    $MP_ID = $_POST['MP_ID'];
-                    $name = $_POST['name'];
-
-                    $sqlinsertMP = "INSERT INTO `meeting_point` (`MP_ID`, `name`) VALUES ('$MP_ID', '$name')";
-
-                    $data = mysqli_query($connect,$sqlinsertMP);
-
-                    if($data){
-                        $msg = "MP adicionado com sucesso";
-                        //header("location: settings.php");
-                    }
-                    else{
-                        $msg = "MP nao foi adicionado";
-                    }
-
-
-                }
-
-            ?>
-
 
             <!--------------------------------- END MODAL ADICIONAR MP   -------------------------------->
 
@@ -372,43 +352,19 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Meeting Point</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
+                    <form style="text-align: center;" method="POST" action="editarMP.php" >
 
-                        <input type="hidden" name="id" id="id" value="<?php echo $row['id']; ?>">    
+                        <input type="hidden" name="mpedit_id" id="mpedit_id">    
                         <label for="user">Nome:</label>
                         <br>
                         <input type="text" id="name" name="name" required style="border: 1px solid black;">
                         <br>
                         <br>
                         <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" style="cursor: pointer;" name="EditarMP" class="EditarMP">Editar</button>
+                        <button type="submit" style="cursor: pointer;" name="editarMP" class="EditarMP">Editar</button>
                     </form> 
                 </div>
             </div>
-
-            <?php 
-                if(isset($_POST['EditarMP'])){
-
-                    $id = $_POST ['id'];
-                    $name = $_POST['name'];
-            
-                    $sqlinsertMP = "UPDATE `meeting_point` SET name = '$name' WHERE id = '$id'";
-            
-                    $data = mysqli_query($connect,$sqlinsertMP);
-            
-                    if($data){
-                        $msg = "MP editado com sucesso";
-                        //header("location: settings.php");
-                    }
-                    else{
-                        $msg = "MP nao foi editado";
-                    }
-            
-            
-                }
-            
-            ?>
-
             <!--------------------------------- END MODAL EDITAR MP   -------------------------------->
 
             <!--------------------------------- BEGIN MODAL ELIMINAR MP   -------------------------------->
@@ -418,19 +374,20 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Eliminar Meeting Point</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
-                        
+                    <form style="text-align: center;" method="POST" action="eliminarMP.php" >
+                        <input type="hidden" id="mpelimin_id" name="mpelimin_id">
                         <label for="user">Tem a certeza que quer eliminar o Meeting Point?</label>
                         <br>
                         <br>
                         <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Não</button>
-                        <button type="submit" style="cursor: pointer;" name="adicionar" class="adicionar">Sim</button>
+                        <button type="submit" style="cursor: pointer;" name="eliminarMP" class="adicionar">Sim</button>
                     </form> 
                 </div>
             </div>
 
             <!--------------------------------- END MODAL ELIMINAR MP   -------------------------------->
-
+            <br>
+            <br>
             <h1 class="titulo" style="text-align: center;">Gestão de Alertas</h1>
             <button type="button" class="btn-add-alert" id="AddAlertmodal"><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
 
@@ -473,7 +430,8 @@
             
             
             <br>
-
+            <br>
+            <br>
             <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
             <h3><?php $msg?></h3>
             <button type="button" class="btn-add-mp" id="AddMPmodal"><span class="material-symbols-sharp">location_on</span>Adicionar MP</button>
@@ -497,8 +455,7 @@
                                     <td><?php echo $row['MP_ID']?></td>
                                     <td><?php echo $row['name']?></td>                           
                                     <td>
-                                        <!--<button type="button" class="edit-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>-->
-                                        <a class="edit-MP" style="background: #dddddd;" href="settings.php?id=<?php echo $row['id'] ?>"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a> 
+                                        <button type="button" class="edit-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>    
                                         <button type="button" class="eliminar-MP" style="background: #dddddd;" ><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                     </td>
                                 </tr>
@@ -507,6 +464,8 @@
                     ?>
                 </table>
             </div>
+            <br>
+            <br>
             <br>
             <!-- script paginicação-->
 
@@ -612,7 +571,7 @@
             }
         }
 
-        //funcao abrir modal para Editar Meeting Point
+        //funcao abrir modal para Editar utilizador
         $(document).ready(function() {
             $('.btnedit-utilizador').on('click', function(){
                 $('#editmodal').modal('show');
@@ -649,24 +608,45 @@
             });
         });
 
-        //funcao abrir modal para Adicionar Meeting Point
+        //funcao abrir modal para Adicionar alertas
         $(document).ready(function() {
             $('.btn-add-alert').on('click', function(){
                 $('#AddAlertmodal').modal('show');
             });
         });
 
-        //funcao abrir modal para editar Meeting Point
+        //funcao abrir modal para editar alertas
         $(document).ready(function() {
             $('.edit-alert').on('click', function(){
                 $('#EditAlertmodal').modal('show');
+
+                $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                console.log(data);
+
+                $('#editalert_id').val(data[0]);
+                $('#report_format').val(data[1]);
             });
         });
 
-        //funcao abrir modal para eliminar Alerta
+        //funcao abrir modal para eliminar Alertas
         $(document).ready(function() {
             $('.eliminar-alert').on('click', function(){
                 $('#eliminarAlert').modal('show');
+
+
+                $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    console.log(data);
+
+                $('#eliminarAlerta_id').val(data[0]);
+                
             });
         });
 
@@ -681,8 +661,17 @@
         $(document).ready(function() {
             
             $('.edit-MP').on('click', function(e){
-                e.defaultPrevented();
+                
                 $('#EditMPmodal').modal('show');
+
+                $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                console.log(data);
+
+                $('#mpedit_id').val(data[0]);
             });
         });
 
@@ -690,6 +679,16 @@
         $(document).ready(function() {
             $('.eliminar-MP').on('click', function(){
                 $('#EliminarMPmodal').modal('show');
+
+
+                $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                console.log(data);
+
+                $('#mpelimin_id').val(data[0]);
             });
         });
         

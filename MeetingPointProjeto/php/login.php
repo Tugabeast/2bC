@@ -75,26 +75,23 @@ function validate_login($user, $password) {
     </head>
 
     <body >
-        
-        <form action="#" method="post">
-            <h2>MEETING POINT <i class="fa-solid fa-location-dot fa-bounce"></i> </h2>
-            <?php /* if(isset($_GET['error'])) {?>
-                <p class="error"><?php echo $_GET['error']; ?> </p>
-                <?php } ?>
-
-                <?php if(isset($_GET['sucess'])) {?>
-                <p class="sucess"><?php echo $_GET['sucess']; ?> </p>
-            <?php } */ ?>
-            <i class="fa-sharp fa-solid fa-user"></i>
-            <label>Username</label>
-            <input type="text" name="user" placeholder="username">
-            <br>
-            <i class="fa-sharp fa-solid fa-lock"></i>
-            <label>Password</label>
-            <input type="password" name="password" placeholder="password">
-            <br>
-            <button type="submit">Login</button>
-        </form>
- 
+        <div class="container">
+            <div class="title">
+                <h2>Meeting Point </h2>
+            </div>
+            <div class="form-container">
+                <form action="#" method="post">
+                    <i class="fa-sharp fa-solid fa-envelope"></i>
+                    <label>Username</label>
+                    <input type="text" name="user" placeholder="username">
+                    <br>
+                    <i class="fa-sharp fa-solid fa-lock"></i>
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="password">
+                    <br>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

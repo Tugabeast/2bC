@@ -73,7 +73,7 @@ function validate_login($username, $password) {
 
 
 session_start();
-require('db_connection.php');//ligacao BD
+//require('db_connection.php');//ligacao BD
 //echo "O seu login está a ser verificado. Por favor aguarde...";
 if (isset($_POST['username']) && isset($_POST['password'])){
         // removes backslashes

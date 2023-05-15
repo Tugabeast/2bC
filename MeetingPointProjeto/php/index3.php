@@ -101,7 +101,7 @@
             <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
-                <div class="table-wraper">
+                <div class="table-wraper" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
                     <table class="tabelacrud" id="tabelacrud4">
                         <thead>
                             <tr style="color: white;background: #094b9b;">

@@ -55,7 +55,7 @@ include('protect.php');?>
         <main>
             <h1 class="titulo">GVIR STATUS</h1>
             <div class="containerphp" style="height: 70vh;">
-                <table class="tabelacrud" id="tabelacrud1" style="width: 50rem;">
+                <table class="tabelacrud" id="tabelacrud1" style="width: 50rem; ">
                     <tr style="background: #094b9b; color: white;">
                         <th>Property</th>
                         <th>Value</th>
