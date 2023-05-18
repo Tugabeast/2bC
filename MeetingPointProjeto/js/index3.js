@@ -19,7 +19,7 @@ closeBtn.addEventListener('click', () => {
 });
 
 btnabrir.addEventListener('click', () => {
-    sideMenu.style.display
+    sideMenu.style.display = 'block';
 })
 
 
@@ -31,8 +31,6 @@ function openNav() {
     document.getElementById("dashboard").style.display = "block";
     document.getElementById("formulario").style.display = "block";
     document.getElementById("tabelacrud").style.display = "block";
-
-
     document.getElementById("closeside").style.display = "flex";
     document.getElementById("abrirside").style.display = "none";
     document.getElementById("container").style.gridTemplateColumns = "16rem auto";

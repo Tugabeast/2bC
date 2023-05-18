@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/cssdeteste.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
     
     
     <?php 
@@ -184,7 +185,7 @@
                         //$result2 = mysqli_query($connect,$sqloperation); 
                         while($row = mysqli_fetch_assoc($result) ){                              
                     ?>
-                        <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                        <div class="card" style="width: 200px; margin: auto; display: block; text-align: center;" >
                             <h3><?php echo $row['MP_ID']?></h3>
                             <h3><?php echo $row['name']?></h3>
                             <!--<h4><?php echo $row['operation']?></h4>-->
@@ -196,31 +197,46 @@
                 </div>
                 <br>
                 <div class="column">
-                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                    <div class="card" style="width: 200px; margin: auto; display: grid;">
                         <h3>teste2</h3>
                     </div>
                 </div>
                 <br>
                 <div class="column">
-                    <div class="card" style="width: 100px; margin: auto; display: grid;">
-                        <h3>teste3</h3>
+                    <div class="card" style="width: 200px; margin: auto;  ">
+                        <h3 style="text-align: center;">teste3</h3>
+                        <br>
+                        <input type="checkbox">
+                        <label>Standby</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Emergencia</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Evacuação</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Fim de Emergencia</label>
+                        <br>
+                        <br>
+                        <button type="sumbit" style="margin: auto;" >Sumbit</button>
                     </div>
                 </div>
                 <br>
                 <div class="column">
-                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                    <div class="card" style="width: 200px; margin: auto; display: grid;">
                         <h3>teste4</h3>
                     </div>
                 </div>
                 <br>
                 <div class="column">
-                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                    <div class="card" style="width: 200px; margin: auto; display: grid;">
                         <h3>teste5</h3>
                     </div>
                 </div>
                 <br>
                 <div class="column">
-                    <div class="card" style="width: 100px; margin: auto; display: grid;">
+                    <div class="card" style="width: 200px; margin: auto; display: grid;">
                         <h3>teste geral</h3>
                     </div>
                 </div>

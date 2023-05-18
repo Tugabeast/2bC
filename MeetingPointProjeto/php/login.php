@@ -74,7 +74,7 @@ function validate_login($user, $password) {
 }    ?>
     </head>
 
-    <body >
+    <body>
         <div class="container">
             <div class="title">
                 <h2>Meeting Point </h2>

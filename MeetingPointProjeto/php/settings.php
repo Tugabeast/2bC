@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/cssdeteste.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     
+    
 
     
     
@@ -71,39 +72,41 @@
             <h1 class="titulo" style="text-align: center;">Gestão Utilizadores</h1>
             <button type="button" class="btn-add" id="myBtn"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud1">
-                    <tr style="color: white; background: #094b9b;">
-                        <th>ID</th>
-                        <th>User</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Role</th>
-                        <th>Ações</th>
-                    </tr>
-                    <?php   
-                        include('db_connection.php');
-                        $sql = "SELECT * FROM `mp_users` ";
-                        $result = mysqli_query($connect, $sql);
-                        while($row = mysqli_fetch_assoc($result)){
-                            ?>
-                                <tr>
-                                    <td><?php echo $row['id']?></td>
-                                    <td><?php echo $row['user']?></td>
-                                    <td><?php echo $row['name']?></td>
-                                    <td><?php echo $row['email']?></td>
-                                    <td><?php echo $row['phone_number']?></td>
-                                    <td><?php echo $row['role']?></td>
-                                    <td>
-                                            <button type="button" class="btnedit-utilizador" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
-                                            <button type="button" class="btneliminar-utilizador" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
-                                            <!--<a href='settings.php?id=".$result['id']."' ><span class="material-symbols-sharp" style="color: red;">delete</span></a> -->
-                                            <!--https://www.youtube.com/watch?v=I2lB7fZE37g&ab_channel=E-CODEC-->  
-                                    </td>
-                                </tr>
-                            <?php
-                        }   
-                    ?>
+                <table class="tabelacrud" id="tabelacrud11" style="width: 60%;">
+                    <thead>
+                        <tr style="color: white; background: #094b9b;">
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Role</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php   
+                            include('db_connection.php');
+                            $sql = "SELECT * FROM `mp_users` ";
+                            $result = mysqli_query($connect, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $row['id']?></td>
+                                        <td><?php echo $row['user']?></td>
+                                        <td><?php echo $row['name']?></td>
+                                        <td><?php echo $row['email']?></td>
+                                        <td><?php echo $row['phone_number']?></td>
+                                        <td><?php echo $row['role']?></td>
+                                        <td>
+                                                <button type="button" class="btnedit-utilizador" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
+                                                <button type="button" class="btneliminar-utilizador" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                        </td>
+                                    </tr>
+                                <?php
+                            }   
+                        ?>
+                    </tbody>
                 </table>
             </div>
             <br>
@@ -388,11 +391,14 @@
             <!--------------------------------- END MODAL ELIMINAR MP   -------------------------------->
             <br>
             <br>
+            <br>
+            <br>
+            <br>
             <h1 class="titulo" style="text-align: center;">Gestão de Alertas</h1>
             <button type="button" class="btn-add-alert" id="AddAlertmodal"><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
 
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud2">
+                <table class="tabelacrud" id="tabelacrud2" style="width: 60%;">
                     <thead>
                         <tr style="color: white; background: #094b9b;">
                             <th>Data</th>
@@ -417,8 +423,8 @@
                                         <td><?php echo $row['alert']?></td>
                                         <td><?php echo $row['report_format']?></td>
                                         <td>
-                                            <button type="button" class="edit-alert" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
-                                            <button type="button" class="eliminar-alert" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                            <button type="button" class="edit-alert" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
+                                            <button type="button" class="eliminar-alert" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                         </td>
                                     </tr>
                                 <?php
@@ -437,31 +443,35 @@
             <button type="button" class="btn-add-mp" id="AddMPmodal"><span class="material-symbols-sharp">location_on</span>Adicionar MP</button>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
             <div class="containerphp">
-                <table class="tabelacrud" id="tabelacrud3">
-                    <tr style="color: white; background: #094b9b;">
-                        <th>ID</th>
-                        <th>MP</th>
-                        <th>Name</th>
-                        <th>Ações</th>
-                    </tr>
-                    <?php   
-                        include('db_connection.php');
-                        $sql = "SELECT * FROM `meeting_point` ";
-                        $result = mysqli_query($connect, $sql);
-                        while($row = mysqli_fetch_assoc($result)){
-                            ?>
-                                <tr>
-                                    <td><?php echo $row['id']?></td>
-                                    <td><?php echo $row['MP_ID']?></td>
-                                    <td><?php echo $row['name']?></td>                           
-                                    <td>
-                                        <button type="button" class="edit-MP" style="background: #dddddd;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>    
-                                        <button type="button" class="eliminar-MP" style="background: #dddddd;" ><span class="material-symbols-sharp" style="color: red;">delete</span></button>
-                                    </td>
-                                </tr>
-                            <?php
-                        }   
-                    ?>
+                <table class="tabelacrud" id="tabelacrud3" style="width: 60%;">
+                    <thead>
+                        <tr style="color: white; background: #094b9b;">
+                            <th>ID</th>
+                            <th>MP</th>
+                            <th>Name</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php   
+                            include('db_connection.php');
+                            $sql = "SELECT * FROM `meeting_point` ";
+                            $result = mysqli_query($connect, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $row['id']?></td>
+                                        <td><?php echo $row['MP_ID']?></td>
+                                        <td><?php echo $row['name']?></td>                           
+                                        <td>
+                                            <button type="button" class="edit-MP" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>    
+                                            <button type="button" class="eliminar-MP" style="background: #00D4FF;" ><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                        </td>
+                                    </tr>
+                                <?php
+                            }   
+                        ?>
+                    </tbody>
                 </table>
             </div>
             <br>
@@ -483,32 +493,34 @@
                                 <th>Ordem dada</th>
                             </tr>
                         </thead>
-                        <?php   
-                            include('db_connection.php');
-                            /* TIRAR O LIMIT 7 */ 
-                            $sql = "SELECT * FROM `mp_operation` LIMIT 7";
-                            $result = mysqli_query($connect, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                
-                                while($row = mysqli_fetch_assoc($result)){
-                                    ?>
-                                        <tr>
-                                            <td><?php echo $row['datatime']?></td>
-                                            <td><?php echo $row['id']?></td>
-                                            <td><?php echo $row['operation']?></td>
-                                            <td><?php echo $row['order_given']?></td>
-                                            <!--
-                                            <td>
-                                                <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                                <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
-                                            </td>
-                                            -->
-                                        </tr>
-                                    <?php
+                        <tbody>
+                            <?php   
+                                include('db_connection.php');
+                                /* TIRAR O LIMIT 7 */ 
+                                $sql = "SELECT * FROM `mp_operation` LIMIT 7";
+                                $result = mysqli_query($connect, $sql);
+                                if (mysqli_num_rows($result) > 0) {
                                     
-                                }   
-                            }
-                        ?>
+                                    while($row = mysqli_fetch_assoc($result)){
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['datatime']?></td>
+                                                <td><?php echo $row['id']?></td>
+                                                <td><?php echo $row['operation']?></td>
+                                                <td><?php echo $row['order_given']?></td>
+                                                <!--
+                                                <td>
+                                                    <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
+                                                    <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
+                                                </td>
+                                                -->
+                                            </tr>
+                                        <?php
+                                        
+                                    }   
+                                }
+                            ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
