@@ -131,6 +131,12 @@ aside {
     /*background: #007188;*/
     width: min-content;
     padding: 2rem;
+    border-radius: 0 var(--border-radius-3) var(--border-radius-3) 0;
+    box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+}
+
+aside:hover {
+    box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.4);
 }
 
 aside .top {
@@ -462,8 +468,6 @@ main .recent-orders a {
 .containerphp {
     display: flex;
     border-radius: var(--card-border-radius);
-    background: var(--color-background);
-    box-shadow: var(--box-shadow);
     height: 50vh;
     margin-top: 1rem;
 }
@@ -476,7 +480,15 @@ main .recent-orders a {
     overflow-y: scroll;
     margin: auto;
     max-height: 20rem;
-    max-width: max-content;
+    width: 70rem;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.table-wraper:hover {
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
 }
 
 .table-wraper table thead tr {
@@ -554,39 +566,39 @@ td {
     /*border: 1px solid #dddddd;*/
     text-align: left;
     padding: 8px;
-    
 }
 
-.containerphp .tabelacrud tbody{
-    background: linear-gradient(90deg, rgba(13,13,255,1) 0%, rgba(0,212,255,1) 50%);
+.containerphp .tabelacrud tbody {
+    background: linear-gradient(90deg, rgba(13, 13, 255, 1) 0%, rgba(0, 212, 255, 1) 50%);
 }
 
-.container .tabelacrud tbody td{
+.container .tabelacrud tbody td {
     color: white;
 }
 
-.container #tabelacrud11 thead tr th:first-child{
+.container #tabelacrud11 thead tr th:first-child {
     border-top-left-radius: 10px;
 }
 
-.container #tabelacrud11 thead tr th:last-child{
+.container #tabelacrud11 thead tr th:last-child {
     border-top-right-radius: 10px;
 }
 
-
-.container #tabelacrud11 tbody  tr:last-child td:first-child{
+.container #tabelacrud11 tbody tr:last-child td:first-child {
     border-bottom-left-radius: 10px;
 }
 
-.container #tabelacrud11 tbody  tr:last-child td:last-child{
+.container #tabelacrud11 tbody tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
+
 
 /*
 .containerphp .tabelacrud tr:nth-child(even) {
     background-color: #dddddd;
 }
 */
+
 .topoo:hover {
     color: red;
 }
@@ -598,6 +610,7 @@ td {
     float: left;
     width: 15%;
     padding: 0 5px;
+    margin-right: 10px;
 }
 
 .row {
@@ -628,20 +641,56 @@ td {
 /* Style the counter cards */
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    /*text-align: center;*/
-    /*background-color: var(--color-dark);*/
-    background-color: var(--color-info-light);
-    
-    color: var(--color-info-dark);
+    /*background: linear-gradient(to right, #415ACE 0%, #7F93C5 100%);*/
+    background: #094b9b;
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 2rem;
+    transition: all 300ms ease;
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.card:hover {
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
+    transition: all 300ms ease;
+}
+
+.card input[type=checkbox]:hover {
+    outline: 1px solid blue;
+}
+
+#butaodetalhes {
     border-radius: var(--border-radius-1);
+    color: white;
+    background: var(--color-primary);
+    margin-top: 5px;
+    padding: 5px;
+}
+
+#butaodetalhes:hover {
+    background: #415ACE;
+    color: white;
+}
+
+#butaosubmit {
+    border-radius: var(--border-radius-1);
+    color: white;
+    background: var(--color-primary);
+    margin-top: 5px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#butaosubmit:hover {
+    background: #415ACE;
+    color: white;
 }
 
 .fa {
     font-size: 50px;
 }
-
 
 
 /*   ============================ Media Queries Tablet ============================ */
@@ -682,9 +731,14 @@ td {
     main .recent-orders table {
         width: 83vw;
     }
-
     #map {
         margin-left: 4rem;
+    }
+    .row {
+        display: grid !important;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -747,29 +801,47 @@ td {
         width: 100%;
         margin: 0;
     }
-
     main table thead tr th:last-child(),
-    main table tbody tr td:first-child
-    {
+    main table tbody tr td:first-child {
         display: none;
     }
-
-
-    .table-wraper{
-        overflow-x: auto;  /* Habilita a rolagem horizontal em dispositivos menores */
-      }
-
-      .tabelacrud td,
-  .tabelacrud th {
-    white-space: nowrap;  /* Impede que o conteúdo seja quebrado em várias linhas */
-  }
-    
+    .table-wraper {
+        overflow-x: auto;
+        /* Habilita a rolagem horizontal em dispositivos menores */
+    }
+    .tabelacrud td,
+    .tabelacrud th {
+        white-space: nowrap;
+        /* Impede que o conteúdo seja quebrado em várias linhas */
+    }
     #map {
         height: 25rem;
+    }
+    .row {
+        display: grid !important;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .column {
+        margin-top: 10px;
     }
 }
 
 
+/*==========================media queries para a pagina index3/monitorizacao para os cards============================*/
+
+@media screen and (max-width: 1425px) {
+    .row {
+        display: grid !important;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .column {
+        margin-top: 20px;
+    }
+}
 
 
 /*==========================admin page============================*/
@@ -876,10 +948,13 @@ progress {
 
 progress[value]::-webkit-progress-bar {
     background-color: #eee;
-    border-radius: var(--border-radius-1);
+    border-radius: 20px;
 }
 
 progress[value]::-webkit-progress-value {
     background-color: #094b9b;
-    border-radius: var(--border-radius-1);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

@@ -55,74 +55,76 @@ include('protect.php');?>
         <main>
             <h1 class="titulo">GVIR STATUS</h1>
             <div class="containerphp" style="height: 70vh;">
-                <table class="tabelacrud" id="tabelacrud1" style="width: 50rem; ">
-                    <tr style="background: #094b9b; color: white;">
-                        <th>Property</th>
-                        <th>Value</th>
-                    </tr>
-                    <?php   
-                        include('db_connection.php');
-                        $sql = "SELECT * FROM `gvir_status` Where input=2 ";
-                        $result = mysqli_query($connect, $sql);
-                        while($row = mysqli_fetch_assoc($result)){
-                            ?>
-                                <tr>
-                                    <td>LoRa ID</td>
-                                    <td><?php echo $row['id']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Serial Number</td>
-                                    <td><?php echo $row['serial_number']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Last Contact</td>
-                                    <td><?php echo $row['datatime']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Status</td>
-                                    <td><?php echo $row['status']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Gas Concentration</td>
-                                    <td><?php echo $row['gas_concentration']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Sensor Temperature</td>
-                                    <td><?php echo $row['temperature']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Response Factor</td>
-                                    <td><?php echo $row['response_factor']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Sensor Range</td>
-                                    <td><?php echo $row['sensor_range']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Cal 100</td>
-                                    <td><?php echo $row['cal_100']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Cal 3000</td>
-                                    <td><?php echo $row['cal_3000']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Waiting Time</td>
-                                    <td><?php echo $row['flag_status']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Treshold H1 (ppm)</td>
-                                    <td><?php echo $row['threshold_h1']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Treshold H2 (ppm)</td>
-                                    <td><?php echo $row['threshold_h2']?></td>
-                                </tr>
-                            <?php
-                        }   
-                    ?>
-                </table>
-                <div id="graphdiv3" style="width: 70rem; margin-right: 2rem; margin-top: 4rem;"></div>
+                <div class="table-wraper" style="overflow-y: hidden; max-height: max-content; width: fit-content; margin-right: 20px;">
+                    <table class="tabelacrud" id="tabelacrud1" style="width: 50rem; ">
+                        <tr style="background: #094b9b; color: white;">
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                        <?php   
+                            include('db_connection.php');
+                            $sql = "SELECT * FROM `gvir_status` Where input=2 ";
+                            $result = mysqli_query($connect, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                    <tr>
+                                        <td>LoRa ID</td>
+                                        <td><?php echo $row['id']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Serial Number</td>
+                                        <td><?php echo $row['serial_number']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Contact</td>
+                                        <td><?php echo $row['datatime']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td><?php echo $row['status']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gas Concentration</td>
+                                        <td><?php echo $row['gas_concentration']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sensor Temperature</td>
+                                        <td><?php echo $row['temperature']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Response Factor</td>
+                                        <td><?php echo $row['response_factor']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sensor Range</td>
+                                        <td><?php echo $row['sensor_range']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cal 100</td>
+                                        <td><?php echo $row['cal_100']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cal 3000</td>
+                                        <td><?php echo $row['cal_3000']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Waiting Time</td>
+                                        <td><?php echo $row['flag_status']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Treshold H1 (ppm)</td>
+                                        <td><?php echo $row['threshold_h1']?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Treshold H2 (ppm)</td>
+                                        <td><?php echo $row['threshold_h2']?></td>
+                                    </tr>
+                                <?php
+                            }   
+                        ?>
+                    </table>
+                </div>
+                <div id="graphdiv3" style="width: 60rem; margin-right: 2rem; margin-top: 4rem;"></div>
                 <script type="text/javascript">
                     Dygraph.onDOMready(function onDOMready() {
                         g2 = new Dygraph(

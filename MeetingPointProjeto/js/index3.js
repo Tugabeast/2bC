@@ -57,64 +57,64 @@ function closeNav() {
 }
 
 
-        // Get the modal
-        var modal = document.getElementById("myModal");
-        
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        //quando clica em cancelar, fecha o modal
-        var cancelar = document.getElementsByClassName("cancelar");
-        cancelar.onclick = function(){
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        $(document).ready(function() {
-            $('.btnedit-utilizador').on('click', function(){
-                $('#editmodal').modal('show');
-            });
-        });
+// Get the modal
+var modal = document.getElementById("myModal");
 
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
 
-        /*---------mapa---------*/
-        var map = L.map('map').setView([40.6389, -8.6553], 13);
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+//quando clica em cancelar, fecha o modal
+var cancelar = document.getElementsByClassName("cancelar");
+cancelar.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+$(document).ready(function() {
+    $('.btnedit-utilizador').on('click', function() {
+        $('#editmodal').modal('show');
+    });
+});
 
 
-        var popup = L.popup();
 
-        function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("Clicou em " + e.latlng.toString())
-                .openOn(map);
-        }
-        map.on('click', onMapClick);
+/*---------mapa---------*/
+var map = L.map('map').setView([40.6389, -8.6553], 13);
 
-        var marker = L.marker([40.63425, -8.631547]).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("Clicou em " + e.latlng.toString())
+        .openOn(map);
+}
+map.on('click', onMapClick);
+
+var marker = L.marker([40.63425, -8.631547]).addTo(map);

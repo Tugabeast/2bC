@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-    
+
     
     <?php 
         include_once('db_connection.php');
@@ -20,19 +20,7 @@
 </head>
 
 <body>
-    <?php 
-/*
-    function loginuser(){
-        require_once 'db_connection.php';
-
-        $sel = "SELECT name FROM mp_users Where id = ". $_SESSION['id'];
-        $query = mysqli_query($connect,$sel);
-        $row = mysqli_fetch_assoc($query);
-        return $row;
-    }
-*/
-    ?>
-    
+ 
     <div class="container" id="container">
         <aside class="sidebar" id="mySidebar">
             <div class="top" id="main" >
@@ -102,7 +90,7 @@
             <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
-                <div class="table-wraper" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <div class="table-wraper">
                     <table class="tabelacrud" id="tabelacrud4">
                         <thead>
                             <tr style="color: white;background: #094b9b;">
@@ -143,68 +131,148 @@
             </div>
             <br>
             <h1 class="titulo"  style="text-align: center;">Zonas de Meeting Points</h1>  
-                <div class="row">
+                <br>
+                <div class="row" style="text-align: center; margin: auto; display: flex;align-items: center; justify-content: center;">
                     <div class="column">
                         <?php
                             include('db_connection.php');
-                            $sqlzonas = "SELECT * FROM meeting_point ";
+                            $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
+                            $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
+                            $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
+                            $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
+                            $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
+
                             $sqltrabalhadoresMP3 = "SELECT * FROM mp_registered_cards WHERE mp=3";
-                            $result = mysqli_query($connect,$sqlzonas);
-                            $result2= mysqli_query($connect,$sqltrabalhadoresMP3);
+                            $sqltrabalhadoresMP4 = "SELECT * FROM mp_registered_cards WHERE mp=4";
+                            $sqltrabalhadoresMP5 = "SELECT * FROM mp_registered_cards WHERE mp=5";
+                            $sqltrabalhadoresMP6 = "SELECT * FROM mp_registered_cards WHERE mp=6";
+                            $sqltrabalhadoresMP7 = "SELECT * FROM mp_registered_cards WHERE mp=7";
+
                             
-                            while($row = mysqli_fetch_assoc($result) AND $row2 = mysqli_fetch_assoc($result2)){
-                                $rowcountmp3 = mysqli_num_rows($result2);
+                            $resultMP3 = mysqli_query($connect,$sqlzona3);
+                            $resultMP4 = mysqli_query($connect,$sqlzona4);
+                            $resultMP5 = mysqli_query($connect,$sqlzona5);
+                            $resultMP6 = mysqli_query($connect,$sqlzona6);
+                            $resultMP7 = mysqli_query($connect,$sqlzona7);
+
+                            
+                            $result3= mysqli_query($connect,$sqltrabalhadoresMP3);
+                            $result4= mysqli_query($connect,$sqltrabalhadoresMP4);
+                            $result5= mysqli_query($connect,$sqltrabalhadoresMP5);
+                            $result6= mysqli_query($connect,$sqltrabalhadoresMP6);
+                            $result7= mysqli_query($connect,$sqltrabalhadoresMP7);
                                 
+                            while($rowMP3 = mysqli_fetch_assoc($resultMP3) AND $rowMP4 = mysqli_fetch_assoc($resultMP4) AND $rowMP5 = mysqli_fetch_assoc($resultMP5) AND $rowMP6= mysqli_fetch_assoc($resultMP6) AND $rowMP7 = mysqli_fetch_assoc($resultMP7) AND  $row3 = mysqli_fetch_assoc($result3) AND $row4 = mysqli_fetch_assoc($result4) AND $row5 = mysqli_fetch_assoc($result5) AND $row6 = mysqli_fetch_assoc($result6) AND $row7 = mysqli_fetch_assoc($result7) ){
+                                if($row3['mp']=3 ){
+                                    $rowcountmp3= mysqli_num_rows($result3);
+                                    ?>
+                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                        <h3><?php echo $rowMP3['MP_ID']?></h3>
+                                        <h3><?php echo $rowMP3['name']?></h3>
+                                        <h3><?php echo $rowcountmp3?><span class="material-symbols-sharp">group</span></h3>
+                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP3" type="button">Details</button>
+                                    </div>
+                                    <br>
+                                    <?php
+                                }
                                 ?>
-                                <div class="card" style="width: 200px; margin: auto; display: grid;" >
-                                    <h3><?php echo $row['MP_ID']?></h3>
-                                    <h3><?php echo $row['name']?></h3>
-                                    <h3><?php echo $rowcountmp3?><span class="material-symbols-sharp">group</span></h3>
-                                    <button style="cursor: pointer;" class="abrirDetalhes" type="button">Details</button>
                                 </div>
-                                <br>
-                                <?php
+                                <div class="column">            
+                                    <?php
+                                    if($row4['mp']=4 ){
+                                        $rowcountmp4= mysqli_num_rows($result4);
+                                    ?>
+                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                        <h3><?php echo $rowMP4['MP_ID']?></h3>
+                                        <h3><?php echo $rowMP4['name']?></h3>
+                                        <h3><?php echo $rowcountmp4?><span class="material-symbols-sharp">group</span></h3>
+                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP4" type="button">Details</button>
+                                    </div>
+                                    <br>
+                                </div>
+                                    <?php    
+                                        }
+                                    ?>
+                                <div class="column">
+                                    <?php
+                                        if($row5['mp']=5){
+                                            $rowcountmp5= mysqli_num_rows($result5);
+                                    ?>
+                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                        <h3><?php echo $rowMP5['MP_ID']?></h3>
+                                        <h3><?php echo $rowMP5['name']?></h3>
+                                        <h3><?php echo $rowcountmp5?><span class="material-symbols-sharp">group</span></h3>
+                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP5" type="button">Details</button>
+                                    </div>
+                                    <br>
+                                    <?php    
+                                        }
+                                    ?>
+                                </div>
+                                <div class="column">
+                                    <?php
+                                        if($row6['mp']=6 ){
+                                            $rowcountmp6= mysqli_num_rows($result6);
+                                    ?>
+                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                        <h3><?php echo $rowMP6['MP_ID']?></h3>
+                                        <h3><?php echo $rowMP6['name']?></h3>
+                                        <h3><?php echo $rowcountmp6?><span class="material-symbols-sharp">group</span></h3>
+                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP6" type="button">Details</button>
+                                    </div>
+                                    <br>
+                                    <?php    
+                                        }
+                                    ?>
+                                </div>
+                                <div class="column">
+                                    <?php
+                                        if($row7['mp']=7 ){
+                                            $rowcountmp7= mysqli_num_rows($result7);
+                                            
+                                    ?>
+                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                        <h3><?php echo $rowMP7['MP_ID']?></h3>
+                                        <h3><?php echo $rowMP7['name']?></h3>
+                                        <h3><?php echo $rowcountmp7?><span class="material-symbols-sharp">group</span></h3>
+                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP7" type="button">Details</button>
+                                    </div>
+                                    <br>
+                                    <?php    
+                                        }
+                                    ?>
+                                </div>
+                            <?php    
                             }
-                        ?>
-                    </div>
+                            ?>
                     
                 </div>
-
+            <br>
             <br>
             <h1 class="titulo"  style="text-align: center;">Configuração</h1>
             <br>
-            <div class="row">
-                <br>
+            <div class="row" style="margin: auto; display: flex; align-items: center; justify-content: center;">
+                
                 <div class="column">
-                    <?php
-                        include('db_connection.php');
-                        $sqlzonas = "SELECT * FROM meeting_point ";
-                        $sqloperation = "SELECT * FROM meeting_point INNER JOIN mp_operation ";
-                        //$sqloperation = "SELECT * FROM mp_operation ";
-                        $result = mysqli_query($connect,$sqlzonas);
-                        //$result2 = mysqli_query($connect,$sqloperation); 
-                        while($row = mysqli_fetch_assoc($result) ){                              
-                    ?>
-                        <div class="card" style="width: 200px; margin: auto; display: block; text-align: center;" >
-                            <h3><?php echo $row['MP_ID']?></h3>
-                            <h3><?php echo $row['name']?></h3>
-                            <!--<h4><?php echo $row['operation']?></h4>-->
-                            <button style="cursor: pointer;" class="abrirDetalhes" type="button">Details</button>
-                        </div>
-                    <?php
-                        }
-                    ?>
-                </div>
-                <br>
-                <div class="column">
-                    <div class="card" style="width: 200px; margin: auto; display: grid;">
-                        <h3>teste2</h3>
-                    </div>
-                </div>
-                <br>
-                <div class="column">
-                    <div class="card" style="width: 200px; margin: auto;  ">
-                        <h3 style="text-align: center;">teste3</h3>
+                    <div class="card" style="width: 200px; margin: auto;">
+                        <h3 style="text-align: center;">
+                            <?php
+                                $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
+                                $resultMP3 = mysqli_query($connect,$sqlzona3);
+                                $rowMP3 = mysqli_fetch_assoc($resultMP3);
+
+                                $sqloperation = "SELECT * FROM mp_operation";
+                                $resultop= mysqli_query($connect,$sqloperation);
+                                $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                echo $rowMP3['MP_ID'];
+                                echo "<br>";
+                                echo $rowMP3['name'];
+                                echo "<br>";
+                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
+                            ?>
+                        </h3>
+
                         <br>
                         <input type="checkbox">
                         <label>Standby</label>
@@ -219,25 +287,213 @@
                         <label>Fim de Emergencia</label>
                         <br>
                         <br>
-                        <button type="sumbit" style="margin: auto;" >Sumbit</button>
+                        <?php
+                            // Return current date from the remote server
+                            $date = date('d-m-y h:i:s');
+                            echo "Updated: ".$date;
+                        ?>
+                        <br>
+                        <br>
+                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex; cursor:pointer;" >Sumbit</button>
                     </div>
                 </div>
-                <br>
+                
                 <div class="column">
-                    <div class="card" style="width: 200px; margin: auto; display: grid;">
-                        <h3>teste4</h3>
+                <div class="card" style="width: 200px; margin: auto;  ">
+                        <h3 style="text-align: center;">
+                            <?php
+                                $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
+                                $resultMP4 = mysqli_query($connect,$sqlzona4);
+                                $rowMP4 = mysqli_fetch_assoc($resultMP4);
+
+                                $sqloperation = "SELECT * FROM mp_operation";
+                                $resultop= mysqli_query($connect,$sqloperation);
+                                $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                echo $rowMP4['MP_ID'];
+                                echo "<br>";
+                                echo $rowMP4['name'];
+                                echo "<br>";
+                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
+                            ?>
+                        </h3>
+                        <br>
+                        <input type="checkbox">
+                        <label>Standby</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Emergencia</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Evacuação</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Fim de Emergencia</label>
+                        <br>
+                        <br>
+                        <?php
+                            // Return current date from the remote server
+                            $date = date('d-m-y h:i:s');
+                            echo "Updated: ".$date;
+                        ?>
+                        <br>
+                        <br>
+                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                    </div>
+                </div>           
+                <div class="column">
+                    <div class="card" style="width: 200px; margin: auto;  ">
+                        <h3 style="text-align: center;">
+                            <?php
+                                $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
+                                $resultMP5 = mysqli_query($connect,$sqlzona5);
+                                $rowMP5= mysqli_fetch_assoc($resultMP5);
+
+                                $sqloperation = "SELECT * FROM mp_operation";
+                                $resultop= mysqli_query($connect,$sqloperation);
+                                $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                echo $rowMP5['MP_ID'];
+                                echo "<br>";
+                                echo $rowMP5['name'];
+                                echo "<br>";
+                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
+                            ?>
+                        </h3>
+                        <br>
+                        <input type="checkbox">
+                        <label>Standby</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Emergencia</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Evacuação</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Fim de Emergencia</label>
+                        <br>
+                        <br>
+                        <?php
+                            // Return current date from the remote server
+                            $date = date('d-m-y h:i:s');
+                            echo "Updated: ".$date;
+                        ?>
+                        <br>
+                        <br>
+                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                    </div>
+                </div>              
+                <div class="column">
+                <div class="card" style="width: 200px; margin: auto; ">
+                        <h3 style="text-align: center;">
+                            <?php
+                                $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
+                                $resultMP6 = mysqli_query($connect,$sqlzona6);
+                                $rowMP6 = mysqli_fetch_assoc($resultMP6);
+
+                                $sqloperation = "SELECT * FROM mp_operation";
+                                $resultop= mysqli_query($connect,$sqloperation);
+                                $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                echo $rowMP6['MP_ID'];
+                                echo "<br>";
+                                echo $rowMP6['name'];
+                                echo "<br>";
+                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
+                            ?>
+                        </h3>
+                        <br>
+                        <input type="checkbox">
+                        <label>Standby</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Emergencia</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Evacuação</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Fim de Emergencia</label>
+                        <br>
+                        <br>
+                        <?php
+                            // Return current date from the remote server
+                            $date = date('d-m-y h:i:s');
+                            echo "Updated: ".$date;
+                        ?>
+                        <br>
+                        <br>
+                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                    </div>
+                </div>        
+                <div class="column">
+                <div class="card" style="width: 200px; margin: auto;  ">
+                        <h3 style="text-align: center;">
+                            <?php
+                                $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
+                                $resultMP7 = mysqli_query($connect,$sqlzona7);   
+                                $rowMP7 = mysqli_fetch_assoc($resultMP7);
+
+                                $sqloperation = "SELECT * FROM mp_operation";
+                                $resultop= mysqli_query($connect,$sqloperation);
+                                $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                echo $rowMP7['MP_ID'];
+                                echo "<br>";
+                                echo $rowMP7['name'];
+                                echo "<br>";
+                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
+
+                            ?>
+                        </h3>
+                        <br>
+                        <input type="checkbox">
+                        <label>Standby</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Emergencia</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Evacuação</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Fim de Emergencia</label>
+                        <br>
+                        <br>
+                        <?php
+                            // Return current date from the remote server
+                            $date = date('d-m-y h:i:s');
+                            echo "Updated: ".$date;
+                        ?>
+                        <br>
+                        <br>
+                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
                     </div>
                 </div>
-                <br>
                 <div class="column">
-                    <div class="card" style="width: 200px; margin: auto; display: grid;">
-                        <h3>teste5</h3>
-                    </div>
-                </div>
-                <br>
-                <div class="column">
-                    <div class="card" style="width: 200px; margin: auto; display: grid;">
-                        <h3>teste geral</h3>
+                <div class="card" style="width: 200px; margin: auto;  ">
+                        <h3 style="text-align: center;">MP MASTER</h3>  
+                        <h4 style="text-align: center;">General</h4>
+                        <p style="text-align: center;">Master controller</p>
+                        <br>
+                        <input type="checkbox">
+                        <label>Standby</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Emergencia</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Evacuação</label>
+                        <br>
+                        <input type="checkbox">
+                        <label>Fim de Emergencia</label>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <button type="sumbit" id="butaosubmit" style="margin: auto; display: flex;cursor:pointer;" >Sumbit</button>
                     </div>
                 </div>
 
@@ -252,24 +508,196 @@
 
 
 
-            <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP   -------------------------------->
+            <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 3  -------------------------------->
 
-            <div id="DetalhesMP" class="modal">
+            <div id="DetalhesMP3" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
-                    <form style="text-align: center;" method="post" action="settings.php" >
+                    <form style="text-align: center;" method="post" action="#" >
                         
-                        <label>Sem trabalhadores neste meeting point<span class="material-symbols-sharp">engineering</span></label>
+                        <label>
+                            Estao 
+                            <?php 
+                                include('db_connection.php');
+                                $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
+                                $sqltrabalhadoresMP3 = "SELECT * FROM mp_registered_cards WHERE mp=3";
+                                $resultMP3 = mysqli_query($connect,$sqlzona3);
+                                $result3= mysqli_query($connect,$sqltrabalhadoresMP3);
+
+                                while($rowMP3 = mysqli_fetch_assoc($resultMP3) AND $row3 = mysqli_fetch_assoc($result3)){
+                                    $rowcountmp3= mysqli_num_rows($result3);
+                                    echo $rowcountmp3;
+                                    ?>
+                                    Trabalhadores no
+                                    <?php
+                                    echo $rowMP3['MP_ID'];
+                                } 
+                            ?>
+                            <span class="material-symbols-sharp">engineering</span>
+                        </label>
                         <br>
                         <br>
-                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar">Fechar</button>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
                     </form> 
                 </div>
             </div>
 
-            <!--------------------------------- END MODAL DETALHES ZONAS MP   -------------------------------->
+            <!--------------------------------- END MODAL DETALHES ZONAS MP3   -------------------------------->
+
+            <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 4  -------------------------------->
+
+            <div id="DetalhesMP4" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
+                    <form style="text-align: center;" method="post" action="#" >
+                        
+                        <label>
+                            Estao 
+                            <?php 
+                                include('db_connection.php');
+                                $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
+                                $sqltrabalhadoresMP4 = "SELECT * FROM mp_registered_cards WHERE mp=4";
+                                $resultMP4 = mysqli_query($connect,$sqlzona4);
+                                $result4= mysqli_query($connect,$sqltrabalhadoresMP4);
+
+                                while($rowMP4 = mysqli_fetch_assoc($resultMP4) AND $row4= mysqli_fetch_assoc($result4)){
+                                    $rowcountmp4= mysqli_num_rows($result4);
+                                    echo $rowcountmp4;
+                                    ?>
+                                    Trabalhadores no
+                                    <?php
+                                    echo $rowMP4['MP_ID'];
+                                } 
+                            ?>
+                            <span class="material-symbols-sharp">engineering</span>
+                        </label>
+                        <br>
+                        <br>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
+                    </form> 
+                </div>
+            </div>
+
+            <!--------------------------------- END MODAL DETALHES ZONAS MP4   -------------------------------->
+
+             <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 5  -------------------------------->
+
+             <div id="DetalhesMP5" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
+                    <form style="text-align: center;" method="post" action="#" >
+                        
+                        <label>
+                            Estao 
+                            <?php 
+                                include('db_connection.php');
+                                $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
+                                $sqltrabalhadoresMP5 = "SELECT * FROM mp_registered_cards WHERE mp=5";
+                                $resultMP5 = mysqli_query($connect,$sqlzona5);
+                                $result5= mysqli_query($connect,$sqltrabalhadoresMP5);
+
+                                while($rowMP5 = mysqli_fetch_assoc($resultMP5) AND $row5= mysqli_fetch_assoc($result5)){
+                                    $rowcountmp5= mysqli_num_rows($result5);
+                                    echo $rowcountmp5;
+                                    ?>
+                                    Trabalhadores no
+                                    <?php
+                                    echo $rowMP5['MP_ID'];
+                                } 
+                            ?>
+                            <span class="material-symbols-sharp">engineering</span>
+                        </label>
+                        <br>
+                        <br>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
+                    </form> 
+                </div>
+            </div>
+
+            <!--------------------------------- END MODAL DETALHES ZONAS MP5   -------------------------------->
+
+             <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 6  -------------------------------->
+
+             <div id="DetalhesMP6" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
+                    <form style="text-align: center;" method="post" action="#" >
+                        
+                        <label>
+                            Estao 
+                            <?php 
+                                include('db_connection.php');
+                                $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
+                                $sqltrabalhadoresMP6 = "SELECT * FROM mp_registered_cards WHERE mp=6";
+                                $resultMP6 = mysqli_query($connect,$sqlzona6);
+                                $result6= mysqli_query($connect,$sqltrabalhadoresMP6);
+
+                                while($rowMP6 = mysqli_fetch_assoc($resultMP6) AND $row6= mysqli_fetch_assoc($result6)){
+                                    $rowcountmp6= mysqli_num_rows($result6);
+                                    echo $rowcountmp6;
+                                    ?>
+                                    Trabalhadores no
+                                    <?php
+                                    echo $rowMP6['MP_ID'];
+                                } 
+                            ?>
+                            <span class="material-symbols-sharp">engineering</span>
+                        </label>
+                        <br>
+                        <br>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
+                    </form> 
+                </div>
+            </div>
+
+            <!--------------------------------- END MODAL DETALHES ZONAS MP6   -------------------------------->
+
+             <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 7  -------------------------------->
+
+             <div id="DetalhesMP7" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
+                    <form style="text-align: center;" method="post" action="#" >
+                        
+                        <label>
+                            Estao 
+                            <?php 
+                                include('db_connection.php');
+                                $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
+                                $sqltrabalhadoresMP7 = "SELECT * FROM mp_registered_cards WHERE mp=7";
+                                $resultMP7 = mysqli_query($connect,$sqlzona7);
+                                $result7= mysqli_query($connect,$sqltrabalhadoresMP7);
+
+                                while($rowMP7 = mysqli_fetch_assoc($resultMP7) AND $row7= mysqli_fetch_assoc($result7)){
+                                    $rowcountmp7= mysqli_num_rows($result7);
+                                    echo $rowcountmp7;
+                                    ?>
+                                    Trabalhadores no
+                                    <?php
+                                    echo $rowMP7['MP_ID'];
+                                } 
+                            ?>
+                            <span class="material-symbols-sharp">engineering</span>
+                        </label>
+                        <br>
+                        <br>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
+                    </form> 
+                </div>
+            </div>
+
+            <!--------------------------------- END MODAL DETALHES ZONAS MP7   -------------------------------->
+            <br>
             <a href="#menu" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
         <!--Fim da main-->
@@ -283,10 +711,17 @@
 
     <script>
 
+        // Get the modal
+        var modal = document.getElementById("myModal");
+                
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
+        
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -307,10 +742,36 @@
         }
 
         $(document).ready(function() {
-            $('.abrirDetalhes').on('click', function(){
-                $('#DetalhesMP').modal('show');
+            $('.abrirDetalhesMP3').on('click', function(){
+                $('#DetalhesMP3').modal('show');
             });
         });
+
+        $(document).ready(function() {
+            $('.abrirDetalhesMP4').on('click', function(){
+                $('#DetalhesMP4').modal('show');
+            });
+        });
+
+        $(document).ready(function() {
+            $('.abrirDetalhesMP5').on('click', function(){
+                $('#DetalhesMP5').modal('show');
+            });
+        });
+
+        $(document).ready(function() {
+            $('.abrirDetalhesMP6').on('click', function(){
+                $('#DetalhesMP6').modal('show');
+            });
+        });
+
+        $(document).ready(function() {
+            $('.abrirDetalhesMP7').on('click', function(){
+                $('#DetalhesMP7').modal('show');
+            });
+        });
+
+
     </script>
 </body>
 
