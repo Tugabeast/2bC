@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/cssdeteste.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
 
 
     
@@ -86,11 +87,14 @@
             </div>
             <br>
 
+
             <!-- -->
             <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
                 <div class="table-wraper">
+                    <input  type="text" id="myInput" onkeyup="myFunction()" placeholder="Procure por nome ou empresa.." title="Type in a name">
+                    
                     <table class="tabelacrud" id="tabelacrud4">
                         <thead>
                             <tr style="color: white;background: #094b9b;">
@@ -306,7 +310,7 @@
                                 $resultMP4 = mysqli_query($connect,$sqlzona4);
                                 $rowMP4 = mysqli_fetch_assoc($resultMP4);
 
-                                $sqloperation = "SELECT * FROM mp_operation";
+                                $sqloperation = "SELECT * FROM mp_operation WHERE id=4";
                                 $resultop= mysqli_query($connect,$sqloperation);
                                 $rowMPoperation = mysqli_fetch_assoc($resultop);
 
@@ -349,7 +353,7 @@
                                 $resultMP5 = mysqli_query($connect,$sqlzona5);
                                 $rowMP5= mysqli_fetch_assoc($resultMP5);
 
-                                $sqloperation = "SELECT * FROM mp_operation";
+                                $sqloperation = "SELECT * FROM mp_operation WHERE operation='Evacuation' ";
                                 $resultop= mysqli_query($connect,$sqloperation);
                                 $rowMPoperation = mysqli_fetch_assoc($resultop);
 
@@ -392,7 +396,7 @@
                                 $resultMP6 = mysqli_query($connect,$sqlzona6);
                                 $rowMP6 = mysqli_fetch_assoc($resultMP6);
 
-                                $sqloperation = "SELECT * FROM mp_operation";
+                                $sqloperation = "SELECT * FROM mp_operation WHERE operation='emergency' ";
                                 $resultop= mysqli_query($connect,$sqloperation);
                                 $rowMPoperation = mysqli_fetch_assoc($resultop);
 
@@ -770,6 +774,29 @@
                 $('#DetalhesMP7').modal('show');
             });
         });
+
+        function myFunction() {
+            var input, filter,table, tr, td1,td2, i, txtValue1,txtValue2;
+            input = document.getElementById("myInput");
+            
+            filter = input.value.toUpperCase();
+            
+            table = document.getElementById("tabelacrud4");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td1 = tr[i].getElementsByTagName("td")[0];
+                td2 = tr[i].getElementsByTagName("td")[1];
+                if (td1 && td2) {
+                    txtValue1 = td1.textContent || td1.innerText;
+                    txtValue2 = td2.textContent || td2.innerText;
+                    if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter)> -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        }
 
 
     </script>

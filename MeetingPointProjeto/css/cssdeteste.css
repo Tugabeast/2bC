@@ -176,10 +176,11 @@ aside .sidebar {
     /*background: #007188;*/
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    /*height: 70vh;*/
     /*position: relative;*/
     position: sticky;
     top: 3rem;
+    height: 88.7vh;
 }
 
 aside .sidebar h3 {
@@ -829,21 +830,6 @@ td {
 }
 
 
-/*==========================media queries para a pagina index3/monitorizacao para os cards============================*/
-
-@media screen and (max-width: 1425px) {
-    .row {
-        display: grid !important;
-        justify-items: center;
-        align-items: center;
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .column {
-        margin-top: 20px;
-    }
-}
-
-
 /*==========================admin page============================*/
 
 .modal {
@@ -957,4 +943,14 @@ progress[value]::-webkit-progress-value {
     border-bottom-left-radius: 20px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+#myInput {
+    background-image: url('../images/search.png');
+    background-size: 3rem;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
 }

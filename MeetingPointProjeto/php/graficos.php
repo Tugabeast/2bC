@@ -67,6 +67,8 @@ include('protect.php');?>
                             $result = mysqli_query($connect, $sql);
                             while($row = mysqli_fetch_assoc($result)){
                                 ?>
+                                <form action="editarThreshold.php" method="post">
+                                    <input type="hidden" id="thedit_id" name="thedit_id">
                                     <tr>
                                         <td>LoRa ID</td>
                                         <td><?php echo $row['id']?></td>
@@ -112,13 +114,18 @@ include('protect.php');?>
                                         <td><?php echo $row['flag_status']?></td>
                                     </tr>
                                     <tr>
-                                        <td>Treshold H1 (ppm)</td>
-                                        <td><?php echo $row['threshold_h1']?></td>
+                                        <td>Threshold H1 (ppm)</td>
+                                        <td><input type="number" name="threshold_h1" id="threshold_h1" value="<?php echo $row['threshold_h1']?>"></td>
                                     </tr>
                                     <tr>
-                                        <td>Treshold H2 (ppm)</td>
-                                        <td><?php echo $row['threshold_h2']?></td>
+                                        <td>Threshold H2 (ppm)</td>
+                                        <td><input type="number" name="threshold_h2" id="threshold_h2" value="<?php echo $row['threshold_h2']?>"></td>
                                     </tr>
+                                    <tr>
+                                        <td>Threshold H3 </td>
+                                        <td>Definido no autómato</td>
+                                    </tr>
+                                </form>    
                                 <?php
                             }   
                         ?>
@@ -134,13 +141,35 @@ include('protect.php');?>
                     });
                 </script>
             </div>
-            <button type="submit" class="btn-add" style="display: flex; margin-left: 20rem;" >Sumbit thresholds</button>
+            <button type="submit" class="btn-add" name="editarTH" style="display: flex; margin-left: 20rem;" >Sumbit thresholds</button>
             <!--https://jsfiddle.net/tr2qcusa/-->
         </main>
         <!--Fim da main-->
     </div>
     <script src="../js/index3.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+            $(document).ready(function() {
+            
+            $('.btn-add').on('click', function(e){
+                
+
+                $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                console.log(data);
+
+                $('#thedit_id').val(data[0]);
+                $('#threshold_h1').val(data[1]);
+                $('#threshold_h2').val(data[2]);
+            });
+        });
+    </script>
 </body>
 
 </html>

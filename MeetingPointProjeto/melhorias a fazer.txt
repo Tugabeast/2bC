@@ -1,7 +1,1 @@
-monitorizaçao
-
-pesquisar por nome na tabela registo de operações e aumentar tabela dos registos na pagina admin
-
-gvir 
-tem que dar para editar , waiting time, threshhold1 e 2
-threshhold3 , escrever definido no autómato
+pesquisa: pesquisar pelo nome da empresa
