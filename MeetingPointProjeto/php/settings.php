@@ -69,6 +69,30 @@
         </aside>
         <!-- fim da sidebar -->
         <main>
+            <h1 class="titulo" style="text-align: center;">Reiniciar Sistema</h1>
+            <button type="button" class="btnresetar" id="resetarSistem"><span class="material-symbols-sharp">restart_alt</span>Reset Sistema</button>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!--------------------------------- BEGIN MODAL RESETAR SISTEMA   -------------------------------->
+            <div id="resetarSistema" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Resetar Sistema</h2>
+                    <form style="text-align: center;" method="POST" action="#" >
+                        <input type="hidden" name="reset_id" id="reset_id">
+                        <label>Tem a certeza que quer resetar o Sistema?</label>
+                        <br>
+                        <br>
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Não</button>
+                        <button type="submit" style="cursor: pointer;" name="resetarSistema" class="adicionar">Sim</button>
+                    </form> 
+                </div>
+            </div>
+            <!--------------------------------- END MODAL RESETAR SISTEMA    -------------------------------->
             <h1 class="titulo" style="text-align: center;">Gestão Utilizadores</h1>
             <button type="button" class="btn-add" id="myBtn"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
             <div class="containerphp">
@@ -697,6 +721,23 @@
                 console.log(data);
 
                 $('#mpelimin_id').val(data[0]);
+            });
+        });
+
+
+        //funcao abrir modal para reniciar o sistema
+                $(document).ready(function() {
+            $('.btnresetar').on('click', function(){
+                $('#resetarSistema').modal('show');
+
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    console.log(data);
+
+                    $('#reset_id').val(data[0]);
             });
         });
         

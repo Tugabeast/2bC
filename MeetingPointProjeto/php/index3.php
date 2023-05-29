@@ -60,6 +60,50 @@
         <!-- fim da sidebar -->
         <main >
             <!--<h1 class="titulo">Monitorização</h1>-->
+
+            
+
+
+            <!-- -->
+            <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
+            <br>
+            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
+            <div class="containerphp" style="height: 40vh;">
+                <input  type="text" id="myInput" onkeyup="myFunction()" placeholder="Procure por nome ou empresa.." title="Type in a name">
+                <div class="table-wraper">
+                    <table class="tabelacrud" id="tabelacrud4">
+                        <thead>
+                            <tr style="color: white;background: #094b9b;">
+                                <th>Nome</th>
+                                <th>Empresa</th>
+                                <th>Cargo</th>
+                                <th>Meeting Point</th>   
+                            </tr>
+                        </thead>
+                        <?php   
+                            include('db_connection.php'); 
+                            $sql = "SELECT * FROM `mp_registered_cards`";
+                            $result = mysqli_query($connect, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                               
+                                while($row = mysqli_fetch_assoc($result)){
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $row['worker_name']?></td>
+                                            <td><?php echo $row['worker_company']?></td>
+                                            <td><?php echo $row['type']?></td>
+                                            <td><?php echo $row['mp']?></td>
+                                        </tr>
+                                    <?php
+                                }   
+                            }
+                        ?>
+                    </table>
+                </div>
+            </div>
+
+            <br>
+            <br>
             <!-- script php progress bar -->
             <div class="progressbar">
                 <?php 
@@ -86,53 +130,7 @@
                 <?php echo round($percentagem,2)  ."%"  ?>
             </div>
             <br>
-
-
-            <!-- -->
-            <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
-            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
-            <div class="containerphp">
-                <div class="table-wraper">
-                    <input  type="text" id="myInput" onkeyup="myFunction()" placeholder="Procure por nome ou empresa.." title="Type in a name">
-                    
-                    <table class="tabelacrud" id="tabelacrud4">
-                        <thead>
-                            <tr style="color: white;background: #094b9b;">
-                                <th>Nome</th>
-                                <th>Empresa</th>
-                                <th>Cargo</th>
-                                <th>Meeting Point</th>
-                                <th>More</th>
-                            </tr>
-                        </thead>
-                        <?php   
-                            include('db_connection.php'); 
-                            $sql = "SELECT * FROM `mp_registered_cards`";
-                            $result = mysqli_query($connect, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                               
-                                while($row = mysqli_fetch_assoc($result)){
-                                    ?>
-                                        <tr>
-                                            <td><?php echo $row['worker_name']?></td>
-                                            <td><?php echo $row['worker_company']?></td>
-                                            <td><?php echo $row['type']?></td>
-                                            <td><?php echo $row['mp']?></td>
-                                            <td><span style="cursor: pointer;" class="material-symbols-sharp">more_horiz</span></td>
-                                            <!--
-                                            <td>
-                                                <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                                <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
-                                            </td>
-                                            -->
-                                        </tr>
-                                    <?php
-                                }   
-                            }
-                        ?>
-                    </table>
-                </div>
-            </div>
+            <br>
             <br>
             <h1 class="titulo"  style="text-align: center;">Zonas de Meeting Points</h1>  
                 <br>

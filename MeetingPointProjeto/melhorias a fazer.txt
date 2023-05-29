@@ -1,1 +1,6 @@
-pesquisa: pesquisar pelo nome da empresa
+gvir :  tabela operation para inserir valores e tabela status para ler valores
+
+index3: adicionar linha com o session name, e quando seleciona fim de emergencia , gera pdf e envia por email para os emails do mp_alerts que estejam assinalados com pdf
+
+
+redimensionar as tabelas

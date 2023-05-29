@@ -248,7 +248,7 @@ main .top {
 
 main .titulo {
     font-family: sans-serif;
-    color: var(--color-primary);
+    color: #094b9b;
 }
 
 main .insights {
@@ -375,7 +375,7 @@ main .recent-orders table:hover {
 }
 
 main table tbody td {
-    height: 2.8rem;
+    height: 4rem;
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
 }
@@ -555,6 +555,20 @@ main .recent-orders a {
     margin-right: 0.5rem;
 }
 
+.btnresetar {
+    border: 1px solid black;
+    background: var(--color-primary);
+    cursor: pointer;
+    color: var(--color-white);
+    padding: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    border-radius: var(--border-radius-1);
+    line-height: 200%;
+}
+
 .containerphp .tabelacrud {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -566,15 +580,25 @@ main .recent-orders a {
 td {
     /*border: 1px solid #dddddd;*/
     text-align: left;
-    padding: 8px;
+    padding: 20px;
 }
 
 .containerphp .tabelacrud tbody {
-    background: linear-gradient(90deg, rgba(13, 13, 255, 1) 0%, rgba(0, 212, 255, 1) 50%);
+    /*background: linear-gradient(90deg, rgba(13, 13, 255, 1) 0%, rgba(0, 212, 255, 1) 50%);*/
+    background: #F8F8F8;
+}
+
+.container .tabelacrud thead {
+    background-color: red;
 }
 
 .container .tabelacrud tbody td {
-    color: white;
+    /*color: white;*/
+    color: rgb(110, 105, 105);
+}
+
+.container .tabelacrud tbody tr:hover {
+    background: #d8e5f5;
 }
 
 .container #tabelacrud11 thead tr th:first-child {
@@ -609,7 +633,7 @@ td {
     border-bottom-right-radius: 10px;
 }
 
-#tabelacrud1 tbody input[type="number"]{
+#tabelacrud1 tbody input[type="number"] {
     border-radius: 5px;
     padding: 3px;
 }
@@ -685,7 +709,6 @@ td {
 
 .card input[type=checkbox]:hover {
     outline: 1px solid blue;
-    
 }
 
 #butaodetalhes {
@@ -956,7 +979,7 @@ td {
 
 progress {
     height: 2rem;
-    width: 30rem;
+    width: 50rem;
 }
 
 progress[value]::-webkit-progress-bar {
@@ -972,12 +995,20 @@ progress[value]::-webkit-progress-value {
     border-bottom-right-radius: 5px;
 }
 
+
+/*  --------------search bar css------------------ */
+
 #myInput {
     background-image: url('../images/search.png');
     background-size: 3rem;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 20%;
+    justify-content: end;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
+    position: fixed;
     border: 1px solid #ddd;
+    display: flex;
+    margin-left: 67rem;
+    margin-top: -1rem;
 }
