@@ -278,16 +278,16 @@
                         </h3>
 
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="1">
                         <label>Standby</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="2">
                         <label>Emergencia</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="3">
                         <label>Evacuação</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="4">
                         <label>Fim de Emergencia</label>
                         <br>
                         <br>
@@ -322,27 +322,29 @@
                             ?>
                         </h3>
                         <br>
-                        <input type="checkbox">
-                        <label>Standby</label>
-                        <br>
-                        <input type="checkbox">
-                        <label>Emergencia</label>
-                        <br>
-                        <input type="checkbox">
-                        <label>Evacuação</label>
-                        <br>
-                        <input type="checkbox">
-                        <label>Fim de Emergencia</label>
-                        <br>
-                        <br>
-                        <?php
-                            // Return current date from the remote server
-                            $date = date('d-m-y h:i:s');
-                            echo "Updated: ".$date;
-                        ?>
-                        <br>
-                        <br>
-                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                        <form action="enviarAlertas.php" method="POST">
+                            <input type="checkbox" class="checkoption" value="1" name="alerta[]">
+                            <label>Standby</label>
+                            <br>
+                            <input type="checkbox" class="checkoption" value="2" name="alerta[]">
+                            <label>Emergencia</label>
+                            <br>
+                            <input type="checkbox" class="checkoption" value="3" name="alerta[]">
+                            <label>Evacuação</label>
+                            <br>
+                            <input type="checkbox" class="checkoption" value="4" name="alerta[]">
+                            <label>Fim de Emergencia</label>
+                            <br>
+                            <br>
+                            <?php
+                                // Return current date from the remote server
+                                $date = date('d-m-y h:i:s');
+                                echo "Updated: ".$date;
+                            ?>
+                            <br>
+                            <br>
+                            <button type="sumbit" id="butaosubmit" name="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                        </form>
                     </div>
                 </div>           
                 <div class="column">
@@ -365,16 +367,16 @@
                             ?>
                         </h3>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="1">
                         <label>Standby</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="2">
                         <label>Emergencia</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="3">
                         <label>Evacuação</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="4">
                         <label>Fim de Emergencia</label>
                         <br>
                         <br>
@@ -408,16 +410,16 @@
                             ?>
                         </h3>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="1">
                         <label>Standby</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="2">
                         <label>Emergencia</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="3">
                         <label>Evacuação</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="4"> 
                         <label>Fim de Emergencia</label>
                         <br>
                         <br>
@@ -452,16 +454,16 @@
                             ?>
                         </h3>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="1">
                         <label>Standby</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="2">
                         <label>Emergencia</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="3">
                         <label>Evacuação</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="4">
                         <label>Fim de Emergencia</label>
                         <br>
                         <br>
@@ -481,16 +483,16 @@
                         <h4 style="text-align: center;">General</h4>
                         <p style="text-align: center;">Master controller</p>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="1">
                         <label>Standby</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="2">
                         <label>Emergencia</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="3">
                         <label>Evacuação</label>
                         <br>
-                        <input type="checkbox">
+                        <input type="checkbox" class="checkoption" value="4">
                         <label>Fim de Emergencia</label>
                         <br>
                         <br>
@@ -745,6 +747,7 @@
             }
         }
 
+
         $(document).ready(function() {
             $('.abrirDetalhesMP3').on('click', function(){
                 $('#DetalhesMP3').modal('show');
@@ -775,6 +778,7 @@
             });
         });
 
+        //funcao para pesquisar por nomes e empresas na primeira tabela
         function myFunction() {
             var input, filter,table, tr, td1,td2, i, txtValue1,txtValue2;
             input = document.getElementById("myInput");
@@ -797,6 +801,14 @@
                 }       
             }
         }
+
+        //funcao para so selecionar uma checkbox nos cards
+        $(document).ready(function(){
+            $('.checkoption').click(function() {
+                $('.checkoption').not(this).prop('checked', false);
+            });
+        });
+
 
 
     </script>

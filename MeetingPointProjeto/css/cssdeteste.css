@@ -593,6 +593,27 @@ td {
     border-bottom-right-radius: 10px;
 }
 
+#tabelacrud1 thead tr th:first-child {
+    border-top-left-radius: 10px;
+}
+
+#tabelacrud1 thead tr th:last-child {
+    border-top-right-radius: 10px;
+}
+
+#tabelacrud1 tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+#tabelacrud1 tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+#tabelacrud1 tbody input[type="number"]{
+    border-radius: 5px;
+    padding: 3px;
+}
+
 
 /*
 .containerphp .tabelacrud tr:nth-child(even) {
@@ -657,8 +678,14 @@ td {
     transition: all 300ms ease;
 }
 
+.card input[type=checkbox] {
+    clip-path: circle(46% at 50% 50%);
+    cursor: pointer;
+}
+
 .card input[type=checkbox]:hover {
     outline: 1px solid blue;
+    
 }
 
 #butaodetalhes {

@@ -534,15 +534,7 @@
         <!--Fim da main-->
  
     </div>
-    <!--
-    <script>
-        $(document).ready(function () {
-            $('#tabelacrud3').DataTable({
-                responsive: true,
-            });
-        });
-    </script>
-    -->
+
     <script src="../js/index3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
