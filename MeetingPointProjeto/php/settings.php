@@ -70,12 +70,8 @@
         <!-- fim da sidebar -->
         <main>
             <h1 class="titulo" style="text-align: center;">Reiniciar Sistema</h1>
-            <button type="button" class="btnresetar" id="resetarSistem"><span class="material-symbols-sharp">restart_alt</span>Reset Sistema</button>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <button type="button" class="btnresetar" id="resetarSistem" style="margin-bottom: 5rem;"><span class="material-symbols-sharp">restart_alt</span>Reset Sistema</button>
+
             <!--------------------------------- BEGIN MODAL RESETAR SISTEMA   -------------------------------->
             <div id="resetarSistema" class="modal">
                 <!-- Modal content -->
@@ -96,7 +92,7 @@
             <h1 class="titulo" style="text-align: center;">Gestão Utilizadores</h1>
             <button type="button" class="btn-add" id="myBtn"><span class="material-symbols-sharp">person_add</span>Adicionar Utilizador</button>
             <div class="containerphp">
-                <div class="table-wraper" style="overflow-y: hidden;">
+                <div class="table-wraper" style="overflow-y: hidden; max-height: max-content;">
                     <table class="tabelacrud" id="tabelacrud11" style="width: 100%;">
                         <thead>
                             <tr style="color: white; background: #094b9b;">
@@ -124,8 +120,8 @@
                                             <td><?php echo $row['phone_number']?></td>
                                             <td><?php echo $row['role']?></td>
                                             <td>
-                                                    <button type="button" class="btnedit-utilizador" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
-                                                    <button type="button" class="btneliminar-utilizador" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                                    <button type="button" class="btnedit-utilizador"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
+                                                    <button type="button" class="btneliminar-utilizador"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                             </td>
                                         </tr>
                                     <?php
@@ -294,7 +290,7 @@
                     <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Editar Alerta</h2>
                     <form style="text-align: center;" method="POST" action="editarAlerta.php" >
                         <input type="hidden" id="editalert_id" name="editalert_id">
-                        <!--
+                    <!--
                         <label for="user">Nome:</label>
                         <br>
                         <input type="text" id="user" name="user" required style="border: 1px solid black;">
@@ -303,14 +299,17 @@
                         <br>
                         <input type="text" id="name" name="name" required style="border: 1px solid black;">
                         <br>
+                    -->
                         <label for="tipoAlert">Tipo Alerta:</label>
                         <br>
-                        <select name="tipoAlerta" id="tipoAlerta">
-                            <option value="h1" name="h1">H1</option>
-                            <option value="h2" name="h2">H2</option>
-                            <option value="h3" name="h3">H3</option>
-                        </select>
-                    -->
+                        <input type="checkbox" name="alertH1" id="alertH1" value="alertH1" style="border: 1px solid black; padding:6px;">
+                        <label for="alertH1">H1</label>
+                        <br>
+                        <input type="checkbox" name="alertH2" id="alertH2" value="alertH2" style="border: 1px solid black; padding:6px;">
+                        <label for="alertH1">H2</label>
+                        <br>
+                        <input type="checkbox" name="alertH3" id="alertH3" value="alertH3" style="border: 1px solid black; padding:6px;">
+                        <label for="alertH1">H3</label>
                         <br>
                         <label for="tipoAlert">Formato Relatorio:</label>
                         <br>
@@ -340,7 +339,7 @@
                         <br>
                         <br>
                         <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Não</button>
-                        <button type="submit" style="cursor: pointer;" name="eliminarALerta" class="adicionar">Sim</button>
+                        <button type="submit" style="cursor: pointer;" name="eliminarAlerta" class="adicionar">Sim</button>
                     </form> 
                 </div>
             </div>
@@ -415,17 +414,15 @@
             </div>
 
             <!--------------------------------- END MODAL ELIMINAR MP   -------------------------------->
-            <br>
-            <br>
 
-            <h1 class="titulo" style="text-align: center;">Gestão de Alertas</h1>
+            <h1 class="titulo" style="text-align: center; margin-top: 7rem;">Gestão de Alertas</h1>
             <button type="button" class="btn-add-alert" id="AddAlertmodal"><span class="material-symbols-sharp">warning</span>Adicionar Alerta</button>
-
             <div class="containerphp">
-                <div class="table-wraper"  style="overflow-y: hidden;">
+                <div class="table-wraper"  style="overflow-y: hidden; max-height: min-content; margin: 0; margin-left: auto; margin-right: auto; margin-bottom: auto;">
                     <table class="tabelacrud" id="tabelacrud2" style="width: 100%;">
                         <thead>
                             <tr style="color: white; background: #094b9b;">
+                                <th>ID</th>
                                 <th>Data</th>
                                 <th>Nome</th>
                                 <th>Email</th>
@@ -442,14 +439,15 @@
                                 while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                         <tr>
+                                            <td><?php echo $row['input']?></td>
                                             <td><?php echo $row['datatime']?></td>
                                             <td><?php echo $row['name']?></td>
                                             <td><?php echo $row['email']?></td>
                                             <td><?php echo $row['alert']?></td>
                                             <td><?php echo $row['report_format']?></td>
                                             <td>
-                                                <button type="button" class="edit-alert" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
-                                                <button type="button" class="eliminar-alert" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                                <button type="button" class="edit-alert"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
+                                                <button type="button" class="eliminar-alert"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                             </td>
                                         </tr>
                                     <?php
@@ -459,9 +457,6 @@
                     </table>
                 </div>
             </div>
-            
-            
-            <br>
             <br>
             <br>
             <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
@@ -469,7 +464,7 @@
             <button type="button" class="btn-add-mp" id="AddMPmodal"><span class="material-symbols-sharp">location_on</span>Adicionar MP</button>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
             <div class="containerphp">
-                <div class="table-wraper"  style="overflow-y: hidden;">
+                <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content;">
                     <table class="tabelacrud" id="tabelacrud3" style="width: 100%;">
                         <thead>
                             <tr style="color: white; background: #094b9b;">
@@ -491,8 +486,8 @@
                                             <td><?php echo $row['MP_ID']?></td>
                                             <td><?php echo $row['name']?></td>                           
                                             <td>
-                                                <button type="button" class="edit-MP" style="background: #00D4FF;"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>    
-                                                <button type="button" class="eliminar-MP" style="background: #00D4FF;" ><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                                <button type="button" class="edit-MP"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>    
+                                                <button type="button" class="eliminar-MP"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                             </td>
                                         </tr>
                                     <?php
@@ -508,10 +503,10 @@
             <!-- script paginicação-->
 
             <!-- -->
-            <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
+            <h1 class="titulo" style="text-align: center;  margin-top: 5rem;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
-                <div class="table-wraper"  style="overflow-y: hidden;">
+                <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content;">
                     <table class="tabelacrud" id="tabelacrud4">
                         <thead>
                             <tr style="color: white; background: #094b9b;">
@@ -524,9 +519,19 @@
                         <tbody>
                             <?php   
                                 include('db_connection.php');
-                                /* TIRAR O LIMIT 7 */ 
-                                $sql = "SELECT * FROM `mp_operation` LIMIT 7";
+                  
+                                $r_p_page = 5;
+
+                                if(isset($_GET['values'])){
+                                    $st_page = $_GET['values'];
+                                }
+                                else{
+                                    $st_page = 5;
+                                }
+
+                                $sql = "SELECT * FROM `mp_operation` limit  $st_page,$r_p_page";
                                 $result = mysqli_query($connect, $sql);
+
                                 if (mysqli_num_rows($result) > 0) {
                                     
                                     while($row = mysqli_fetch_assoc($result)){
@@ -536,12 +541,6 @@
                                                 <td><?php echo $row['id']?></td>
                                                 <td><?php echo $row['operation']?></td>
                                                 <td><?php echo $row['order_given']?></td>
-                                                <!--
-                                                <td>
-                                                    <a href="#"><span class="material-symbols-sharp" style="color: green;">edit_square</span></a>
-                                                    <a href="#"><span class="material-symbols-sharp" style="color: red;">delete</span></a>
-                                                </td>
-                                                -->
                                             </tr>
                                         <?php
                                         
@@ -551,6 +550,43 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="table-wraper-pagination">
+                        <?php 
+                            $sql = "SELECT * FROM `mp_operation`";
+                            $count_val = $connect->query($sql);
+                            $rowcount = mysqli_num_rows($count_val);
+
+                            $_page = ceil($rowcount/5);
+
+                            $start_loop = $st_page/5;
+
+                            $last_value = ($_page-1) *5;
+
+                            $start_SH = $start_loop+4;
+
+                            if($_page-1<=$start_SH){
+                                $end_loop = $_page;
+                            }
+                            else{
+                                $end_loop = $start_SH;
+                            }
+
+                            if($st_page>5){
+                                echo "<a href='settings.php?values=5'>First</a>";
+                                echo "<a href='settings.php?values=".($st_page-5)."'> <<<< </a>";
+                            }
+
+                            for ($i=$start_loop; $i< $end_loop ; $i++) { 
+                                $hide_values = $i*5;
+                                echo "<a href='settings.php?values=".$hide_values." '>".ceil($i)."</a>";
+                            }
+
+                            if($_page-1 != $start_loop){
+                                echo "<a href='settings.php?values=".($st_page+5)."'> >>>> </a>";
+                                echo "<a href='settings.php?values=".$last_value."'>Last</a>";
+                            }
+                        ?>
             </div>
             <br>
             <a href="#menu" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>

@@ -481,7 +481,7 @@ main .recent-orders a {
     overflow-y: scroll;
     margin: auto;
     max-height: 20rem;
-    width: 70rem;
+    width: 80%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -498,8 +498,8 @@ main .recent-orders a {
 }
 
 .btn-add {
-    border: 1px solid black;
-    background: var(--color-primary);
+    border: 2px solid #094b9b;
+    background: #094b9b;
     cursor: pointer;
     color: var(--color-white);
     padding: 5px;
@@ -507,13 +507,13 @@ main .recent-orders a {
     margin-top: 1rem;
     text-align: center;
     display: flex;
-    border-radius: var(--border-radius-1);
+    border-radius: 10px;
     line-height: 200%;
 }
 
 .btn-add-alert {
-    border: 1px solid black;
-    background: var(--color-primary);
+    border: 2px solid #094b9b;
+    background: #094b9b;
     cursor: pointer;
     color: var(--color-white);
     padding: 5px;
@@ -521,17 +521,17 @@ main .recent-orders a {
     margin-top: 1rem;
     text-align: center;
     display: flex;
-    border-radius: var(--border-radius-1);
+    border-radius: 10px;
     line-height: 200%;
 }
 
 .btn-add-alert:hover {
-    background: var(--color-danger);
+    background: #0e6de2;
 }
 
 .btn-add-mp {
-    border: 1px solid black;
-    background: var(--color-primary);
+    border: 2px solid #094b9b;
+    background: #094b9b;
     cursor: pointer;
     color: var(--color-white);
     padding: 5px;
@@ -539,16 +539,16 @@ main .recent-orders a {
     margin-top: 1rem;
     text-align: center;
     display: flex;
-    border-radius: var(--border-radius-1);
+    border-radius: 10px;
     line-height: 200%;
 }
 
 .btn-add-mp:hover {
-    background: var(--color-danger);
+    background: #0e6de2;
 }
 
 .btn-add:hover {
-    background: var(--color-danger);
+    background: #0e6de2;
 }
 
 .btn-add span {
@@ -556,8 +556,8 @@ main .recent-orders a {
 }
 
 .btnresetar {
-    border: 1px solid black;
-    background: var(--color-primary);
+    border: 2px solid #094b9b;
+    background: #094b9b;
     cursor: pointer;
     color: var(--color-white);
     padding: 5px;
@@ -565,8 +565,12 @@ main .recent-orders a {
     margin-top: 1rem;
     text-align: center;
     display: flex;
-    border-radius: var(--border-radius-1);
+    border-radius: 10px;
     line-height: 200%;
+}
+
+.btnresetar:hover{
+    background: #0e6de2;
 }
 
 .containerphp .tabelacrud {
@@ -702,14 +706,6 @@ td {
     transition: all 300ms ease;
 }
 
-.card input[type=checkbox] {
-    clip-path: circle(46% at 50% 50%);
-    cursor: pointer;
-}
-
-.card input[type=checkbox]:hover {
-    outline: 1px solid blue;
-}
 
 #butaodetalhes {
     border-radius: var(--border-radius-1);
@@ -805,13 +801,13 @@ td {
         grid-template-columns: 1fr;
     }
     aside {
-        position: fixed;
+        position: sticky;
         left: -100%;
-        background: var(--color-white);
+        background: #094b9b;
         width: 18rem;
         z-index: 3;
         box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
+        height: 1000vh;
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;
@@ -852,10 +848,7 @@ td {
         width: 100%;
         margin: 0;
     }
-    main table thead tr th:last-child(),
-    main table tbody tr td:first-child {
-        display: none;
-    }
+
     .table-wraper {
         overflow-x: auto;
         /* Habilita a rolagem horizontal em dispositivos menores */
@@ -877,7 +870,23 @@ td {
     .column {
         margin-top: 10px;
     }
+
+    #myInput {
+        margin-top: -3rem !important;
+    }
+
+    #registoperacao{
+        margin-bottom: 5%;
+    }
+
+    .topoo{
+        text-align: center;
+        display: block;
+    }
+
 }
+
+/*   ============================END  Media Queries Mobile ============================ */
 
 
 /*==========================admin page============================*/
@@ -979,7 +988,7 @@ td {
 
 progress {
     height: 2rem;
-    width: 50rem;
+    width: 60%;
 }
 
 progress[value]::-webkit-progress-bar {
@@ -1002,13 +1011,39 @@ progress[value]::-webkit-progress-value {
     background-image: url('../images/search.png');
     background-size: 3rem;
     background-repeat: no-repeat;
-    width: 20%;
+    max-width: max-content;
     justify-content: end;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
-    position: fixed;
+    position: absolute;
     border: 1px solid #ddd;
     display: flex;
-    margin-left: 67rem;
+    margin-left: 52%;
     margin-top: -1rem;
 }
+
+
+/*  --------------paginacao css------------------ */
+.table-wraper-pagination {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .table-wraper-pagination a
+  {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  .table-wraper-pagination a:hover{
+    background: #d8e5f5;
+  }
+
+

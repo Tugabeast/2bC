@@ -24,11 +24,11 @@
  
     <div class="container" id="container">
         <aside class="sidebar" id="mySidebar">
-            <div class="top" id="main" >
+            <div class="top" id="top">
                 <div class="menu" id="menu">
                 <h2 style="color:white; display: none;" id="nomeProjeto">MEETING POINT</h2>
                     <i class="material-symbols-sharp" style="color:white" onclick="openNav()" id="abrirside">menu</i>
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+                    <a href="javascript:void(0)" class="closebtn" id="closebtn" onclick="closeNav()">
                         <span class="material-symbols-sharp" id="closeside" style="display: none; color: white; justify-content: center;">close</span>
                     </a>
                 </div>
@@ -65,7 +65,7 @@
 
 
             <!-- -->
-            <h1 class="titulo" style="text-align: center;">Registo de Operações</h1>
+            <h1 class="titulo" id="registoperacao" style="text-align: center;">Registo de Operações</h1>
             <br>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp" style="height: 40vh;">
@@ -168,7 +168,7 @@
                                 if($row3['mp']=3 ){
                                     $rowcountmp3= mysqli_num_rows($result3);
                                     ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
                                         <h3><?php echo $rowMP3['MP_ID']?></h3>
                                         <h3><?php echo $rowMP3['name']?></h3>
                                         <h3><?php echo $rowcountmp3?><span class="material-symbols-sharp">group</span></h3>
@@ -184,7 +184,7 @@
                                     if($row4['mp']=4 ){
                                         $rowcountmp4= mysqli_num_rows($result4);
                                     ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
                                         <h3><?php echo $rowMP4['MP_ID']?></h3>
                                         <h3><?php echo $rowMP4['name']?></h3>
                                         <h3><?php echo $rowcountmp4?><span class="material-symbols-sharp">group</span></h3>
@@ -200,7 +200,7 @@
                                         if($row5['mp']=5){
                                             $rowcountmp5= mysqli_num_rows($result5);
                                     ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
                                         <h3><?php echo $rowMP5['MP_ID']?></h3>
                                         <h3><?php echo $rowMP5['name']?></h3>
                                         <h3><?php echo $rowcountmp5?><span class="material-symbols-sharp">group</span></h3>
@@ -216,7 +216,7 @@
                                         if($row6['mp']=6 ){
                                             $rowcountmp6= mysqli_num_rows($result6);
                                     ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
                                         <h3><?php echo $rowMP6['MP_ID']?></h3>
                                         <h3><?php echo $rowMP6['name']?></h3>
                                         <h3><?php echo $rowcountmp6?><span class="material-symbols-sharp">group</span></h3>
@@ -233,7 +233,7 @@
                                             $rowcountmp7= mysqli_num_rows($result7);
                                             
                                     ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid;" >
+                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
                                         <h3><?php echo $rowMP7['MP_ID']?></h3>
                                         <h3><?php echo $rowMP7['name']?></h3>
                                         <h3><?php echo $rowcountmp7?><span class="material-symbols-sharp">group</span></h3>
@@ -257,80 +257,36 @@
                 
                 <div class="column">
                     <div class="card" style="width: 200px; margin: auto;">
-                        <h3 style="text-align: center;">
-                            <?php
-                                $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
-                                $resultMP3 = mysqli_query($connect,$sqlzona3);
-                                $rowMP3 = mysqli_fetch_assoc($resultMP3);
+                        <form method="POST" action="insertCardMP1.php">
+                            
+                            <h3 style="text-align: center;">
+                                <?php
+                                    $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
+                                    $resultMP3 = mysqli_query($connect,$sqlzona3);
+                                    $rowMP3 = mysqli_fetch_assoc($resultMP3);
 
-                                $sqloperation = "SELECT * FROM mp_operation";
-                                $resultop= mysqli_query($connect,$sqloperation);
-                                $rowMPoperation = mysqli_fetch_assoc($resultop);
+                                    $sqloperation = "SELECT * FROM mp_operation";
+                                    $resultop= mysqli_query($connect,$sqloperation);
+                                    $rowMPoperation = mysqli_fetch_assoc($resultop);
 
-                                echo $rowMP3['MP_ID'];
-                                echo "<br>";
-                                echo $rowMP3['name'];
-                                echo "<br>";
-                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
-                            ?>
-                        </h3>
+                                    echo '<h2 style="text-align: center;">'.  $rowMP3['MP_ID']. '</h2>';                                   
+                                    echo '<h3 style="text-align: center;">'. $rowMP3['name']. '</h3>';
+                                    echo '<br>';
+                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                ?>
+                            </h3>
 
-                        <br>
-                        <input type="checkbox" class="checkoption" value="1">
-                        <label>Standby</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="2">
-                        <label>Emergencia</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="3">
-                        <label>Evacuação</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="4">
-                        <label>Fim de Emergencia</label>
-                        <br>
-                        <br>
-                        <?php
-                            // Return current date from the remote server
-                            $date = date('d-m-y h:i:s');
-                            echo "Updated: ".$date;
-                        ?>
-                        <br>
-                        <br>
-                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex; cursor:pointer;" >Sumbit</button>
-                    </div>
-                </div>
-                
-                <div class="column">
-                <div class="card" style="width: 200px; margin: auto;  ">
-                        <h3 style="text-align: center;">
-                            <?php
-                                $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
-                                $resultMP4 = mysqli_query($connect,$sqlzona4);
-                                $rowMP4 = mysqli_fetch_assoc($resultMP4);
-
-                                $sqloperation = "SELECT * FROM mp_operation WHERE id=4";
-                                $resultop= mysqli_query($connect,$sqloperation);
-                                $rowMPoperation = mysqli_fetch_assoc($resultop);
-
-                                echo $rowMP4['MP_ID'];
-                                echo "<br>";
-                                echo $rowMP4['name'];
-                                echo "<br>";
-                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
-                            ?>
-                        </h3>
-                        <br>
-                        <form action="enviarAlertas.php" method="POST">
-                            <input type="checkbox" class="checkoption" value="1" name="alerta[]">
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
                             <label>Standby</label>
                             <br>
-                            <input type="checkbox" class="checkoption" value="2" name="alerta[]">
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
                             <label>Emergencia</label>
                             <br>
-                            <input type="checkbox" class="checkoption" value="3" name="alerta[]">
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
                             <label>Evacuação</label>
                             <br>
-                            <input type="checkbox" class="checkoption" value="4" name="alerta[]">
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency">
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -341,163 +297,237 @@
                             ?>
                             <br>
                             <br>
-                            <button type="sumbit" id="butaosubmit" name="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <input type="hidden" name="id" value="<?php echo $rowMP3['id']; ?>">
+                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex; cursor:pointer;" >Sumbit</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="card" style="width: 200px; margin: auto;  ">
+                        <form action="insertCardMP2.php" method="POST">
+                            <h3 style="text-align: center;">
+                                <?php
+                                    $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
+                                    $resultMP4 = mysqli_query($connect,$sqlzona4);
+                                    $rowMP4 = mysqli_fetch_assoc($resultMP4);
+
+                                    $sqloperation = "SELECT * FROM mp_operation WHERE id=4";
+                                    $resultop= mysqli_query($connect,$sqloperation);
+                                    $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                    echo '<h2 style="text-align: center;">'.  $rowMP4['MP_ID']. '</h2>';                                   
+                                    echo '<h3 style="text-align: center;">'. $rowMP4['name']. '</h3>';
+                                    echo '<br>';
+                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                ?>
+                            </h3>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <label>Standby</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <label>Emergencia</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <label>Evacuação</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency">
+                            <label>Fim de Emergencia</label>
+                            <br>
+                            <br>
+                            <?php
+                                // Return current date from the remote server
+                                $date = date('d-m-y h:i:s');
+                                echo "Updated: ".$date;
+                            ?>
+                            <br>
+                            <br>
+                            <input type="hidden" name="id" value="<?php echo $rowMP4['id']; ?>">
+                            <button type="sumbit" id="butaosubmit" name="submitMP2" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            
                         </form>
                     </div>
                 </div>           
                 <div class="column">
                     <div class="card" style="width: 200px; margin: auto;  ">
-                        <h3 style="text-align: center;">
+                        <form action="insertCardMP3.php" method="POST">
+                            <h3 style="text-align: center;">
+                                <?php
+                                    $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
+                                    $resultMP5 = mysqli_query($connect,$sqlzona5);
+                                    $rowMP5= mysqli_fetch_assoc($resultMP5);
+
+                                    $sqloperation = "SELECT * FROM mp_operation WHERE operation='Evacuation' ";
+                                    $resultop= mysqli_query($connect,$sqloperation);
+                                    $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                    echo '<h2 style="text-align: center;">'.  $rowMP5['MP_ID']. '</h2>';                                   
+                                    echo '<h3 style="text-align: center;">'. $rowMP5['name']. '</h3>';
+                                    echo '<br>';
+                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                ?>
+                            </h3>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <label>Standby</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <label>Emergencia</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <label>Evacuação</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency">
+                            <label>Fim de Emergencia</label>
+                            <br>
+                            <br>
                             <?php
-                                $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
-                                $resultMP5 = mysqli_query($connect,$sqlzona5);
-                                $rowMP5= mysqli_fetch_assoc($resultMP5);
-
-                                $sqloperation = "SELECT * FROM mp_operation WHERE operation='Evacuation' ";
-                                $resultop= mysqli_query($connect,$sqloperation);
-                                $rowMPoperation = mysqli_fetch_assoc($resultop);
-
-                                echo $rowMP5['MP_ID'];
-                                echo "<br>";
-                                echo $rowMP5['name'];
-                                echo "<br>";
-                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
+                                // Return current date from the remote server
+                                $date = date('d-m-y h:i:s');
+                                echo "Updated: ".$date;
                             ?>
-                        </h3>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="1">
-                        <label>Standby</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="2">
-                        <label>Emergencia</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="3">
-                        <label>Evacuação</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="4">
-                        <label>Fim de Emergencia</label>
-                        <br>
-                        <br>
-                        <?php
-                            // Return current date from the remote server
-                            $date = date('d-m-y h:i:s');
-                            echo "Updated: ".$date;
-                        ?>
-                        <br>
-                        <br>
-                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <br>
+                            <br>
+                            <input type="hidden" name="id" value="<?php echo $rowMP5['id']; ?>">
+                            <button type="sumbit" id="butaosubmit" name="submitMP3" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            
+                        </form>
                     </div>
                 </div>              
                 <div class="column">
-                <div class="card" style="width: 200px; margin: auto; ">
-                        <h3 style="text-align: center;">
+                    <div class="card" style="width: 200px; margin: auto; ">
+                        <form action="insertCardMP4.php" method="POST">
+                            <h3 style="text-align: center;">
+                                <?php
+                                    $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
+                                    $resultMP6 = mysqli_query($connect,$sqlzona6);
+                                    $rowMP6 = mysqli_fetch_assoc($resultMP6);
+
+                                    $sqloperation = "SELECT * FROM mp_operation WHERE operation='emergency' ";
+                                    $resultop= mysqli_query($connect,$sqloperation);
+                                    $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                    echo '<h2 style="text-align: center;">'.  $rowMP6['MP_ID']. '</h2>';                                   
+                                    echo '<h3 style="text-align: center;">'. $rowMP6['name']. '</h3>';
+                                    echo '<br>';
+                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                ?>
+                            </h3>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <label>Standby</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <label>Emergencia</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <label>Evacuação</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"> 
+                            <label>Fim de Emergencia</label>
+                            <br>
+                            <br>
                             <?php
-                                $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
-                                $resultMP6 = mysqli_query($connect,$sqlzona6);
-                                $rowMP6 = mysqli_fetch_assoc($resultMP6);
-
-                                $sqloperation = "SELECT * FROM mp_operation WHERE operation='emergency' ";
-                                $resultop= mysqli_query($connect,$sqloperation);
-                                $rowMPoperation = mysqli_fetch_assoc($resultop);
-
-                                echo $rowMP6['MP_ID'];
-                                echo "<br>";
-                                echo $rowMP6['name'];
-                                echo "<br>";
-                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
+                                // Return current date from the remote server
+                                $date = date('d-m-y h:i:s');
+                                echo "Updated: ".$date;
                             ?>
-                        </h3>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="1">
-                        <label>Standby</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="2">
-                        <label>Emergencia</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="3">
-                        <label>Evacuação</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="4"> 
-                        <label>Fim de Emergencia</label>
-                        <br>
-                        <br>
-                        <?php
-                            // Return current date from the remote server
-                            $date = date('d-m-y h:i:s');
-                            echo "Updated: ".$date;
-                        ?>
-                        <br>
-                        <br>
-                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <br>
+                            <br>
+                            <input type="hidden" name="id" value="<?php echo $rowMP6['id']; ?>">
+                            <button type="sumbit" id="butaosubmit" name="submitMP4" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            
+                        </form>    
                     </div>
                 </div>        
                 <div class="column">
-                <div class="card" style="width: 200px; margin: auto;  ">
-                        <h3 style="text-align: center;">
+                    <div class="card" style="width: 200px; margin: auto;  ">
+                        <form action="insertCardMP5.php" method="POST">        
+                            <h3 style="text-align: center;">
+                                <?php
+                                    $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
+                                    $resultMP7 = mysqli_query($connect,$sqlzona7);   
+                                    $rowMP7 = mysqli_fetch_assoc($resultMP7);
+
+                                    $sqloperation = "SELECT * FROM mp_operation";
+                                    $resultop= mysqli_query($connect,$sqloperation);
+                                    $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                    echo '<h2 style="text-align: center;">'.  $rowMP7['MP_ID']. '</h2>';                                   
+                                    echo '<h3 style="text-align: center;">'. $rowMP7['name']. '</h3>';
+                                    echo '<br>';
+                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+
+                                ?>
+                            </h3>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <label>Standby</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <label>Emergencia</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <label>Evacuação</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"> 
+                            <label>Fim de Emergencia</label>
+                            <br>
+                            <br>
                             <?php
-                                $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
-                                $resultMP7 = mysqli_query($connect,$sqlzona7);   
-                                $rowMP7 = mysqli_fetch_assoc($resultMP7);
-
-                                $sqloperation = "SELECT * FROM mp_operation";
-                                $resultop= mysqli_query($connect,$sqloperation);
-                                $rowMPoperation = mysqli_fetch_assoc($resultop);
-
-                                echo $rowMP7['MP_ID'];
-                                echo "<br>";
-                                echo $rowMP7['name'];
-                                echo "<br>";
-                                echo '<p>'.$rowMPoperation['operation'].'</p>' ;
-
+                                // Return current date from the remote server
+                                $date = date('d-m-y h:i:s');
+                                echo "Updated: ".$date;
                             ?>
-                        </h3>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="1">
-                        <label>Standby</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="2">
-                        <label>Emergencia</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="3">
-                        <label>Evacuação</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="4">
-                        <label>Fim de Emergencia</label>
-                        <br>
-                        <br>
-                        <?php
-                            // Return current date from the remote server
-                            $date = date('d-m-y h:i:s');
-                            echo "Updated: ".$date;
-                        ?>
-                        <br>
-                        <br>
-                        <button type="sumbit" id="butaosubmit" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <br>
+                            <br>
+                            <input type="hidden" name="id" value="<?php echo $rowMP7['id']; ?>">
+                            <button type="sumbit" id="butaosubmit"  name="submitMP5" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                        </form>
                     </div>
                 </div>
                 <div class="column">
-                <div class="card" style="width: 200px; margin: auto;  ">
-                        <h3 style="text-align: center;">MP MASTER</h3>  
-                        <h4 style="text-align: center;">General</h4>
-                        <p style="text-align: center;">Master controller</p>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="1">
-                        <label>Standby</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="2">
-                        <label>Emergencia</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="3">
-                        <label>Evacuação</label>
-                        <br>
-                        <input type="checkbox" class="checkoption" value="4">
-                        <label>Fim de Emergencia</label>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <button type="sumbit" id="butaosubmit" style="margin: auto; display: flex;cursor:pointer;" >Sumbit</button>
+                    <div class="card" style="width: 200px; margin: auto;  ">
+                        <form action="insertCardMPmaster.php" method="POST">        
+                            <h3 style="text-align: center;">
+                                <?php
+                                    $sqlzonamaster = "SELECT * FROM meeting_point WHERE id=8";
+                                    $resultMPmaster = mysqli_query($connect,$sqlzonamaster);   
+                                    $rowMPmaster = mysqli_fetch_assoc($resultMPmaster);
+
+                                    $sqloperation = "SELECT * FROM mp_operation";
+                                    $resultop= mysqli_query($connect,$sqloperation);
+                                    $rowMPoperation = mysqli_fetch_assoc($resultop);
+
+                                    echo '<h2 style="text-align: center;">'.  $rowMPmaster['MP_ID']. '</h2>';                                   
+                                    echo '<h3 style="text-align: center;">'. $rowMPmaster['name']. '</h3>';
+                                    echo '<br>';
+                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+
+                                ?>
+                            </h3>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <label>Standby</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <label>Emergencia</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <label>Evacuação</label>
+                            <br>
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"> 
+                            <label>Fim de Emergencia</label>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <input type="hidden" name="id" value="<?php echo $rowMPmaster['id']; ?>">
+                            <button type="sumbit" id="butaosubmit"  name="submitMPmaster" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            
+                        </form>
                     </div>
                 </div>
 
@@ -518,11 +548,9 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
                     <form style="text-align: center;" method="post" action="#" >
                         
                         <label>
-                            Estao 
                             <?php 
                                 include('db_connection.php');
                                 $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
@@ -531,7 +559,10 @@
                                 $result3= mysqli_query($connect,$sqltrabalhadoresMP3);
 
                                 while($rowMP3 = mysqli_fetch_assoc($resultMP3) AND $row3 = mysqli_fetch_assoc($result3)){
+                                    
+                                    echo '<h1>'. $rowMP3['name']  .'</h1>';
                                     $rowcountmp3= mysqli_num_rows($result3);
+                                    echo "Estao ";
                                     echo $rowcountmp3;
                                     ?>
                                     Trabalhadores no
@@ -556,11 +587,10 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
                     <form style="text-align: center;" method="post" action="#" >
                         
                         <label>
-                            Estao 
+                            
                             <?php 
                                 include('db_connection.php');
                                 $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
@@ -569,7 +599,10 @@
                                 $result4= mysqli_query($connect,$sqltrabalhadoresMP4);
 
                                 while($rowMP4 = mysqli_fetch_assoc($resultMP4) AND $row4= mysqli_fetch_assoc($result4)){
+
+                                    echo '<h1>'. $rowMP4['name']  .'</h1>';
                                     $rowcountmp4= mysqli_num_rows($result4);
+                                    echo "Estao ";
                                     echo $rowcountmp4;
                                     ?>
                                     Trabalhadores no
@@ -594,11 +627,8 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
                     <form style="text-align: center;" method="post" action="#" >
-                        
                         <label>
-                            Estao 
                             <?php 
                                 include('db_connection.php');
                                 $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
@@ -607,7 +637,9 @@
                                 $result5= mysqli_query($connect,$sqltrabalhadoresMP5);
 
                                 while($rowMP5 = mysqli_fetch_assoc($resultMP5) AND $row5= mysqli_fetch_assoc($result5)){
+                                    echo '<h1>'. $rowMP5['name']  .'</h1>';
                                     $rowcountmp5= mysqli_num_rows($result5);
+                                    echo "Estao ";
                                     echo $rowcountmp5;
                                     ?>
                                     Trabalhadores no
@@ -632,11 +664,8 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
-                    <form style="text-align: center;" method="post" action="#" >
-                        
+                    <form style="text-align: center;" method="post" action="#" >                     
                         <label>
-                            Estao 
                             <?php 
                                 include('db_connection.php');
                                 $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
@@ -645,7 +674,9 @@
                                 $result6= mysqli_query($connect,$sqltrabalhadoresMP6);
 
                                 while($rowMP6 = mysqli_fetch_assoc($resultMP6) AND $row6= mysqli_fetch_assoc($result6)){
+                                    echo '<h1>'. $rowMP6['name']  .'</h1>';
                                     $rowcountmp6= mysqli_num_rows($result6);
+                                    echo "Estao ";
                                     echo $rowcountmp6;
                                     ?>
                                     Trabalhadores no
@@ -670,11 +701,8 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2 style="text-align: center; margin-bottom: 10px;" class="titulo">Detalhes do Meeting Point</h2>
                     <form style="text-align: center;" method="post" action="#" >
-                        
-                        <label>
-                            Estao 
+                        <label> 
                             <?php 
                                 include('db_connection.php');
                                 $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
@@ -683,7 +711,9 @@
                                 $result7= mysqli_query($connect,$sqltrabalhadoresMP7);
 
                                 while($rowMP7 = mysqli_fetch_assoc($resultMP7) AND $row7= mysqli_fetch_assoc($result7)){
+                                    echo '<h1>'. $rowMP7['name']  .'</h1>';
                                     $rowcountmp7= mysqli_num_rows($result7);
+                                    echo "Estao ";
                                     echo $rowcountmp7;
                                     ?>
                                     Trabalhadores no
@@ -702,7 +732,7 @@
 
             <!--------------------------------- END MODAL DETALHES ZONAS MP7   -------------------------------->
             <br>
-            <a href="#menu" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
+            <a href="#registoperacao" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
         <!--Fim da main-->
         
@@ -800,12 +830,7 @@
             }
         }
 
-        //funcao para so selecionar uma checkbox nos cards
-        $(document).ready(function(){
-            $('.checkoption').click(function() {
-                $('.checkoption').not(this).prop('checked', false);
-            });
-        });
+
 
 
 

@@ -41,6 +41,7 @@ function try_login($user, $password, $connect) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['nome'] = $user['name'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['email'] = $user['email'];
             if($user['role'] == 'admin') {
                 header("Location: index3.php");
             } else {

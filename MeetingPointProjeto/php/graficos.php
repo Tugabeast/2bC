@@ -56,72 +56,78 @@ include('protect.php');?>
             <h1 class="titulo">GVIR STATUS</h1>
             <div class="containerphp" style="height: 70vh; display: block;" >
                 <?php if(isset($_SESSION['mensagem'])): ?>
-                <p style="color: var(--color-sucess); text-align: center; font-size: 16px;"><?php echo $_SESSION['mensagem']; ?></p>
-                <?php unset($_SESSION['mensagem']); ?>
+                <p id="mensagem" style="color: var(--color-sucess); text-align: center; font-size: 16px;"><?php echo $_SESSION['mensagem']; ?></p>
                 <?php endif; ?>
-                    <table class="tabelacrud" id="tabelacrud1" style="width: 50rem; ">
-                        <thead>
-                            <tr style="background: #094b9b; color: white;">
-                                <th>Threshold H1</th>
-                                <th>Threshold H2</th>
-                                <th>LoRa ID</th>
-                                <th>Serial Number</th>
-                                <th>Last Contact</th>
-                                <th>Status</th>
-                                <th>Gas Concentration</th>
-                                <th>Sensor Temperature</th>
-                                <th>Response Factor</th>
-                                <th>Sensor Range</th>
-                                <th>Cal 100</th>
-                                <th>Cal 3000</th>
-                                <th>Waiting Time</th>
-                                <th>Threshold H3</th>
-                            </tr>
-                        </thead>
+                <table class="tabelacrud" id="tabelacrud1" style="width: 50rem;">
+                    <thead>
+                        <tr style="background: #094b9b; color: white;">
+                            <th>Threshold H1</th>
+                            <th>Threshold H2</th>
+                            <th>LoRa ID</th>
+                            <th>Serial Number</th>
+                            <th>Last Contact</th>
+                            <th>Status</th>
+                            <th>Gas Concentration</th>
+                            <th>Sensor Temperature</th>
+                            <th>Response Factor</th>
+                            <th>Sensor Range</th>
+                            <th>Cal 100</th>
+                            <th>Cal 3000</th>
+                            <th>Waiting Time</th>
+                            <th>Threshold H3</th>
+                        </tr>
+                    </thead>
+                    <form action="editarThreshold.php" method="POST">
                         <?php   
                             include('db_connection.php');
-                            $sql = "SELECT * FROM `gvir_status` Where input=2 ";
+                            $sql = "SELECT * FROM `gvir_status` LIMIT 5";
                             $result = mysqli_query($connect, $sql);
                             while($row = mysqli_fetch_assoc($result)){
-                                ?>
-                                <form action="editarThreshold.php" method="POST">
-                                    <tr>
-                                        
-                                        <td>
-                                            <input type="hidden" name="TH_update_id" value="<?php echo $row['input'] ?>">
-                                            <input type="number" name="threshold_h1" value="<?php echo $row['threshold_h1'] ?>">
-                                        </td>
-                                        <td><input type="number" name="threshold_h2" id="threshold_h2" value="<?php echo $row['threshold_h2']?>"></td>
-                                        <td><?php echo $row['id']?></td>
-                                        <td><?php echo $row['serial_number']?></td>
-                                        <td><?php echo $row['datatime']?></td>
-                                        <td><?php echo $row['status']?></td>
-                                        <td><?php echo $row['gas_concentration']?></td>
-                                        <td><?php echo $row['temperature']?></td>
-                                        <td><?php echo $row['response_factor']?></td>
-                                        <td><?php echo $row['sensor_range']?></td>
-                                        <td><?php echo $row['cal_100']?></td>
-                                        <td><?php echo $row['cal_3000']?></td>
-                                        <td><?php echo $row['flag_status']?></td>
-                                        <td>Definido no autómato</td>
-                                    </tr>
-                                    <button type="submit" class="btn-add" name="editarTH" id="editarTH" style="display: block; margin-bottom: 10px;">Sumbit thresholds</button>
-                                </form>    
-                                <?php
+                        ?>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="TH_update_id[]" value="<?php echo $row['input'] ?>">
+                                <input type="number" name="threshold_h1[]" value="<?php echo $row['threshold_h1'] ?>">
+                            </td>
+                            <td><input type="number" name="threshold_h2[]" value="<?php echo $row['threshold_h2'] ?>"></td>
+                            <td><?php echo $row['id']?></td>
+                            <td><?php echo $row['serial_number']?></td>
+                            <td><?php echo $row['datatime']?></td>
+                            <td><?php echo $row['status']?></td>
+                            <td><?php echo $row['gas_concentration']?></td>
+                            <td><?php echo $row['temperature']?></td>
+                            <td><?php echo $row['response_factor']?></td>
+                            <td><?php echo $row['sensor_range']?></td>
+                            <td><?php echo $row['cal_100']?></td>
+                            <td><?php echo $row['cal_3000']?></td>
+                            <td><?php echo $row['flag_status']?></td>
+                            <td>Definido no autómato</td>
+                        </tr>           
+                        <?php
                             }   
                         ?>
-                    </table>
-                
-                <button name="gerar-graficos" type="submit" id="gerar-graficos">Gerar Gráficos</button>    
-                <div id="graphdiv3" style="width: 60rem; padding-top: 5rem; margin: auto;"></div>
-                <script type="text/javascript">
-                    Dygraph.onDOMready(function onDOMready() {
-                        g = new Dygraph(
-                            document.getElementById("graphdiv1"),
-                            "../js/temperatures.csv", // path to CSV file
-                        );
-                    });
-                </script>
+                        <button type="submit" class="btn-add" name="editarTH" id="editarTH" style="display: block; margin-bottom: 10px;">Submit thresholds</button>
+                    </form>
+                </table>
+                <form action="#" method="GET">
+                    <button name="gerar-graficos" class="btn-add"  type="submit" id="gerar-graficos">Gerar Gráficos</button>    
+                    <div id="graphdiv1"></div>
+                    <script type="text/javascript">
+                        Dygraph.onDOMready(function onDOMready() {
+                            g = new Dygraph(
+                                document.getElementById("graphdiv1"),
+                                <?php
+                                    $MyArray = include("gerar_graficos.php");
+                                    for ($row = 0; $row < sizeof($MyArray); $row++) {
+                                        echo '"'.$MyArray[$row]["label"] . ',' . $MyArray[$row]["y"] . '\n"';
+                                        if($row != sizeof($MyArray)-1)
+                                            echo "+";
+                                    }
+                                ?>
+                            );
+                        });
+                    </script>
+                </form>
                 
             </div>
             
@@ -133,6 +139,19 @@ include('protect.php');?>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+    setTimeout(function() {
+        <?php
+        // Verifique se a mensagem está definida na sessão
+        if(isset($_SESSION['mensagem'])) {
+            // Exiba a mensagem
+            echo 'document.getElementById("mensagem").style.display = "none";';
+            // Limpe a mensagem da sessão
+            unset($_SESSION['mensagem']);
+        }
+        ?>
+    }, 2000); // Tempo em milissegundos (5 segundos)
+</script>
 
 </body>
 

@@ -8,8 +8,8 @@
     $portportatil = 3306;
     $portfixo = 3305;
 
-    //$connect = new mysqli($dbHost,$dbUsername,$dbPasswordfixo,$dbName,$portfixo);
-    $connect = new mysqli($dbHost,$dbUsername,$dbPasswordportatil,$dbName,$portportatil);
+    $connect = new mysqli($dbHost,$dbUsername,$dbPasswordfixo,$dbName,$portfixo);
+    //$connect = new mysqli($dbHost,$dbUsername,$dbPasswordportatil,$dbName,$portportatil);
 
     
 if($connect->connect_error){

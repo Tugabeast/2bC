@@ -27,7 +27,7 @@ btnabrir.addEventListener('click', () => {
 
 function openNav() {
     document.getElementById("mySidebar").style.width = "min-content";
-    document.getElementById("main").style.marginLeft = "0px";
+    document.getElementById("mySidebar").style.display = "block";
     document.getElementById("dashboard").style.display = "block";
     document.getElementById("formulario").style.display = "block";
     document.getElementById("tabelacrud").style.display = "block";
@@ -37,14 +37,12 @@ function openNav() {
     document.getElementById("nomeProjeto").style.display = "block";
     document.getElementById("profile").style.display = "block";
     document.getElementById("logout").style.display = "block";
-    document.getElementById("nomeProjeto").style.marginTop = "-1rem";
-
-
+    document.getElementById("nomeProjeto").style.marginTop = "-1rem";   
+    
 }
 
 function closeNav() {
     document.getElementById("mySidebar").style.width = "100px";
-    document.getElementById("main").style.marginLeft = "0";
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("formulario").style.display = "none";
     document.getElementById("tabelacrud").style.display = "none";
@@ -54,6 +52,7 @@ function closeNav() {
     document.getElementById("nomeProjeto").style.display = "none";
     document.getElementById("profile").style.display = "none";
     document.getElementById("logout").style.display = "none";
+
 }
 
 
