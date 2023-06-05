@@ -72,6 +72,9 @@
             <h1 class="titulo" style="text-align: center;">Reiniciar Sistema</h1>
             <button type="button" class="btnresetar" id="resetarSistem" style="margin-bottom: 5rem;"><span class="material-symbols-sharp">restart_alt</span>Reset Sistema</button>
 
+            <!-- 
+                no reset system os valores que estiverem com um mp atribuido deverao estar a verdes e os que nao tiverem devem estar a vermelho , ao dar reset passa tudo a 1 e os mps a 0. e os utilizadores que estiverm mp atribuido teram de ter o worker_mp a 2
+            -->
             <!--------------------------------- BEGIN MODAL RESETAR SISTEMA   -------------------------------->
             <div id="resetarSistema" class="modal">
                 <!-- Modal content -->

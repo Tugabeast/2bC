@@ -10,10 +10,8 @@
     use Dompdf\Dompdf;
     use Dompdf\Options;
 
-    /*
-    $MP_ID = $_POST["MP_ID"];
-    $name = $_POST["name"];
-    */
+    $id = $_GET['id'];
+    $order_given = $_GET['order_given'];
     
     
 
@@ -21,7 +19,10 @@
         $sql1 = "SELECT datatime, worker_name FROM mp_registered_cards ";
         $result1 = $connect->query($sql1);
 
-        $order_given = $_SESSION['nome'];
+
+        $sql2 = "SELECT * FROM mp_operation ORDER BY datatime";
+        $result2 = $connect->query($sql2);
+        
 
         $dompdf = new Dompdf();
 
@@ -82,7 +83,7 @@
             <h2>Relatorio de Emergência</h2>
             <h2>MP3 - Oficinas</h2><!--isto tem que ser dinamico/tem que ser o MP clicado-->
 
-            <h3>Inicio da emergência: x</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
+            <h3 id="inicio-emergencia">Inicio da emergência: x</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
             <h3>Ativado: '.$order_given.'</h3>
             <h4>Lista de registados</h4>
             <table>
@@ -104,12 +105,28 @@
             }
         }
 
+        $sql2 = "SELECT operation, datatime FROM mp_operation WHERE id = '$id' ORDER BY datatime DESC LIMIT 1";
+        $result2 = $connect->query($sql2);
+        
+        if ($result2->num_rows > 0) {
+            $row2 = $result2->fetch_assoc();
+            $operation = $row2['operation'];
+            $datatime = $row2['datatime'];
+        
+            if ($operation === "Emergency") {
+                $html = str_replace("x", "Inicio da emergência: $datatime", $html);
+            } elseif ($operation === "End_Emergency") {
+                $html = str_replace("x", "Fim da emergência: $datatime", $html);
+                $html = str_replace('id="fim-emergencia"', 'id="fim-emergencia" style="color: red"', $html);
+            }
+        }
+        
         $html .= '</tbody>
-            </table>
-            <h3>Fim da emergência: x</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
-            <h3>Ativado: '.$order_given.'</h3>
-        </body>
-        </html>';
+                </table>
+                <h3 id="fim-emergencia">Fim da emergência: x</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
+                <h3>Ativado: '.$order_given.'</h3>
+            </body>
+            </html>';
 
 
         $dompdf->addInfo("Title","MeetingPoint");
@@ -120,7 +137,7 @@
 
         $dompdf->render();
 
-        $dompdf->stream("MP Relatorio Emergencia",["Attachment" => 0]);
+        $dompdf->stream("MP Relatorio Emergencia",["Attachment" =>true]);
 
-    
+        exit;
 ?>

@@ -380,10 +380,6 @@ main table tbody td {
     color: var(--color-dark-variant);
 }
 
-main table tbody tr:last-child td {
-    /*border: none;*/
-}
-
 main .recent-orders a {
     text-align: center;
     display: block;
@@ -456,11 +452,39 @@ main .recent-orders a {
     color: var(--color-background);
 }
 
-#graphdiv3 {
-    width: 60%;
+#graphdiv1 {
+    width: 70%;
     height: 50%;
     margin-top: 20px;
-    margin-left: -30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dygraph-label.dygraph-ylabel {
+    color: black;
+    font-family: sans-serif;
+    margin-top: -1rem;
+    font-weight: bold;
+}
+
+.dygraph-label.dygraph-xlabel {
+    color: black;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+#gas_concentration {
+    border: 2px solid #094b9b;
+    background: #094b9b;
+    cursor: pointer;
+    color: var(--color-white);
+    padding: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    border-radius: 10px;
+    line-height: 200%;
 }
 
 
@@ -569,7 +593,7 @@ main .recent-orders a {
     line-height: 200%;
 }
 
-.btnresetar:hover{
+.btnresetar:hover {
     background: #0e6de2;
 }
 
@@ -705,7 +729,6 @@ td {
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
     transition: all 300ms ease;
 }
-
 
 #butaodetalhes {
     border-radius: var(--border-radius-1);
@@ -848,7 +871,6 @@ td {
         width: 100%;
         margin: 0;
     }
-
     .table-wraper {
         overflow-x: auto;
         /* Habilita a rolagem horizontal em dispositivos menores */
@@ -870,21 +892,18 @@ td {
     .column {
         margin-top: 10px;
     }
-
     #myInput {
         margin-top: -3rem !important;
     }
-
-    #registoperacao{
+    #registoperacao {
         margin-bottom: 5%;
     }
-
-    .topoo{
+    .topoo {
         text-align: center;
         display: block;
     }
-
 }
+
 
 /*   ============================END  Media Queries Mobile ============================ */
 
@@ -1024,15 +1043,15 @@ progress[value]::-webkit-progress-value {
 
 
 /*  --------------paginacao css------------------ */
+
 .table-wraper-pagination {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .table-wraper-pagination a
-  {
+}
+
+.table-wraper-pagination a {
     display: inline-block;
     padding: 8px 12px;
     margin: 0 4px;
@@ -1040,10 +1059,20 @@ progress[value]::-webkit-progress-value {
     text-decoration: none;
     color: #555;
     font-weight: bold;
-  }
-  
-  .table-wraper-pagination a:hover{
+}
+
+.table-wraper-pagination a:hover {
     background: #d8e5f5;
-  }
+}
 
-
+#temperaturas {
+    text-align: center;
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid black;
+    background: #094b9b;
+    color: white;
+    border-radius: 10px;
+    padding: 0.3rem;
+}

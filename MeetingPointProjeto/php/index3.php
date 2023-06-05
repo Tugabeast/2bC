@@ -64,7 +64,7 @@
             
 
 
-            <!-- -->
+            <!-- adicionar manualmente o meeting point aos trabalhadores com um model -->
             <h1 class="titulo" id="registoperacao" style="text-align: center;">Registo de Operações</h1>
             <br>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
@@ -256,56 +256,75 @@
             <div class="row" style="margin: auto; display: flex; align-items: center; justify-content: center;">
                 
                 <div class="column">
+                    <?php
+                    include('db_connection.php');
+                        $query = "SELECT id, operation AS last_operation FROM mp_operation WHERE (id, datatime) IN (SELECT id, MAX(datatime) FROM mp_operation GROUP BY id) ORDER BY id";
+                        $result = mysqli_query($connect, $query);
+
+                        // Criar um array associativo com os últimos valores de operação para cada ID
+                        $lastOperations = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $lastOperations[$row['id']] = $row['last_operation'];
+                        }
+                    ?>
+
                     <div class="card" style="width: 200px; margin: auto;">
                         <form method="POST" action="insertCardMP1.php">
-                            
                             <h3 style="text-align: center;">
                                 <?php
-                                    $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
-                                    $resultMP3 = mysqli_query($connect,$sqlzona3);
-                                    $rowMP3 = mysqli_fetch_assoc($resultMP3);
+                                $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
+                                $resultMP3 = mysqli_query($connect, $sqlzona3);
+                                $rowMP3 = mysqli_fetch_assoc($resultMP3);
 
-                                    $sqloperation = "SELECT * FROM mp_operation";
-                                    $resultop= mysqli_query($connect,$sqloperation);
-                                    $rowMPoperation = mysqli_fetch_assoc($resultop);
-
-                                    echo '<h2 style="text-align: center;">'.  $rowMP3['MP_ID']. '</h2>';                                   
-                                    echo '<h3 style="text-align: center;">'. $rowMP3['name']. '</h3>';
-                                    echo '<br>';
-                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                echo '<h2 style="text-align: center;">'. $rowMP3['MP_ID']. '</h2>';
+                                echo '<h3 style="text-align: center;">'. $rowMP3['name']. '</h3>';
+                                echo '<br>';
+                                echo '<p style="text-align: center;">'. $lastOperations[3]. '</p>';
                                 ?>
                             </h3>
 
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby"<?php if ($lastOperations[3] == 'Standby') echo ' checked'; ?>>
                             <label>Standby</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency"<?php if ($lastOperations[3] == 'Emergency') echo ' checked'; ?>>
                             <label>Emergencia</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[3] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency">
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[3] == 'End_Emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
                             <?php
-                                // Return current date from the remote server
-                                $date = date('d-m-y h:i:s');
-                                echo "Updated: ".$date;
+                            // Retorna a data atual do servidor remoto
+                            $date = date('d-m-y h:i:s');
+                            echo "Atualizado: " . $date;
                             ?>
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP3['id']; ?>">
-                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex; cursor:pointer;" >Sumbit</button>
+                            <button type="submit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex; cursor:pointer;">Submit</button>
                         </form>
                     </div>
+
                 </div>
                 
                 <div class="column">
+                    <?php
+                        include('db_connection.php');
+                        $query = "SELECT id, operation AS last_operation FROM mp_operation WHERE (id, datatime) IN (SELECT id, MAX(datatime) FROM mp_operation GROUP BY id) ORDER BY id";
+                        $result = mysqli_query($connect, $query);
+
+                        // Criar um array associativo com os últimos valores de operação para cada ID
+                        $lastOperations = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $lastOperations[$row['id']] = $row['last_operation'];
+                        }
+                    ?>
                     <div class="card" style="width: 200px; margin: auto;  ">
-                        <form action="insertCardMP2.php" method="POST">
+                        <form action="insertCardMP1.php" method="POST">
                             <h3 style="text-align: center;">
                                 <?php
                                     $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
@@ -319,20 +338,20 @@
                                     echo '<h2 style="text-align: center;">'.  $rowMP4['MP_ID']. '</h2>';                                   
                                     echo '<h3 style="text-align: center;">'. $rowMP4['name']. '</h3>';
                                     echo '<br>';
-                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                    echo '<p style="text-align: center;">'. $lastOperations[4]. '</p>';
                                 ?>
                             </h3>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby"<?php if ($lastOperations[4] == 'Standby') echo ' checked'; ?>>
                             <label>Standby</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency"<?php if ($lastOperations[4] == 'Emergency') echo ' checked'; ?>>
                             <label>Emergencia</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[4] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency">
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[4] == 'End_Emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -344,14 +363,25 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP4['id']; ?>">
-                            <button type="sumbit" id="butaosubmit" name="submitMP2" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
                             
                         </form>
                     </div>
                 </div>           
                 <div class="column">
+                    <?php
+                        include('db_connection.php');
+                        $query = "SELECT id, operation AS last_operation FROM mp_operation WHERE (id, datatime) IN (SELECT id, MAX(datatime) FROM mp_operation GROUP BY id) ORDER BY id";
+                        $result = mysqli_query($connect, $query);
+
+                        // Criar um array associativo com os últimos valores de operação para cada ID
+                        $lastOperations = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $lastOperations[$row['id']] = $row['last_operation'];
+                        }
+                    ?>
                     <div class="card" style="width: 200px; margin: auto;  ">
-                        <form action="insertCardMP3.php" method="POST">
+                        <form action="insertCardMP1.php" method="POST">
                             <h3 style="text-align: center;">
                                 <?php
                                     $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
@@ -365,20 +395,20 @@
                                     echo '<h2 style="text-align: center;">'.  $rowMP5['MP_ID']. '</h2>';                                   
                                     echo '<h3 style="text-align: center;">'. $rowMP5['name']. '</h3>';
                                     echo '<br>';
-                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                    echo '<p style="text-align: center;">'. $lastOperations[5]. '</p>';
                                 ?>
                             </h3>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby"<?php if ($lastOperations[5] == 'Standby') echo ' checked'; ?>>
                             <label>Standby</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency"<?php if ($lastOperations[5] == 'Emergency') echo ' checked'; ?>>
                             <label>Emergencia</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[5] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency">
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[5] == 'End_Emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -390,14 +420,25 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP5['id']; ?>">
-                            <button type="sumbit" id="butaosubmit" name="submitMP3" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
                             
                         </form>
                     </div>
                 </div>              
                 <div class="column">
+                    <?php
+                        include('db_connection.php');
+                        $query = "SELECT id, operation AS last_operation FROM mp_operation WHERE (id, datatime) IN (SELECT id, MAX(datatime) FROM mp_operation GROUP BY id) ORDER BY id";
+                        $result = mysqli_query($connect, $query);
+
+                        // Criar um array associativo com os últimos valores de operação para cada ID
+                        $lastOperations = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $lastOperations[$row['id']] = $row['last_operation'];
+                        }
+                    ?>
                     <div class="card" style="width: 200px; margin: auto; ">
-                        <form action="insertCardMP4.php" method="POST">
+                        <form action="insertCardMP1.php" method="POST">
                             <h3 style="text-align: center;">
                                 <?php
                                     $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
@@ -411,20 +452,20 @@
                                     echo '<h2 style="text-align: center;">'.  $rowMP6['MP_ID']. '</h2>';                                   
                                     echo '<h3 style="text-align: center;">'. $rowMP6['name']. '</h3>';
                                     echo '<br>';
-                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                    echo '<p style="text-align: center;">'. $lastOperations[6]. '</p>';
                                 ?>
                             </h3>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby"<?php if ($lastOperations[6] == 'Standby') echo ' checked'; ?>>
                             <label>Standby</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency"<?php if ($lastOperations[6] == 'Emergency') echo ' checked'; ?>>
                             <label>Emergencia</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[6] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"> 
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[6] == 'End_Emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -436,14 +477,25 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP6['id']; ?>">
-                            <button type="sumbit" id="butaosubmit" name="submitMP4" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
                             
                         </form>    
                     </div>
                 </div>        
                 <div class="column">
+                    <?php
+                        include('db_connection.php');
+                        $query = "SELECT id, operation AS last_operation FROM mp_operation WHERE (id, datatime) IN (SELECT id, MAX(datatime) FROM mp_operation GROUP BY id) ORDER BY id";
+                        $result = mysqli_query($connect, $query);
+
+                        // Criar um array associativo com os últimos valores de operação para cada ID
+                        $lastOperations = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $lastOperations[$row['id']] = $row['last_operation'];
+                        }
+                    ?>
                     <div class="card" style="width: 200px; margin: auto;  ">
-                        <form action="insertCardMP5.php" method="POST">        
+                        <form action="insertCardMP1.php" method="POST">        
                             <h3 style="text-align: center;">
                                 <?php
                                     $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
@@ -457,21 +509,21 @@
                                     echo '<h2 style="text-align: center;">'.  $rowMP7['MP_ID']. '</h2>';                                   
                                     echo '<h3 style="text-align: center;">'. $rowMP7['name']. '</h3>';
                                     echo '<br>';
-                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                    echo '<p style="text-align: center;">'. $lastOperations[7]. '</p>';
 
                                 ?>
                             </h3>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby"<?php if ($lastOperations[7] == 'Standby') echo ' checked'; ?>>
                             <label>Standby</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency"<?php if ($lastOperations[7] == 'Emergency') echo ' checked'; ?>>
                             <label>Emergencia</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[7] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"> 
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[7] == 'End_Emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -483,16 +535,27 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP7['id']; ?>">
-                            <button type="sumbit" id="butaosubmit"  name="submitMP5" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit"  name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
                         </form>
                     </div>
                 </div>
                 <div class="column">
+                    <?php
+                        include('db_connection.php');
+                        $query = "SELECT id, operation AS last_operation FROM mp_operation WHERE (id, datatime) IN (SELECT id, MAX(datatime) FROM mp_operation GROUP BY id) ORDER BY id";
+                        $result = mysqli_query($connect, $query);
+
+                        // Criar um array associativo com os últimos valores de operação para cada ID
+                        $lastOperations = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $lastOperations[$row['id']] = $row['last_operation'];
+                        }
+                    ?>
                     <div class="card" style="width: 200px; margin: auto;  ">
                         <form action="insertCardMPmaster.php" method="POST">        
                             <h3 style="text-align: center;">
                                 <?php
-                                    $sqlzonamaster = "SELECT * FROM meeting_point WHERE id=8";
+                                    $sqlzonamaster = "SELECT * FROM meeting_point WHERE MP_ID='MP Master'  ";
                                     $resultMPmaster = mysqli_query($connect,$sqlzonamaster);   
                                     $rowMPmaster = mysqli_fetch_assoc($resultMPmaster);
 
@@ -503,21 +566,21 @@
                                     echo '<h2 style="text-align: center;">'.  $rowMPmaster['MP_ID']. '</h2>';                                   
                                     echo '<h3 style="text-align: center;">'. $rowMPmaster['name']. '</h3>';
                                     echo '<br>';
-                                    echo '<p style="text-align: center;">'.$rowMPoperation['operation'].'</p>' ;
+                                    echo '<p style="text-align: center;">'. $lastOperations[8]. '</p>';
 
                                 ?>
                             </h3>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby">
+                            <input type="radio" class="checkoption" name="operation" value="Standby" id="standby"<?php if ($lastOperations[8] == 'Standby') echo ' checked'; ?>>
                             <label>Standby</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency">
+                            <input type="radio" class="checkoption" name="operation" value="Emergency" id="emergency"<?php if ($lastOperations[8] == 'Emergency') echo ' checked'; ?>>
                             <label>Emergencia</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation">
+                            <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[8] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"> 
+                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[8] == 'End_Emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
