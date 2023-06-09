@@ -10,9 +10,26 @@
     <link rel="stylesheet" href="../css/cssdeteste.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	
     
 
+    <style>
+    .red-row td {
+        color: red;
+    }
 
+    .red-row td a {
+        color: red;
+    }
+
+    .green-row td {
+        color: green;
+    }
+
+    .green-row td a {
+        color: green;
+    }
+</style>
     
     <?php 
         include_once('db_connection.php');
@@ -59,9 +76,6 @@
         </aside>
         <!-- fim da sidebar -->
         <main >
-            <!--<h1 class="titulo">Monitorização</h1>-->
-
-            
 
 
             <!-- adicionar manualmente o meeting point aos trabalhadores com um model -->
@@ -87,13 +101,19 @@
                             if (mysqli_num_rows($result) > 0) {
                                
                                 while($row = mysqli_fetch_assoc($result)){
+                                    $textColor = ($row['mp'] == 0) ? 'red' : 'green';
+                                    $rowClass = ($row['mp'] == 0) ? 'red-row' : 'green-row';
                                     ?>
-                                        <tr>
-                                            <td><?php echo $row['worker_name']?></td>
-                                            <td><?php echo $row['worker_company']?></td>
-                                            <td><?php echo $row['type']?></td>
-                                            <td><?php echo $row['mp']?></td>
-                                        </tr>
+                                    <tr class="<?php echo $rowClass; ?>">
+                                        <td>
+                                            <a href="#" class="edit-link" data-worker-name="<?php echo $row['worker_name']; ?>" style="font-weight: bold; color: <?php echo $textColor; ?>">
+                                                <?php echo $row['worker_name']; ?>
+                                            </a>
+                                        </td>
+                                        <td style="color: <?php echo $textColor; ?> "><?php echo $row['worker_company']; ?></td>
+                                        <td style="color: <?php echo $textColor; ?> "><?php echo $row['type']; ?></td>
+                                        <td style="color: <?php echo $textColor; ?> "><?php echo $row['mp']; ?></td>
+                                    </tr>
                                     <?php
                                 }   
                             }
@@ -107,154 +127,114 @@
             <!-- script php progress bar -->
             <div class="progressbar">
                 <?php 
-                    $sqlbar2 = "SELECT * FROM mp_registered_cards where mp != 0 " ;
-                    if($result2 = mysqli_query($connect,$sqlbar2)){
-                        $rowcount2 = mysqli_num_rows($result2);
-                        echo "nr de trabalhadores registado: " . $rowcount2;
-                        
-                    }
-                    echo "<br>";
-                    $sqlpbar = "SELECT * FROM mp_registered_cards where mp = 0";
-                    if($result = mysqli_query($connect,$sqlpbar)){
-                        $rowcount = mysqli_num_rows($result);
-                        echo "nr de trabalhadores nao registados: " . $rowcount;
-                        
-                    }
-
-                    $percentagem = ($rowcount2 /$rowcount)* 100 ;
+                        $sqlbar2 = "SELECT * FROM mp_registered_cards WHERE mp != 0";
+                        if ($result2 = mysqli_query($connect, $sqlbar2)) {
+                            $rowcount2 = mysqli_num_rows($result2);
+                            echo "nr de trabalhadores registado: " . $rowcount2;
+                        }
+                        echo "<br>";
+                        $sqlpbar = "SELECT * FROM mp_registered_cards WHERE mp = 0";
+                        if ($result = mysqli_query($connect, $sqlpbar)) {
+                            $rowcount = mysqli_num_rows($result);
+                            echo "nr de trabalhadores nao registados: " . $rowcount;
+                        }
+                    
+                        $percentagem = ($rowcount2 / $rowcount) * 100;
                     
                 ?>
                 <br>
-                <progress value="<?php echo $rowcount2 ?>" max="<?php echo $rowcount ?>"></progress>
+                <progress id="progressBar" value="<?php echo $rowcount2 ?>" max="<?php echo $rowcount ?>"></progress>
                 <br>
-                <?php echo round($percentagem,2)  ."%"  ?>
+                <span id="progressPercentage"><?php echo round($percentagem, 2) . "%" ?></span>
             </div>
             <br>
             <br>
             <br>
             <h1 class="titulo"  style="text-align: center;">Zonas de Meeting Points</h1>  
                 <br>
-                <div class="row" style="text-align: center; margin: auto; display: flex;align-items: center; justify-content: center;">
-                    <div class="column">
+                <div class="row" style="text-align: center; margin: auto; display: flex; align-items: center; justify-content: center;">
+                    <?php
+                    include('db_connection.php');
+
+                    $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
+                    $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
+                    $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
+                    $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
+                    $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
+
+                    $sqltrabalhadoresMP3 = "SELECT * FROM mp_registered_cards WHERE mp=3";
+                    $sqltrabalhadoresMP4 = "SELECT * FROM mp_registered_cards WHERE mp=4";
+                    $sqltrabalhadoresMP5 = "SELECT * FROM mp_registered_cards WHERE mp=5";
+                    $sqltrabalhadoresMP6 = "SELECT * FROM mp_registered_cards WHERE mp=6";
+                    $sqltrabalhadoresMP7 = "SELECT * FROM mp_registered_cards WHERE mp=7";
+
+                    $resultMP3 = mysqli_query($connect, $sqlzona3);
+                    $resultMP4 = mysqli_query($connect, $sqlzona4);
+                    $resultMP5 = mysqli_query($connect, $sqlzona5);
+                    $resultMP6 = mysqli_query($connect, $sqlzona6);
+                    $resultMP7 = mysqli_query($connect, $sqlzona7);
+
+                    $result3 = mysqli_query($connect, $sqltrabalhadoresMP3);
+                    $result4 = mysqli_query($connect, $sqltrabalhadoresMP4);
+                    $result5 = mysqli_query($connect, $sqltrabalhadoresMP5);
+                    $result6 = mysqli_query($connect, $sqltrabalhadoresMP6);
+                    $result7 = mysqli_query($connect, $sqltrabalhadoresMP7);
+
+                    function renderCard($rowMP, $rowcount, $mpClass)
+                    {
+                        ?>
+                        <div class="column">
+                            <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;">
+                                <h3><?php echo $rowMP['MP_ID']; ?></h3>
+                                <h3><?php echo $rowMP['name']; ?></h3>
+                                <h3><?php echo $rowcount; ?><span class="material-symbols-sharp">group</span></h3>
+                                <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhes<?php echo $mpClass; ?>"
+                                    type="button">Details
+                                </button>
+                            </div>
+                            <br>
+                        </div>
                         <?php
-                            include('db_connection.php');
-                            $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
-                            $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
-                            $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
-                            $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
-                            $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
+                    }
 
-                            $sqltrabalhadoresMP3 = "SELECT * FROM mp_registered_cards WHERE mp=3";
-                            $sqltrabalhadoresMP4 = "SELECT * FROM mp_registered_cards WHERE mp=4";
-                            $sqltrabalhadoresMP5 = "SELECT * FROM mp_registered_cards WHERE mp=5";
-                            $sqltrabalhadoresMP6 = "SELECT * FROM mp_registered_cards WHERE mp=6";
-                            $sqltrabalhadoresMP7 = "SELECT * FROM mp_registered_cards WHERE mp=7";
+                    $rowMP3 = mysqli_fetch_assoc($resultMP3);
+                    if ($rowMP3) {
+                        $rowcountmp3 = mysqli_num_rows($result3);
+                        renderCard($rowMP3, $rowcountmp3, 'MP3');
+                    }
 
-                            
-                            $resultMP3 = mysqli_query($connect,$sqlzona3);
-                            $resultMP4 = mysqli_query($connect,$sqlzona4);
-                            $resultMP5 = mysqli_query($connect,$sqlzona5);
-                            $resultMP6 = mysqli_query($connect,$sqlzona6);
-                            $resultMP7 = mysqli_query($connect,$sqlzona7);
+                    $rowMP4 = mysqli_fetch_assoc($resultMP4);
+                    if ($rowMP4) {
+                        $rowcountmp4 = mysqli_num_rows($result4);
+                        renderCard($rowMP4, $rowcountmp4, 'MP4');
+                    }
 
-                            
-                            $result3= mysqli_query($connect,$sqltrabalhadoresMP3);
-                            $result4= mysqli_query($connect,$sqltrabalhadoresMP4);
-                            $result5= mysqli_query($connect,$sqltrabalhadoresMP5);
-                            $result6= mysqli_query($connect,$sqltrabalhadoresMP6);
-                            $result7= mysqli_query($connect,$sqltrabalhadoresMP7);
-                                
-                            while($rowMP3 = mysqli_fetch_assoc($resultMP3) AND $rowMP4 = mysqli_fetch_assoc($resultMP4) AND $rowMP5 = mysqli_fetch_assoc($resultMP5) AND $rowMP6= mysqli_fetch_assoc($resultMP6) AND $rowMP7 = mysqli_fetch_assoc($resultMP7) AND  $row3 = mysqli_fetch_assoc($result3) AND $row4 = mysqli_fetch_assoc($result4) AND $row5 = mysqli_fetch_assoc($result5) AND $row6 = mysqli_fetch_assoc($result6) AND $row7 = mysqli_fetch_assoc($result7) ){
-                                if($row3['mp']=3 ){
-                                    $rowcountmp3= mysqli_num_rows($result3);
-                                    ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
-                                        <h3><?php echo $rowMP3['MP_ID']?></h3>
-                                        <h3><?php echo $rowMP3['name']?></h3>
-                                        <h3><?php echo $rowcountmp3?><span class="material-symbols-sharp">group</span></h3>
-                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP3" type="button">Details</button>
-                                    </div>
-                                    <br>
-                                    <?php
-                                }
-                                ?>
-                                </div>
-                                <div class="column">            
-                                    <?php
-                                    if($row4['mp']=4 ){
-                                        $rowcountmp4= mysqli_num_rows($result4);
-                                    ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
-                                        <h3><?php echo $rowMP4['MP_ID']?></h3>
-                                        <h3><?php echo $rowMP4['name']?></h3>
-                                        <h3><?php echo $rowcountmp4?><span class="material-symbols-sharp">group</span></h3>
-                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP4" type="button">Details</button>
-                                    </div>
-                                    <br>
-                                </div>
-                                    <?php    
-                                        }
-                                    ?>
-                                <div class="column">
-                                    <?php
-                                        if($row5['mp']=5){
-                                            $rowcountmp5= mysqli_num_rows($result5);
-                                    ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
-                                        <h3><?php echo $rowMP5['MP_ID']?></h3>
-                                        <h3><?php echo $rowMP5['name']?></h3>
-                                        <h3><?php echo $rowcountmp5?><span class="material-symbols-sharp">group</span></h3>
-                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP5" type="button">Details</button>
-                                    </div>
-                                    <br>
-                                    <?php    
-                                        }
-                                    ?>
-                                </div>
-                                <div class="column">
-                                    <?php
-                                        if($row6['mp']=6 ){
-                                            $rowcountmp6= mysqli_num_rows($result6);
-                                    ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
-                                        <h3><?php echo $rowMP6['MP_ID']?></h3>
-                                        <h3><?php echo $rowMP6['name']?></h3>
-                                        <h3><?php echo $rowcountmp6?><span class="material-symbols-sharp">group</span></h3>
-                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP6" type="button">Details</button>
-                                    </div>
-                                    <br>
-                                    <?php    
-                                        }
-                                    ?>
-                                </div>
-                                <div class="column">
-                                    <?php
-                                        if($row7['mp']=7 ){
-                                            $rowcountmp7= mysqli_num_rows($result7);
-                                            
-                                    ?>
-                                    <div class="card" style="width: 200px; margin: auto; display: grid; height: 200px;" >
-                                        <h3><?php echo $rowMP7['MP_ID']?></h3>
-                                        <h3><?php echo $rowMP7['name']?></h3>
-                                        <h3><?php echo $rowcountmp7?><span class="material-symbols-sharp">group</span></h3>
-                                        <button style="cursor: pointer;" id="butaodetalhes" class="abrirDetalhesMP7" type="button">Details</button>
-                                    </div>
-                                    <br>
-                                    <?php    
-                                        }
-                                    ?>
-                                </div>
-                            <?php    
-                            }
-                            ?>
-                    
+                    $rowMP5 = mysqli_fetch_assoc($resultMP5);
+                    if ($rowMP5) {
+                        $rowcountmp5 = mysqli_num_rows($result5);
+                        renderCard($rowMP5, $rowcountmp5, 'MP5');
+                    }
+
+                    $rowMP6 = mysqli_fetch_assoc($resultMP6);
+                    if ($rowMP6) {
+                        $rowcountmp6 = mysqli_num_rows($result6);
+                        renderCard($rowMP6, $rowcountmp6, 'MP6');
+                    }
+
+                    $rowMP7 = mysqli_fetch_assoc($resultMP7);
+                    if ($rowMP7) {
+                        $rowcountmp7 = mysqli_num_rows($result7);
+                        renderCard($rowMP7, $rowcountmp7, 'MP7');
+                    }
+                    ?>
                 </div>
-            <br>
-            <br>
-            <h1 class="titulo"  style="text-align: center;">Configuração</h1>
-            <br>
-            <div class="row" style="margin: auto; display: flex; align-items: center; justify-content: center;">
-                
+
+                <br>
+                <br>
+                <h1 class="titulo"  style="text-align: center;">Configuração</h1>
+                <br>
+                <div class="row" style="margin: auto; display: flex; align-items: center; justify-content: center;">
+                    
                 <div class="column">
                     <?php
                     include('db_connection.php');
@@ -608,37 +588,36 @@
             <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 3  -------------------------------->
 
             <div id="DetalhesMP3" class="modal">
-                <!-- Modal content -->
+            <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form style="text-align: center;" method="post" action="#" >
-                        
+                    <form style="text-align: center;" method="post" action="#">
                         <label>
-                            <?php 
-                                include('db_connection.php');
-                                $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
-                                $sqltrabalhadoresMP3 = "SELECT * FROM mp_registered_cards WHERE mp=3";
-                                $resultMP3 = mysqli_query($connect,$sqlzona3);
-                                $result3= mysqli_query($connect,$sqltrabalhadoresMP3);
+                            <?php
+                            include('db_connection.php');
+                            $sqlzona3 = "SELECT * FROM meeting_point WHERE id=3";
+                            $sqltrabalhadoresMP3 = "SELECT * FROM mp_registered_cards WHERE mp=3";
+                            $resultMP3 = mysqli_query($connect, $sqlzona3);
+                            $result3 = mysqli_query($connect, $sqltrabalhadoresMP3);
 
-                                while($rowMP3 = mysqli_fetch_assoc($resultMP3) AND $row3 = mysqli_fetch_assoc($result3)){
-                                    
-                                    echo '<h1>'. $rowMP3['name']  .'</h1>';
-                                    $rowcountmp3= mysqli_num_rows($result3);
-                                    echo "Estao ";
-                                    echo $rowcountmp3;
-                                    ?>
-                                    Trabalhadores no
-                                    <?php
-                                    echo $rowMP3['MP_ID'];
-                                } 
+                            $rowMP3 = mysqli_fetch_assoc($resultMP3);
+                            $row3 = mysqli_fetch_assoc($result3);
+
+                            if ($rowMP3 && $row3) {
+                                echo '<h1>' . $rowMP3['name'] . '</h1>';
+                                $rowcountmp3 = mysqli_num_rows($result3);
+                                echo "Estão " . $rowcountmp3 . " trabalhadores no " . $rowMP3['MP_ID'];
+                            } else {
+                                echo '<h1>' . $rowMP3['name'] . '</h1>';
+                                echo "Não há trabalhadores neste meeting point.";
+                            }
                             ?>
                             <span class="material-symbols-sharp">engineering</span>
                         </label>
                         <br>
                         <br>
-                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
-                    </form> 
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Fechar</button>
+                    </form>
                 </div>
             </div>
 
@@ -647,38 +626,36 @@
             <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 4  -------------------------------->
 
             <div id="DetalhesMP4" class="modal">
-                <!-- Modal content -->
+            <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form style="text-align: center;" method="post" action="#" >
-                        
+                    <form style="text-align: center;" method="post" action="#">
                         <label>
-                            
-                            <?php 
-                                include('db_connection.php');
-                                $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
-                                $sqltrabalhadoresMP4 = "SELECT * FROM mp_registered_cards WHERE mp=4";
-                                $resultMP4 = mysqli_query($connect,$sqlzona4);
-                                $result4= mysqli_query($connect,$sqltrabalhadoresMP4);
+                            <?php
+                            include('db_connection.php');
+                            $sqlzona4 = "SELECT * FROM meeting_point WHERE id=4";
+                            $sqltrabalhadoresMP4 = "SELECT * FROM mp_registered_cards WHERE mp=4";
+                            $resultMP4 = mysqli_query($connect, $sqlzona4);
+                            $result4 = mysqli_query($connect, $sqltrabalhadoresMP4);
 
-                                while($rowMP4 = mysqli_fetch_assoc($resultMP4) AND $row4= mysqli_fetch_assoc($result4)){
+                            $rowMP4 = mysqli_fetch_assoc($resultMP4);
+                            $row4 = mysqli_fetch_assoc($result4);
 
-                                    echo '<h1>'. $rowMP4['name']  .'</h1>';
-                                    $rowcountmp4= mysqli_num_rows($result4);
-                                    echo "Estao ";
-                                    echo $rowcountmp4;
-                                    ?>
-                                    Trabalhadores no
-                                    <?php
-                                    echo $rowMP4['MP_ID'];
-                                } 
+                            if ($rowMP4 && $row4) {
+                                echo '<h1>' . $rowMP4['name'] . '</h1>';
+                                $rowcountmp4 = mysqli_num_rows($result4);
+                                echo "Estão " . $rowcountmp4 . " trabalhadores no " . $rowMP4['MP_ID'];
+                            } else {
+                                echo '<h1>' . $rowMP4['name'] . '</h1>';
+                                echo "Não há trabalhadores neste meeting point.";
+                            }
                             ?>
                             <span class="material-symbols-sharp">engineering</span>
                         </label>
                         <br>
                         <br>
-                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
-                    </form> 
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Fechar</button>
+                    </form>
                 </div>
             </div>
 
@@ -686,36 +663,37 @@
 
              <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 5  -------------------------------->
 
-             <div id="DetalhesMP5" class="modal">
+            <div id="DetalhesMP5" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form style="text-align: center;" method="post" action="#" >
+                    <form style="text-align: center;" method="post" action="#">
                         <label>
-                            <?php 
-                                include('db_connection.php');
-                                $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
-                                $sqltrabalhadoresMP5 = "SELECT * FROM mp_registered_cards WHERE mp=5";
-                                $resultMP5 = mysqli_query($connect,$sqlzona5);
-                                $result5= mysqli_query($connect,$sqltrabalhadoresMP5);
+                            <?php
+                            include('db_connection.php');
+                            $sqlzona5 = "SELECT * FROM meeting_point WHERE id=5";
+                            $sqltrabalhadoresMP5 = "SELECT * FROM mp_registered_cards WHERE mp=5";
+                            $resultMP5 = mysqli_query($connect, $sqlzona5);
+                            $result5 = mysqli_query($connect, $sqltrabalhadoresMP5);
 
-                                while($rowMP5 = mysqli_fetch_assoc($resultMP5) AND $row5= mysqli_fetch_assoc($result5)){
-                                    echo '<h1>'. $rowMP5['name']  .'</h1>';
-                                    $rowcountmp5= mysqli_num_rows($result5);
-                                    echo "Estao ";
-                                    echo $rowcountmp5;
-                                    ?>
-                                    Trabalhadores no
-                                    <?php
-                                    echo $rowMP5['MP_ID'];
-                                } 
+                            $rowMP5 = mysqli_fetch_assoc($resultMP5);
+                            $row5= mysqli_fetch_assoc($result5);
+
+                            if ($rowMP5 && $row5) {
+                                echo '<h1>' . $rowMP5['name'] . '</h1>';
+                                $rowcountmp5 = mysqli_num_rows($result5);
+                                echo "Estão " . $rowcountmp5 . " trabalhadores no " . $rowMP5['MP_ID'];
+                            } else {
+                                echo '<h1>' . $rowMP5['name'] . '</h1>';
+                                echo "Não há trabalhadores neste meeting point.";
+                            }
                             ?>
                             <span class="material-symbols-sharp">engineering</span>
                         </label>
                         <br>
                         <br>
-                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
-                    </form> 
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Fechar</button>
+                    </form>
                 </div>
             </div>
 
@@ -727,32 +705,33 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form style="text-align: center;" method="post" action="#" >                     
+                    <form style="text-align: center;" method="post" action="#">
                         <label>
-                            <?php 
-                                include('db_connection.php');
-                                $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
-                                $sqltrabalhadoresMP6 = "SELECT * FROM mp_registered_cards WHERE mp=6";
-                                $resultMP6 = mysqli_query($connect,$sqlzona6);
-                                $result6= mysqli_query($connect,$sqltrabalhadoresMP6);
+                            <?php
+                            include('db_connection.php');
+                            $sqlzona6 = "SELECT * FROM meeting_point WHERE id=6";
+                            $sqltrabalhadoresMP6 = "SELECT * FROM mp_registered_cards WHERE mp=6";
+                            $resultMP6 = mysqli_query($connect, $sqlzona6);
+                            $result6 = mysqli_query($connect, $sqltrabalhadoresMP6);
 
-                                while($rowMP6 = mysqli_fetch_assoc($resultMP6) AND $row6= mysqli_fetch_assoc($result6)){
-                                    echo '<h1>'. $rowMP6['name']  .'</h1>';
-                                    $rowcountmp6= mysqli_num_rows($result6);
-                                    echo "Estao ";
-                                    echo $rowcountmp6;
-                                    ?>
-                                    Trabalhadores no
-                                    <?php
-                                    echo $rowMP6['MP_ID'];
-                                } 
+                            $rowMP6 = mysqli_fetch_assoc($resultMP6);
+                            $row6= mysqli_fetch_assoc($result6);
+
+                            if ($rowMP6 && $row6) {
+                                echo '<h1>' . $rowMP6['name'] . '</h1>';
+                                $rowcountmp6 = mysqli_num_rows($result6);
+                                echo "Estão " . $rowcountmp6 . " trabalhadores no " . $rowMP6['MP_ID'];
+                            } else {
+                                echo '<h1>' . $rowMP6['name'] . '</h1>';
+                                echo "Não há trabalhadores neste meeting point.";
+                            }
                             ?>
                             <span class="material-symbols-sharp">engineering</span>
                         </label>
                         <br>
                         <br>
-                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
-                    </form> 
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Fechar</button>
+                    </form>
                 </div>
             </div>
 
@@ -760,40 +739,63 @@
 
              <!--------------------------------- BEGIN MODAL DETALHES ZONAS MP 7  -------------------------------->
 
-             <div id="DetalhesMP7" class="modal">
+            <div id="DetalhesMP7" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form style="text-align: center;" method="post" action="#" >
-                        <label> 
-                            <?php 
-                                include('db_connection.php');
-                                $sqlzona7 = "SELECT * FROM meeting_point WHERE id=7";
-                                $sqltrabalhadoresMP7 = "SELECT * FROM mp_registered_cards WHERE mp=7";
-                                $resultMP7 = mysqli_query($connect,$sqlzona7);
-                                $result7= mysqli_query($connect,$sqltrabalhadoresMP7);
+                    <form style="text-align: center;" method="post" action="#">
+                        <label>
+                            <?php
+                            include('db_connection.php');
+                            $sqlzona5 = "SELECT * FROM meeting_point WHERE id=7";
+                            $sqltrabalhadoresMP7 = "SELECT * FROM mp_registered_cards WHERE mp=7";
+                            $resultMP7 = mysqli_query($connect, $sqlzona7);
+                            $result7 = mysqli_query($connect, $sqltrabalhadoresMP7);
 
-                                while($rowMP7 = mysqli_fetch_assoc($resultMP7) AND $row7= mysqli_fetch_assoc($result7)){
-                                    echo '<h1>'. $rowMP7['name']  .'</h1>';
-                                    $rowcountmp7= mysqli_num_rows($result7);
-                                    echo "Estao ";
-                                    echo $rowcountmp7;
-                                    ?>
-                                    Trabalhadores no
-                                    <?php
-                                    echo $rowMP7['MP_ID'];
-                                } 
+                            $rowMP7= mysqli_fetch_assoc($resultMP7);
+                            $row7= mysqli_fetch_assoc($result7);
+
+                            if ($rowMP7 && $row7) {
+                                echo '<h1>' . $rowMP7['name'] . '</h1>';
+                                $rowcountmp7 = mysqli_num_rows($result7);
+                                echo "Estão " . $rowcountmp7. " trabalhadores no " . $rowMP7['MP_ID'];
+                            } else {
+                                echo '<h1>' . $rowMP7['name'] . '</h1>';
+                                echo "Não há trabalhadores neste meeting point.";
+                            }
                             ?>
                             <span class="material-symbols-sharp">engineering</span>
                         </label>
                         <br>
                         <br>
-                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dissmiss="modal">Fechar</button>
-                    </form> 
+                        <button type="button" style="cursor: pointer;" name="cancelar" class="cancelar" data-dismiss="modal">Fechar</button>
+                    </form>
                 </div>
             </div>
 
             <!--------------------------------- END MODAL DETALHES ZONAS MP7   -------------------------------->
+
+                <!--------------------------------- BEGIN MODAL EDITAR MP TABELA REGISTO OPERAÇÕES   -------------------------------->
+                <div id="editModal" class="modal">
+                    <div class="modal-content" style="text-align: center;">
+                        <span class="close">&times;</span>
+                        <?php
+                        if (isset($_POST["worker_name"])) {
+                            $workerName = $_POST["worker_name"];
+                            echo '<h2>Editar Meeting Point de ' . $workerName . '</h2>';
+                        } else {
+                            echo '<h2>Editar Meeting Point</h2>';
+                        }
+                        ?>
+                        <form id="editForm" method="POST">
+                            <input type="hidden" id="editWorkerName" name="editWorkerName" value="">
+                            <label for="editMp">Novo valor de MP:</label>
+                            <input style="border: 1px solid black;" type="number" id="editMp" name="editMp" min="3" max="7" required>
+                            <input type="submit" id="salvarMP" value="Salvar">
+                        </form>
+                    </div>
+                </div>
+                <!--------------------------------- END MODAL EDITAR MP TABELA REGISTO OPERAÇÕES   -------------------------------->
             <br>
             <a href="#registoperacao" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
@@ -894,10 +896,79 @@
         }
 
 
+        $(document).ready(function() {
+            // Quando o link de edição for clicado
+            $('.edit-link').on('click', function() {
+                var workerName = $(this).data('worker-name');
+                $('#editWorkerName').val(workerName);
+                $('#editModal').find('h2').text('Editar Meeting Point de ' + workerName);
+                $('#editModal').modal('show');
+            });
 
+            // Quando o formulário de edição for enviado
+            $('#editForm').on('submit', function(e) {
+                e.preventDefault(); // Impede o envio do formulário e o recarregamento da página
 
+                var editMpValue = $('#editMp').val();
+                if (editMpValue < 3 || editMpValue > 7) {
+                    alert("O valor do MP deve estar entre 3 e 7.");
+                    return false;
+                }
+
+                var workerName = $('#editWorkerName').val();
+                var newMpValue = editMpValue;
+                // Enviar uma requisição AJAX para atualizar o MP no servidor
+                $.ajax({
+                    url: 'update_mp.php',
+                    method: 'POST',
+                    data: { workerName: workerName, newMpValue: newMpValue },
+                    success: function(response) {
+                        if (response === "Success") {
+                            updateMpValue(workerName, newMpValue); // Chamada para atualizar a linha com o novo valor
+                            updateProgressBar(); // Chamada para atualizar a barra de progresso
+                            alert("MP atualizado com sucesso!");
+                            $('#editModal').modal('hide');
+                        } else if (response === "Invalid MP value") {
+                            alert("O valor do MP deve estar entre 3 e 7.");
+                        } else {
+                            alert("Ocorreu um erro ao atualizar o MP.");
+                        }
+                    },
+                    error: function() {
+                        alert("Ocorreu um erro ao atualizar o MP.");
+                    }
+                });
+                return false;
+            });
+
+            // Função para atualizar os valores do MP na tabela
+            function updateMpValue(workerName, newMpValue) {
+                var $row = $('a.edit-link[data-worker-name="' + workerName + '"]').closest('tr');
+                var $workerNameCell = $row.find('td:first-child a');
+                var $workerCompanyCell = $row.find('td:nth-child(2)');
+                var $typeCell = $row.find('td:nth-child(3)');
+                var $mpCell = $row.find('td:nth-child(4)');
+                var $rowClass = (newMpValue == 0) ? 'red-row' : 'green-row';
+                var textColor = (newMpValue == 0) ? 'red' : 'green';
+                $row.removeClass('red-row green-row').addClass($rowClass);
+                $workerNameCell.css('color', textColor);
+                $workerCompanyCell.css('color', textColor);
+                $typeCell.css('color', textColor);
+                $mpCell.text(newMpValue).css('color', textColor);
+            }
+
+            function updateProgressBar() {
+            var totalWorkers = <?php echo $rowcount ?>;
+            var registeredWorkers = <?php echo $rowcount2 ?>;
+            var progressPercentage = (registeredWorkers / totalWorkers) * 100;
+            $('#progressBar').val(registeredWorkers);
+            $('#progressBar').attr('max', totalWorkers);
+            $('#progressPercentage').text(progressPercentage.toFixed(2) + '%');
+        }
+        });
 
     </script>
+
 </body>
 
 </html>

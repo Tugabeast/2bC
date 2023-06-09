@@ -31,29 +31,31 @@
         <html>
         <head>
             <style>
-            body{
-                background: white;
-                font-family: sans-serif;
-            } 
+                body{
+                    background: white;
+                    font-family: sans-serif;
+                } 
 
-            #linha{
-                    border-bottom: 1px solid black;
-                    padding-bottom: 5px;
-                    margin-top: -10px;
-                    font-weight: lighter;
-            }
+                #linha{
+                        border-bottom: 1px solid black;
+                        padding-bottom: 5px;
+                        margin-top: -10px;
+                        font-weight: lighter;
+                }
 
-            h2{
-                text-align: center;
-                padding-top: 20px;
-            }
+                h2{
+                    text-align: center;
+                    padding-top: 20px;
+                }
 
-            table, td, th {
-                    border: 1px solid;
+                table, td, th ,tr {
+                    border: 1px solid black; /* Adiciona a cor "black" */
                     text-align: left;
                     padding: 3px;
                     font-weight: lighter;
+                    border-collapse: separate;
                 }
+                
 
             
 
@@ -137,7 +139,7 @@
 
         $dompdf->render();
 
-        $dompdf->stream("MP Relatorio Emergencia",["Attachment" =>true]);
+        $dompdf->stream("MP Relatorio Emergencia",["Attachment" =>0]);
 
         exit;
 ?>

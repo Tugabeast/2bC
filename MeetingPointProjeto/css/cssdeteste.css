@@ -1076,3 +1076,44 @@ progress[value]::-webkit-progress-value {
     border-radius: 10px;
     padding: 0.3rem;
 }
+
+
+.red-row {
+    color: #ffdddd; /* Cor de fundo para MP = 0 (vermelho claro) */
+}
+
+.green-row {
+    color: #ddffdd; /* Cor de fundo para MP = 1 (verde claro) */
+}
+
+.red-row td {
+    color: red;
+}
+
+.red-row td a {
+    color: red;
+}
+
+.green-row td {
+    color: green;
+}
+
+.green-row td a {
+    color: green;
+}
+
+#salvarMP{
+    border: 2px solid #094b9b;
+    background: #094b9b;
+    cursor: pointer;
+    color: var(--color-white);
+    padding: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    border-radius: 10px;
+    line-height: 100%;
+}
+
+

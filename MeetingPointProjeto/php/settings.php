@@ -763,7 +763,7 @@
             });
         });
 
-
+/*
         //funcao abrir modal para reniciar o sistema
                 $(document).ready(function() {
             $('.btnresetar').on('click', function(){
@@ -778,6 +778,26 @@
 
                     $('#reset_id').val(data[0]);
             });
+        });
+*/
+        $('#resetarSistem').on('click', function() {
+            if (confirm('Tem certeza de que deseja resetar o sistema? Todos os registros com MP atribuído serão atualizados.')) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'reniciar_sistema.php',
+                    success: function(response) {
+                        if (response === 'Success') {
+                            alert('Sistema resetado com sucesso.');
+                            location.reload();
+                        } else {
+                            alert('Ocorreu um erro ao resetar o sistema.');
+                        }
+                    },
+                    error: function() {
+                        alert('Ocorreu um erro ao resetar o sistema.');
+                    }
+                });
+            }
         });
         
    

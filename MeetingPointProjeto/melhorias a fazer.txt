@@ -7,3 +7,5 @@ responsividade das tabelas
 ver a paginação com calendario
 
 navbar por cima em mobile
+
+adicionar manualmente o meeting point aos trabalhadores com um model
