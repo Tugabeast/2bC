@@ -90,7 +90,7 @@ function validate_login($user, $password) {
                     <label>Password</label>
                     <input type="password" name="password" placeholder="password">
                     <br>
-                    <button type="submit" class="glow-on-hover">Login</button>
+                    <button type="submit" >Login</button>
                 </form>
             </div>
         </div>

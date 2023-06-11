@@ -30,6 +30,7 @@
 </head>
 
 <body>
+    <p style="display: none;" id="topoo"></p>
     <div class="container" id="container">
         <aside class="sidebar" id="mySidebar">
             <div class="top" id="main" >
@@ -61,6 +62,7 @@
                     <span class="material-symbols-sharp">manage_accounts</span>
                     <h3 id="profile">ADMINISTRADOR</h3>
                 </a>
+                <p style="margin-top: 26rem; text-align: end; color: white;">Bem vindo, <?php echo $_SESSION['nome'];?></p>
                 <a href="logout.php" id="traco">
                     <span class="material-symbols-sharp">logout</span>
                     <h3 id="logout">LOGOUT</h3>
@@ -69,7 +71,8 @@
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo" style="text-align: center;">Reiniciar Sistema</h1>
+            
+            <h1 class="titulo"  style="text-align: center;">Reiniciar Sistema</h1>
             <button type="button" class="btnresetar" id="resetarSistem" style="margin-bottom: 5rem;"><span class="material-symbols-sharp">restart_alt</span>Reset Sistema</button>
 
             <!-- 
@@ -116,13 +119,13 @@
                                 while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                         <tr>
-                                            <td><?php echo $row['id']?></td>
-                                            <td><?php echo $row['user']?></td>
-                                            <td><?php echo $row['name']?></td>
-                                            <td><?php echo $row['email']?></td>
-                                            <td><?php echo $row['phone_number']?></td>
-                                            <td><?php echo $row['role']?></td>
-                                            <td>
+                                            <td data-label = "ID"><?php echo $row['id']?></td>
+                                            <td data-label = "User"><?php echo $row['user']?></td>
+                                            <td data-label = "Name"><?php echo $row['name']?></td>
+                                            <td data-label = "Email"><?php echo $row['email']?></td>
+                                            <td data-label = "Phone Number"><?php echo $row['phone_number']?></td>
+                                            <td data-label = "Role"><?php echo $row['role']?></td>
+                                            <td data-label = "Ações">
                                                     <button type="button" class="btnedit-utilizador"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
                                                     <button type="button" class="btneliminar-utilizador"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                             </td>
@@ -442,13 +445,13 @@
                                 while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                         <tr>
-                                            <td><?php echo $row['input']?></td>
-                                            <td><?php echo $row['datatime']?></td>
-                                            <td><?php echo $row['name']?></td>
-                                            <td><?php echo $row['email']?></td>
-                                            <td><?php echo $row['alert']?></td>
-                                            <td><?php echo $row['report_format']?></td>
-                                            <td>
+                                            <td data-label = "ID"><?php echo $row['input']?></td>
+                                            <td data-label = "Data"><?php echo $row['datatime']?></td>
+                                            <td data-label = "Nome"><?php echo $row['name']?></td>
+                                            <td data-label = "Email"><?php echo $row['email']?></td>
+                                            <td data-label = "Alertas"><?php echo $row['alert']?></td>
+                                            <td data-label = "Formato Relatorio"><?php echo $row['report_format']?></td>
+                                            <td data-label = "Ações">
                                                 <button type="button" class="edit-alert"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>
                                                 <button type="button" class="eliminar-alert"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                             </td>
@@ -460,6 +463,7 @@
                     </table>
                 </div>
             </div>
+            <br>
             <br>
             <br>
             <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
@@ -485,10 +489,10 @@
                                 while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                         <tr>
-                                            <td><?php echo $row['id']?></td>
-                                            <td><?php echo $row['MP_ID']?></td>
-                                            <td><?php echo $row['name']?></td>                           
-                                            <td>
+                                            <td data-label = "ID"><?php echo $row['id']?></td>
+                                            <td data-label = "MP"><?php echo $row['MP_ID']?></td>
+                                            <td data-label = "Name"><?php echo $row['name']?></td>                           
+                                            <td data-label = "Ações">
                                                 <button type="button" class="edit-MP"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>    
                                                 <button type="button" class="eliminar-MP"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
                                             </td>
@@ -509,8 +513,12 @@
             <h1 class="titulo" style="text-align: center;  margin-top: 5rem;">Registo de Operações</h1>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp">
-                <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content;">
-                    <table class="tabelacrud" id="tabelacrud4">
+                
+                <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content; box-shadow: none;">
+                    
+                    <input type="date" id="dataa" name="dataa" max="" style="border: 1px solid black; padding: 1rem; margin-left: auto; display: flex;">
+                    
+                    <table class="tabelacrud" id="tabelacrud4" > 
                         <thead>
                             <tr style="color: white; background: #094b9b;">
                                 <th>Data</th>
@@ -519,7 +527,7 @@
                                 <th>Ordem dada</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table-body">
                             <?php   
                                 include('db_connection.php');
                   
@@ -540,10 +548,10 @@
                                     while($row = mysqli_fetch_assoc($result)){
                                         ?>
                                             <tr>
-                                                <td><?php echo $row['datatime']?></td>
-                                                <td><?php echo $row['id']?></td>
-                                                <td><?php echo $row['operation']?></td>
-                                                <td><?php echo $row['order_given']?></td>
+                                                <td data-label = "Data"><?php echo $row['datatime']?></td>
+                                                <td data-label = "ID"><?php echo $row['id']?></td>
+                                                <td data-label = "Operações"><?php echo $row['operation']?></td>
+                                                <td data-label = "Ordem dada"><?php echo $row['order_given']?></td>
                                             </tr>
                                         <?php
                                         
@@ -592,7 +600,7 @@
                         ?>
             </div>
             <br>
-            <a href="#menu" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
+            <a href="#topoo" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
         <!--Fim da main-->
  
@@ -780,6 +788,7 @@
             });
         });
 */
+        //função para reniciar o sistema, eliminando todos os meeting points associados aos utilizadores
         $('#resetarSistem').on('click', function() {
             if (confirm('Tem certeza de que deseja resetar o sistema? Todos os registros com MP atribuído serão atualizados.')) {
                 $.ajax({
@@ -799,6 +808,18 @@
                 });
             }
         });
+
+
+        
+
+
+
+    // Obtenha a data atual
+    var today = new Date().toISOString().split("T")[0];
+    
+    
+    // Defina a data máxima para o dia anterior
+    document.getElementById("dataa").setAttribute("max", today);
         
    
     </script>

@@ -44,7 +44,7 @@ include('protect.php');?>
                     <span class="material-symbols-sharp">manage_accounts</span>
                     <h3 id="profile">ADMINISTRAdOR</h3>
                 </a>
-                <!--<p>Bem vindo, <?php echo $result['Name'];?></p>-->
+                <p style="margin-top: 26rem; text-align: end; color: white;">Bem vindo, <?php echo $_SESSION['nome'];?></p>
                 <a href="logout.php" id="traco">
                     <span class="material-symbols-sharp">logout</span>
                     <h3 id="logout">LOGOUT</h3>
@@ -53,7 +53,7 @@ include('protect.php');?>
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo">GVIR STATUS</h1>
+            <h1 class="titulo" style="text-align: center;">GVIR STATUS</h1>
             <div class="containerphp" style="height: 70vh; display: block;" >
                 <?php if(isset($_SESSION['mensagem'])): ?>
                 <p id="mensagem" style="color: var(--color-sucess); text-align: center; font-size: 16px;"><?php echo $_SESSION['mensagem']; ?></p>

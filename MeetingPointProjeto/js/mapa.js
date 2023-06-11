@@ -33,22 +33,47 @@ function closeNav() {
 
 
 
-var map = L.map('map').setView([40.6389, -8.6553], 13);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+
+
+const map = L.map('map').setView([51.505, -0.09], 13);
+
+const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+const marker = L.marker([40.781222457545134, -8.573946680684655]).addTo(map)
+    .bindPopup('<b>CIRES!</b><br />Sensing').openPopup();
 
-var popup = L.popup();
+const circle = L.circle([40.781222457545134, -8.573946680684655], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+}).addTo(map).bindPopup('Rosa dos ventos');
+
+const polygon = L.polygon([
+    [40.781222457545134, -0.08],
+    [40.781222457545100, -0.06],
+    [40.881222457545134, -0.047]
+]).addTo(map).bindPopup('Zona-Ventos');
+
+
+const popup = L.popup()
+    .setLatLng([40.781222457545134, -8.573946680684655])
+    .setContent('Cires -  Wind SenSor [Ventos]')
+    .openOn(map);
 
 function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
-        .setContent("Clicou em " + e.latlng.toString())
+        .setContent(`You clicked the map at ${e.latlng.toString()}`)
         .openOn(map);
 }
+
 map.on('click', onMapClick);
 
-var marker = L.marker([40.63425, -8.631547]).addTo(map);
+
+

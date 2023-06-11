@@ -49,7 +49,7 @@ include('protect.php');?>
                     <span class="material-symbols-sharp">manage_accounts</span>
                     <h3 id="profile">ADMINISTRAdOR</h3>
                 </a>
-                <!--<p>Bem vindo, <?php echo $result['Name'];?></p>-->
+                <p style="margin-top: 26rem; text-align: end; color: white;">Bem vindo, <?php echo $_SESSION['nome'];?></p>
                 <a href="logout.php" id="traco">
                     <span class="material-symbols-sharp">logout</span>
                     <h3 id="logout">LOGOUT</h3>
@@ -58,7 +58,7 @@ include('protect.php');?>
         </aside>
         <!-- fim da sidebar -->
         <main>
-            
+            <h1 class="titulo" id="registoperacao" style="text-align: center;">Mapa</h1>
             <div id="map"></div>
         </main>
         <!--Fim da main-->

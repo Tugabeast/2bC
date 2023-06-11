@@ -1,12 +1,13 @@
-const sideMenu = document.querySelector("aside");
-const menuBtn = document.querySelector("#menu-btn");
-const closeBtn = document.querySelector("#close-btn");
-const btnabrir = document.querySelector('#btn-abrir');
+const sideMenu = document.querySelector("#mySidebar");
+const menuBtn = document.querySelector("#abrirside");
+const closeBtn = document.querySelector("#closebtn");
+const closeIcon = document.querySelector("#closeside");
+
+
 
 
 
 //mostrar sidebard
-
 menuBtn.addEventListener('click', () => {
     sideMenu.style.display = 'block';
 });
@@ -26,34 +27,53 @@ btnabrir.addEventListener('click', () => {
 
 
 function openNav() {
-    document.getElementById("mySidebar").style.width = "min-content";
-    document.getElementById("mySidebar").style.display = "block";
+    //document.getElementById("mySidebar").style.width = "min-content";
+    //document.getElementById("mySidebar").style.display = "block";
     document.getElementById("dashboard").style.display = "block";
     document.getElementById("formulario").style.display = "block";
     document.getElementById("tabelacrud").style.display = "block";
-    document.getElementById("closeside").style.display = "flex";
-    document.getElementById("abrirside").style.display = "none";
+    //document.getElementById("closeside").style.display = "flex";
+    //document.getElementById("abrirside").style.display = "none";
     document.getElementById("container").style.gridTemplateColumns = "16rem auto";
     document.getElementById("nomeProjeto").style.display = "block";
     document.getElementById("profile").style.display = "block";
     document.getElementById("logout").style.display = "block";
     document.getElementById("nomeProjeto").style.marginTop = "-1rem";   
+    sideMenu.style.width = "18rem";
+    closeIcon.style.display = "flex";
+    menuBtn.style.display = "none";
     
 }
 
 function closeNav() {
-    document.getElementById("mySidebar").style.width = "100px";
+    //document.getElementById("mySidebar").style.width = "100px";
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("formulario").style.display = "none";
     document.getElementById("tabelacrud").style.display = "none";
-    document.getElementById("abrirside").style.display = "block";
-    document.getElementById("closeside").style.display = "none";
+    //document.getElementById("abrirside").style.display = "block";
+    //document.getElementById("closeside").style.display = "none";
     document.getElementById("container").style.gridTemplateColumns = "7rem auto";
     document.getElementById("nomeProjeto").style.display = "none";
     document.getElementById("profile").style.display = "none";
     document.getElementById("logout").style.display = "none";
+    sideMenu.style.width = "0";
+    closeIcon.style.display = "none";
+    menuBtn.style.display = "block";
 
 }
+
+ 
+
+// Verificar se a janela é um dispositivo móvel
+if (window.matchMedia("(max-width: 768px)").matches) {
+    // Adicionar evento de clique ao botão "Menu" apenas para dispositivos móveis
+    menuBtn.addEventListener("click", openNav);
+  
+    // Adicionar evento de clique ao botão "Fechar" apenas para dispositivos móveis
+    closeBtn.addEventListener("click", closeNav);
+  }
+
+
 
 
 // Get the modal

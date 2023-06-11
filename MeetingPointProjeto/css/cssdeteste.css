@@ -232,7 +232,7 @@ aside .sidebar a:hover span {
 
 aside .sidebar #traco {
     border-top: 1px solid white;
-    margin-top: 26rem;
+    
 }
 
 
@@ -505,6 +505,7 @@ main .recent-orders a {
     overflow-y: scroll;
     margin: auto;
     max-height: 20rem;
+    border-collapse: collapse;
     width: 80%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -516,12 +517,30 @@ main .recent-orders a {
     box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
 }
 
+#table-wraper:hover{
+    box-shadow: none;
+}
+
 .table-wraper table thead tr {
     position: sticky;
     top: 0px;
 }
 
 .btn-add {
+    border: 2px solid #094b9b;
+    background: #094b9b;
+    cursor: pointer;
+    color: var(--color-white);
+    padding: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    border-radius: 10px;
+    line-height: 200%;
+}
+
+#btn-calendar{
     border: 2px solid #094b9b;
     background: #094b9b;
     cursor: pointer;
@@ -665,6 +684,8 @@ td {
     border-radius: 5px;
     padding: 3px;
 }
+
+
 
 
 /*
@@ -824,7 +845,7 @@ td {
         grid-template-columns: 1fr;
     }
     aside {
-        position: sticky;
+        position: fixed;
         left: -100%;
         background: #094b9b;
         width: 18rem;
@@ -861,25 +882,79 @@ td {
     main {
         margin-top: 8rem;
         padding: 0 1rem;
+        
     }
-    main .recent-orders {
-        position: relative;
-        margin: 3rem 0 0 0;
-        width: 100%;
+
+    main .titulo {
+        font-family: sans-serif;
+        color: #094b9b;
+        text-align: center;
     }
-    main .recent-orders table {
-        width: 100%;
-        margin: 0;
-    }
+    
     .table-wraper {
         overflow-x: auto;
+        width: 100%;
+        border-radius: 0;
         /* Habilita a rolagem horizontal em dispositivos menores */
+       
+        border-collapse: collapse;
+        
     }
-    .tabelacrud td,
-    .tabelacrud th {
-        white-space: nowrap;
-        /* Impede que o conteúdo seja quebrado em várias linhas */
+
+
+
+
+    .table-wraper:hover{
+        box-shadow: none;
     }
+
+    .containerphp{
+        height: max-content;
+    }
+
+    
+
+    .tabelacrud tr {
+        margin-bottom: 15px;
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+    }
+
+
+    .tabelacrud thead{
+        display: none;
+    }
+
+    .tabelacrud, .tabelacrud tbody, .tabelacrud tr, .tabelacrud td{
+        display: block;
+        width: 100%;
+    }
+
+    .tabelacrud tr{
+        margin-bottom: 15px;
+    }
+
+    .tabelacrud td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .tabelacrud td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+
+  
+
+
     #map {
         height: 25rem;
     }
@@ -893,17 +968,26 @@ td {
         margin-top: 10px;
     }
     #myInput {
-        margin-top: -3rem !important;
+        margin:auto;
+        position: sticky !important;
     }
     #registoperacao {
         margin-bottom: 5%;
     }
     .topoo {
         text-align: center;
-        display: block;
+        display: block;   
+    }
+
+    progress{
+        width: 90% !important;
+    }
+
+    #dataa{
+        margin: auto;
     }
 }
-
+/* meter .right*/
 
 /*   ============================END  Media Queries Mobile ============================ */
 
@@ -1034,11 +1118,9 @@ progress[value]::-webkit-progress-value {
     justify-content: end;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
-    position: absolute;
     border: 1px solid #ddd;
     display: flex;
-    margin-left: 52%;
-    margin-top: -1rem;
+    margin-left: auto;
 }
 
 

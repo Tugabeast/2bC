@@ -66,7 +66,7 @@
                     <span class="material-symbols-sharp">manage_accounts</span>
                     <h3 id="profile">ADMINISTRAdOR</h3>
                 </a>
-                <!--<p>Bem vindo, <?php echo $result['Name'];?></p>-->
+                <p style="margin-top: 26rem; text-align: end; color: white;">Bem vindo, <?php echo $_SESSION['nome'];?></p>
                 <a href="logout.php" id="traco">
                     <span class="material-symbols-sharp">logout</span>
                     <h3 id="logout">LOGOUT</h3>
@@ -83,8 +83,8 @@
             <br>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
             <div class="containerphp" style="height: 40vh;">
+                <div class="table-wraper" id="table-wraper">
                 <input  type="text" id="myInput" onkeyup="myFunction()" placeholder="Procure por nome ou empresa.." title="Type in a name">
-                <div class="table-wraper">
                     <table class="tabelacrud" id="tabelacrud4">
                         <thead>
                             <tr style="color: white;background: #094b9b;">
@@ -105,14 +105,14 @@
                                     $rowClass = ($row['mp'] == 0) ? 'red-row' : 'green-row';
                                     ?>
                                     <tr class="<?php echo $rowClass; ?>">
-                                        <td>
+                                        <td data-label = "Nome">
                                             <a href="#" class="edit-link" data-worker-name="<?php echo $row['worker_name']; ?>" style="font-weight: bold; color: <?php echo $textColor; ?>">
                                                 <?php echo $row['worker_name']; ?>
                                             </a>
                                         </td>
-                                        <td style="color: <?php echo $textColor; ?> "><?php echo $row['worker_company']; ?></td>
-                                        <td style="color: <?php echo $textColor; ?> "><?php echo $row['type']; ?></td>
-                                        <td style="color: <?php echo $textColor; ?> "><?php echo $row['mp']; ?></td>
+                                        <td data-label = "Empresa" style="color: <?php echo $textColor; ?> "><?php echo $row['worker_company']; ?></td>
+                                        <td data-label = "Cargo" style="color: <?php echo $textColor; ?> "><?php echo $row['type']; ?></td>
+                                        <td data-label = "Meeting Point" style="color: <?php echo $textColor; ?> "><?php echo $row['mp']; ?></td>
                                     </tr>
                                     <?php
                                 }   
@@ -966,6 +966,8 @@
             $('#progressPercentage').text(progressPercentage.toFixed(2) + '%');
         }
         });
+
+        
 
     </script>
 
