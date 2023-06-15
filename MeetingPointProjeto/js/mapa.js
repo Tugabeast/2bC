@@ -1,3 +1,16 @@
+
+const sideMenu = document.querySelector("aside");
+const menuBtn = document.querySelector("#menu-btn-mobile");
+const closeBtn = document.querySelector("#close-btn");
+const closebutao = document.querySelector("#closebtn");
+const btnabrir = document.querySelector('#btn-abrir');
+
+
+
+
+
+
+
 function openNav() {
     document.getElementById("mySidebar").style.width = "min-content";
     document.getElementById("main").style.marginLeft = "0px";
@@ -32,7 +45,21 @@ function closeNav() {
 }
 
 
+function openNavMobile() {
+    document.getElementById("close-btn-teste-mobile").style.display = "flex";
+    sideMenu.style.display = 'block';
+    document.querySelector(".right .topo").style.backgroundColor = "white";
+    
+}
 
+function closeNavMobile() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("close-btn-teste-mobile").style.display = "none";
+    sideMenu.style.display = 'none';
+    menuBtn.style.color = 'white';
+    document.querySelector(".right .topo").style.backgroundColor = "#094b9b";
+
+}
 
 
 

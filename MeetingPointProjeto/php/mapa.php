@@ -22,14 +22,17 @@ include('protect.php');?>
 
 <body>
     <div class="container" id="container">
-    <aside class="sidebar" id="mySidebar">
+        <aside class="sidebar" id="mySidebar">
             <div class="top" id="main" >
                 <div class="menu">
-                <h2 style="color:white; display: none;" id="nomeProjeto">MEETING POINT</h2>
+                    <h2 style="color:white; display: none;" id="nomeProjeto">MEETING POINT</h2>
                     <i class="material-symbols-sharp" style="color:white" onclick="openNav()" id="abrirside">menu</i>
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
                         <span class="material-symbols-sharp" id="closeside" style="display: none; color: white; justify-content: center;">close</span>
                     </a>
+                </div>
+                <div class="close" id="close-btn-teste-mobile" >
+                    <span class="material-symbols-sharp" onclick="closeNavMobile()" style="color: white;">close</span>
                 </div>
             </div>
             <div class="sidebar" style="height: 88.7vh;">
@@ -58,10 +61,17 @@ include('protect.php');?>
         </aside>
         <!-- fim da sidebar -->
         <main>
-            <h1 class="titulo" id="registoperacao" style="text-align: center;">Mapa</h1>
+            <h1 class="titulo" id="registoperacao" style="text-align: center;">WIND</h1>
             <div id="map"></div>
         </main>
         <!--Fim da main-->
+        <div class="right" style="display: none;">
+            <div class="topo">
+                <button id="menu-btn-mobile" onclick="openNavMobile()">
+                    <span class="material-symbols-sharp" >menu</span>
+                </button >
+            </div>
+        </div>
     </div>
 
     <script src="../js/mapa.js"></script>

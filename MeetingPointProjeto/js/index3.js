@@ -1,7 +1,8 @@
-const sideMenu = document.querySelector("#mySidebar");
-const menuBtn = document.querySelector("#abrirside");
-const closeBtn = document.querySelector("#closebtn");
-const closeIcon = document.querySelector("#closeside");
+const sideMenu = document.querySelector("aside");
+const menuBtn = document.querySelector("#menu-btn-mobile");
+const closeBtn = document.querySelector("#close-btn");
+const closebutao = document.querySelector("#closebtn");
+const btnabrir = document.querySelector('#btn-abrir');
 
 
 
@@ -27,51 +28,55 @@ btnabrir.addEventListener('click', () => {
 
 
 function openNav() {
-    //document.getElementById("mySidebar").style.width = "min-content";
-    //document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("mySidebar").style.width = "min-content";
+    document.getElementById("mySidebar").style.display = "block";
     document.getElementById("dashboard").style.display = "block";
     document.getElementById("formulario").style.display = "block";
     document.getElementById("tabelacrud").style.display = "block";
-    //document.getElementById("closeside").style.display = "flex";
-    //document.getElementById("abrirside").style.display = "none";
+    document.getElementById("closeside").style.display = "flex";
+    //closebutao.setAttribute.style.display = "flex";
+    document.getElementById("abrirside").style.display = "none";
     document.getElementById("container").style.gridTemplateColumns = "16rem auto";
     document.getElementById("nomeProjeto").style.display = "block";
     document.getElementById("profile").style.display = "block";
     document.getElementById("logout").style.display = "block";
     document.getElementById("nomeProjeto").style.marginTop = "-1rem";   
-    sideMenu.style.width = "18rem";
-    closeIcon.style.display = "flex";
-    menuBtn.style.display = "none";
-    
+
 }
 
 function closeNav() {
-    //document.getElementById("mySidebar").style.width = "100px";
+    document.getElementById("mySidebar").style.width = "100px";
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("formulario").style.display = "none";
     document.getElementById("tabelacrud").style.display = "none";
-    //document.getElementById("abrirside").style.display = "block";
-    //document.getElementById("closeside").style.display = "none";
+    document.getElementById("abrirside").style.display = "block";
+    document.getElementById("closeside").style.display = "none";
+    //closebutao.setAttribute.style.display = "none";
     document.getElementById("container").style.gridTemplateColumns = "7rem auto";
     document.getElementById("nomeProjeto").style.display = "none";
     document.getElementById("profile").style.display = "none";
     document.getElementById("logout").style.display = "none";
-    sideMenu.style.width = "0";
-    closeIcon.style.display = "none";
-    menuBtn.style.display = "block";
+
 
 }
 
- 
+function openNavMobile() {
+    document.getElementById("close-btn-teste-mobile").style.display = "flex";
+    sideMenu.style.display = 'block';
+    document.querySelector(".right .topo").style.backgroundColor = "white";
+    
+}
 
-// Verificar se a janela é um dispositivo móvel
-if (window.matchMedia("(max-width: 768px)").matches) {
-    // Adicionar evento de clique ao botão "Menu" apenas para dispositivos móveis
-    menuBtn.addEventListener("click", openNav);
-  
-    // Adicionar evento de clique ao botão "Fechar" apenas para dispositivos móveis
-    closeBtn.addEventListener("click", closeNav);
-  }
+function closeNavMobile() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("close-btn-teste-mobile").style.display = "none";
+    sideMenu.style.display = 'none';
+    menuBtn.style.color = 'white';
+    document.querySelector(".right .topo").style.backgroundColor = "#094b9b";
+
+}
+
+
 
 
 
@@ -117,23 +122,3 @@ $(document).ready(function() {
 
 
 
-/*---------mapa---------*/
-var map = L.map('map').setView([40.6389, -8.6553], 13);
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
-
-var popup = L.popup();
-
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("Clicou em " + e.latlng.toString())
-        .openOn(map);
-}
-map.on('click', onMapClick);
-
-var marker = L.marker([40.63425, -8.631547]).addTo(map);

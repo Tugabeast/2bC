@@ -27,6 +27,9 @@ include('protect.php');?>
                         <span class="material-symbols-sharp" id="closeside" style="display: none; color: white; justify-content: center;">close</span>
                     </a>
                 </div>
+                <div class="close" id="close-btn-teste-mobile" >
+                    <span class="material-symbols-sharp" onclick="closeNavMobile()" style="color: white;">close</span>
+                </div>
             </div>
             <div class="sidebar" style="height: 120vh;">
                 <a href="index3.php">
@@ -217,6 +220,13 @@ include('protect.php');?>
             <!--https://jsfiddle.net/tr2qcusa/-->
         </main>
         <!--Fim da main-->
+        <div class="right" style="display: none;">
+            <div class="topo">
+                <button id="menu-btn-mobile" onclick="openNavMobile()">
+                    <span class="material-symbols-sharp" >menu</span>
+                </button >
+            </div>
+        </div>
     </div>
     <script src="../js/index3.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>

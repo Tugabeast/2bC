@@ -9,7 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'];
         $operation = $_POST['operation'];
         $order_given = $_SESSION['nome'];
-
+       
+       
         // Verificar se a última operação registrada para o ID é igual à nova operação
         $sqlCheck = "SELECT operation FROM mp_operation WHERE id = '$id' ORDER BY datatime DESC LIMIT 1";
         $resultCheck = mysqli_query($connect, $sqlCheck);
@@ -24,14 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Verificar se a operação anterior era "Emergência" e a nova operação é "Fim de Emergência"
-        if ($lastOperation === "Emergency" && $operation === "End_Emergency") {
-            // Redirecionar para o arquivo gerarPDFemergencia.php
-            //falta inserir o valor end emergency
-            header("Location: gerarPDFemergencia.php?id=$id&order_given=$order_given");
-            exit;
-        }
-
         // Inserir 5 linhas na tabela mp_operation
         for ($i = 3; $i <= 8; $i++) {
             // Verificar novamente se a última operação registrada para o ID é igual à nova operação
@@ -44,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if ($lastOperation === $operation) {
                     header("location: index3.php");
+                    exit;
                 }
             }
 
@@ -55,6 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Erro ao inserir os valores para o ID $i: " . mysqli_error($connect);
             }
         }
+
+        // Verificar se a operação anterior era "Emergência" e a nova operação é "Fim de Emergência"
+        if ($lastOperation === "Emergency" && $operation === "End_emergency") {
+            // Redirecionar para o arquivo gerarPDFemergencia.php
+            header("Location: gerarPDFemergencia.php?id=$id&order_given=$order_given");
+            exit;
+        }
+
 
         header("location: index3.php");
     }

@@ -11,24 +11,38 @@
     use Dompdf\Options;
 
     $id = $_GET['id'];
+    //$mpName = $_SESSION['mpName']; // Recuperar o nome do meeting point da sessão
     $order_given = $_GET['order_given'];
+
+
+
+    // Consultar a tabela
+    $sql1 = "SELECT datatime, worker_name FROM mp_registered_cards ";
+    $result1 = $connect->query($sql1);
+
+
+
+    $sql2 = "SELECT * FROM mp_operation ORDER BY datatime";
+    $result2 = $connect->query($sql2);
     
+    $sql4 = "SELECT datatime FROM mp_operation where id = 8 AND operation= 'Emergency' ORDER BY datatime DESC";
+    $result4 = $connect->query($sql4);
+    $row4 = mysqli_fetch_assoc($result4);
+
+    $sql3 = "SELECT datatime FROM mp_operation where id = 8 AND operation= 'End_emergency' ORDER BY datatime DESC";
+    $result3 = $connect->query($sql3);
+    $row3 = mysqli_fetch_assoc($result3);
+
+    $sqlMP = "SELECT MP_ID FROM meeting_point WHERE id = '$id'";
+    $resultMP = $connect->query($sqlMP);
+    $rowMP = $resultMP->fetch_assoc();
     
 
-        // Consultar a tabela
-        $sql1 = "SELECT datatime, worker_name FROM mp_registered_cards ";
-        $result1 = $connect->query($sql1);
+    $dompdf = new Dompdf();
 
-
-        $sql2 = "SELECT * FROM mp_operation ORDER BY datatime";
-        $result2 = $connect->query($sql2);
-        
-
-        $dompdf = new Dompdf();
-
-        // Gerar o conteúdo HTML do PDF
-        $html = '
-        <html>
+    // Gerar o conteúdo HTML do PDF
+    $html = '
+    <html>
         <head>
             <style>
                 body{
@@ -75,7 +89,7 @@
                 }
             </style>
         </head>
-        <body>
+            <body>
             <header>
                 <h4>Relatorio</h4>
                 <h5 id="linha"> MeetingPoint - 2BWEBCONNECT </h5>
@@ -83,19 +97,19 @@
 
             <h2>Meeting Point</h2>
             <h2>Relatorio de Emergência</h2>
-            <h2>MP3 - Oficinas</h2><!--isto tem que ser dinamico/tem que ser o MP clicado-->
+            <h2>'.$rowMP['MP_ID'].'</h2>
 
-            <h3 id="inicio-emergencia">Inicio da emergência: x</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
+            <h3 id="inicio-emergencia">Inicio da emergência:'.$row4['datatime'].'</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
             <h3>Ativado: '.$order_given.'</h3>
             <h4>Lista de registados</h4>
             <table>
-                <thead>
-                    <tr>
+                
+                    <tr style="border:1px solid black;">
                         <th>Data</th>
                         <th>Nome do utilizador</th>
                     </tr>
-                </thead>
-                <tbody>';
+                
+                ';
 
         // Preencher a tabela com os valores do banco de dados
         if ($result1->num_rows > 0) {
@@ -107,27 +121,12 @@
             }
         }
 
-        $sql2 = "SELECT operation, datatime FROM mp_operation WHERE id = '$id' ORDER BY datatime DESC LIMIT 1";
-        $result2 = $connect->query($sql2);
         
-        if ($result2->num_rows > 0) {
-            $row2 = $result2->fetch_assoc();
-            $operation = $row2['operation'];
-            $datatime = $row2['datatime'];
-        
-            if ($operation === "Emergency") {
-                $html = str_replace("x", "Inicio da emergência: $datatime", $html);
-            } elseif ($operation === "End_Emergency") {
-                $html = str_replace("x", "Fim da emergência: $datatime", $html);
-                $html = str_replace('id="fim-emergencia"', 'id="fim-emergencia" style="color: red"', $html);
-            }
-        }
-        
-        $html .= '</tbody>
+        $html .= '
                 </table>
-                <h3 id="fim-emergencia">Fim da emergência: x</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
+                <h3 id="fim-emergencia">Fim da emergência:'.$row3['datatime'].'</h3><!--isto tem que ser dinamico/tem que ser a hora em que o MP é clicado-->
                 <h3>Ativado: '.$order_given.'</h3>
-            </body>
+        </body>
             </html>';
 
 

@@ -822,9 +822,7 @@ td {
     main .recent-orders table {
         width: 83vw;
     }
-    #map {
-        margin-left: 4rem;
-    }
+
     .row {
         display: grid !important;
         justify-items: center;
@@ -836,6 +834,9 @@ td {
 
 /*   ============================ Media Queries Mobile ============================ */
 
+.right .topo button {
+    display: none;
+}
 
 /*768px*/
 
@@ -843,13 +844,14 @@ td {
     .container {
         width: 100%;
         grid-template-columns: 1fr;
+        
     }
     aside {
         position: fixed;
         left: -100%;
         background: #094b9b;
         width: 18rem;
-        z-index: 3;
+        z-index: 10;
         box-shadow: 1rem 3rem 4rem var(--color-light);
         height: 1000vh;
         padding-right: var(--card-padding);
@@ -901,7 +903,13 @@ td {
         
     }
 
+    #abrirside{
+        display: none !important;
+    }
 
+    #closebtn #closeside{
+        display: none;
+    }
 
 
     .table-wraper:hover{
@@ -951,12 +959,10 @@ td {
         text-align: left;
     }
 
-
-  
-
-
     #map {
-        height: 25rem;
+        height: 900%;
+        width: 99%;
+        z-index: 5;
     }
     .row {
         display: grid !important;
@@ -986,8 +992,53 @@ td {
     #dataa{
         margin: auto;
     }
+
+    .right{
+        display: flex !important;
+    }
+
+    .right .topo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        padding: 0 0.8rem;
+        height: 4.6rem;
+        background: #094b9b;
+        /*background: #0a2558;*/
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        /*box-shadow: 0 1rem 1rem var(--color-light);*/
+    }
+
+    .right .topo:hover{
+        box-shadow: none;
+    }
+
+    .right .topo button {
+        display: inline-block;
+        cursor: pointer;
+        background: transparent;
+        color: white;
+        position: absolute;
+        left: 1rem;
+    }
+    .right .topo button span {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+
+
+
+
+
+
 }
-/* meter .right*/
+
 
 /*   ============================END  Media Queries Mobile ============================ */
 

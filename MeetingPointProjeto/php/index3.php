@@ -35,6 +35,11 @@
         include_once('db_connection.php');
         include('protect.php');
     ?>
+    <style>
+        #close-btn-teste-mobile{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,11 +48,14 @@
         <aside class="sidebar" id="mySidebar">
             <div class="top" id="top">
                 <div class="menu" id="menu">
-                <h2 style="color:white; display: none;" id="nomeProjeto">MEETING POINT</h2>
+                    <h2 style="color:white; display: none;" id="nomeProjeto">MEETING POINT</h2>
                     <i class="material-symbols-sharp" style="color:white" onclick="openNav()" id="abrirside">menu</i>
                     <a href="javascript:void(0)" class="closebtn" id="closebtn" onclick="closeNav()">
                         <span class="material-symbols-sharp" id="closeside" style="display: none; color: white; justify-content: center;">close</span>
                     </a>
+                </div>
+                <div class="close" id="close-btn-teste-mobile" >
+                    <span class="material-symbols-sharp" onclick="closeNavMobile()" style="color: white;">close</span>
                 </div>
             </div>
             <div class="sidebar">
@@ -76,9 +84,6 @@
         </aside>
         <!-- fim da sidebar -->
         <main >
-
-
-            <!-- adicionar manualmente o meeting point aos trabalhadores com um model -->
             <h1 class="titulo" id="registoperacao" style="text-align: center;">Registo de Operações</h1>
             <br>
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
@@ -343,7 +348,7 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP4['id']; ?>">
-                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Submit</button>
                             
                         </form>
                     </div>
@@ -400,7 +405,7 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP5['id']; ?>">
-                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Submit</button>
                             
                         </form>
                     </div>
@@ -457,7 +462,7 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP6['id']; ?>">
-                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit" name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Submit</button>
                             
                         </form>    
                     </div>
@@ -515,7 +520,7 @@
                             <br>
                             <br>
                             <input type="hidden" name="id" value="<?php echo $rowMP7['id']; ?>">
-                            <button type="sumbit" id="butaosubmit"  name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
+                            <button type="sumbit" id="butaosubmit"  name="submitMP1" style="margin: auto;display: flex;cursor:pointer;" >Submit</button>
                         </form>
                     </div>
                 </div>
@@ -560,16 +565,15 @@
                             <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[8] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[8] == 'End_Emergency') echo ' checked'; ?>>
+                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="end_emergency"<?php if ($lastOperations[8] == 'End_Emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
                             <br>
                             <br>
                             <br>
-                            <input type="hidden" name="id" value="<?php echo $rowMPmaster['id']; ?>">
-                            <button type="sumbit" id="butaosubmit"  name="submitMPmaster" style="margin: auto;display: flex;cursor:pointer;" >Sumbit</button>
-                            
+                            <input type="hidden" name="id" value="<?php echo $rowMPmaster['id']; ?>">   
+                            <button type="sumbit" id="butaosubmit"  name="submitMPmaster" style="margin: auto;display: flex;cursor:pointer;" >Submit</button>       
                         </form>
                     </div>
                 </div>
@@ -799,6 +803,13 @@
             <br>
             <a href="#registoperacao" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
+        <div class="right" style="display: none;">
+            <div class="topo">
+                <button id="menu-btn-mobile" onclick="openNavMobile()">
+                    <span class="material-symbols-sharp" >menu</span>
+                </button >
+            </div>
+        </div>
         <!--Fim da main-->
         
     </div>

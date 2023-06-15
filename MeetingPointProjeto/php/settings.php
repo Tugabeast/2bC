@@ -41,10 +41,9 @@
                         <span class="material-symbols-sharp" id="closeside" style="display: none; color: white; justify-content: center;">close</span>
                     </a>
                 </div>
-             <!--   <div class="close" id="close-btn">
-                    <span class="material-symbols-sharp">close</span>
-                </div>  -->
-                
+                <div class="close" id="close-btn-teste-mobile" >
+                    <span class="material-symbols-sharp" onclick="closeNavMobile()" style="color: white;">close</span>
+                </div>
             </div>
             <div class="sidebar">
                 <a href="index3.php" >
@@ -516,7 +515,7 @@
                 
                 <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content; box-shadow: none;">
                     
-                    <input type="date" id="dataa" name="dataa" max="" style="border: 1px solid black; padding: 1rem; margin-left: auto; display: flex;">
+                    <input type="text" id="dataa" name="dataa" placeholder="Escolha uma Data" onfocus="(this.type = 'date')" max="" style="text-align: center; border: 1px solid black; padding: 1rem; margin-left: auto; display: flex;">
                     
                     <table class="tabelacrud" id="tabelacrud4" > 
                         <thead>
@@ -603,6 +602,13 @@
             <a href="#topoo" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
         <!--Fim da main-->
+        <div class="right" style="display: none;">
+            <div class="topo">
+                <button id="menu-btn-mobile" onclick="openNavMobile()">
+                    <span class="material-symbols-sharp" >menu</span>
+                </button >
+            </div>
+        </div>
  
     </div>
 
