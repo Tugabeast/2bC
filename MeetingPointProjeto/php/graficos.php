@@ -93,23 +93,23 @@ include('protect.php');?>
                             while($row = mysqli_fetch_assoc($result)){
                         ?>
                         <tr>
-                            <td>
+                            <td data-label = "Threshold H1">
                                 <input type="hidden" name="TH_update_id[]" value="<?php echo $row['input'] ?>">
                                 <input type="number" name="threshold_h1[]" value="<?php echo $row['threshold_h1'] ?>">
                             </td>
-                            <td><input type="number" name="threshold_h2[]" value="<?php echo $row['threshold_h2'] ?>"></td>
-                            <td><?php echo $row['id']?></td>
-                            <td><?php echo $row['serial_number']?></td>
-                            <td><?php echo $row['datatime']?></td>
-                            <td><?php echo $row['status']?></td>
-                            <td><?php echo $row['gas_concentration']?></td>
-                            <td><?php echo $row['temperature']?></td>
-                            <td><?php echo $row['response_factor']?></td>
-                            <td><?php echo $row['sensor_range']?></td>
-                            <td><?php echo $row['cal_100']?></td>
-                            <td><?php echo $row['cal_3000']?></td>
-                            <td><?php echo $row['flag_status']?></td>
-                            <td>Definido no autómato</td>
+                            <td data-label = "Threshold H2"><input type="number" name="threshold_h2[]" value="<?php echo $row['threshold_h2'] ?>"></td>
+                            <td data-label = "ID"><?php echo $row['id']?></td>
+                            <td data-label = "Serial Number"><?php echo $row['serial_number']?></td>
+                            <td data-label = "Datatime"><?php echo $row['datatime']?></td>
+                            <td data-label = "Status"><?php echo $row['status']?></td>
+                            <td data-label = "Gas Concentration"><?php echo $row['gas_concentration']?></td>
+                            <td data-label = "Temperature"><?php echo $row['temperature']?></td>
+                            <td data-label = "Response Factor"><?php echo $row['response_factor']?></td>
+                            <td data-label = "Sensor Range"><?php echo $row['sensor_range']?></td>
+                            <td data-label = "Cal 100"><?php echo $row['cal_100']?></td>
+                            <td data-label = "Cal 3000"><?php echo $row['cal_3000']?></td>
+                            <td data-label = "Flag_status"><?php echo $row['flag_status']?></td>
+                            <td data-label = "Threshold H3">Definido no autómato</td>
                         </tr>           
                         <?php
                             }   

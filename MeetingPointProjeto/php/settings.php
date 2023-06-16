@@ -467,7 +467,7 @@
             <br>
             <h1 class="titulo" style="text-align: center;">Gestão de Meeting Points</h1>
             <h3><?php $msg?></h3>
-            <button type="button" class="btn-add-mp" id="AddMPmodal"><span class="material-symbols-sharp">location_on</span>Adicionar MP</button>
+            <!--<button type="button" class="btn-add-mp" id="AddMPmodal"><span class="material-symbols-sharp">location_on</span>Adicionar MP</button>-->
             <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">location_on</span>Adicionar Meeting Point</button>-->
             <div class="containerphp">
                 <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content;">
@@ -493,7 +493,7 @@
                                             <td data-label = "Name"><?php echo $row['name']?></td>                           
                                             <td data-label = "Ações">
                                                 <button type="button" class="edit-MP"><span class="material-symbols-sharp" style="color: green;">edit_square</span></button>    
-                                                <button type="button" class="eliminar-MP"><span class="material-symbols-sharp" style="color: red;">delete</span></button>
+                                                <!--<button type="button" class="eliminar-MP"><span class="material-symbols-sharp" style="color: red;">delete</span></button>-->
                                             </td>
                                         </tr>
                                     <?php
@@ -515,7 +515,7 @@
                 
                 <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content; box-shadow: none;">
                     
-                    <input type="text" id="dataa" name="dataa" placeholder="Escolha uma Data" onfocus="(this.type = 'date')" max="" style="text-align: center; border: 1px solid black; padding: 1rem; margin-left: auto; display: flex;">
+                    <!--<input type="text" id="dataa" name="dataa" placeholder="Escolha uma Data" onfocus="(this.type = 'date')" max="" style="text-align: center; border: 1px solid black; padding: 1rem; margin-left: auto; display: flex;">-->
                     
                     <table class="tabelacrud" id="tabelacrud4" > 
                         <thead>
