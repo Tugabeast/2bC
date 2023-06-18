@@ -52,6 +52,7 @@ class ComposerStaticInitbb82a841c8763e3ff2f560b2861a37e0
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
+        'mitoteam\\jpgraph\\MtJpGraph' => __DIR__ . '/..' . '/mitoteam/jpgraph/src/MtJpGraph.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

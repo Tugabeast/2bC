@@ -136,6 +136,55 @@
             "install-path": "../masterminds/html5"
         },
         {
+            "name": "mitoteam/jpgraph",
+            "version": "v10.3.1",
+            "version_normalized": "10.3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mitoteam/jpgraph.git",
+                "reference": "891f7c7a90c3a1b059f157d8b4765c7033da8a5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mitoteam/jpgraph/zipball/891f7c7a90c3a1b059f157d8b4765c7033da8a5d",
+                "reference": "891f7c7a90c3a1b059f157d8b4765c7033da8a5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "replace": {
+                "jpgraph/jpgraph": "4.0.2"
+            },
+            "time": "2023-05-31T14:15:30+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "src/MtJpGraph.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "QPL-1.0"
+            ],
+            "authors": [
+                {
+                    "name": "JpGraph team"
+                }
+            ],
+            "description": "JpGraph library composer package with PHP 8.2 support",
+            "homepage": "https://github.com/mitoteam/jpgraph",
+            "keywords": [
+                "jpgraph"
+            ],
+            "support": {
+                "issues": "https://github.com/mitoteam/jpgraph/issues",
+                "source": "https://github.com/mitoteam/jpgraph/tree/v10.3.1"
+            },
+            "install-path": "../mitoteam/jpgraph"
+        },
+        {
             "name": "phenx/php-font-lib",
             "version": "0.5.4",
             "version_normalized": "0.5.4.0",

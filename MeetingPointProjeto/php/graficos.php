@@ -65,7 +65,7 @@ include('protect.php');?>
                 <p id="mensagemErro" style="color: var(--color-danger); text-align: center; font-size: 16px;"><?php echo $_SESSION['mensagemErro']; ?></p>
                 <?php endif; ?>
                
-                <table class="tabelacrud" id="tabelacrud1" >
+                <table class="tabelacrud" id="tabelacrud1" style="width: 90%;">
                     <thead>
                         <tr style="background: #094b9b; color: white; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
                             <th>Threshold H1</th>
