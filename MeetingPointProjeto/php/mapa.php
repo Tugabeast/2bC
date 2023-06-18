@@ -71,7 +71,7 @@ include('protect.php');?>
                 <img src="../images/planta.png" id="planta" name="planta" style="margin: auto; height: 80%; width: 40%;">
             </div>
             -->          
-            <div class="card" style="width: 50%; margin: auto; background: white; color: black;" >
+            <div class="card" id="cardWind" style="width: 50%; margin: auto; background: white; color: black;" >
             <div id='myDiv' style="width: 80%; margin: auto;">
                 <!-- Plotly chart will be drawn inside this DIV -->
             </div>
@@ -92,10 +92,16 @@ include('protect.php');?>
                     </select>
                 </label>
                 <br>
-                <label>
+                <label >
                     <div id='valuesDiv' style="border-bottom: 1px solid black;"></div>
+                    <div id="windIcon" style="text-align: center; margin-top:2rem;" ></div>
+                    <?php
+                        // Return current date from the remote server
+                        $date = date('d-m-y h:i:s');
+                        echo '<p style="margin-top:2rem;">'."Ultima Atualização: ".$date.'</p>';
+                    ?>
+                    <div>Status: Ok</div>
                 </label>
-                <div id="windIcon" style="text-align: center;"></div>
             </div>
 
             
@@ -152,6 +158,10 @@ include('protect.php');?>
                     type: "barpolar"
                 };
 
+
+
+
+
                 // Mapear os ângulos para os pontos cardeais, colaterais e subcolaterais correspondentes
                 if (direction >= 348.75 || direction < 11.25) {
                         windDirection = "N";
@@ -187,50 +197,92 @@ include('protect.php');?>
                         windDirection = "NNW";
                     }
 
+                 function displayWindIcon(velocity) {
+                    var windIcon = document.getElementById("windIcon");
+                    var iconPath = "";
+                    var iconName = ""; // Variável para armazenar o nome do ícone
+
+                    //valores em metro/minuto
+                    var calmo = 16.66667;
+                    var aragem = 83.33333;
+                    var brisaLeve = 183.3333;
+                    var brisaFraca = 316.6667;
+                    var brisaModerada = 466.6667;
+                    var brisaForte = 633.3333;
+                    var ventoFresco = 816.6667;
+                    var ventoForte = 1016.667;
+                    var ventania = 1233.333;
+                    var ventaniaForte = 1466.667;
+                    var tempestade = 1700;
+                    var tempestadeViolenta = 1950;
+                    var furacao = 1966.667;
+
                     switch (true) {
-                        case (velocity < 1):
-                            iconPath = "../images/Icons vento/1.jpg";
+                        case (velocity < calmo):
+                            iconPath = "../images/Iconsvento/1.jpg";
+                            iconName = "Calmo";
                             break;
-                        case (velocity > 1 && velocity < 5):
-                            iconPath = "../images/Icons vento/2.jpg";
+                        case (velocity > calmo && velocity < aragem):
+                            iconPath = "../images/Iconsvento/2.jpg";
+                            iconName = "Aragem";
                             break;
-                        case (velocity < 7):
-                            iconPath = "../images/Icons vento/light-breeze.png";
+                        case (velocity > aragem && velocity < brisaLeve):
+                            iconPath = "../images/Iconsvento/3.jpg";
+                            iconName = "Brisa Leve";
                             break;
-                        case (velocity < 11):
-                            iconPath = "../images/Icons vento/gentle-breeze.png";
+                        case (velocity > brisaLeve && velocity < brisaFraca):
+                            iconPath = "../images/Iconsvento/4.jpg";
+                            iconName = "Brisa Fraca";
                             break;
-                        case (velocity < 17):
-                            iconPath = "../images/Icons vento/moderate-breeze.png";
+                        case (velocity > brisaFraca && velocity < brisaModerada):
+                            iconPath = "../images/Iconsvento/5.jpg";
+                            iconName = "Brisa Moderada";
                             break;
-                        case (velocity < 22):
-                            iconPath = "../images/Icons vento/fresh-breeze.png";
+                        case (velocity > brisaModerada && velocity < brisaForte):
+                            iconPath = "../images/Iconsvento/6.jpg";
+                            iconName = "Brisa Forte";
                             break;
-                        case (velocity < 28):
-                            iconPath = "../images/Icons vento/strong-breeze.png";
+                        case (velocity > brisaForte && velocity < ventoFresco):
+                            iconPath = "../images/Iconsvento/7.jpg";
+                            iconName = "Vento Fresco";
                             break;
-                        case (velocity < 34):
-                            iconPath = "../images/Icons vento/near-gale.png";
+                        case (velocity > ventoFresco && velocity < ventoForte):
+                            iconPath = "../images/Iconsvento/8.jpg";
+                            iconName = "Vento Forte";
                             break;
-                        case (velocity < 41):
-                            iconPath = "../images/Icons vento/gale.png";
+                        case (velocity > ventoForte && velocity < ventania):
+                            iconPath = "../images/Iconsvento/9.jpg";
+                            iconName = "Ventania";
                             break;
-                        case (velocity < 48):
-                            iconPath = "../images/Icons vento/strong-gale.png";
+                        case (velocity > ventania && velocity < ventaniaForte):
+                            iconPath = "../images/Iconsvento/10.jpg";
+                            iconName = "Ventania Forte";
                             break;
-                        case (velocity < 56):
-                            iconPath = "../images/Icons vento/storm.png";
+                        case (velocity > ventaniaForte && velocity < tempestade):
+                            iconPath = "../images/Iconsvento/11.jpg";
+                            iconName = "Tempestade";
                             break;
-                        case (velocity < 64):
-                            iconPath = "../images/Icons vento/violent-storm.png";
+                        case (velocity > tempestade && velocity < tempestadeViolenta):
+                            iconPath = "../images/Iconsvento/12.jpg";
+                            iconName = "Tempestade Violenta";
+                            break;
+                        case (velocity < furacao):
+                            iconPath = "../images/Iconsvento/12.jpg";
+                            iconName = "Furacão";
                             break;
                         default:
-                            iconPath = "../images/Icons vento/default-icon.png";
+                            return "Velocidade inválida";
                             break;
                     }
 
+                    windIcon.innerHTML = `<img src="${iconPath}" alt="Wind Icon">`;
+                    windIcon.innerHTML += `<span>${iconName}</span>`; // Exibindo o nome ao lado do ícone
 
-        
+                }
+
+                displayWindIcon(velocity);
+
+
                 // Preencher os dados do gráfico com o próximo conjunto de registros
                 /*
                 var end = Math.min(currentIndex + limit, data.length);

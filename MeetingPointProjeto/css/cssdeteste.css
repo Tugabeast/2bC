@@ -920,7 +920,9 @@ td {
         height: max-content;
     }
 
-    
+    #cardWind{
+        width: 100%!important;
+    }
 
     .tabelacrud tr {
         margin-bottom: 15px;
@@ -1250,3 +1252,6 @@ progress[value]::-webkit-progress-value {
 }
 
 
+#windIcon{
+    width: 10%;
+}
