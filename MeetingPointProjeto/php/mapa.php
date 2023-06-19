@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" ></script>
-    
- 
-    
+
+
+
     
     <?php include_once('db_connection.php');
 include('protect.php');?>
@@ -62,19 +62,29 @@ include('protect.php');?>
         <!-- fim da sidebar -->
         <main>
             <h1 class="titulo" id="registoperacao" style="text-align: center;">WIND</h1>
-            <!--<div id="map">
-                
+
+            <div id="map">
+                <!--<div id="myDiv" style="width: 80%; margin: auto; opacity: 80%; position: relative; background: transparent;">
+--> <!-- Plotly chart will be drawn inside this DIV -->
+               <!-- </div>
+-->             
+                <div id="myDivMapa" style="mix-blend-mode: multiply; margin-top: 1%; width: 80%;height: 0; margin-left: auto; margin-right: auto;  position: relative; background: transparent;">
+                        <!-- Plotly chart will be drawn inside this DIV -->
+                </div>
             </div>
---> 
+
+
 <!--
-            <div id="mapa" style="height: 50%; " > 
-                <img src="../images/planta.png" id="planta" name="planta" style="margin: auto; height: 80%; width: 40%;">
+            <div id="mapa" > 
+                <img src="../images/planta.png" id="planta" name="planta" style="margin: auto; ">
             </div>
-            -->          
+-->
+            <br>
             <div class="card" id="cardWind" style="width: 50%; margin: auto; background: white; color: black;" >
-            <div id='myDiv' style="width: 80%; margin: auto;">
-                <!-- Plotly chart will be drawn inside this DIV -->
+           <!--\ <div id='myDiv' style="width: 80%; margin: auto;">
+                Plotly chart will be drawn inside this DIV 
             </div>
+-->
                 <label style="border-bottom: 1px solid black;">
                     Tempo
                     <select name="TempoMin" id="TempoMin" style="border-bottom: 1px solid black;">
@@ -146,7 +156,7 @@ include('protect.php');?>
                 var radius = velocity * 0.5; // Ajuste o fator multiplicativo conforme necessário
 
                 var direction = data[currentIndex].direction;
-                 var windDirection = "";
+                var windDirection = "";
 
                 // Código existente para criar o gráfico Plotly
                 var chartData = {
@@ -158,7 +168,34 @@ include('protect.php');?>
                     type: "barpolar"
                 };
 
+                var chartDataMapa = {
+                    r: [radius],
+                    theta: [data[currentIndex].direction],
+                    name: data[currentIndex].direction,
+                    marker: { color: "rgb(106,81,163)" },
+                    type: "barpolar"
+                };
 
+                var layoutMapa = {
+                    font: { size: 16 },
+                    legend: { font: { size: 16 } },
+                    polar: {
+                        barmode: "overlay",
+                        bargap: 0,
+                        radialaxis: { showticklabels: false,ticksuffix: "%", angle: 45, dtick: 20 },
+                        angularaxis: {  
+                            direction: "clockwise",
+                            tickmode: "array",
+                            tickvals: [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5],
+                            ticktext: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
+                            showticklabels: false
+                        }
+                    },
+                    showlegend: false
+                    
+                };
+
+                Plotly.newPlot("myDivMapa", [chartDataMapa], layoutMapa);
 
 
 

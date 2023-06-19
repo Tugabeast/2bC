@@ -563,6 +563,9 @@
             </div>
             <div class="table-wraper-pagination">
                         <?php 
+                                                    
+                            include('db_connection.php');
+
                             $sql = "SELECT * FROM `mp_operation`";
                             $count_val = $connect->query($sql);
                             $rowcount = mysqli_num_rows($count_val);
@@ -621,6 +624,55 @@
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     -->
+    <script>
+        /*
+    // Verifica se há um valor na URL para rolar para uma posição específica
+    const scrollToValue = parseInt('<?php echo $st_page; ?>');
+
+    // Verifica se o valor é um número válido e maior que 0
+    if (!isNaN(scrollToValue) && scrollToValue > 0) {
+        // Função para rolar para a tabela com base no valor passado
+        function scrollToTable() {
+            const table = document.getElementById('tabelacrud4');
+            if (table) {
+                table.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Espera o carregamento da página e, em seguida, chama a função para rolar para a tabela
+        window.addEventListener('load', scrollToTable);
+    }
+    */
+   // Função para carregar os dados da tabela usando AJAX
+   function loadTableData(page) {
+        // Cria um objeto XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+
+        // Define a função de callback para processar a resposta do servidor
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Atualiza o conteúdo da tabela com os novos dados
+                document.getElementById("table-body").innerHTML = xhr.responseText;
+            }
+        };
+
+        // Faz a solicitação AJAX para buscar os dados da tabela da página específica
+        xhr.open("GET", "settings.php?page=" + page, true);
+        xhr.send();
+    }
+
+    // Função para lidar com o clique na paginação
+    function handlePaginationClick(page) {
+        // Carrega os dados da tabela da página clicada
+        loadTableData(page);
+
+        // Rola para a tabela após o carregamento dos dados
+        document.getElementById("tabelacrud4").scrollIntoView({ behavior: "smooth" });
+    }
+</script>
+
+
+
     <script>
         //script modal adicionar utilizador
         // Get the modal

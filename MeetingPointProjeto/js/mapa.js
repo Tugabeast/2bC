@@ -1,4 +1,3 @@
-
 const sideMenu = document.querySelector("aside");
 const menuBtn = document.querySelector("#menu-btn-mobile");
 const closeBtn = document.querySelector("#close-btn");
@@ -49,7 +48,7 @@ function openNavMobile() {
     document.getElementById("close-btn-teste-mobile").style.display = "flex";
     sideMenu.style.display = 'block';
     document.querySelector(".right .topo").style.backgroundColor = "white";
-    
+
 }
 
 function closeNavMobile() {
@@ -64,16 +63,17 @@ function closeNavMobile() {
 
 
 
-const map = L.map('map').setView([40.505, -8.59], 13);
+
+
+const map = L.map('map').setView([40.781222457545134, -8.573946680684655], 13);
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-const marker = L.marker([40.781222457545134, -8.573946680684655]).addTo(map)
-    .bindPopup('<b>CIRES!</b><br />Sensing').openPopup();
-
+const marker = L.marker([40.781222457545134, -8.573946680684655]).addTo(map).openPopup();
+/*
 const circle = L.circle([40.781222457545134, -8.573946680684655], {
     color: 'red',
     fillColor: '#f03',
@@ -87,20 +87,33 @@ const polygon = L.polygon([
     [40.881222457545134, -0.047]
 ]).addTo(map).bindPopup('Zona-Ventos');
 
-
 const popup = L.popup()
     .setLatLng([40.781222457545134, -8.573946680684655])
-    .setContent('Cires -  Wind SenSor [Ventos]')
+    .setContent('Cires - Wind SenSor [Ventos]')
     .openOn(map);
+*/
+// Ajustar a posição da rosa dos ventos para começar na primeira imagem do mapa
+const markerLatLng = marker.getLatLng();
+const circleLatLng = circle.getLatLng();
+const markerOffset = L.latLng(markerLatLng.lat - (circleLatLng.lat - markerLatLng.lat), markerLatLng.lng - (circleLatLng.lng - markerLatLng.lng));
+circle.setLatLng(markerOffset);
 
 function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
         .setContent(`You clicked the map at ${e.latlng.toString()}`)
         .openOn(map);
+
+    // Atualizar a posição da rosa dos ventos quando o popup for movido
+    const markerLatLng = marker.getLatLng();
+    //const circleLatLng = circle.getLatLng();
+    const markerOffset = L.latLng(markerLatLng.lat - (circleLatLng.lat - markerLatLng.lat), markerLatLng.lng - (circleLatLng.lng - markerLatLng.lng));
+    circle.setLatLng(markerOffset);
 }
 
 map.on('click', onMapClick);
 
 
 
+// Zoom in on the first image of the map
+map.setZoom(17);

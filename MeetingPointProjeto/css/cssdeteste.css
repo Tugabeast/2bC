@@ -232,7 +232,6 @@ aside .sidebar a:hover span {
 
 aside .sidebar #traco {
     border-top: 1px solid white;
-    
 }
 
 
@@ -390,8 +389,15 @@ main .recent-orders a {
 #map {
     margin-top: 20px;
     height: 60%;
+    position: relative;
     width: 99%;
     border-radius: var(--card-border-radius);
+    z-index: 2 !important;
+}
+
+#myDivMapa {
+    z-index: 1000 !important;
+    background-color: transparent;
 }
 
 
@@ -517,7 +523,7 @@ main .recent-orders a {
     box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
 }
 
-#table-wraper:hover{
+#table-wraper:hover {
     box-shadow: none;
 }
 
@@ -540,7 +546,7 @@ main .recent-orders a {
     line-height: 200%;
 }
 
-#btn-calendar{
+#btn-calendar {
     border: 2px solid #094b9b;
     background: #094b9b;
     cursor: pointer;
@@ -686,8 +692,6 @@ td {
 }
 
 
-
-
 /*
 .containerphp .tabelacrud tr:nth-child(even) {
     background-color: #dddddd;
@@ -822,7 +826,6 @@ td {
     main .recent-orders table {
         width: 83vw;
     }
-
     .row {
         display: grid !important;
         justify-items: center;
@@ -838,13 +841,13 @@ td {
     display: none;
 }
 
+
 /*768px*/
 
 @media screen and (max-width: 768px) {
     .container {
         width: 100%;
         grid-template-columns: 1fr;
-        
     }
     aside {
         position: fixed;
@@ -884,72 +887,57 @@ td {
     main {
         margin-top: 8rem;
         padding: 0 1rem;
-        
     }
-
     main .titulo {
         font-family: sans-serif;
         color: #094b9b;
         text-align: center;
     }
-    
     .table-wraper {
         overflow-x: auto;
         width: 100%;
         border-radius: 0;
         /* Habilita a rolagem horizontal em dispositivos menores */
-       
         border-collapse: collapse;
-        
     }
-
-    #abrirside{
+    #abrirside {
         display: none !important;
     }
-
-    #closebtn #closeside{
+    #closebtn #closeside {
         display: none;
     }
-
-
-    .table-wraper:hover{
+    .table-wraper:hover {
         box-shadow: none;
     }
-
-    .containerphp{
+    .containerphp {
         height: max-content;
     }
-
-    #cardWind{
+    #cardWind {
         width: 100%!important;
     }
-
     .tabelacrud tr {
         margin-bottom: 15px;
         border-top: 1px solid #ddd;
         padding-top: 15px;
     }
-
-
-    .tabelacrud thead{
+    .tabelacrud thead {
         display: none;
     }
-
-    .tabelacrud, .tabelacrud tbody, .tabelacrud tr, .tabelacrud td{
+    .tabelacrud,
+    .tabelacrud tbody,
+    .tabelacrud tr,
+    .tabelacrud td {
         display: block;
         width: 100%;
     }
-
-    .tabelacrud tr{
+    .tabelacrud tr {
         margin-bottom: 15px;
     }
-
-    .tabelacrud td{
+    .tabelacrud td {
         text-align: right;
         padding-left: 50%;
         position: relative;
     }
-
     .tabelacrud td::before {
         content: attr(data-label);
         position: absolute;
@@ -960,7 +948,6 @@ td {
         font-weight: bold;
         text-align: left;
     }
-
     #map {
         height: 90%;
         width: 99%;
@@ -976,7 +963,7 @@ td {
         margin-top: 10px;
     }
     #myInput {
-        margin:auto;
+        margin: auto;
         position: sticky !important;
     }
     #registoperacao {
@@ -984,21 +971,17 @@ td {
     }
     .topoo {
         text-align: center;
-        display: block;   
+        display: block;
     }
-
-    progress{
+    progress {
         width: 90% !important;
     }
-
-    #dataa{
+    #dataa {
         margin: auto;
     }
-
-    .right{
+    .right {
         display: flex !important;
     }
-
     .right .topo {
         position: fixed;
         top: 0;
@@ -1008,7 +991,7 @@ td {
         height: 4.6rem;
         background: #094b9b;
         /*background: #0a2558;*/
-        width:100%;
+        width: 100%;
         margin: 0;
         z-index: 2;
         box-shadow: 0 1rem 1rem var(--color-light);
@@ -1016,11 +999,9 @@ td {
         border-bottom-left-radius: 10px;
         /*box-shadow: 0 1rem 1rem var(--color-light);*/
     }
-
-    .right .topo:hover{
+    .right .topo:hover {
         box-shadow: none;
     }
-
     .right .topo button {
         display: inline-block;
         cursor: pointer;
@@ -1033,12 +1014,6 @@ td {
         font-size: 2rem;
         margin-top: 1rem;
     }
-
-
-
-
-
-
 }
 
 
@@ -1212,13 +1187,14 @@ progress[value]::-webkit-progress-value {
     padding: 0.3rem;
 }
 
-
 .red-row {
-    color: #ffdddd; /* Cor de fundo para MP = 0 (vermelho claro) */
+    color: #ffdddd;
+    /* Cor de fundo para MP = 0 (vermelho claro) */
 }
 
 .green-row {
-    color: #ddffdd; /* Cor de fundo para MP = 1 (verde claro) */
+    color: #ddffdd;
+    /* Cor de fundo para MP = 1 (verde claro) */
 }
 
 .red-row td {
@@ -1237,7 +1213,7 @@ progress[value]::-webkit-progress-value {
     color: green;
 }
 
-#salvarMP{
+#salvarMP {
     border: 2px solid #094b9b;
     background: #094b9b;
     cursor: pointer;
@@ -1251,7 +1227,6 @@ progress[value]::-webkit-progress-value {
     line-height: 100%;
 }
 
-
-#windIcon{
+#windIcon {
     width: 10%;
 }
