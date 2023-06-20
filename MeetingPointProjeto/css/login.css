@@ -75,7 +75,7 @@ button {
     background-color: #ec4067;
     padding: 10px 102px;
     margin-right: 3rem;
-    margin-left: 3rem;
+    margin-left: 6rem;
     color: var(--color-white);
     border-radius: var(--border-radius-1);
     border: none;
@@ -88,11 +88,13 @@ button:hover {
 }
 
 .error {
-    background: var(--color-danger);
-    color: var(--color-info-light);
-    padding: 10px;
-    width: 95%;
-    border-radius: var(--border-radius-1);
+  background: var(--color-danger);
+  color: var(--color-info-light);
+  padding: 10px;
+  width: 85%;
+  border-radius: var(--border-radius-1);
+  margin-bottom: 20px;
+  margin-left: 9%;
 }
 
 .sucess {
@@ -190,5 +192,8 @@ form a {
         
       }
 
+      .error{
+        margin-left: 11%;
+      }
 
     }

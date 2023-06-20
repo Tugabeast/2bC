@@ -131,25 +131,29 @@
             <br>
             <!-- script php progress bar -->
             <div class="progressbar">
+                
+            <span id="registeredCount">
                 <?php 
-                        $sqlbar2 = "SELECT * FROM mp_registered_cards WHERE mp != 0";
-                        if ($result2 = mysqli_query($connect, $sqlbar2)) {
-                            $rowcount2 = mysqli_num_rows($result2);
-                            echo "nr de trabalhadores registado: " . $rowcount2;
-                        }
-                        echo "<br>";
-                        $sqlpbar = "SELECT * FROM mp_registered_cards WHERE mp = 0";
-                        if ($result = mysqli_query($connect, $sqlpbar)) {
-                            $rowcount = mysqli_num_rows($result);
-                            echo "nr de trabalhadores nao registados: " . $rowcount;
-                        }
-                    
-                        $percentagem = ($rowcount2 / $rowcount) * 100;
-                    
+                    $sqlbar2 = "SELECT COUNT(*) AS registeredWorkers FROM mp_registered_cards WHERE mp != 0";
+                    $result2 = mysqli_query($connect, $sqlbar2);
+                    $rowcount2 = mysqli_fetch_assoc($result2)['registeredWorkers'];
+                    echo "nr de trabalhadores registados: <span id='registeredWorkersCount'>" . $rowcount2 . "</span>";
                 ?>
+            </span>
+            <br>
+            <span id="unregisteredCount">
+                <?php
+                    $sqlpbar = "SELECT COUNT(*) AS unregisteredWorkers FROM mp_registered_cards WHERE mp = 0";
+                    $result = mysqli_query($connect, $sqlpbar);
+                    $rowcount = mysqli_fetch_assoc($result)['unregisteredWorkers'];
+                    echo "nr de trabalhadores não registados: <span id='unregisteredWorkersCount'>" . $rowcount . "</span>";
+                ?>
+            </span>
+                
                 <br>
                 <progress id="progressBar" value="<?php echo $rowcount2 ?>" max="<?php echo $rowcount ?>"></progress>
                 <br>
+                <span></span>
                 <span id="progressPercentage"><?php echo round($percentagem, 2) . "%" ?></span>
             </div>
             <br>
@@ -969,13 +973,33 @@
             }
 
             function updateProgressBar() {
-            var totalWorkers = <?php echo $rowcount ?>;
-            var registeredWorkers = <?php echo $rowcount2 ?>;
-            var progressPercentage = (registeredWorkers / totalWorkers) * 100;
-            $('#progressBar').val(registeredWorkers);
-            $('#progressBar').attr('max', totalWorkers);
-            $('#progressPercentage').text(progressPercentage.toFixed(2) + '%');
-        }
+                $.ajax({
+                    url: 'update_progress.php', // Arquivo PHP que atualiza o valor da barra de progresso
+                    type: 'GET',
+                    success: function(response) {
+                        var totalWorkers = response.totalWorkers;
+                        var registeredWorkers = response.registeredWorkers;
+                        var unregisteredWorkers = totalWorkers - registeredWorkers;
+                        var progressPercentage = (registeredWorkers / totalWorkers) * 100;
+                        $('#registeredWorkersCount').text(registeredWorkers);
+                        $('#unregisteredWorkersCount').text(unregisteredWorkers);
+                        $('#progressBar').val(registeredWorkers);
+                        $('#progressBar').attr('max', totalWorkers);
+                        $('#progressPercentage').text(progressPercentage.toFixed(2) + '%');
+                    },
+                    error: function() {
+                        alert("Ocorreu um erro ao atualizar a barra de progresso.");
+                    }
+                });
+            }
+
+            // Chamar a função de atualização da barra de progresso inicialmente
+            updateProgressBar();
+
+                // Atualizar a barra de progresso a cada 5 segundos
+                setInterval(updateProgress, 1000);
+
+
         });
 
         
