@@ -38,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: gerarPDFemergencia.php?id=$id&order_given=$order_given");
             exit;
         }
-
     }
 
+    // Redirecionar de volta para a página anterior (index3.php)
     header("location: index3.php");
 }
 ?>

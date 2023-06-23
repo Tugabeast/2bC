@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <p style="display: none;" id="topoo"></p>
+    
     <div class="container" id="container">
         <aside class="sidebar" id="mySidebar">
             <div class="top" id="main" >
@@ -71,12 +71,104 @@
         <!-- fim da sidebar -->
         <main>
             
-            <h1 class="titulo"  style="text-align: center;">Reiniciar Sistema</h1>
+            <h1 class="titulo" id="topoo" style="text-align: center;">Reiniciar Sistema</h1>
             <button type="button" class="btnresetar" id="resetarSistem" style="margin-bottom: 5rem;"><span class="material-symbols-sharp">restart_alt</span>Reset Sistema</button>
 
-            <!-- 
-                no reset system os valores que estiverem com um mp atribuido deverao estar a verdes e os que nao tiverem devem estar a vermelho , ao dar reset passa tudo a 1 e os mps a 0. e os utilizadores que estiverm mp atribuido teram de ter o worker_mp a 2
-            -->
+            <h1 class="titulo" style="text-align: center;  margin-top: 5rem;">Registo de Operações</h1>
+            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
+            <div class="containerphp" style="height: 30rem;">
+                
+                <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content; box-shadow: none;">
+                    
+                    <!--<input type="text" id="dataa" name="dataa" placeholder="Escolha uma Data" onfocus="(this.type = 'date')" max="" style="text-align: center; border: 1px solid black; padding: 1rem; margin-left: auto; display: flex;">-->
+                    
+                    <table class="tabelacrud" id="tabelacrud4" > 
+                        <thead>
+                            <tr style="color: white; background: #094b9b;">
+                                <th>Data</th>
+                                <th>ID</th>
+                                <th>Operações</th>
+                                <th>Ordem dada</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <?php   
+                                include('db_connection.php');
+                  
+                                $r_p_page = 5;
+
+                                if(isset($_GET['values'])){
+                                    $st_page = $_GET['values'];
+                                }
+                                else{
+                                    $st_page = 5;
+                                }
+
+                                $sql = "SELECT * FROM `mp_operation` limit  $st_page,$r_p_page";
+                                $result = mysqli_query($connect, $sql);
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    
+                                    while($row = mysqli_fetch_assoc($result)){
+                                        ?>
+                                            <tr>
+                                                <td data-label = "Data"><?php echo $row['datatime']?></td>
+                                                <td data-label = "ID"><?php echo $row['id']?></td>
+                                                <td data-label = "Operações"><?php echo $row['operation']?></td>
+                                                <td data-label = "Ordem dada"><?php echo $row['order_given']?></td>
+                                            </tr>
+                                        <?php
+                                        
+                                    }   
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+                <div class="table-wraper-pagination">
+                            <?php 
+                                                        
+                                include('db_connection.php');
+
+                                $sql = "SELECT * FROM `mp_operation`";
+                                $count_val = $connect->query($sql);
+                                $rowcount = mysqli_num_rows($count_val);
+
+                                $_page = ceil($rowcount/5);
+
+                                $start_loop = $st_page/5;
+
+                                $last_value = ($_page-1) *5;
+
+                                $start_SH = $start_loop+4;
+
+                                if($_page-1<=$start_SH){
+                                    $end_loop = $_page;
+                                }
+                                else{
+                                    $end_loop = $start_SH;
+                                }
+
+                                if($st_page>5){
+                                    echo "<a href='settings.php?values=5'>First</a>";
+                                    echo "<a href='settings.php?values=".($st_page-5)."'> <<<< </a>";
+                                }
+
+                                for ($i=$start_loop; $i< $end_loop ; $i++) { 
+                                    $hide_values = $i*5;
+                                    echo "<a href='settings.php?values=".$hide_values." '>".ceil($i)."</a>";
+                                }
+
+                                if($_page-1 != $start_loop){
+                                    echo "<a href='settings.php?values=".($st_page+5)."'> >>>> </a>";
+                                    echo "<a href='settings.php?values=".$last_value."'>Last</a>";
+                                }
+                            ?>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
             <!--------------------------------- BEGIN MODAL RESETAR SISTEMA   -------------------------------->
             <div id="resetarSistema" class="modal">
                 <!-- Modal content -->
@@ -504,104 +596,6 @@
                 </div>
             </div>
             <br>
-            <br>
-            <br>
-            <!-- script paginicação-->
-
-            <!-- -->
-            <h1 class="titulo" style="text-align: center;  margin-top: 5rem;">Registo de Operações</h1>
-            <!--<button type="button" class="btn-add"><span class="material-symbols-sharp">warning</span>Adiciona operação</button>-->
-            <div class="containerphp">
-                
-                <div class="table-wraper"  style="overflow-y: hidden; max-height: max-content; box-shadow: none;">
-                    
-                    <!--<input type="text" id="dataa" name="dataa" placeholder="Escolha uma Data" onfocus="(this.type = 'date')" max="" style="text-align: center; border: 1px solid black; padding: 1rem; margin-left: auto; display: flex;">-->
-                    
-                    <table class="tabelacrud" id="tabelacrud4" > 
-                        <thead>
-                            <tr style="color: white; background: #094b9b;">
-                                <th>Data</th>
-                                <th>ID</th>
-                                <th>Operações</th>
-                                <th>Ordem dada</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body">
-                            <?php   
-                                include('db_connection.php');
-                  
-                                $r_p_page = 5;
-
-                                if(isset($_GET['values'])){
-                                    $st_page = $_GET['values'];
-                                }
-                                else{
-                                    $st_page = 5;
-                                }
-
-                                $sql = "SELECT * FROM `mp_operation` limit  $st_page,$r_p_page";
-                                $result = mysqli_query($connect, $sql);
-
-                                if (mysqli_num_rows($result) > 0) {
-                                    
-                                    while($row = mysqli_fetch_assoc($result)){
-                                        ?>
-                                            <tr>
-                                                <td data-label = "Data"><?php echo $row['datatime']?></td>
-                                                <td data-label = "ID"><?php echo $row['id']?></td>
-                                                <td data-label = "Operações"><?php echo $row['operation']?></td>
-                                                <td data-label = "Ordem dada"><?php echo $row['order_given']?></td>
-                                            </tr>
-                                        <?php
-                                        
-                                    }   
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="table-wraper-pagination">
-                        <?php 
-                                                    
-                            include('db_connection.php');
-
-                            $sql = "SELECT * FROM `mp_operation`";
-                            $count_val = $connect->query($sql);
-                            $rowcount = mysqli_num_rows($count_val);
-
-                            $_page = ceil($rowcount/5);
-
-                            $start_loop = $st_page/5;
-
-                            $last_value = ($_page-1) *5;
-
-                            $start_SH = $start_loop+4;
-
-                            if($_page-1<=$start_SH){
-                                $end_loop = $_page;
-                            }
-                            else{
-                                $end_loop = $start_SH;
-                            }
-
-                            if($st_page>5){
-                                echo "<a href='settings.php?values=5'>First</a>";
-                                echo "<a href='settings.php?values=".($st_page-5)."'> <<<< </a>";
-                            }
-
-                            for ($i=$start_loop; $i< $end_loop ; $i++) { 
-                                $hide_values = $i*5;
-                                echo "<a href='settings.php?values=".$hide_values." '>".ceil($i)."</a>";
-                            }
-
-                            if($_page-1 != $start_loop){
-                                echo "<a href='settings.php?values=".($st_page+5)."'> >>>> </a>";
-                                echo "<a href='settings.php?values=".$last_value."'>Last</a>";
-                            }
-                        ?>
-            </div>
-            <br>
             <a href="#topoo" class="topoo" style="font-size: 18px; color: var(--color-primary); ">VOLTAR AO TOPO^</a>
         </main>
         <!--Fim da main-->
@@ -624,53 +618,6 @@
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     -->
-    <script>
-        /*
-    // Verifica se há um valor na URL para rolar para uma posição específica
-    const scrollToValue = parseInt('<?php echo $st_page; ?>');
-
-    // Verifica se o valor é um número válido e maior que 0
-    if (!isNaN(scrollToValue) && scrollToValue > 0) {
-        // Função para rolar para a tabela com base no valor passado
-        function scrollToTable() {
-            const table = document.getElementById('tabelacrud4');
-            if (table) {
-                table.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Espera o carregamento da página e, em seguida, chama a função para rolar para a tabela
-        window.addEventListener('load', scrollToTable);
-    }
-    */
-   // Função para carregar os dados da tabela usando AJAX
-   function loadTableData(page) {
-        // Cria um objeto XMLHttpRequest
-        var xhr = new XMLHttpRequest();
-
-        // Define a função de callback para processar a resposta do servidor
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Atualiza o conteúdo da tabela com os novos dados
-                document.getElementById("table-body").innerHTML = xhr.responseText;
-            }
-        };
-
-        // Faz a solicitação AJAX para buscar os dados da tabela da página específica
-        xhr.open("GET", "settings.php?page=" + page, true);
-        xhr.send();
-    }
-
-    // Função para lidar com o clique na paginação
-    function handlePaginationClick(page) {
-        // Carrega os dados da tabela da página clicada
-        loadTableData(page);
-
-        // Rola para a tabela após o carregamento dos dados
-        document.getElementById("tabelacrud4").scrollIntoView({ behavior: "smooth" });
-    }
-</script>
-
 
 
     <script>
@@ -867,8 +814,6 @@
             }
         });
 
-
-        
 
 
 

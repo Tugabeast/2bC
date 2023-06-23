@@ -629,6 +629,7 @@ main .recent-orders a {
     margin: auto;
 }
 
+
 .containerphp .tabelacrud th,
 td {
     /*border: 1px solid #dddddd;*/
@@ -1229,4 +1230,9 @@ progress[value]::-webkit-progress-value {
 
 #windIcon {
     width: 10%;
+}
+
+
+#graphdiv1 img{
+    width: 10px;
 }

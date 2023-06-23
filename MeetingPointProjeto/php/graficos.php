@@ -11,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
 
-
     <?php include_once('db_connection.php');
 include('protect.php');?>
 </head>
@@ -119,16 +118,7 @@ include('protect.php');?>
                 </table>
                 <br>
                 <form action="gerar_graficos.php" method="GET">
-                    <select name="gas_concentration" id="gas_concentration">
-                        <option value="" disabled selected>Selecione o máximo de gas para o gráfico</option>
-                        <option value="25" id="temp25" name="temp25">25</option>
-                        <option value="50" id="temp50" name="temp50">50</option>
-                        <option value="75" id="temp75" name="temp75">75</option>
-                        <option value="100" id="temp100" name="temp100">100</option>
-                        <option value="125" id="temp125" name="temp125">125</option>
-                        <option value="150" id="temp150" name="temp150">150</option>
-                        <option value="175" id="temp175" name="temp175">175</option>
-                    </select>
+                    
                 </form>
                 <div id="graphdiv1" ></div>
                 <script type="text/javascript">
@@ -157,7 +147,13 @@ include('protect.php');?>
                                     ylabel: "Gas Concentration",
                                     labels: ["Índice", "Gas Concentration"],
                                     colors: ["blue"],
-                                    connectSeparatedPoints: true
+                                    connectSeparatedPoints: true,
+                                    showRangeSelector: true, // Ativa o range selector
+                                    rangeSelectorHeight: 100,
+                                    rangeSelectorPlotLineWidth: 10,
+                                    rangeSelectorForegroundLineWidth: 2,
+                                    rangeSelectorWidth: -1000
+                                     
                                 }
                             );
 
@@ -232,6 +228,8 @@ include('protect.php');?>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/plugins/range-selector.js"></script>
+
     <script>
     setTimeout(function() {
         <?php

@@ -242,7 +242,7 @@
                 <br>
                 <h1 class="titulo"  style="text-align: center;">Configuração</h1>
                 <br>
-                <div class="row" style="margin: auto; display: flex; align-items: center; justify-content: center;">
+            <div class="row" style="margin: auto; display: flex; align-items: center; justify-content: center;">
                     
                 <div class="column">
                     <?php
@@ -282,7 +282,7 @@
                             <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[3] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[3] == 'End_Emergency') echo ' checked'; ?>>
+                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="End_emergency"<?php if ($lastOperations[3] == 'End_emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -340,7 +340,7 @@
                             <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[4] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[4] == 'End_Emergency') echo ' checked'; ?>>
+                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="End_emergency"<?php if ($lastOperations[4] == 'End_emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -397,7 +397,7 @@
                             <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[5] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[5] == 'End_Emergency') echo ' checked'; ?>>
+                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="End_emergency"<?php if ($lastOperations[5] == 'End_emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -454,7 +454,7 @@
                             <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[6] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[6] == 'End_Emergency') echo ' checked'; ?>>
+                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="End_emergency"<?php if ($lastOperations[6] == 'End_emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -512,7 +512,7 @@
                             <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[7] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_Emergency" id="end_emergency"<?php if ($lastOperations[7] == 'End_Emergency') echo ' checked'; ?>>
+                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="End_emergency"<?php if ($lastOperations[7] == 'End_emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>
@@ -556,7 +556,6 @@
                                     echo '<h3 style="text-align: center;">'. $rowMPmaster['name']. '</h3>';
                                     echo '<br>';
                                     echo '<p style="text-align: center;">'. $lastOperations[8]. '</p>';
-
                                 ?>
                             </h3>
                             <br>
@@ -569,7 +568,7 @@
                             <input type="radio" class="checkoption" name="operation" value="Evacuation" id="evacuation"<?php if ($lastOperations[8] == 'Evacuation') echo ' checked'; ?>>
                             <label>Evacuação</label>
                             <br>
-                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="end_emergency"<?php if ($lastOperations[8] == 'End_Emergency') echo ' checked'; ?>>
+                            <input type="radio" class="checkoption" name="operation" value="End_emergency" id="End_emergency"<?php if ($lastOperations[8] == 'End_emergency') echo ' checked'; ?>>
                             <label>Fim de Emergencia</label>
                             <br>
                             <br>

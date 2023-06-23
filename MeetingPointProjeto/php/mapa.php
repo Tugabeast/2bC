@@ -105,6 +105,7 @@ include('protect.php');?>
                 <label >
                     <div id='valuesDiv' style="border-bottom: 1px solid black;"></div>
                     <div id="windIcon" style="text-align: center; margin-top:2rem;" ></div>
+                    <div id="windText" style=" margin-top: 1rem;"></div>
                     <?php
                         // Return current date from the remote server
                         $date = date('d-m-y h:i:s');
@@ -121,7 +122,7 @@ include('protect.php');?>
             <div class="topo">
                 <button id="menu-btn-mobile" onclick="openNavMobile()">
                     <span class="material-symbols-sharp" >menu</span>
-                </button >
+                </button>
             </div>
         </div>
     </div>
@@ -234,8 +235,9 @@ include('protect.php');?>
                         windDirection = "NNW";
                     }
 
-                 function displayWindIcon(velocity) {
+                 function displayWindIcon(velocity , direction) {
                     var windIcon = document.getElementById("windIcon");
+                    var windText = document.getElementById("windText");
                     var iconPath = "";
                     var iconName = ""; // Variável para armazenar o nome do ícone
 
@@ -312,12 +314,44 @@ include('protect.php');?>
                             break;
                     }
 
+                    // Converter a direção do vento de caractere para número
+                    var numericDirection = parseInt(direction);
+
+
+                    
+                    // Verificar se a conversão foi bem-sucedida
+                    if (isNaN(numericDirection)) {
+                        console.error("Erro ao converter a direção do vento para número.");
+                        return;
+                    }
+
+                    
+
+                    // Calcular a rotação do ícone com base na direção do vento
+                    var rotation;
+                    if (numericDirection < 180) {
+                        rotation = numericDirection + 180;
+                    } else {
+                        rotation = numericDirection - 180;
+                    }
+
+
+                    
+
+                    // Exibir o ângulo de rotação na console
+                    console.log("Ângulo de rotação: " + rotation + " graus");
+
+                    // Aplicar a rotação ao ícone usando a propriedade transform do CSS
+                    windIcon.style.transform = "rotate(" + direction + "deg)";
+
                     windIcon.innerHTML = `<img src="${iconPath}" alt="Wind Icon">`;
-                    windIcon.innerHTML += `<span>${iconName}</span>`; // Exibindo o nome ao lado do ícone
+                    
+                   // Exibir o texto
+                    windText.innerText = iconName;
 
                 }
 
-                displayWindIcon(velocity);
+                displayWindIcon(velocity,direction);
 
 
                 // Preencher os dados do gráfico com o próximo conjunto de registros
@@ -346,7 +380,7 @@ include('protect.php');?>
                     }
                 };
 
-                Plotly.newPlot("myDiv", [chartData], layout);
+                //Plotly.newPlot("myDiv", [chartData], layout);
 
                 // Exibir os dados do registro no console
                 console.log("Direção: " + windDirection);
