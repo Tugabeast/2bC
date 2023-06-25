@@ -143,7 +143,7 @@ include('protect.php');?>
 
             var currentIndex = 0;
             var data = response.data;
-            var interval = 5000;
+            var interval = 500000;
 
             function displayNext() {
                 // Verificar se há mais registros a serem exibidos

@@ -1015,6 +1015,10 @@ td {
         font-size: 2rem;
         margin-top: 1rem;
     }
+
+    #windIcon {
+        width: 20% !important;
+    }
 }
 
 
