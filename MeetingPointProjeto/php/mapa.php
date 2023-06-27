@@ -143,7 +143,7 @@ include('protect.php');?>
 
             var currentIndex = 0;
             var data = response.data;
-            var interval = 500000;
+            var interval = 5000;
 
             function displayNext() {
                 // Verificar se há mais registros a serem exibidos
@@ -329,10 +329,17 @@ include('protect.php');?>
 
                     // Calcular a rotação do ícone com base na direção do vento
                     var rotation;
+                    /*
                     if (numericDirection < 180) {
                         rotation = numericDirection + 180;
                     } else {
                         rotation = numericDirection - 180;
+                    }
+                    */
+                    if (numericDirection < 180) {
+                        rotation = numericDirection - 90;
+                    } else {
+                        rotation = numericDirection + 90;
                     }
 
 
@@ -342,7 +349,7 @@ include('protect.php');?>
                     console.log("Ângulo de rotação: " + rotation + " graus");
 
                     // Aplicar a rotação ao ícone usando a propriedade transform do CSS
-                    windIcon.style.transform = "rotate(" + direction + "deg)";
+                    windIcon.style.transform = "rotate(" + rotation + "deg)";
 
                     windIcon.innerHTML = `<img src="${iconPath}" alt="Wind Icon">`;
                     

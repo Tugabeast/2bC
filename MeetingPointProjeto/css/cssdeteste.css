@@ -629,7 +629,6 @@ main .recent-orders a {
     margin: auto;
 }
 
-
 .containerphp .tabelacrud th,
 td {
     /*border: 1px solid #dddddd;*/
@@ -1015,9 +1014,11 @@ td {
         font-size: 2rem;
         margin-top: 1rem;
     }
-
     #windIcon {
         width: 20% !important;
+    }
+    .table-wraper-pagination {
+        margin-top: 63rem;
     }
 }
 
@@ -1236,7 +1237,6 @@ progress[value]::-webkit-progress-value {
     width: 10%;
 }
 
-
-#graphdiv1 img{
-    width: 10px;
+#graphdiv1 img {
+    width: 10px !important;
 }
