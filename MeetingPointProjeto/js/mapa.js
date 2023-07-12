@@ -65,7 +65,12 @@ function closeNavMobile() {
 
 
 
-const map = L.map('map').setView([40.781222457545134, -8.573946680684655], 13);
+
+
+
+
+
+const map = L.map('map').setView([40.781222457545134, -8.573946680684655], 15);
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -73,14 +78,28 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 const marker = L.marker([40.781222457545134, -8.573946680684655]).addTo(map).openPopup();
-/*
-const circle = L.circle([40.781222457545134, -8.573946680684655], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map).bindPopup('Rosa dos ventos');
 
+function formula(velocidade, time) {
+    return (velocidade * (100 / 6)) * time;
+}
+
+let direct = windDirection;
+
+let Circle = L.semiCircle([40.781222457545134, -8.573946680684655], {
+    color: 'red',
+    fillColor: 'transparent',
+    fillOpacity: 0.5,
+    radius: formula(velocity, 5)
+}).setDirection(direct, 45).addTo(map);
+
+let circle2 = L.semiCircle([40.781222457545134, -8.573946680684655], {
+    color: 'red',
+    fillColor: 'transparent',
+    fillOpacity: 0.5,
+    radius: formula(3, 10)
+}).setDirection(direct, 45).addTo(map);
+
+/*
 const polygon = L.polygon([
     [40.781222457545134, -0.08],
     [40.781222457545100, -0.06],
@@ -91,7 +110,7 @@ const popup = L.popup()
     .setLatLng([40.781222457545134, -8.573946680684655])
     .setContent('Cires - Wind SenSor [Ventos]')
     .openOn(map);
-*/
+
 // Ajustar a posição da rosa dos ventos para começar na primeira imagem do mapa
 const markerLatLng = marker.getLatLng();
 const circleLatLng = circle.getLatLng();
@@ -116,4 +135,5 @@ map.on('click', onMapClick);
 
 
 // Zoom in on the first image of the map
-map.setZoom(17);
+//map.setZoom(17);
+*/

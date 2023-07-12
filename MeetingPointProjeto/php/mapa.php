@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" />
+    
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" ></script>
 
 
@@ -69,8 +70,8 @@ include('protect.php');?>
                <!-- </div>
 -->             
                 <div id="myDivMapa" style="mix-blend-mode: multiply; margin-top: 1%; width: 80%;height: 0; margin-left: auto; margin-right: auto;  position: relative; background: transparent;">
-                        <!-- Plotly chart will be drawn inside this DIV -->
-                </div>
+                       <!--  Plotly chart will be drawn inside this DIV -->
+                </div> 
             </div>
 
 
@@ -80,6 +81,7 @@ include('protect.php');?>
             </div>
 -->
             <br>
+            
             <div class="card" id="cardWind" style="width: 50%; margin: auto; background: white; color: black;" >
            <!--\ <div id='myDiv' style="width: 80%; margin: auto;">
                 Plotly chart will be drawn inside this DIV 
@@ -127,11 +129,15 @@ include('protect.php');?>
         </div>
     </div>
 
+    <script src="../js/Semicircle.js"></script>
     <script src="../js/mapa.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
 
     <script>
+
+
     // Fazer a solicitação AJAX para obter os dados do banco de dados
     $.ajax({
         url: 'mapaDados.php',
@@ -144,6 +150,9 @@ include('protect.php');?>
             var currentIndex = 0;
             var data = response.data;
             var interval = 5000;
+            var windDirection = "";
+            var direction= "";
+            var velocity="";
 
             function displayNext() {
                 // Verificar se há mais registros a serem exibidos
@@ -152,12 +161,12 @@ include('protect.php');?>
                 }
 
                 // Código existente para criar o gráfico Plotly
-                var velocity = data[currentIndex].velocity * 16.667;
+                velocity = data[currentIndex].velocity * 16.667;
                 //var velocity = data[currentIndex].velocity ;
                 var radius = velocity * 0.5; // Ajuste o fator multiplicativo conforme necessário
 
-                var direction = data[currentIndex].direction;
-                var windDirection = "";
+                 direction = data[currentIndex].direction;
+                
 
                 // Código existente para criar o gráfico Plotly
                 var chartData = {
@@ -335,13 +344,14 @@ include('protect.php');?>
                     } else {
                         rotation = numericDirection - 180;
                     }
-                    */
+                   */ 
+                   
                     if (numericDirection < 180) {
-                        rotation = numericDirection - 90;
+                        rotation = numericDirection - 270;
                     } else {
                         rotation = numericDirection + 90;
                     }
-
+                
 
                     
 
@@ -413,7 +423,10 @@ include('protect.php');?>
             // Ocorreu um erro ao obter os dados do banco de dados
             console.error("Erro ao obter os dados do banco de dados.");
         }
+    
     });
+    
+
 </script>
 </body>
 
